@@ -1,0 +1,8 @@
+{
+  "recoveredAt": "2026-10-18",
+  "projectId": "prj_3ppzRCOoA2Uk9XXmoDeraGFmQkZY",
+  "deploymentId": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
+  "url": "https://paper-bookshop-playtest.vercel.app",
+  "sha256": "d9b16dd8485780a25b8d93e6585217bc50579d91a6999fe3f7fc916eb06e1166",
+  "method": "Vercel connector authenticated fetch; original deployed HTML, no original development repository found"
+}
