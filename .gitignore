@@ -1,0 +1,12 @@
+node_modules/
+.vercel/
+.env*
+.DS_Store
+
+.preview/
+
+# Generated local design and QA artifacts (baseline/source manifest explicitly tracked).
+/designs/
+/evidence/
+/playwright-report/
+/test-results/

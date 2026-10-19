@@ -1,0 +1,116 @@
+/* The room is the game interface. All book positions share the scene coordinate system. */
+:root { --scene-width:474px; --scene-scale:.504; --scene-bleed:clamp(18px,4vw,28px); }
+html,body { width:100%; height:100%; overflow:hidden; }
+body { margin:0; background:#eee4cd url("assets/paper/letter-paper-texture.png") center / 1000px auto; }
+#shop { position:fixed; inset:0; width:100%; height:100%; margin:0; padding:0; max-width:none; overflow:hidden; }
+.sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip-path:inset(50%)!important; white-space:nowrap!important; border:0!important; }
+.game-camera { position:absolute; inset:0; overflow:auto; overscroll-behavior:none; scrollbar-width:none; touch-action:pan-x pan-y; cursor:grab; }
+.game-camera button { scroll-margin:8px; }
+.game-camera::-webkit-scrollbar { display:none; }
+.game-camera.is-dragging { cursor:grabbing; user-select:none; }
+.room-canvas { overflow:clip; width:max(100%,calc(var(--scene-width) + 2 * var(--scene-bleed))); min-height:100%; display:grid; place-items:center; box-sizing:border-box; padding-top:max(16px,env(safe-area-inset-top)); padding-bottom:max(20px,env(safe-area-inset-bottom)); }
+.room-world { position:relative; margin-inline:auto; width:var(--scene-width); height:calc(var(--scene-width)*1672/940); }
+.room-art { position:absolute; inset:0; display:block; width:100%; height:100%; max-width:none; pointer-events:none; user-select:none; mask-image:linear-gradient(90deg,transparent,#000 2% 98%,transparent),linear-gradient(transparent,#000 .5% 98%,transparent); mask-composite:intersect; }
+.shelf-stage,.shelf-stage .shelves,.shelf-stage .shelf { position:absolute; inset:0; display:block; width:100%; height:100%; padding:0; min-width:0; background:none; border:0; overflow:visible; pointer-events:none; }
+.shelf-stage .tier { position:absolute; left:0; right:0; width:100%; display:block; padding:0; min-height:0; border:0; background:none; }
+.shelf-stage .spine { position:absolute; bottom:0; height:100%; min-width:44px; min-height:44px; padding:0; border:0; display:flex; align-items:flex-end; justify-content:center; background:transparent; pointer-events:auto; touch-action:pan-x pan-y; -webkit-tap-highlight-color:transparent; }
+.shelf-stage .spine-face { position:relative; display:flex; align-items:center; justify-content:center; width:52%; min-width:24px; height:var(--book-height); min-height:0; max-height:100%; padding:1px; overflow:visible; border-radius:2px 3px 1px 1px; border:1px solid #6a543137; background-color:var(--book-color); background-image:linear-gradient(90deg,#58422026,transparent 18%,#fff1 85%,#644a2619),url("assets/paper/letter-paper-texture.png"); background-size:100% 100%,800px auto; background-blend-mode:multiply; color:#3e402e; font-size:clamp(12px,calc(var(--scene-scale)*26px),16px); font-weight:400; line-height:1.25; letter-spacing:0; writing-mode:vertical-rl; text-orientation:upright; white-space:nowrap; text-shadow:0 1px #fff2; box-shadow:inset 2px 0 #59431d1c,inset -1px 0 #fff3,1px 1px 1px #38210d33; transition:transform .18s,filter .18s; pointer-events:none; }
+.shelf-stage .spine-face:before { content:""; position:absolute; left:12%; right:12%; top:5%; height:2px; background:#fff3; box-shadow:0 calc(var(--scene-scale)*132px) #fff2; pointer-events:none; }
+.shelf-stage [data-id="siddhartha"] .spine-face:after { content:""; position:absolute; top:-5px; left:30%; width:10px; height:9px; background:#f4ecd3; clip-path:polygon(0 100%,20% 0,100% 100%); transform:rotate(-12deg); }
+.shelf-stage .focus-book .spine-face { box-shadow:inset 2px 0 #59431d1c,0 0 0 1px #dfbd74; }
+.shelf-stage .spine.is-out .spine-face { visibility:hidden; }
+.shelf-stage .spine.is-out { pointer-events:none; }
+.shelf-stage .spine:focus-visible { outline:2px solid #ecd39a; outline-offset:1px; border-radius:3px; }
+.shelf-stage .spine:active .spine-face { transform:translateY(-3px); }
+@media(hover:hover) { .shelf-stage .spine:hover .spine-face { transform:translateY(-4px); filter:brightness(1.05); } }
+.scene-object { position:absolute; padding:0; border:0; background:transparent; color:transparent; cursor:pointer; touch-action:pan-x pan-y; -webkit-tap-highlight-color:transparent; }
+.scene-object:focus-visible { outline:2px solid #a58e58; outline-offset:2px; border-radius:3px; }
+.shelf-wood { left:24.25%; top:13.04%; width:55.11%; height:40.37%; pointer-events:auto; }
+.wall-note { left:19.15%; top:33.2%; width:max(44px,6.5%); height:max(44px,5.8%); transform:translate(-50%,-50%); }
+.table-books { left:55.85%; top:82.54%; width:max(44px,10%); height:max(44px,8.4%); transform:translate(-50%,-50%); }
+#save-warning { position:fixed; left:16px; right:16px; bottom:max(16px,env(safe-area-inset-bottom)); z-index:200; padding:12px 16px; color:#5c4331; background:#f0e4c9; border:1px solid #aa8d65; font-size:14px; }
+.book-cover { color:#3f4634; }
+.quiet-button { min-height:44px; padding:10px 14px; border:0; background:transparent; color:#655d45; font-size:13px; }
+.journal-visit { color:#8d7957; font-size:13px; }
+.shop-sheet { width:min(620px,calc(100vw - 32px)); max-height:calc(var(--view-height) - 40px); margin:auto; padding:26px; overflow:auto; border:1px solid #b7a17c; border-radius:5px; color:#574a35; background:#f1e6cd url("assets/paper/letter-paper-texture.png") center top / 1000px auto; box-shadow:0 20px 70px #35291755; }
+.shop-sheet::backdrop { background:#2b251ab0; }
+.sheet-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:24px; }
+.sheet-heading small { color:#938161; letter-spacing:2px; font-size:10px; }
+.sheet-heading h2 { font-size:24px; font-weight:400; letter-spacing:2px; margin:10px 0 0; }
+.sheet-heading h2:focus { outline:none; }
+.sheet-close { min-width:44px; min-height:44px; padding:0; background:none; border:0; font-size:28px; color:#8a7551; }
+.book-catalogue { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 22px; }
+.catalogue-book { min-width:0; display:flex; align-items:center; gap:13px; padding:15px 0; border:0; border-bottom:1px solid #b5a27c66; min-height:70px; background:none; text-align:left; }
+.catalogue-book:before { content:""; flex:0 0 21px; height:33px; background:var(--catalogue-color); border:1px solid #4a4b3433; box-shadow:inset 3px 0 #0001,2px 2px #d5c7ab; border-radius:1px 3px 3px 1px; }
+.catalogue-book:hover strong { color:#536c48; }
+.catalogue-book strong { display:block; font-size:15px; font-weight:400; letter-spacing:1px; }
+.catalogue-book small { display:block; font-size:10px; margin-top:5px; color:#9a8562; }
+.sheet-note { font-size:12px; line-height:1.9; color:#8a7757; margin:22px 0 0; }
+.journal-copy { margin:0 0 28px; line-height:2; font-size:18px; }
+.journal-setting { border-top:1px solid #b5a27c66; padding-top:20px; display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:13px; }
+
+
+@media(max-width:600px) {
+  .shop-sheet { padding:20px; max-height:calc(var(--view-height) - 24px); }
+  .sheet-heading h2 { font-size:21px; }
+  .catalogue-book strong { font-size:14px; letter-spacing:0; }
+  .book-catalogue { gap:0 12px; }
+  .catalogue-book { gap:10px; }
+  .journal-setting { flex-direction:column; align-items:flex-start; }
+}
+@media(prefers-reduced-motion:reduce) { .shelf-stage .spine-face { transition:none; } }
+
+/* Quiet wood bookends mark spare bays; empty bays are scenery, not dead buttons. */
+.shelf-stage .book-slot.is-empty { position:absolute; bottom:0; height:100%; pointer-events:none; }
+.shelf-stage .book-slot-rest { position:absolute; bottom:0; height:3px; pointer-events:none; background:linear-gradient(90deg,transparent 9%,#3f281650 23%,#3f281630 77%,transparent 91%); }
+.shelf-stage .book-slot.is-empty:after { content:""; position:absolute; left:19%; bottom:0; width:8%; height:20%; border-radius:2px 1px 0 0; background:linear-gradient(90deg,#a87638,#cf9d55 45%,#95612d); box-shadow:1px 1px 2px #33200f44; opacity:.8; }
+
+/* The shelf art and every physical source slot share the same 131-unit rightward move. */
+.shelf-stage { transform:translateX(calc(var(--scene-scale)*131px)); }
+.wall-note { left:22%; top:40%; width:max(44px,9%); height:max(44px,7%); }
+.scene-window { position:absolute; left:calc(32/940*100%); top:calc(153/1672*100%); width:calc(280/940*100%); height:calc(438/1672*100%); border:0; padding:0; background:transparent; touch-action:pan-x pan-y; -webkit-tap-highlight-color:transparent; border-radius:50% 50% 2px 2px / 30% 30% 2px 2px; }
+.scene-window:focus-visible { outline:2px solid #a58e58; outline-offset:3px; }
+.window-view { display:block; width:100%; height:100%; pointer-events:none; }
+.window-original { background-image:url("assets/scene/room-layout-v0613.png"); background-size:calc(940/244*100%) calc(1673/244*100%); background-position:calc(82/696*100%) calc(255/1429*100%); }
+.window-message { color:#836b48; font-size:12px; line-height:1.8; min-height:1.8em; }
+
+/* Tabletop: original cover sprites sit over an independently cleaned wooden stand. */
+.display-clean-plate { position:absolute; left:calc(345/940*100%); top:calc(1284/1672*100%); width:calc(345/940*100%); height:calc(155/1672*100%); pointer-events:none; background:url("assets/scene/display-empty-v066.png") no-repeat; background-size:calc(940/345*100%) calc(1673/155*100%); background-position:calc(345/595*100%) calc(1284/1518*100%); mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent),linear-gradient(transparent,#000 2%,#000 98%,transparent); mask-composite:intersect; }
+.display-stage { position:absolute; inset:0; pointer-events:none; }
+.display-stage .display-book { position:absolute; padding:0; border:0; background:none; min-width:44px; min-height:44px; pointer-events:auto; touch-action:pan-x pan-y; -webkit-tap-highlight-color:transparent; }
+.display-stage .spine-face { position:absolute; inset:calc(var(--scene-scale)*10px); width:auto; height:auto; min-height:0; max-height:none; padding:0; border:0; background-color:transparent; background-image:url("assets/scene/game-room-window-v065.png"); background-size:var(--cover-art-size); background-position:var(--cover-art-position); background-repeat:no-repeat; clip-path:var(--cover-art-clip); border-radius:3px 4px 2px 2px; box-shadow:none; writing-mode:horizontal-tb; pointer-events:none; transition:transform .18s,filter .18s; }
+.display-stage .display-book.is-out { pointer-events:none; }
+.display-stage .display-book:focus-visible { outline:2px solid #ecd39a; outline-offset:2px; border-radius:4px; }
+@media(hover:hover) { .display-stage .display-book:hover .spine-face { transform:translateY(-4px) rotate(-1deg); filter:brightness(1.04); } }
+.drawer-handle { left:calc(425/940*100%); top:calc(1488/1672*100%); width:max(44px,15%); height:max(44px,4.5%); transform:translate(-50%,-50%); }
+@media(prefers-reduced-motion:reduce) { .display-stage .spine-face { transition:none; } }
+
+/* Continuous glazing sits behind the same paper-painted arch and crossbars. */
+.window-frame { position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; filter:drop-shadow(0 2px 1px #5c59331c); }
+
+/* Only the two cushion areas are composited; every other scene object keeps its source art. */
+.cushion-patch { position:absolute; top:calc(935/1672*100%); height:calc(155/1672*100%); pointer-events:none; background-image:url("assets/scene/sofa-cushions-v0612.png"); background-repeat:no-repeat; mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(transparent,#000 4%,#000 96%,transparent); mask-composite:intersect; }
+.cushion-left { left:calc(126/940*100%); width:calc(220/940*100%); background-size:calc(940/220*100%) calc(1673/155*100%); background-position:calc(126/720*100%) calc(935/1518*100%); }
+.cushion-right { left:calc(390/940*100%); width:calc(170/940*100%); background-size:calc(940/170*100%) calc(1673/155*100%); background-position:calc(390/770*100%) calc(935/1518*100%); }
+
+
+/* Local art repair separates the horn from the lower book row. The rest of the room keeps its source. */
+.gramophone-clearance { position:absolute; left:calc(650/940*100%); top:calc(690/1672*100%); width:calc(290/940*100%); height:calc(520/1672*100%); pointer-events:none; background:url("assets/scene/gramophone-clearance-v0614.png") no-repeat; background-size:calc(940/290*100%) calc(1673/520*100%); background-position:100% calc(690/1153*100%); mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent),linear-gradient(transparent,#000 2%,#000 98%,transparent); mask-composite:intersect; }
+.room-world .gramophone { left:calc(700/940*100%); top:calc(875/1672*100%); width:calc(230/940*100%); height:calc(320/1672*100%); clip-path:polygon(12% 0,100% 0,100% 100%,0 100%,0 35%,12% 35%); }
+.room-world .gramophone-notes { left:calc(650/940*100%); top:calc(850/1672*100%); width:calc(150/940*100%); height:calc(170/1672*100%); }
+
+/* A local wall plate removes the painted old window; its original art, glass and frame now travel together. */
+.window-wall-plate { position:absolute; left:calc(54/940*100%); top:calc(140/1672*100%); width:calc(296/940*100%); height:calc(465/1672*100%); pointer-events:none; background:url("assets/scene/window-wall-v0615.png") no-repeat; background-size:calc(940/296*100%) calc(1673/465*100%); background-position:calc(54/644*100%) calc(140/1208*100%); mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent),linear-gradient(transparent,#000 2%,#000 98%,transparent); mask-composite:intersect; }
+.scene-window { background-image:url("assets/scene/room-layout-v0613.png"); background-repeat:no-repeat; background-size:calc(940/280*100%) calc(1673/438*100%); background-position:calc(64/660*100%) calc(153/1235*100%); }
+
+/* Scenery cards share the record tray's paper, type, spacing and tape selection. */
+.window-choice .window-current { display:none; }.window-choice[aria-pressed="true"] .window-current { display:inline; }
+.window-choice[aria-pressed="true"] small { color:#598e97; }
+.window-message { margin:0; min-height:0; line-height:1.6; }.window-message:empty { display:none; }
+.window-upload-note { margin:0; color:#9a8c7b; font-size:11px; line-height:1.7; }
+@media(max-height:500px) and (min-width:601px) { .window-sheet .window-choices { grid-template-columns:repeat(5,minmax(0,1fr)); }.window-choices:has([data-window-scene="custom"]) { grid-template-columns:repeat(6,minmax(0,1fr)); } }
+
+.window-sheet .window-choice .window-upload-art { position:relative; display:grid; place-items:center; overflow:hidden; background:#e8dfc9; }
+.photo-placeholder { width:72%; height:72%; max-width:105px; pointer-events:none; }
+.window-sheet #window-custom-preview { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.photo-add-badge { position:absolute; right:7px; bottom:7px; width:26px; height:26px; display:grid; place-items:center; border-radius:50%; background:#fff7e5e8; color:#628578; font-size:23px; line-height:1; pointer-events:none; }

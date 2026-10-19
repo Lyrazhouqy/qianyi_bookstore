@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/game-room-window-v065.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-45ebc132-41d6-4cc6-a8e2-2fd61a91a8b6.png",
+  "asset": "assets/scene/sofa-cushions-v0612.png",
+  "prompt": "sofa-cushions-v0612.prompt.md",
+  "sha256": "176add17d1cc73ce32ddef2450323a83a96f4c68ef0d24eaa2dd41c1a05b7666",
+  "width": 940,
+  "height": 1673,
+  "runtimeRegions": {
+    "left": {
+      "x": 126,
+      "y": 935,
+      "width": 220,
+      "height": 155
+    },
+    "right": {
+      "x": 390,
+      "y": 935,
+      "width": 170,
+      "height": 155
+    }
+  },
+  "renderUse": "Two feathered noninteractive CSS source viewports only. The original room bitmap and every other scene object remain the original files."
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/room-layout-v0613.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-2a75a0b6-d684-4a06-9de8-5ad10909a949.png",
+  "asset": "assets/scene/window-wall-v0615.png",
+  "prompt": "window-left-v0615.prompt.md",
+  "sha256": "4227289f01b5c766d109427029631764b4ff7f91fac173bab987190a96484d36",
+  "width": 940,
+  "height": 1673,
+  "runtimeRegion": {
+    "x": 54,
+    "y": 140,
+    "width": 296,
+    "height": 465
+  },
+  "renderUse": "Local wall clean plate only; original window art sampled from v0613 into the native window button. Original glass, SVG frame and click target share new left32, previously64. Other source art and v0614 gramophone repair unchanged."
+}

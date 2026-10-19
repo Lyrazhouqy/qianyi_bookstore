@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/room-layout-v0613.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-8313ffb6-70fc-4c44-91ec-78cea8b03dd0.png",
+  "asset": "assets/scene/bouquet-empty-v0622.png",
+  "prompt": "bouquet-empty-v0622.prompt.md",
+  "sha256": "c2150290a2579617eaad3b035d209d455baaa4864d7ca2175a23754f76fcb9aa",
+  "runtimeRegion": {
+    "x": 650,
+    "y": 1197,
+    "width": 170,
+    "height": 111
+  },
+  "renderUse": "Clean wall plate only. The original bouquet from v0613 is split into three SVG sectors pivoting at the fixed vase; vase body/rim stay original. No regenerated flower artwork is used."
+}

@@ -1,21 +1,139 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>纸间书店 · 动画版</title><style>
-:root{--ink:#4e3d2c;--paper:#f2e8d6}*{box-sizing:border-box}body{margin:0;background:#e8dcc8;color:var(--ink);font-family:Georgia,"Songti SC","Noto Serif SC",serif}button,textarea{font:inherit}button{touch-action:manipulation;cursor:pointer}button:focus-visible{outline:3px solid #e6b45d;outline-offset:2px}header{display:flex;justify-content:space-between;align-items:center;padding:12px 4%;gap:8px}h1{font-size:clamp(22px,5vw,31px);margin:0;letter-spacing:3px}small{font-size:11px;color:#8b795e}.btn{background:#eadbc2;border:1px solid #a58a6b;border-radius:5px;padding:10px 13px;min-height:44px;color:#4e3d2c}.btn.primary{background:#708770;color:white}.game{position:relative;margin:8px auto;max-width:750px;width:96vw;height:clamp(385px,95vw,535px);background:#efe2cb;border:8px solid #b59a75;border-radius:15px;box-shadow:0 7px #9b8164;overflow:hidden;background-image:repeating-linear-gradient(124deg,transparent 0 38px,#b49c7b22 39px 40px)}.window{position:absolute;left:6%;top:8%;height:30%;width:20%;border:9px solid #8d9d82;background:#cbdbc8;border-radius:44% 44% 0 0}.window:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:5px;background:#8d9d82}.sofa{position:absolute;bottom:14%;left:5%;width:25%;height:16%;border-radius:30% 30% 13% 13%;background:#ae7654;border:6px solid #975f3d;box-shadow:0 8px #8b5738}.sofa:before{content:"●";font-size:38px;color:#e6bc77;padding:6px}.counter{position:absolute;bottom:10%;right:4%;width:26%;height:15%;background:#b08760;border:7px solid #99704b;box-shadow:0 9px #896546}.counter:before{content:"☎";position:absolute;top:-43px;left:12px;font-size:35px;color:#728d86}.decor{position:absolute;left:5%;top:42%;font-size:46px}.plant{position:absolute;right:4%;top:7%;font-size:32px}.rug{position:absolute;bottom:3%;left:39%;width:24%;height:12%;background:#91a29c;border:7px solid #e6cdaa;transform:rotate(-3deg)}.shelves{position:absolute;left:29%;top:13%;height:59%;width:65%;display:flex;gap:3%}.shelf{flex:1;min-width:0;background:#895b36;border:7px solid #89582f;border-radius:3px;box-shadow:3px 6px #6a4b3599;display:flex;flex-direction:column;justify-content:space-between;padding:3px}.tier{display:flex;flex:1;min-height:0;gap:clamp(2px,.45vw,4px);border-bottom:9px solid #b9864b;align-items:end;padding:2px 1px 0}.spine{min-width:0;flex:1;height:78%;max-height:100%;color:#fff6df;background:#738676;border:0;border-radius:3px 2px 0 0;font-size:clamp(8px,1.35vw,12px);line-height:1.25;writing-mode:vertical-rl;white-space:normal;overflow:hidden;padding:5px 1px;box-shadow:inset 3px 0 #0002;transition:transform .18s,filter .18s}.spine:nth-child(2n){background:#b17b64;height:93%}.spine:nth-child(3n){background:#778d9c;height:72%}.spine:active{transform:translateY(-5px)}.controls{max-width:750px;margin:auto;padding:12px 3%;display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;font-size:13px}.tip{text-align:center;font-size:13px;margin:12px 8px;color:#776650}.shade{position:fixed;inset:0;background:#281f1ab8;z-index:110;display:none;align-items:center;justify-content:center;padding:12px}.shade.show{display:flex}.paper{width:min(560px,100%);max-height:90dvh;overflow:auto;background:#f4e8d2;border:8px solid #a58c67;padding:20px;position:relative;border-radius:6px;box-shadow:0 14px 40px #0007}.paper.opening{animation:paperIn .34s ease both}.paper.closing{animation:paperOut .32s ease both}.close{position:absolute;right:4px;top:4px;border:0;background:transparent;font-size:28px;padding:3px 11px}.paper h2{font-size:25px;margin:15px 26px 18px 0}.intro{background:#fff5e5;border:1px solid #d8c4a6;line-height:1.9;padding:18px;margin:12px 0}.artifact{background:#fff8e9;box-shadow:3px 5px #c9b79a;line-height:2;padding:18px;margin:12px 0;white-space:pre-wrap}.parts{perspective:800px}.part{background:#fff7e7;padding:17px;border-bottom:2px dashed #c0aa87;animation:unfold .55s cubic-bezier(.22,.75,.27,1) both;transform-origin:top}.part:nth-child(2n){background:#f6ead4}.part small{display:block;margin-bottom:10px}.unfold{display:block;width:100%;background:#dfceb0;border:0;padding:16px}.pen{display:block;margin-left:auto;font-size:34px;background:none;border:0;padding:12px;color:#897352}.stamp{width:144px;padding:21px;margin:18px auto;background:#e8cda0;border:8px dotted white;box-shadow:0 0 0 2px #ab9170;font-size:65px;text-align:center;animation:pop .68s}.row{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}textarea{width:100%;min-height:105px;padding:12px;border:1px solid #b69c77;background:#fffaf0;font-size:16px}.flybook{position:fixed;z-index:200;pointer-events:none;overflow:hidden;border:2px solid #e9d6ad!important;transform-origin:center;box-shadow:7px 8px 14px #0003}.flybook:after{content:"";position:absolute;inset:0 0 0 auto;width:18%;background:linear-gradient(90deg,#fff5,#fff0)}.turnpage{position:fixed;z-index:201;pointer-events:none;background:#f6e8cf;border:2px solid #a78e69;transform-origin:left center;box-shadow:6px 9px 20px #0004}.note{font-size:12px;opacity:.72}footer{font-size:11px;color:#8c7961;text-align:center;padding:15px}@keyframes unfold{from{opacity:.12;transform:rotateX(-78deg)}to{opacity:1;transform:rotateX(0deg)}}@keyframes paperIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}@keyframes paperOut{to{opacity:0;transform:scale(.85)}}@keyframes pop{from{opacity:0;transform:scale(.55) rotate(-8deg)}to{opacity:1;transform:scale(1)}}@media(max-width:600px){.shelves{left:23%;width:73%;height:62%;top:12%}.shelf{border-width:5px;padding:2px}.tier{border-bottom-width:6px;gap:2px}.spine{font-size:clamp(8px,2.05vw,11px);padding:3px 1px}.paper{padding:16px}.counter{height:12%}.decor{font-size:30px}.window{height:25%}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-</style></head><body><header><div><small>AN ASYNCHRONOUS BOOKSHOP</small><h1>纸间书店</h1></div><button class="btn" id="restart">重新到访 ↻</button></header><div class="tip">轻触书脊 · 抽出旧书 · 翻开书页</div><div class="game"><div class="window"></div><div class="sofa"></div><div class="decor">📻</div><div class="rug"></div><div class="counter"></div><div class="plant">🪴</div><div class="shelves" id="shelves"></div></div><div class="controls"><span id="status">书店很安静</span><div><button class="btn" id="natural">自然节奏</button> <button class="btn" id="dense">密集对照</button></div></div><div class="shade" id="shade"><section class="paper" id="paper" role="dialog" aria-modal="true"><button class="close" id="close">×</button><div id="contents"></div></section></div><footer>移动端交互测试 · 本地保存 · 尚未接入多人</footer><script>
-const books=[['ship','忒修斯之船','航海故事与两位读者留下的调查笔记交织成一本神秘旧书。'],['prince','小王子','一位来自遥远星球的少年通过玫瑰与狐狸理解爱和责任。'],['stranger','局外人','默尔索用近乎冷静的目光面对荒诞、生活与社会期待。'],['siddhartha','悉达多','一个人经历修行和世俗生活，寻找属于自己的智慧。'],['garden','秘密花园','一座被锁住的花园渐渐焕发生机，几位孩子的生活也随之改变。'],['night','夜航西飞','关于非洲成长、旅行与飞行冒险的回忆录。'],['kafka','海边的卡夫卡','一段穿梭在现实与梦境之间的文学旅程。'],['letters','山茶文具店','代笔店里的人们通过文字表达难以说出口的心意。'],['other','海边的房间','虚构藏书：旅人在海边停留时的短篇日记。']];
-const notes={stranger:'不表现悲伤，真的就等于不悲伤吗？',garden:'我小时候想拥有秘密花园，现在更想有人和我一起照料它。',night:'有些风景只适合在夜里想起。',kafka:'不是所有道路都有地图。',letters:'没写出来的那些话，也许更重要。',other:'临走之前，我把窗户开了一会儿。'};
-const letter=[['书友 A','我曾以为寻找答案，是为了有一天能够停下来。'],['书友 B','也许我们寻找的不是答案，而是值得继续追问的问题。'],['书友 C','我第二次读这本书，最喜欢的反而是那些没有回答的部分。']];
-const $=id=>document.getElementById(id);let state,selected=null,mode='natural',unfold=1,writing=false,busy=false,lastSource=null;
-function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function save(){try{localStorage.setItem('paperbook-v3',JSON.stringify(state))}catch(e){}}
-function reset(){state={visits:0,seen:[],found:[],small:0,rose:false,stamp:false,replies:[]};selected=null;unfold=1;writing=false;save();status();hide(true)}
-function status(){$('status').textContent='翻书 '+state.visits+' 次 · 小发现 '+state.small+' 次 · '+(state.stamp?'🌹 邮票已获得':state.rose?'玫瑰线索进行中':'自由探索');save()}
-function shelves(){const sets=[books.slice(0,3),books.slice(3,6),books.slice(6)];$('shelves').innerHTML=sets.map((a,i)=>'<div class="shelf">'+[0,1,2].map((_,r)=>'<div class="tier">'+a.map((b,j)=>'<button class="spine" data-id="'+b[0]+'" style="height:'+(64+((i*3+r*5+j*7)%31))+'%" aria-label="抽出《'+b[1]+'》">'+b[1]+'</button>').join('')+'</div>').join('')+'</div>').join('')}
-function show(content){$('contents').innerHTML=content;$('shade').classList.add('show');$('paper').classList.remove('closing');$('paper').classList.remove('opening');void $('paper').offsetWidth;$('paper').classList.add('opening');$('contents').querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{let action=b.dataset.a;if(action==='rose'){state.rose=true;rose()}else if(action==='envelope'){envelope(false)}else if(action==='stamp'){state.stamp=true;envelope(true)}else if(action==='letter'){unfold=1;showLetter()}else if(action==='unfold'){unfold++;showLetter()}else if(action==='write'){writing=true;showLetter()}else if(action==='cancel'){writing=false;showLetter()}else if(action==='save'){const v=$('reply')?.value?.trim();if(v){state.replies.push(v);writing=false;unfold=letter.length+state.replies.length;showLetter()}}else if(action==='back')intro();else if(action==='note'){show('<h2>一张书友便笺</h2><div class="artifact">'+esc(notes[selected])+'</div><button class="btn" data-a="back">← 回到简介</button>')}}));status()}
-function hide(force=false){if(!$('shade').classList.contains('show'))return;if(force){$('shade').classList.remove('show');return}if(busy)return;busy=true;$('paper').classList.add('closing');setTimeout(()=>{$('shade').classList.remove('show');$('paper').classList.remove('closing');if(lastSource?.isConnected){lastSource.animate([{transform:'translateY(-7px)'},{transform:'translateY(0)'}],{duration:300,easing:'ease-out'})}busy=false},310)}
-function openBook(id,spine){if(busy||$('shade').classList.contains('show'))return;busy=true;selected=id;lastSource=spine;unfold=1;writing=false;const rect=spine.getBoundingClientRect(),ghost=spine.cloneNode(true);ghost.className='flybook';Object.assign(ghost.style,{left:rect.left+'px',top:rect.top+'px',width:rect.width+'px',height:rect.height+'px',margin:0,writingMode:'vertical-rl',display:'flex',alignItems:'center',justifyContent:'center',background:getComputedStyle(spine).backgroundColor});document.body.appendChild(ghost);const dx=innerWidth/2-(rect.left+rect.width/2),dy=innerHeight/2-(rect.top+rect.height/2),scale=Math.min(4,160/Math.max(rect.width,1));const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;function finish(){ghost.remove();state.visits++;if(!state.seen.includes(id))state.seen.push(id);intro();busy=false}if(reduced||!ghost.animate){finish();return}let anim=ghost.animate([{transform:'translate(0,0) scale(1) rotate(0deg)',opacity:1},{offset:.75,transform:'translate('+dx+'px,'+dy+'px) scale('+scale+') rotate(-6deg)',opacity:1},{transform:'translate('+dx+'px,'+dy+'px) scale('+scale+') rotate(0deg)',opacity:0}],{duration:550,fill:'forwards',easing:'cubic-bezier(.2,.8,.2,1)'});anim.onfinish=finish;anim.oncancel=finish}
-function intro(){const b=books.find(x=>x[0]===selected);let extra='';if(selected==='ship'&&!state.rose&&(mode==='dense'||state.visits>=3))extra='<button class="btn primary" data-a="rose">🥀 查看夹页中的干玫瑰</button>';else if(selected==='ship'&&state.rose)extra='<div class="artifact">🥀 你发现过的干玫瑰仍在这里。</div>';else if(selected==='prince'&&state.rose&&!state.stamp)extra='<button class="btn primary" data-a="envelope">✉ 查看不显眼的信封</button>';else if(selected==='prince'&&state.stamp)extra='<div class="artifact">🌹 邮票已经收入这次发现的记忆。</div>';else if(selected==='siddhartha')extra='<button class="btn primary" data-a="letter">✉ 取出接力信</button>';else {let found=state.found.includes(selected);if(notes[selected]&&!found&&(mode==='dense'||state.visits%3===2)){state.found.push(selected);state.small++;found=true}extra=found?'<button class="btn" data-a="note">↗ 展开书友便笺</button>':'<p class="note">这次没有遇见新的阅读痕迹。</p>'}show('<h2>《'+esc(b[1])+'》</h2><div class="intro">'+esc(b[2])+'</div><div class="row">'+extra+'</div>')}
-function rose(){show('<h2>干枯的玫瑰</h2><div class="artifact" style="text-align:center;font-size:66px">🥀</div><div class="artifact">一张纸条：另一朵玫瑰守着一个小惊喜。也许你知道去哪里找。</div><button class="btn" data-a="back">← 返回简介</button>')}
-function envelope(done){show(done||state.stamp?'<h2>玫瑰邮票</h2><div class="stamp">🌹</div><p>这段跨书寻宝到这里结束了。</p><button class="btn" data-a="back">返回简介</button>':'<h2>一只旧信封</h2><div class="artifact">书页间有一只不显眼的信封，封口上压着玫瑰印记。</div><button class="btn primary" data-a="stamp">拆开信封 →</button>')}
-function showLetter(){const all=letter.concat(state.replies.map((r,i)=>['你的续写 '+(i+1),r]));let out='<h2>一封被续写的信</h2><p class="note">沿折痕逐段展开，末尾点击笔才续写。</p><div class="parts">';all.slice(0,unfold).forEach(([name,txt])=>out+='<div class="part"><small>'+esc(name)+'</small>'+esc(txt)+'</div>');out+='</div>';if(unfold<all.length)out+='<button class="unfold" data-a="unfold">⌄ 沿折痕继续展开</button>';else if(writing)out+='<textarea id="reply" placeholder="写在信的末尾……"></textarea><div class="row"><button class="btn" data-a="cancel">放下笔</button><button class="btn primary" data-a="save">写在信上</button></div>';else out+='<div class="artifact"><button class="pen" data-a="write" aria-label="拿起笔续写">✎</button><div style="clear:both"></div></div>';show(out+'<div class="row"><button class="btn" data-a="back">← 返回简介</button></div>')}
-shelves();$('shelves').addEventListener('click',e=>{let x=e.target.closest('.spine');if(x)openBook(x.dataset.id,x)});$('close').onclick=()=>hide();$('shade').onclick=e=>{if(e.target===$('shade'))hide()};$('restart').onclick=reset;$('natural').onclick=()=>{mode='natural';reset()};$('dense').onclick=()=>{mode='dense';reset()};reset();
-</script></body></html>
+<!doctype html>
+<html lang="zh-CN" data-build="paper-bookshop-game-v0.6.24" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="book-centered-v0.6.8">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#e8dcc8">
+  <title>纸间书店 · 翻开旧书</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="assets/fonts/yozai.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="siddhartha.css">
+  <link rel="stylesheet" href="room.css">
+  <link rel="stylesheet" href="music.css">
+  <link rel="stylesheet" href="lamp.css">
+  <link rel="stylesheet" href="bouquet.css">
+  <script src="content.js" defer></script>
+  <script src="siddhartha.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="room.js" defer></script>
+  <script src="music.js" defer></script>
+  <script src="lamp.js" defer></script>
+  <script src="bouquet.js" defer></script>
+</head>
+<body data-phase="idle">
+  <main id="shop">
+    <div class="sr-only"><h1>纸间书店</h1><p class="tip">随手翻一本，看看书页间藏着什么。</p><span id="status" role="status">书店很安静</span></div>
+    <section id="room-viewport" class="game-camera" aria-label="纸间书店，点选书脊探索旧书">
+      <div class="room-canvas">
+      <div class="room-world">
+        <img class="room-art" src="assets/scene/room-layout-v0613.png" alt="" width="940" height="1672" fetchpriority="high" draggable="false">
+        <div class="window-wall-plate" aria-hidden="true"></div>
+        <div class="gramophone-clearance" aria-hidden="true"></div>
+        <div class="cushion-patch cushion-left" aria-hidden="true"></div>
+        <div class="cushion-patch cushion-right" aria-hidden="true"></div>
+        <svg class="floor-lamp-effects" viewBox="0 0 940 1672" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <radialGradient id="floor-lamp-halo"><stop stop-color="#ffd16d" stop-opacity=".65"/><stop offset=".45" stop-color="#ffc557" stop-opacity=".32"/><stop offset="1" stop-color="#ffc557" stop-opacity="0"/></radialGradient>
+            <linearGradient id="floor-lamp-cone" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffc456" stop-opacity=".28"/><stop offset="1" stop-color="#ffd88a" stop-opacity="0"/></linearGradient>
+          </defs>
+          <path class="lamp-off-shade" d="M45 675Q90 647 137 675L170 785Q89 813 8 785Z" fill="#8b7757"/>
+          <g class="lamp-light"><ellipse cx="90" cy="780" rx="175" ry="160" fill="url(#floor-lamp-halo)"/><path d="M20 790H165L365 1250Q130 1320 -120 1250Z" fill="url(#floor-lamp-cone)"/><path d="M45 675Q90 647 137 675L170 785Q89 813 8 785Z" fill="#ffd06b" opacity=".5"/></g>
+        </svg>
+        <button class="scene-window" id="change-window" aria-label="更换窗外风景" title="轻点窗户，换一幅风景">
+          <svg class="window-view" id="window-view" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true" hidden>
+            <defs><clipPath id="window-glass"><path d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z"/></clipPath></defs>
+            <g clip-path="url(#window-glass)"><image id="window-picture" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice"/><image id="window-picture-next" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice" opacity="0"/></g>
+          </svg>
+          <svg class="window-frame" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <pattern id="window-painted-wood" width="280" height="438" patternUnits="userSpaceOnUse"><rect width="280" height="438" fill="#8d9871"/><image href="assets/paper/letter-paper-texture.png" width="420" height="630" opacity=".14"/></pattern>
+              <linearGradient id="window-glass-shade"><stop stop-color="#32452d" stop-opacity=".18"/><stop offset=".12" stop-color="#32452d" stop-opacity="0"/><stop offset=".92" stop-color="#fff7dc" stop-opacity=".02"/><stop offset="1" stop-color="#32452d" stop-opacity=".1"/></linearGradient>
+            </defs>
+            <path class="window-glass-shade" d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z" fill="url(#window-glass-shade)"/>
+            <path class="window-outer-frame" fill="url(#window-painted-wood)" fill-rule="evenodd" d="M0 438V144C0 65 61 4 138 4C215 4 280 65 280 144V438ZM18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z"/>
+            <path d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419" fill="none" stroke="#5e714f" stroke-opacity=".32" stroke-width="2"/>
+            <path class="window-mullions" d="M129 20H147V420H129ZM15 198H265V218H15Z" fill="url(#window-painted-wood)"/>
+            <path d="M131 27V418M22 201H258" fill="none" stroke="#e4e5b9" stroke-opacity=".35" stroke-width="2"/>
+            <path d="M-2 423H282V438H-2Z" fill="#849168"/><path d="M0 423H280" stroke="#bdc39a" stroke-width="3"/>
+          </svg>
+        </button>
+        <div class="shelf-stage">
+          <button class="scene-object shelf-wood" id="goto-shelves" aria-label="查看书架"></button>
+          <div class="shelves" id="shelves" aria-label="十三本可拿起的旧书"></div>
+        </div>
+        <button class="scene-object wall-note" data-journal aria-label="书店手记" title="看看墙上的便笺"></button>
+        <svg class="lamp-cord-art" viewBox="0 0 940 1672" preserveAspectRatio="none" aria-hidden="true"><defs><path id="lamp-cord" d="M140 784Q140 820 140 886"/></defs><use href="#lamp-cord" class="lamp-cord-shadow"/><use href="#lamp-cord" class="lamp-cord-line"/></svg>
+        <button class="scene-object lamp-pull" id="lamp-pull" aria-label="拉绳开灯" aria-pressed="false"><span class="lamp-knob" aria-hidden="true"><svg viewBox="0 0 22 36"><path d="M11 0V8" stroke="#9c8056" stroke-width="3"/><path d="M5 10Q11 6 17 10L19 26Q18 34 11 35Q4 34 3 26Z" fill="currentColor"/><path d="M7 12L6 25Q6 30 10 31" fill="none" stroke="#f2d39e" stroke-opacity=".6" stroke-width="2"/></svg></span></button>
+        <button class="scene-object gramophone" id="open-music" aria-label="留声机，挑一张唱片" aria-haspopup="dialog"></button>
+        <svg class="gramophone-notes" viewBox="0 0 180 190" aria-hidden="true"><g class="music-note note-one"><path d="M42 96V61L64 56V87C64 98 49 101 49 92C49 87 54 84 59 84V64L47 67V96C47 107 32 110 32 101C32 96 37 93 42 93Z"/></g><g class="music-note note-two"><path d="M105 68V28L127 37V49L110 40V68C110 80 94 83 94 74C94 69 100 65 105 65Z"/></g><g class="music-note note-three"><path d="M133 123V95L151 91V116C151 126 138 129 138 121C138 117 142 114 147 114V98L137 101V123C137 133 124 136 124 128C124 124 128 121 133 121Z"/></g></svg>
+        <div class="display-clean-plate" aria-hidden="true"></div>
+        <div class="bouquet-clean-plate" aria-hidden="true"></div>
+        <svg class="bouquet-art" id="bouquet-art" viewBox="0 0 160 112" preserveAspectRatio="none" data-motion="rest" data-bouquet="original" aria-hidden="true">
+          <defs>
+            <clipPath id="bouquet-left"><polygon points="79,110 0,110 0,0 63.5,0"/></clipPath>
+            <clipPath id="bouquet-center"><polygon points="79,110 63.5,0 119,0"/></clipPath>
+            <clipPath id="bouquet-right"><polygon points="79,110 119,0 160,0 160,110"/></clipPath>
+            <clipPath id="bouquet-mouth"><rect x="59" y="107" width="43" height="5"/></clipPath>
+            <filter id="bouquet-paper-edge" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="linear" slope="2" intercept="-1"/></feComponentTransfer></filter>
+            <image id="bouquet-source" href="assets/scene/room-layout-v0613.png" x="-655" y="-1200" width="940" height="1673"/>
+          </defs>
+          <g class="bouquet-part" clip-path="url(#bouquet-left)"><use class="bouquet-layer" data-bouquet-layer="original" href="#bouquet-source"/><image class="bouquet-layer" data-bouquet-layer="tulips" width="160" height="112" preserveAspectRatio="none" filter="url(#bouquet-paper-edge)"/><image class="bouquet-layer" data-bouquet-layer="daisies" width="160" height="112" preserveAspectRatio="none" filter="url(#bouquet-paper-edge)"/></g>
+          <g class="bouquet-part" clip-path="url(#bouquet-center)"><use class="bouquet-layer" data-bouquet-layer="original" href="#bouquet-source"/><image class="bouquet-layer" data-bouquet-layer="tulips" width="160" height="112" preserveAspectRatio="none" filter="url(#bouquet-paper-edge)"/><image class="bouquet-layer" data-bouquet-layer="daisies" width="160" height="112" preserveAspectRatio="none" filter="url(#bouquet-paper-edge)"/></g>
+          <g class="bouquet-part" clip-path="url(#bouquet-right)"><use class="bouquet-layer" data-bouquet-layer="original" href="#bouquet-source"/><image class="bouquet-layer" data-bouquet-layer="tulips" width="160" height="112" preserveAspectRatio="none" filter="url(#bouquet-paper-edge)"/><image class="bouquet-layer" data-bouquet-layer="daisies" width="160" height="112" preserveAspectRatio="none" filter="url(#bouquet-paper-edge)"/></g>
+          <g id="bouquet-vase-rim" clip-path="url(#bouquet-mouth)"><use href="#bouquet-source"/></g>
+        </svg>
+        <button class="scene-object bouquet-touch" id="touch-bouquet" aria-label="轻碰花束"></button>
+        <button class="scene-object bouquet-vase" id="change-bouquet" aria-label="换一束花，当前：小白花" title="换一束花"></button>
+        <span class="sr-only" id="bouquet-message" role="status"></span>
+        <div class="display-stage" id="display-books" role="group" aria-label="陈列架上三本可拿起的书"></div>
+        <button class="scene-object drawer-handle" id="open-book-index" aria-label="查看陈列桌上的藏书" title="拉开抽屉看看藏书"></button>
+      </div>
+      </div>
+    </section>
+    <p id="save-warning" role="status" hidden></p>
+    <dialog class="shop-sheet music-sheet" id="music-settings" aria-labelledby="music-title">
+      <div class="sheet-heading music-heading"><div><small>留 声 机</small><h2 id="music-title">今天店里听什么</h2></div><button class="sheet-close" data-close-sheet aria-label="收起唱片纸页">×</button></div>
+      <div class="music-grid" id="music-records"></div>
+      <div class="music-bottom"><p id="music-status" role="status">挑一张唱片，陪你慢慢翻书。</p><button class="music-toggle" id="music-toggle" aria-label="播放音乐"><span aria-hidden="true">▷</span><span class="music-toggle-label">放张唱片</span></button></div>
+    </dialog>
+    <dialog class="shop-sheet window-sheet" id="window-settings" aria-labelledby="window-settings-title">
+      <div class="sheet-heading window-heading"><div><small>窗 外 一 景</small><h2 id="window-settings-title">今天，望向哪里？</h2></div><button class="sheet-close" data-close-sheet aria-label="收起窗外风景">×</button></div>
+      <div class="window-choices">
+        <button class="window-choice" data-window-scene="original" aria-label="树影" aria-pressed="true"><span class="window-thumbnail window-original" aria-hidden="true"></span><strong>树影</strong><small><span class="window-current">正在看 · </span>叶影轻摇</small></button>
+        <button class="window-choice" data-window-scene="seaside" aria-label="海风" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-seaside-v065.png" alt="" loading="lazy" draggable="false"><strong>海风</strong><small><span class="window-current">正在看 · </span>海浪慢慢</small></button>
+        <button class="window-choice" data-window-scene="rain" aria-label="雨后山色" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-rain-v0611.png" alt="" loading="lazy" draggable="false"><strong>雨后山色</strong><small><span class="window-current">正在看 · </span>雨歇山青</small></button>
+        <button class="window-choice" data-window-scene="sunset" aria-label="晚霞" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-sunset-v0611.png" alt="" loading="lazy" draggable="false"><strong>晚霞</strong><small><span class="window-current">正在看 · </span>落日余温</small></button>
+        <button class="window-choice" data-window-scene="snow" aria-label="初雪" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-snow-v0611.png" alt="" loading="lazy" draggable="false"><strong>初雪</strong><small><span class="window-current">正在看 · </span>静静落雪</small></button>
+        <button class="window-choice" data-window-scene="custom" aria-label="上传自己的照片" aria-pressed="false" id="window-custom-choice"><span class="window-thumbnail window-upload-art"><img id="window-custom-preview" alt="" hidden><svg class="photo-placeholder" viewBox="0 0 100 100" aria-hidden="true"><rect x="13" y="15" width="66" height="70" rx="3" fill="#faf3df" stroke="#b8ae91" stroke-width="2" transform="rotate(-5 46 50)"/><path d="M22 65L38 45L50 59L60 50L73 67Z" fill="#aebc94"/><circle cx="61" cy="32" r="7" fill="#e7c87d"/><circle cx="76" cy="75" r="18" fill="#77948a"/><path d="M76 66V84M67 75H85" stroke="#faf6e8" stroke-width="3" stroke-linecap="round"/></svg><span class="photo-add-badge" aria-hidden="true" hidden>＋</span></span><strong>自己的照片</strong><small><span class="window-current">正在看 · </span><span id="window-photo-hint">点此上传</span></small></button>
+      </div>
+      <div class="window-bottom">
+        <div><p class="window-message" id="window-message" role="status"></p><p class="window-upload-note">本机图片 · 最大4MB</p></div>
+        <input type="file" id="window-file" accept="image/png,image/jpeg,image/webp,image/avif" aria-label="选择自己的照片" hidden>
+      </div>
+    </dialog>
+    <dialog class="shop-sheet" id="book-index" aria-labelledby="book-index-title">
+      <div class="sheet-heading"><div><small>纸 间 藏 书</small><h2 id="book-index-title">今天，翻哪一本？</h2></div><button class="sheet-close" data-close-sheet aria-label="收起选书单">×</button></div>
+      <div class="book-catalogue" id="book-catalogue"></div>
+      <p class="sheet-note">选中的书，会从它原来的书位来到你面前。</p>
+    </dialog>
+    <dialog class="shop-sheet journal-sheet" id="shop-journal" aria-labelledby="shop-journal-title">
+      <div class="sheet-heading"><div><small>来 过 的 痕 迹</small><h2 id="shop-journal-title">书店手记</h2></div><button class="sheet-close" data-close-sheet aria-label="收起书店手记">×</button></div>
+      <p class="journal-copy" id="journal-summary">书店很安静。</p><p class="journal-visit" data-visit-label>书店很安静</p>
+      <div class="journal-setting"><span>阅读节奏</span><div><button class="btn" id="natural" aria-pressed="true">自然节奏</button> <button class="btn" id="dense" aria-pressed="false">密集对照</button></div></div>
+      <button class="quiet-button" id="restart">重新到访 ↻</button>
+      <p class="sheet-note">自然节奏里，痕迹慢慢出现。密集对照会更早露出线索。<br>文字保存在本机，尚未接入多人或跨设备同步。</p>
+    </dialog>
+  </main>
+  <div class="shade" id="shade" hidden>
+    <section class="paper" id="paper" role="dialog" aria-modal="true" aria-labelledby="book-title" tabindex="-1">
+      <div class="paper-toolbar"><span aria-hidden="true">纸 间 藏 书</span><button class="close" id="close" aria-label="合书并放回书架">×</button></div>
+      <div class="paper-scroll" id="paper-scroll"><div id="contents"></div></div>
+      <div class="book-cover" id="book-cover" aria-hidden="true">
+        <div class="cover-binding"></div><span class="cover-label">纸 间 藏 书</span>
+        <span class="cover-title" id="cover-title"></span><span class="cover-mark">❧</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

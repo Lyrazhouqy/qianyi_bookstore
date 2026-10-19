@@ -1,0 +1,142 @@
+{
+  "projectId": "prj_3ppzRCOoA2Uk9XXmoDeraGFmQkZY",
+  "teamId": "team_XTc4QqHDaR6elWOhV42u6sGs",
+  "project": "paper-bookshop-playtest",
+  "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
+  "productionAlias": "paper-bookshop-playtest.vercel.app",
+  "build": "paper-bookshop-game-v0.6.24",
+  "staticFiles": [
+    "index.html",
+    "styles.css",
+    "content.js",
+    "app.js",
+    "siddhartha.css",
+    "siddhartha.js",
+    "assets/fonts/yozai.woff2",
+    "assets/fonts/yozai-OFL.txt",
+    "assets/paper/letter-paper-texture.png",
+    "room.css",
+    "room.js",
+    "assets/scene/game-room-window-v065.png",
+    "assets/scene/window-seaside-v065.png",
+    "assets/scene/display-empty-v066.png",
+    "music.css",
+    "music.js",
+    "assets/music/water-sound.mp3",
+    "assets/music/water-sound.png",
+    "assets/music/slow-coffee.mp3",
+    "assets/music/slow-coffee.png",
+    "assets/music/star-lamp.mp3",
+    "assets/music/star-lamp.png",
+    "assets/music/spacing-out.mp3",
+    "assets/music/spacing-out.png",
+    "assets/music/tap-wood.mp3",
+    "assets/music/tap-wood.png",
+    "assets/music/wind-passing.mp3",
+    "assets/music/wind-passing.png",
+    "assets/music/bamboo-leaves.mp3",
+    "assets/music/bamboo-leaves.png",
+    "assets/scene/window-rain-v0611.png",
+    "assets/scene/window-sunset-v0611.png",
+    "assets/scene/window-snow-v0611.png",
+    "assets/scene/sofa-cushions-v0612.png",
+    "assets/scene/room-layout-v0613.png",
+    "assets/scene/gramophone-clearance-v0614.png",
+    "assets/scene/window-wall-v0615.png",
+    "lamp.css",
+    "lamp.js",
+    "bouquet.css",
+    "bouquet.js",
+    "assets/scene/bouquet-empty-v0622.png",
+    "assets/scene/bouquet-tulips-v0624.png",
+    "assets/scene/bouquet-daisies-v0624.png"
+  ],
+  "status": "local-v0.6.24-bouquet-cycle; fixed-mobile-preview-remains-v0.6.23",
+  "reader": "shared-tactile-v0.4.3",
+  "shelf": {
+    "capacity": 13,
+    "books": 13,
+    "reserved": 0
+  },
+  "scenery": {
+    "presets": [
+      "original",
+      "seaside",
+      "rain",
+      "sunset",
+      "snow"
+    ],
+    "customImage": "PNG/JPEG/WebP/AVIF, up to 4MiB, stored locally",
+    "storageKey": "paperbook-window-v1",
+    "randomization": {
+      "trigger": "page load or refresh only",
+      "avoidImmediateRepeat": true,
+      "candidates": "five built-in views plus locally uploaded custom image if available",
+      "timedRotation": false,
+      "crossfadeMs": 1200
+    },
+    "frame": "continuous glazing behind paper-painted arch, crossbars and sill"
+  },
+  "display": {
+    "books": 3,
+    "ids": [
+      "leaves",
+      "clouds",
+      "cat"
+    ],
+    "catalogueEntry": "drawer handle"
+  },
+  "totalBooks": 16,
+  "returnInteraction": {
+    "version": "direct-drag-v0.6.7",
+    "closedBook": "downward drag, short drag rebounds",
+    "scene": "tap blank scene to fold and put away; writing only blurs",
+    "keyboard": "Escape, focusable accessible return",
+    "scope": "all sixteen books"
+  },
+  "paperPlacement": {
+    "version": "book-centered-v0.6.8",
+    "anchor": "open book center, constrained within viewport",
+    "motion": "center stays fixed as paper unfolds or folds; original dock return"
+  },
+  "music": {
+    "tracks": [
+      "water-sound",
+      "slow-coffee",
+      "star-lamp",
+      "spacing-out",
+      "tap-wood",
+      "wind-passing",
+      "bamboo-leaves"
+    ],
+    "storageKey": "paperbook-music-v1",
+    "autoplayOnLoad": false,
+    "firstGramophoneTap": "opens sheet and starts selected record",
+    "crossfadeMs": 480,
+    "notes": "float continuously while idle or playing; pause with paused/error audio; reduced motion supported",
+    "reference": "https://bookstore.longtailwriter.com/web/player.html?v=202607170500&day=day_03"
+  },
+  "cushions": {
+    "left": "sage-green rounded lumbar",
+    "right": "dusty-rose flower",
+    "source": "assets/scene/sofa-cushions-v0612.png"
+  },
+  "floorLamp": {
+    "interaction": "pull 22px then release to toggle; short pull rebounds; tap/keyboard supported",
+    "storageKey": "paperbook-lamp-v1",
+    "default": "off"
+  },
+  "bouquet": {
+    "interaction": "touch or hover to sway; damped branches around a fixed vase; reduced-motion respected",
+    "vase": "tap to cycle original/tulips/daisies, crossfade above fixed vase",
+    "storageKey": "paperbook-bouquet-v1"
+  },
+  "mobilePlaytest": {
+    "version": "0.6.23",
+    "deploymentId": "dpl_ESbaFziSgyXnWUoG5TsRDyFo1aqS",
+    "baseUrl": "https://paper-bookshop-playtest-n6alphq7b-zhouxixis-projects-b5eae314.vercel.app/v0.6.23/",
+    "accessFile": ".preview/mobile-playtest-v0623.json",
+    "expiresAt": "2026-11-18T14:29:13+00:00",
+    "evidence": "evidence/mobile-playtest-v0623/deployment.json"
+  }
+}

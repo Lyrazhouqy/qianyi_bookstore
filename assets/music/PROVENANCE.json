@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-19T08:40:24.001791+00:00",
+  "reference": "https://bookstore.longtailwriter.com/web/player.html?v=202607170500&day=day_03",
+  "configuration": "https://bookstore.longtailwriter.com/web/game-config.js?v=feacb8785fee",
+  "use": "User-requested local game music interaction reference; original music and album covers copied without modification; no production publication in this task",
+  "assets": [
+    {
+      "file": "assets/music/water-sound.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E5%B0%8F%E6%B0%B4%E5%A3%B0.mp3",
+      "bytes": 7024266,
+      "sha256": "2ad96d1b877e4878f4892fdcd955c55c028f4c468637b65de5df95e618bad16e"
+    },
+    {
+      "file": "assets/music/water-sound.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E5%B0%8F%E6%B0%B4%E5%A3%B0.png",
+      "bytes": 1992216,
+      "sha256": "4309fd1354d05998719be0c67d249ff9641cb3f5df3fe92c12baea2f0b83c0b6"
+    },
+    {
+      "file": "assets/music/slow-coffee.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E6%85%A2%E5%92%96%E5%95%A1.mp3",
+      "bytes": 2091093,
+      "sha256": "423d88b88b68bd244299ec1536cd141f41294aaaed1c24fea169d47daf92ed04"
+    },
+    {
+      "file": "assets/music/slow-coffee.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E6%85%A2%E5%92%96%E5%95%A1.png",
+      "bytes": 2353645,
+      "sha256": "8a02ad2d9418c652d1974ce708a13f6445df17dfe88d35ffabb2f26241152d6f"
+    },
+    {
+      "file": "assets/music/star-lamp.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E6%98%9F%E6%98%9F%E7%81%AF.mp3",
+      "bytes": 2168416,
+      "sha256": "0d3225aee6af5ce5c6a5d290383365c9b0a6944ddefbd88927427194aa129cfe"
+    },
+    {
+      "file": "assets/music/star-lamp.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E6%98%9F%E6%98%9F%E7%81%AF.png",
+      "bytes": 1814805,
+      "sha256": "a1997aa633e1788b4cd430c79937de9cd91652d2c0f4d413a968a7f9048b2acb"
+    },
+    {
+      "file": "assets/music/spacing-out.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E6%94%BE%E7%A9%BA%E4%B8%AD.mp3",
+      "bytes": 2355662,
+      "sha256": "5ca06d41f95235c7be5d4aea0ae74c8f92f287f189159c3d0b2d3ca586088e84"
+    },
+    {
+      "file": "assets/music/spacing-out.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E6%94%BE%E7%A9%BA%E4%B8%AD.png",
+      "bytes": 1625171,
+      "sha256": "ad44201a9137fea453ab661b3815f235cdb61ddf210e1365332b6a7c78d5b877"
+    },
+    {
+      "file": "assets/music/tap-wood.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E6%95%B2%E6%9C%A8%E5%A4%B4.mp3",
+      "bytes": 2276667,
+      "sha256": "e4fd42b26c4541ece549c021805ca6cb4c2fe48cc16e6bc5e2bfa16a4666d360"
+    },
+    {
+      "file": "assets/music/tap-wood.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E6%95%B2%E6%9C%A8%E5%A4%B4.png",
+      "bytes": 1983052,
+      "sha256": "178d011d9c87c4b5b7096f7b22948a6a091e90819bb6a3ca4d3ecbe47e365769"
+    },
+    {
+      "file": "assets/music/wind-passing.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E9%A3%8E%E5%90%B9%E8%BF%87.mp3",
+      "bytes": 2933281,
+      "sha256": "5143592a1b278edd8aa7688136557064072bfc53339ee202cbc9d121e888a1d5"
+    },
+    {
+      "file": "assets/music/wind-passing.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E9%A3%8E%E5%90%B9%E8%BF%87.png",
+      "bytes": 1867030,
+      "sha256": "b138d12395857f5a8ee44f107deac8bf5c235998e707628833be8f7c3d2fcbe7"
+    },
+    {
+      "file": "assets/music/bamboo-leaves.mp3",
+      "source": "https://bookstore.longtailwriter.com/bgm/%E7%AB%B9%E5%8F%B6%E5%93%8D.mp3",
+      "bytes": 2170088,
+      "sha256": "ee0866d9ff1d60f4bb4e7a3d9f8bbc5d67aba74ad3cc8de759b9a955c7606e27"
+    },
+    {
+      "file": "assets/music/bamboo-leaves.png",
+      "source": "https://bookstore.longtailwriter.com/bgm/album/%E7%AB%B9%E5%8F%B6%E5%93%8D.png",
+      "bytes": 2168875,
+      "sha256": "5bc55dc9c231d8868659ade2967de83ca05bac3aec9c1ecfedfdff4afed0b75f"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/game-room-empty-v06.png",
+  "roomEdit": "Slightly shift bookshelf right and enlarge arched window; the scene was regenerated, so it is not byte-identical in unedited-looking regions.",
+  "roomFirstPass": "evidence/bookshop-v065/before/room-first-pass.png",
+  "finalRoomGeneratedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-026cb4e1-738d-4203-9230-e2393d195478.png",
+  "seaGeneratedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-35f29815-a805-418d-ab43-476f41ddb43a.png",
+  "prompts": [
+    "game-room-window-v065.prompt.md",
+    "window-seaside-v065.prompt.md"
+  ],
+  "assets": {
+    "game-room-window-v065.png": {
+      "sha256": "bedc13b4b7e5c19e75cfe0b61133e94aea63b8d89dc6fee3708b74cacfde4f8e",
+      "width": 940,
+      "height": 1673,
+      "bytes": 1762512
+    },
+    "window-seaside-v065.png": {
+      "sha256": "889af7a6c51df39595c2a569a2a91af25526e752153036489fdddf65c0713f09",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2319767
+    }
+  },
+  "renderCoordinates": {
+    "width": 940,
+    "height": 1672,
+    "shelfSourceTranslationX": 58,
+    "window": {
+      "x": 0,
+      "y": 153,
+      "width": 280,
+      "height": 438
+    }
+  },
+  "generationNotes": "First room pass shifted the shelf too far right. One batched correction request failed with a network error while the sea image completed. A separate built-in correction succeeded; no API/CLI fallback was used."
+}

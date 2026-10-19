@@ -1,0 +1,33 @@
+/* The record player remains an object in the illustrated room. */
+.gramophone { left:calc(680/940*100%); top:calc(790/1672*100%); width:calc(240/940*100%); height:calc(320/1672*100%); clip-path:polygon(42% 0,100% 0,100% 100%,0 100%,0 24%,42% 24%); }
+.gramophone-notes { position:absolute; left:calc(730/940*100%); top:calc(695/1672*100%); width:calc(180/940*100%); height:calc(190/1672*100%); overflow:visible; pointer-events:none; fill:#527f89; }
+.music-note { transform-box:fill-box; transform-origin:center; opacity:.65; animation:noteFloat 4.2s ease-out infinite; }
+.note-two { animation-delay:-1.8s; }.note-three { animation-delay:-3.2s; opacity:.3; }
+html[data-music-state="playing"] .music-note { animation:noteFloat 3.6s ease-out infinite; }
+html[data-music-state="playing"] .note-two { animation-delay:-1.2s; }html[data-music-state="playing"] .note-three { animation-delay:-2.4s; }
+html[data-music-state="paused"] .music-note,html[data-music-state="error"] .music-note { animation-play-state:paused; opacity:.2; }
+@keyframes noteFloat { 0% { transform:translate(-3px,13px) rotate(-7deg) scale(.9); opacity:0; } 24% { opacity:.8; } 70% { opacity:.6; }100% { transform:translate(7px,-28px) rotate(7deg) scale(1.06); opacity:0; } }
+:is(.music-sheet,.window-sheet)[open] { display:flex; flex-direction:column; width:min(780px,calc(100vw - 28px)); max-height:calc(var(--view-height) - 28px); padding:28px; overflow:hidden; border:0; border-radius:2px; clip-path:polygon(1% 0,98% .5%,100% 95%,97% 100%,1% 99%,0 94%,.5% 3%); }
+:is(.music-heading,.window-heading) { position:relative; flex-shrink:0; justify-content:center; text-align:center; margin-bottom:23px; }
+:is(.music-heading,.window-heading) small { color:#68929a; font-size:12px; letter-spacing:3px; }
+:is(.music-heading,.window-heading) h2 { font-family:"PaperYozai","Kaiti SC",serif; font-size:27px; font-weight:400; letter-spacing:3px; margin-top:7px; }
+:is(.music-heading,.window-heading) .sheet-close { position:absolute; right:-8px; top:-10px; }
+:is(.music-grid,.window-choices) { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px 14px; min-height:0; overflow-y:auto; padding:7px 4px 10px; overscroll-behavior:contain; scrollbar-width:thin; }
+:is(.music-record,.window-choice) { position:relative; display:flex; flex-direction:column; align-items:center; gap:9px; padding:10px 9px 14px; border:1px solid #b9a58844; border-radius:4px 5px 7px 4px; background:#fffaf066; box-shadow:3px 4px 0 #98876a12; color:#5e5143; min-width:0; min-height:44px; touch-action:pan-y; transition:background .2s,border-color .2s,transform .2s; }
+:is(.music-record,.window-choice) :is(img,.window-thumbnail) { width:100%; height:auto; aspect-ratio:1; display:block; object-fit:cover; border-radius:3px; pointer-events:none; }
+:is(.music-record,.window-choice) strong { font-family:"PaperYozai","Kaiti SC",serif; font-weight:400; font-size:18px; letter-spacing:1px; }
+:is(.music-record,.window-choice) small { display:block; font-size:12px; color:#9a8c7b; line-height:1.6; text-align:center; }
+:is(.music-record,.window-choice)[aria-pressed="true"] { border-color:#83a8ac; background:#edf5ee99; }
+:is(.music-record,.window-choice)[aria-pressed="true"]:after { content:""; position:absolute; width:43px; height:9px; background:#abc6bc88; top:-5px; left:calc(50% - 21px); transform:rotate(-3deg); }
+:is(.music-record,.window-choice).is-playing small { color:#598e97; }:is(.music-record,.window-choice):focus-visible,.music-toggle:focus-visible { outline:2px solid #6b959a; outline-offset:2px; }
+:is(.music-record,.window-choice):active { transform:translateY(2px); }
+:is(.music-bottom,.window-bottom) { display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:10px; margin-top:10px; border-top:1px solid #bcaa8c55; padding-top:10px; }
+#music-status { margin:0; font-size:12px; line-height:1.8; color:#837459; }
+.music-toggle { display:flex; align-items:center; justify-content:center; gap:8px; border:0; background:none; min-height:44px; padding:4px 6px; color:#627e72; font-size:13px; white-space:nowrap; }
+.music-toggle > span:first-child { font-size:21px; }
+@media(max-width:600px) { :is(.music-sheet,.window-sheet)[open] { padding:22px 16px 14px; } :is(.music-heading,.window-heading) { margin-bottom:13px; }:is(.music-heading,.window-heading) h2 { font-size:22px; } :is(.music-grid,.window-choices) { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 12px; } :is(.music-record,.window-choice) { padding:9px 9px 12px; gap:7px; }:is(.music-record,.window-choice) strong { font-size:17px; } }
+@media(max-height:500px) and (min-width:601px) { :is(.music-sheet,.window-sheet)[open] { padding:14px 20px 10px; }:is(.music-heading,.window-heading) { margin-bottom:8px; }:is(.music-heading,.window-heading) h2 { font-size:21px; }:is(.music-heading,.window-heading) small { font-size:10px; }:is(.music-grid,.window-choices) { grid-template-columns:repeat(7,minmax(0,1fr)); gap:9px; }:is(.music-record,.window-choice) { padding:7px 5px; gap:7px; }:is(.music-record,.window-choice) strong { font-size:14px; letter-spacing:0; }:is(.music-record,.window-choice) small { font-size:10px; }:is(.music-bottom,.window-bottom) { margin-top:5px; padding-top:3px; } }
+@media(prefers-reduced-motion:reduce) { .music-note { animation:none!important; opacity:.55; }:is(.music-record,.window-choice) { transition:none; } }
+/* Preserve each paper sleeve's content height; small phones scroll the record tray. */
+:is(.music-grid,.window-choices) { grid-auto-rows:max-content; align-content:start; }
+:is(.music-record,.window-choice) :is(img,.window-thumbnail) { flex-shrink:0; }

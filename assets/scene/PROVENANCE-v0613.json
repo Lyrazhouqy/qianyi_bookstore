@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/game-room-window-v065.png",
+  "passes": [
+    {
+      "prompt": "room-layout-v0613.prompt.md",
+      "output": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-f85fb0fb-700f-4274-8bf9-1da238c977b4.png"
+    },
+    {
+      "prompt": "room-layout-v0613-clean.prompt.md",
+      "output": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-843edf4b-5731-4d07-ab7a-aca8bab17129.png"
+    }
+  ],
+  "asset": "assets/scene/room-layout-v0613.png",
+  "sha256": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+  "width": 940,
+  "height": 1673,
+  "renderUse": "Regenerated room base with v0612 feathered cushion patches and original display cover sprites. Generation shifted shelf about73 and window64 world units; runtime sources calibrated accordingly. Other painted details are regenerated, not pixel-identical.",
+  "runtimeGeometry": {
+    "shelfStageTranslateX": 131,
+    "windowLeft": 64,
+    "windowWidth": 280,
+    "smallCameraOffset": -15
+  }
+}

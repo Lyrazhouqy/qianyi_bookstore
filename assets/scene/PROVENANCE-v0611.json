@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "mode": "three separate style-preserving landscape edits",
+  "reference": "assets/scene/window-seaside-v065.png",
+  "prompts": "window-landscapes-v0611.prompts.json",
+  "assets": [
+    {
+      "id": "rain",
+      "file": "assets/scene/window-rain-v0611.png",
+      "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-36c67a57-e23a-4d82-ae10-2d1c79572cee.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "700f24d1665c6ac910a58204131cce49596d9a695433f3637e5628e7568c080e",
+      "bytes": 2660310
+    },
+    {
+      "id": "sunset",
+      "file": "assets/scene/window-sunset-v0611.png",
+      "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-b06db9af-db2a-4e7b-b525-d4c139699ced.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "841d44d14325260f5e7fbb3ce54a5bfb300f40b61473e065771ad32686ebcee7",
+      "bytes": 2653979
+    },
+    {
+      "id": "snow",
+      "file": "assets/scene/window-snow-v0611.png",
+      "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-863a4d95-c393-45db-9326-f367f98e5565.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "3614094ca89848236ca63b924bf9564b058c05f101903ca88565d71c6d3be51d",
+      "bytes": 2611323
+    }
+  ],
+  "frame": "Code-native SVG layered over existing scene; room bitmap unchanged"
+}

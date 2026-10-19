@@ -1,0 +1,16 @@
+const {test,expect}=require('@playwright/test');
+const lamp=p=>p.locator('#lamp-pull');
+async function setup(page){await page.goto('/');await lamp(page).scrollIntoViewIfNeeded();await expect(lamp(page)).toHaveAttribute('aria-pressed','false');}
+async function drag(page,dy){const b=await lamp(page).boundingBox(),x=b.x+b.width*.6,y=b.y+b.height*.5;await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+3,y+dy,{steps:8});}
+test('cord follows the pull, short/cancelled pulls rebound, consecutive pulls toggle exactly once and preserve game progress',async({page})=>{
+ await setup(page);const saved=await page.evaluate(()=>localStorage.getItem('paperbook-v3'));const scroll=await page.locator('#room-viewport').evaluate(e=>e.scrollTop);const rest=await page.locator('.lamp-knob').boundingBox();
+ await drag(page,12);await expect(lamp(page)).toHaveClass(/is-pulling/);expect((await page.locator('.lamp-knob').boundingBox()).y-rest.y).toBeGreaterThan(8);await page.mouse.up();await expect(lamp(page)).toHaveAttribute('aria-pressed','false');await expect.poll(async()=>Math.abs((await page.locator('.lamp-knob').boundingBox()).y-rest.y)).toBeLessThan(.5);
+ await drag(page,55);await lamp(page).dispatchEvent('pointercancel',{pointerId:1});await page.mouse.up();await expect(lamp(page)).toHaveAttribute('aria-pressed','false');await expect.poll(async()=>Math.abs((await page.locator('.lamp-knob').boundingBox()).y-rest.y)).toBeLessThan(.5);
+ await drag(page,48);await expect(lamp(page)).toHaveClass(/is-armed/);await expect(lamp(page)).toHaveAttribute('aria-pressed','false');await page.mouse.up();await expect(lamp(page)).toHaveAttribute('aria-pressed','true');await expect(page.locator('.lamp-light')).toHaveCSS('opacity','1');await expect.poll(async()=>Math.abs((await page.locator('.lamp-knob').boundingBox()).y-rest.y)).toBeLessThan(.5);
+ await drag(page,44);await page.mouse.up();await expect(lamp(page)).toHaveAttribute('aria-pressed','false');expect(await page.locator('#room-viewport').evaluate(e=>e.scrollTop)).toBe(scroll);expect(await page.evaluate(()=>localStorage.getItem('paperbook-v3'))).toBe(saved);
+});
+test('cord is an exposed phone target; tap and keyboard toggle, reload retains the light and reduced motion works',async({page})=>{
+ await setup(page);const restCord=await page.locator('#lamp-cord').getAttribute('d');const b=await lamp(page).boundingBox();expect(b.width).toBeGreaterThanOrEqual(44);expect(b.x).toBeGreaterThanOrEqual(0);expect(b.x+b.width).toBeLessThanOrEqual(page.viewportSize().width);
+ await lamp(page).tap();await expect(lamp(page)).toHaveAttribute('aria-pressed','true');await page.reload();await expect(lamp(page)).toHaveAttribute('aria-pressed','true');await lamp(page).scrollIntoViewIfNeeded();await lamp(page).focus();await page.keyboard.press('Space');await expect(lamp(page)).toHaveAttribute('aria-pressed','false');
+ await page.emulateMedia({reducedMotion:'reduce'});await lamp(page).tap();await expect(lamp(page)).toHaveAttribute('aria-pressed','true');expect(await page.locator('.lamp-light').evaluate(e=>parseFloat(getComputedStyle(e).transitionDuration))).toBeLessThan(.001);await expect(page.locator('#lamp-cord')).toHaveAttribute('d',restCord);
+});

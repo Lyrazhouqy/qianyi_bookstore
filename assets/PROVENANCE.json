@@ -1,0 +1,27 @@
+{
+  "referenceThread": "01a0f689-662b-7003-a72e-88bef038a4c8",
+  "referenceTitle": "【家庭】",
+  "reusedAt": "2026-10-18",
+  "font": "Yozai, conversation text font in the source stylesheet; full original WOFF2, no subset or binary changes",
+  "texture": "Original letter-paper-texture.png; same center top / 1000px auto repeat presentation",
+  "assets": [
+    {
+      "file": "assets/fonts/yozai.woff2",
+      "source": "/Users/zhouqingyi/repos/xigua-studio/outputs/anniversary-sites-source/dist/fonts/yozai.woff2",
+      "bytes": 7345312,
+      "sha256": "680e62f9c932aee56580db45ca0501c32b2381157dcbb5ce0fe31a4a7e8a1f3a"
+    },
+    {
+      "file": "assets/fonts/yozai-OFL.txt",
+      "source": "/Users/zhouqingyi/repos/xigua-studio/outputs/anniversary-sites-source/dist/fonts/yozai-OFL.txt",
+      "bytes": 4497,
+      "sha256": "86b3a0b5162848503241d80ea9a309a6459690ba7dc547940758a6a689a53b02"
+    },
+    {
+      "file": "assets/paper/letter-paper-texture.png",
+      "source": "/Users/zhouqingyi/repos/xigua-studio/outputs/anniversary-sites-source/dist/letter-paper-texture.png",
+      "bytes": 993913,
+      "sha256": "d7883c673eac3ca5bc709f0f5ff3a46a9bae313a43751137095269f989dc0e46"
+    }
+  ]
+}

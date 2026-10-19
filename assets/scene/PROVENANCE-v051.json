@@ -1,0 +1,30 @@
+[
+  {
+    "asset": "assets/scene/shelf.png",
+    "source": "user supplied codex-clipboard-ee7150ae-0ac7-424f-813c-76c6596b98f1.png",
+    "sha256": "bcaba91389774fe93eca50b4c0b6a908be723fa9a225ceb96b3c9b6438f8bf38",
+    "bytes": 341775,
+    "transformation": "file copied unchanged; crop, composition and edge masks are CSS presentation"
+  },
+  {
+    "asset": "assets/scene/sofa.png",
+    "source": "user supplied codex-clipboard-40c289a8-a13c-4191-9b4d-257b8a460b84.png",
+    "sha256": "a7d3a5ce162e747764d51a63394988d43436db76c594ceeb02c7bb2fb7eabafa",
+    "bytes": 653948,
+    "transformation": "file copied unchanged; crop, composition and edge masks are CSS presentation"
+  },
+  {
+    "asset": "assets/scene/gramophone.png",
+    "source": "user supplied codex-clipboard-6111f11e-f9f4-4f68-bd04-a638f64322a0.png",
+    "sha256": "e5cf8a0bf1229acf07792d147f1423449787d9ab9ed9819d78f69b68429fbadd",
+    "bytes": 213897,
+    "transformation": "file copied unchanged; crop, composition and edge masks are CSS presentation"
+  },
+  {
+    "asset": "assets/scene/display-table.png",
+    "source": "user supplied codex-clipboard-69ca861a-6665-4336-a08d-5d98a49736f4.png",
+    "sha256": "fe00604b0ae2a2ec17e16c3a1ec29c37efd1b184a23815c74d356cdc050da44e",
+    "bytes": 503850,
+    "transformation": "file copied unchanged; crop, composition and edge masks are CSS presentation"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-20",
+  "tool": "built-in imagegen",
+  "reference": "assets/scene/room-layout-v0613.png",
+  "prompts": "bouquets-v0624.prompts.json",
+  "assets": [
+    {
+      "asset": "assets/scene/bouquet-tulips-v0624.png",
+      "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-26f58253-f4cf-49dc-b38e-57fbe2dc99c9.png",
+      "sha256": "9500b90a46a8ab3b536b1a5d33b52db9f376f237dd90e0180d00a84ccad6b842",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "pngColorType": 6
+    },
+    {
+      "asset": "assets/scene/bouquet-daisies-v0624.png",
+      "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-9bdd35fd-b44e-4f6b-b341-068c429ee0c8.png",
+      "sha256": "146b0fd2f313145ba8ba13d8db23d05b2ba27cfdf1b1bddd29b496bcffd2e5bd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "pngColorType": 6
+    }
+  ],
+  "runtime": "Above-vase sprites only. SVG alpha transfer removes low-opacity colored fringes; three independent branches share original fixed pivot. Original vase pixels and room art remain intact."
+}

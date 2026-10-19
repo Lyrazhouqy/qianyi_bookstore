@@ -1,0 +1,126 @@
+{
+  "testedAt": "2026-10-18T01:59:51.356Z",
+  "source": "evidence/baseline/index.html",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "minTouchWidth": 20.65625,
+  "minTouchHeight": 40.6875,
+  "savedReplySurvivesReload": false,
+  "turnpageCount": 0,
+  "reproduced": [
+    "Narrow book targets on mobile",
+    "Loading resets saved writing"
+  ],
+  "dimensions": [
+    {
+      "width": 20.65625,
+      "height": 40.6875
+    },
+    {
+      "width": 20.65625,
+      "height": 45.125
+    },
+    {
+      "width": 20.65625,
+      "height": 49.578125
+    },
+    {
+      "width": 20.65625,
+      "height": 43.875
+    },
+    {
+      "width": 20.65625,
+      "height": 48.328125
+    },
+    {
+      "width": 20.65625,
+      "height": 52.78125
+    },
+    {
+      "width": 20.65625,
+      "height": 47.046875
+    },
+    {
+      "width": 20.65625,
+      "height": 51.5
+    },
+    {
+      "width": 20.65625,
+      "height": 55.953125
+    },
+    {
+      "width": 20.65625,
+      "height": 42.59375
+    },
+    {
+      "width": 20.671875,
+      "height": 47.046875
+    },
+    {
+      "width": 20.65625,
+      "height": 51.484375
+    },
+    {
+      "width": 20.65625,
+      "height": 45.78125
+    },
+    {
+      "width": 20.671875,
+      "height": 50.234375
+    },
+    {
+      "width": 20.65625,
+      "height": 54.6875
+    },
+    {
+      "width": 20.65625,
+      "height": 48.953125
+    },
+    {
+      "width": 20.671875,
+      "height": 53.40625
+    },
+    {
+      "width": 20.65625,
+      "height": 57.859375
+    },
+    {
+      "width": 20.65625,
+      "height": 44.5
+    },
+    {
+      "width": 20.671875,
+      "height": 48.953125
+    },
+    {
+      "width": 20.65625,
+      "height": 53.390625
+    },
+    {
+      "width": 20.65625,
+      "height": 47.6875
+    },
+    {
+      "width": 20.671875,
+      "height": 52.140625
+    },
+    {
+      "width": 20.65625,
+      "height": 56.59375
+    },
+    {
+      "width": 20.65625,
+      "height": 50.875
+    },
+    {
+      "width": 20.671875,
+      "height": 55.3125
+    },
+    {
+      "width": 20.65625,
+      "height": 59.765625
+    }
+  ]
+}

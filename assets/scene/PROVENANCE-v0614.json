@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/room-layout-v0613.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-1ab7e346-1e69-4bb6-986a-85a474db54a2.png",
+  "asset": "assets/scene/gramophone-clearance-v0614.png",
+  "prompt": "gramophone-clearance-v0614.prompt.md",
+  "sha256": "4edb88e554ad96350587e8113174a03511920d0dfb6f09f4fc6105d2734666cd",
+  "width": 940,
+  "height": 1673,
+  "runtimeRegion": {
+    "x": 650,
+    "y": 690,
+    "width": 290,
+    "height": 520
+  },
+  "renderUse": "Feathered CSS source viewport, pointer-events:none. Existing base stays unchanged outside the repair rectangle. Painted notes removed in this rectangle; code-native animated notes relocated below the books."
+}

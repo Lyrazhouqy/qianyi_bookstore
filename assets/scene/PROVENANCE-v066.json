@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-19",
+  "tool": "built-in imagegen",
+  "source": "assets/scene/game-room-window-v065.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-f73dbb9c-c297-42c9-9e01-b966cd0d3cbf.png",
+  "asset": "assets/scene/display-empty-v066.png",
+  "sha256": "369c276edb37c6bd10970feedec6a1c6fad3ea651d34f93a0e50c54feb9005b2",
+  "width": 940,
+  "height": 1673,
+  "prompt": "display-empty-v066.prompt.md",
+  "renderUse": "Only the 345..690 x 1284..1439 tabletop region is composited as a feathered clean plate. The rest of the v0.6.5 room remains the original image.",
+  "sprites": "Three CSS background viewports reuse the original cream leaf, blue cloud and yellow cat covers; no Python bitmap editing or external API was used.",
+  "fictionalBooks": [
+    "叶间拾光",
+    "晴空日记",
+    "猫的来信"
+  ]
+}

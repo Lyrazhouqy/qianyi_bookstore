@@ -1,0 +1,15 @@
+const {chromium}=require('playwright'),fs=require('node:fs');let browser;
+(async()=>{
+ browser=await chromium.launch();const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,deviceScaleFactor:1}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:4173/?v=0.5.2');await page.locator('.shelf-frame').evaluate(img=>img.decode());const cdp=await context.newCDPSession(page),sid=page.locator('.spine[data-id="siddhartha"]');
+ let r=await sid.boundingBox(),before=await page.evaluate(()=>scrollY);const point=(x,y)=>({x,y,id:1,radiusX:8,radiusY:8,force:1});
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point(r.x+r.width/2,r.y+r.height/2)]});
+ for(let i=1;i<=14;i++){await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[point(r.x+r.width/2,r.y+r.height/2-i*10)]});await page.waitForTimeout(16);}
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.waitForTimeout(200);const after=await page.evaluate(()=>scrollY);
+ if(after-before<60||await page.locator('body').getAttribute('data-phase')!=='idle')throw Error('Scrolling over a book triggered a pickup or did not scroll');
+ await sid.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));r=await sid.boundingBox();await page.touchscreen.tap(r.x+5,r.y+6);await page.waitForFunction(()=>document.querySelector('.siddhartha-room')?.dataset.step==='held');
+ await page.locator('.sid-cover').tap();await page.waitForFunction(()=>document.querySelector('.siddhartha-room').dataset.step==='open');await page.locator('.sid-letter-pick').tap();await page.waitForFunction(()=>document.querySelector('.siddhartha-room').dataset.step==='letter');await page.locator('.sid-return').tap();await page.waitForFunction(()=>document.body.dataset.phase==='idle');
+ await sid.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));r=await sid.boundingBox();await page.touchscreen.tap(r.x+r.width-5,r.y+r.height/2);await page.waitForFunction(()=>document.querySelector('.siddhartha-room').dataset.step==='held');await page.locator('.sid-return').tap();await page.waitForFunction(()=>document.body.dataset.phase==='idle');
+ const status=await page.locator('#status').textContent();if(!status.includes('翻书 2 次')||errors.length)throw Error('Wrong count or page errors');
+ fs.writeFileSync('evidence/bookshop-v052/native-touch.json',JSON.stringify({engine:'Chromium',input:'native emulated touch, not physical iPhone',viewport:{width:390,height:844},windowScroll:{before,after},flows:['swipe over book scrolls page without opening','top-left corner pickup','open cover and letter','return to shelf','right-edge pickup','return without stuck slot'],status,errors},null,2)+'\n');await browser.close();console.log('Native touch scroll and both book edges passed.');
+})().catch(async error=>{console.error(error);await browser?.close();process.exitCode=1;});

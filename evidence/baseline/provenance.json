@@ -4,5 +4,9 @@
   "deploymentId": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "url": "https://paper-bookshop-playtest.vercel.app",
   "sha256": "d9b16dd8485780a25b8d93e6585217bc50579d91a6999fe3f7fc916eb06e1166",
-  "method": "Vercel connector authenticated fetch; original deployed HTML, no original development repository found"
+  "method": "Vercel connector authenticated fetch; original deployed HTML, no original development repository found",
+  "normalization": "index.html has one trailing newline appended by text recovery; deployed-index.html preserves the exact deployment bytes.",
+  "deployedFileSha1": "542ebd22176829aff999551fc90d6554330ba65f",
+  "deployedFileSha256": "7b9deed51acdc30f4f7f595cf6276c1d49365de4deaeb7ea7709dae1098f3e2f",
+  "publicFetch": "Anonymous HTTPS through the existing macOS HTTP proxy returned the game HTML without a login page."
 }

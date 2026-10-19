@@ -1,0 +1,266 @@
+{
+  "build": "paper-bookshop-game-v0.6.24",
+  "verifiedAt": "2026-10-19T23:36:00.639Z",
+  "files": {
+    "index.html": {
+      "sha256": "a2cc9342b55a5b3f39306364665cb9677034d43811bb81be80880496506fa99d",
+      "bytes": 16179,
+      "httpStatus": 200
+    },
+    "styles.css": {
+      "sha256": "5e8fc0bf928c3bdcd65e0976617c4a435cf47bc68f08065f062774dba007fa9c",
+      "bytes": 9669
+    },
+    "content.js": {
+      "sha256": "12adb58571e15afa6369e8f3c79bd04b01b6bc97e404798a70a9dc1a04b2f35d",
+      "bytes": 3923
+    },
+    "app.js": {
+      "sha256": "dc40cb98b63645eaf75d25581ac3c34f8abe4014c0cbae5d510250069b26e911",
+      "bytes": 16848
+    },
+    "siddhartha.css": {
+      "sha256": "ef6ce3e25eadedfdd29822e22a856df31c6c1742b776372b5a0cadb7ffe692c7",
+      "bytes": 17197
+    },
+    "siddhartha.js": {
+      "sha256": "e2de106656ac05b28ce3a27707635a3b958a3257e2438d823728102dbc1a03c6",
+      "bytes": 26186
+    },
+    "assets/fonts/yozai.woff2": {
+      "sha256": "680e62f9c932aee56580db45ca0501c32b2381157dcbb5ce0fe31a4a7e8a1f3a",
+      "bytes": 7345312
+    },
+    "assets/fonts/yozai-OFL.txt": {
+      "sha256": "86b3a0b5162848503241d80ea9a309a6459690ba7dc547940758a6a689a53b02",
+      "bytes": 4497
+    },
+    "assets/paper/letter-paper-texture.png": {
+      "sha256": "d7883c673eac3ca5bc709f0f5ff3a46a9bae313a43751137095269f989dc0e46",
+      "bytes": 993913
+    },
+    "room.css": {
+      "sha256": "3552e145574ac0ed58a8cab6b989def0d5a36f2a8cd8baaa10f22326af10c791",
+      "bytes": 15101
+    },
+    "room.js": {
+      "sha256": "9f5fe8b1eb956b753cd61e9e9e639db6187b07f080b0824c8e34c41a446671b1",
+      "bytes": 12142,
+      "httpStatus": 200
+    },
+    "assets/scene/game-room-window-v065.png": {
+      "sha256": "bedc13b4b7e5c19e75cfe0b61133e94aea63b8d89dc6fee3708b74cacfde4f8e",
+      "bytes": 1762512
+    },
+    "assets/scene/window-seaside-v065.png": {
+      "sha256": "889af7a6c51df39595c2a569a2a91af25526e752153036489fdddf65c0713f09",
+      "bytes": 2319767
+    },
+    "assets/scene/display-empty-v066.png": {
+      "sha256": "369c276edb37c6bd10970feedec6a1c6fad3ea651d34f93a0e50c54feb9005b2",
+      "bytes": 1732505
+    },
+    "music.css": {
+      "sha256": "6bf14471ffacc1735e02d0abe5479280947ad691acbaa26dce026fa9f172554f",
+      "bytes": 5652
+    },
+    "music.js": {
+      "sha256": "7889ae6ceb7c917faf28c93c149eeec49a8d82200f742e124b5a167cbe70c79f",
+      "bytes": 5390
+    },
+    "assets/music/water-sound.mp3": {
+      "sha256": "2ad96d1b877e4878f4892fdcd955c55c028f4c468637b65de5df95e618bad16e",
+      "bytes": 7024266
+    },
+    "assets/music/water-sound.png": {
+      "sha256": "4309fd1354d05998719be0c67d249ff9641cb3f5df3fe92c12baea2f0b83c0b6",
+      "bytes": 1992216
+    },
+    "assets/music/slow-coffee.mp3": {
+      "sha256": "423d88b88b68bd244299ec1536cd141f41294aaaed1c24fea169d47daf92ed04",
+      "bytes": 2091093
+    },
+    "assets/music/slow-coffee.png": {
+      "sha256": "8a02ad2d9418c652d1974ce708a13f6445df17dfe88d35ffabb2f26241152d6f",
+      "bytes": 2353645
+    },
+    "assets/music/star-lamp.mp3": {
+      "sha256": "0d3225aee6af5ce5c6a5d290383365c9b0a6944ddefbd88927427194aa129cfe",
+      "bytes": 2168416
+    },
+    "assets/music/star-lamp.png": {
+      "sha256": "a1997aa633e1788b4cd430c79937de9cd91652d2c0f4d413a968a7f9048b2acb",
+      "bytes": 1814805
+    },
+    "assets/music/spacing-out.mp3": {
+      "sha256": "5ca06d41f95235c7be5d4aea0ae74c8f92f287f189159c3d0b2d3ca586088e84",
+      "bytes": 2355662
+    },
+    "assets/music/spacing-out.png": {
+      "sha256": "ad44201a9137fea453ab661b3815f235cdb61ddf210e1365332b6a7c78d5b877",
+      "bytes": 1625171
+    },
+    "assets/music/tap-wood.mp3": {
+      "sha256": "e4fd42b26c4541ece549c021805ca6cb4c2fe48cc16e6bc5e2bfa16a4666d360",
+      "bytes": 2276667
+    },
+    "assets/music/tap-wood.png": {
+      "sha256": "178d011d9c87c4b5b7096f7b22948a6a091e90819bb6a3ca4d3ecbe47e365769",
+      "bytes": 1983052
+    },
+    "assets/music/wind-passing.mp3": {
+      "sha256": "5143592a1b278edd8aa7688136557064072bfc53339ee202cbc9d121e888a1d5",
+      "bytes": 2933281
+    },
+    "assets/music/wind-passing.png": {
+      "sha256": "b138d12395857f5a8ee44f107deac8bf5c235998e707628833be8f7c3d2fcbe7",
+      "bytes": 1867030
+    },
+    "assets/music/bamboo-leaves.mp3": {
+      "sha256": "ee0866d9ff1d60f4bb4e7a3d9f8bbc5d67aba74ad3cc8de759b9a955c7606e27",
+      "bytes": 2170088
+    },
+    "assets/music/bamboo-leaves.png": {
+      "sha256": "5bc55dc9c231d8868659ade2967de83ca05bac3aec9c1ecfedfdff4afed0b75f",
+      "bytes": 2168875
+    },
+    "assets/scene/window-rain-v0611.png": {
+      "sha256": "700f24d1665c6ac910a58204131cce49596d9a695433f3637e5628e7568c080e",
+      "bytes": 2660310
+    },
+    "assets/scene/window-sunset-v0611.png": {
+      "sha256": "841d44d14325260f5e7fbb3ce54a5bfb300f40b61473e065771ad32686ebcee7",
+      "bytes": 2653979
+    },
+    "assets/scene/window-snow-v0611.png": {
+      "sha256": "3614094ca89848236ca63b924bf9564b058c05f101903ca88565d71c6d3be51d",
+      "bytes": 2611323
+    },
+    "assets/scene/sofa-cushions-v0612.png": {
+      "sha256": "176add17d1cc73ce32ddef2450323a83a96f4c68ef0d24eaa2dd41c1a05b7666",
+      "bytes": 1744715
+    },
+    "assets/scene/room-layout-v0613.png": {
+      "sha256": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+      "bytes": 1703367
+    },
+    "assets/scene/gramophone-clearance-v0614.png": {
+      "sha256": "4edb88e554ad96350587e8113174a03511920d0dfb6f09f4fc6105d2734666cd",
+      "bytes": 1681982
+    },
+    "assets/scene/window-wall-v0615.png": {
+      "sha256": "4227289f01b5c766d109427029631764b4ff7f91fac173bab987190a96484d36",
+      "bytes": 1689969
+    },
+    "lamp.css": {
+      "sha256": "9a5e5877579e49b0db0557f7e6f08fb54515287674bf53d94864062e262a0a58",
+      "bytes": 1696
+    },
+    "lamp.js": {
+      "sha256": "a5882956912b58fa94c1d06c654c2f8c024b8b5685afd539a91e163824174529",
+      "bytes": 3430
+    },
+    "bouquet.css": {
+      "sha256": "7e6531c3c57f4c19fd3f90a2e16efc2f50b154f3d4ff51c11fb120b8ac69d372",
+      "bytes": 1884,
+      "httpStatus": 200
+    },
+    "bouquet.js": {
+      "sha256": "4ec4ad1405001e337acd7c7c7c677518f3ea2356a576d3a787314feff2836561",
+      "bytes": 4878,
+      "httpStatus": 200
+    },
+    "assets/scene/bouquet-empty-v0622.png": {
+      "sha256": "c2150290a2579617eaad3b035d209d455baaa4864d7ca2175a23754f76fcb9aa",
+      "bytes": 1698405
+    },
+    "assets/scene/bouquet-tulips-v0624.png": {
+      "sha256": "9500b90a46a8ab3b536b1a5d33b52db9f376f237dd90e0180d00a84ccad6b842",
+      "bytes": 2109191,
+      "httpStatus": 200
+    },
+    "assets/scene/bouquet-daisies-v0624.png": {
+      "sha256": "146b0fd2f313145ba8ba13d8db23d05b2ba27cfdf1b1bddd29b496bcffd2e5bd",
+      "bytes": 2262870,
+      "httpStatus": 200
+    }
+  },
+  "changed": [
+    "index.html",
+    "room.js",
+    "bouquet.css",
+    "bouquet.js",
+    "assets/scene/bouquet-tulips-v0624.png",
+    "assets/scene/bouquet-daisies-v0624.png"
+  ],
+  "unchanged": [
+    "styles.css",
+    "content.js",
+    "app.js",
+    "siddhartha.css",
+    "siddhartha.js",
+    "assets/fonts/yozai.woff2",
+    "assets/fonts/yozai-OFL.txt",
+    "assets/paper/letter-paper-texture.png",
+    "room.css",
+    "assets/scene/game-room-window-v065.png",
+    "assets/scene/window-seaside-v065.png",
+    "assets/scene/display-empty-v066.png",
+    "music.css",
+    "music.js",
+    "assets/music/water-sound.mp3",
+    "assets/music/water-sound.png",
+    "assets/music/slow-coffee.mp3",
+    "assets/music/slow-coffee.png",
+    "assets/music/star-lamp.mp3",
+    "assets/music/star-lamp.png",
+    "assets/music/spacing-out.mp3",
+    "assets/music/spacing-out.png",
+    "assets/music/tap-wood.mp3",
+    "assets/music/tap-wood.png",
+    "assets/music/wind-passing.mp3",
+    "assets/music/wind-passing.png",
+    "assets/music/bamboo-leaves.mp3",
+    "assets/music/bamboo-leaves.png",
+    "assets/scene/window-rain-v0611.png",
+    "assets/scene/window-sunset-v0611.png",
+    "assets/scene/window-snow-v0611.png",
+    "assets/scene/sofa-cushions-v0612.png",
+    "assets/scene/room-layout-v0613.png",
+    "assets/scene/gramophone-clearance-v0614.png",
+    "assets/scene/window-wall-v0615.png",
+    "lamp.css",
+    "lamp.js",
+    "assets/scene/bouquet-empty-v0622.png"
+  ],
+  "verification": {
+    "matrix": {
+      "startTime": "2026-10-19T23:30:46.471Z",
+      "duration": 57785.405,
+      "expected": 53,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "mediaRecheck": {
+      "startTime": "2026-10-19T23:33:35.372Z",
+      "duration": 3814.4839999999995,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "nativeTouch": "native-touch.json",
+    "actualPreview": {
+      "tabId": "3",
+      "version": "0.6.24",
+      "bouquet": "tulips",
+      "visits": 84,
+      "findings": 8
+    }
+  },
+  "limitations": [
+    "Only local preview updated; fixed phone link still v0.6.23.",
+    "Browser viewports and native simulated touch, not physical iPhone acceptance."
+  ]
+}

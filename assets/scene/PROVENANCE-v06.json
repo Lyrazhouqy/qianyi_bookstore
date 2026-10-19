@@ -1,0 +1,13 @@
+{
+  "createdAt": "2026-10-18T12:59:44.975Z",
+  "source": "designs/2026-10-18/game-mobile-clean-scene-05.png",
+  "purpose": "Remove nine named printed spines for independent clickable/removable book objects; keep four illustrated furniture groups.",
+  "tool": "built-in imagegen",
+  "asset": "assets/scene/game-room-empty-v06.png",
+  "sha256": "08a2b384fe5418e3379fa950a74161c7e66cc0daad4ceca5888724f1cb892d46",
+  "coordinates": {
+    "width": 940,
+    "height": 1672
+  },
+  "promptFile": "game-room-empty-v06.prompt.md"
+}

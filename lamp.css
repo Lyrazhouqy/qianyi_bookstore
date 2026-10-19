@@ -1,0 +1,17 @@
+/* A paper lamp and its cord are physical scene objects, without a switch panel. */
+.floor-lamp-effects,.lamp-cord-art { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible; }
+.lamp-light { opacity:0; transition:opacity .38s ease-out; mix-blend-mode:normal; }
+.lamp-off-shade { opacity:.16; transition:opacity .32s; }
+.room-world[data-lamp="on"] .lamp-light { opacity:1; }
+.room-world[data-lamp="on"] .lamp-off-shade { opacity:0; }
+.lamp-cord-shadow { fill:none; stroke:#786447; stroke-opacity:.18; stroke-width:5; transform:translate(2px,1px); }
+.lamp-cord-line { fill:none; stroke:#9c8056; stroke-width:3; stroke-linecap:round; stroke-dasharray:2 3; }
+.room-world { --lamp-cord-x:140; }
+.lamp-pull { left:calc(var(--lamp-cord-x)/940*100%); top:calc(886/1672*100%); width:44px; height:58px; min-width:44px; min-height:44px; transform:translate(-50%,-50%); touch-action:none; cursor:grab; overflow:visible; }
+.lamp-knob { position:absolute; left:50%; top:50%; width:clamp(11px,calc(var(--scene-scale)*22px),16px); height:clamp(20px,calc(var(--scene-scale)*36px),25px); transform:translate(calc(-50% + var(--pull-x,0px)),calc(-50% + var(--pull-y,0px))); color:#9d6c38; filter:drop-shadow(1px 2px 1px #62421c35); pointer-events:none; }
+.lamp-knob svg { display:block; width:100%; height:100%; overflow:visible; }
+.lamp-pull.is-pulling { cursor:grabbing; }.lamp-pull.is-armed .lamp-knob { color:#b7803d; }
+.lamp-pull:focus-visible { outline:2px solid #947543; outline-offset:0; border-radius:50%; }
+@media(prefers-reduced-motion:reduce) { .lamp-light,.lamp-off-shade { transition:none; } }
+
+.lamp-light > path:first-of-type { filter:blur(24px); opacity:.65; }

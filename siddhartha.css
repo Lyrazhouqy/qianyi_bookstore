@@ -1,0 +1,157 @@
+/* Original full Yozai font and letter stock reused from the referenced family project. */
+@font-face { font-family:"PaperYozai"; src:url("assets/fonts/yozai.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+:root { --sid-letter-stock:url("assets/paper/letter-paper-texture.png"); }
+.focus-book .spine-face { box-shadow:inset 4px 0 #0002,0 0 0 2px #dfbd74; }
+.siddhartha-room { position:fixed; inset:0; top:var(--view-top); height:var(--view-height); z-index:130; background:#251e17b5; color:#594630; display:flex; flex-direction:column; overflow:hidden; isolation:isolate; }
+.siddhartha-room:before { content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 70%,#e2c99b33,transparent 65%); }
+.sid-toolbar { position:relative; z-index:30; padding:max(16px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) 8px; display:flex; align-items:center; justify-content:space-between; color:#e9ddc5; font-size:12px; letter-spacing:3px; }
+.sid-return { color:#f1e5ca; border:1px solid #c4b39166; background:#33291e55; border-radius:30px; padding:10px 16px; min-height:44px; font-size:13px; letter-spacing:1px; }
+.sid-stage { position:relative; flex:1; min-height:0; perspective:1400px; --page-w:clamp(140px,44vw,228px); --page-h:clamp(248px,72vw,330px); }
+.sid-stage.sid-in-flight { perspective:none; }
+.sid-stage:after { opacity:var(--book-presence,1); }
+.sid-stage:after { content:""; position:absolute; pointer-events:none; width:min(580px,90%); height:70px; border-radius:50%; background:#1c140c44; filter:blur(20px); left:50%; top:calc(47% + var(--page-h)/2 - 18px); transform:translateX(-50%); }
+.sid-position { width:var(--page-w); height:var(--page-h); position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); z-index:4; }
+.sid-carrier { width:100%; height:100%; position:relative; transform-style:preserve-3d; transform-origin:center; }
+.sid-backboard { position:absolute; inset:-4px -5px -5px -4px; background:#344c40; border:1px solid #a39364; border-radius:3px 7px 7px 3px; transform:translateZ(-7px); box-shadow:2px 5px 0 #23352a,7px 18px 26px #130e0b66; }
+.sid-page-stack { position:absolute; inset:1px -1px -2px 2px; background:repeating-linear-gradient(to bottom,#e1d3ad 0 1px,#bba77c 1px 2px,#f0e3c5 2px 4px); border-radius:2px 5px 5px 2px; transform:translateZ(-3px); box-shadow:4px 3px 0 #d2c29f,5px 5px 0 #8c7959; }
+.sid-page { position:absolute; inset:0; overflow:hidden; border-radius:1px 4px 4px 1px; background:linear-gradient(90deg,#ae96754d,transparent 13%,#fff3 74%,#80623b13),#f0e5c7; padding:22px 20px 12px; box-shadow:inset -1px 0 #a48e6455; }
+.sid-page:after { content:""; position:absolute; inset:0; pointer-events:none; opacity:.2; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.6' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.2' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.sid-page-kicker { display:block; color:#9b825b; font-size:9px; letter-spacing:2px; margin:0 0 18px; }
+.sid-page h2 { font-size:clamp(18px,3.3vw,26px); font-weight:400; letter-spacing:2px; margin:0 0 14px; white-space:nowrap; }
+.sid-page:before { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(90deg,#342318,transparent); opacity:var(--cover-shade,0); }
+.sid-page p { margin:0; font-size:clamp(11px,2.7vw,14px); line-height:2; }
+.sid-page-number { position:absolute; bottom:11px; width:100%; left:0; text-align:center; font-size:10px; color:#9d8760; }
+.sid-dock { position:absolute; width:68%; height:72px; bottom:27px; left:19%; }
+.sid-cover { position:absolute; inset:-3px -3px -3px -2px; padding:0; margin:0; border:0; background:none; transform-style:preserve-3d; transform-origin:left center; touch-action:none; z-index:3; -webkit-tap-highlight-color:transparent; }
+.sid-cover:focus-visible { outline:2px solid #e0c283; outline-offset:5px; }
+.sid-cover-front,.sid-cover-back { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:2px 5px 5px 2px; }
+.sid-cover-front { display:flex; flex-direction:column; align-items:center; justify-content:center; background:repeating-linear-gradient(0deg,#fff1 0 1px,transparent 1px 4px),linear-gradient(110deg,#637766,#405c4a 60%,#354f40); color:#e4cf98; border:1px solid #b3a16b; box-shadow:inset 5px 0 #1b332b66,inset 9px 0 #acb49a22,inset 0 0 0 11px #172c1c11,3px 1px 0 #293f30; }
+.sid-cover-front:after { content:""; position:absolute; inset:19px 14px; border:1px solid #c7af7255; border-radius:40% 40% 2px 2px / 18% 18% 2px 2px; pointer-events:none; }
+.sid-cover-back { background:linear-gradient(90deg,#a0835533,transparent 22%),repeating-linear-gradient(45deg,transparent 0 14px,#8e73460b 14px 15px),#d9cba4; transform:rotateY(180deg); border:5px solid #49614b; box-shadow:inset -10px 0 14px #755d4126; padding:32px 14px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; }
+.sid-cover-back .sid-inside-copy { display:block; width:100%; color:#786244; text-align:left; letter-spacing:.3px; }
+.sid-inside-copy strong { display:block; font-size:11px; font-weight:400; color:#937d57; letter-spacing:2px; margin-bottom:12px; }
+.sid-inside-copy .sid-synopsis { display:block; font-size:clamp(11px,2.3vw,14px); line-height:2; }
+.sid-inside-copy .sid-discovery-hint { display:block; margin-top:15px; font-size:clamp(10px,2vw,11px); color:#9a825c; line-height:1.8; }
+.sid-cover-back small { font-size:9px; letter-spacing:2px; }
+.sid-cover-title { font-size:clamp(25px,5vw,38px); letter-spacing:9px; writing-mode:vertical-rl; font-weight:400; margin:17px 0; }
+.sid-cover-edition { font-size:9px; letter-spacing:3px; opacity:.8; }
+.sid-cover-leaf { font-size:23px; margin-top:15px; }
+.sid-hint { position:relative; z-index:30; min-height:65px; padding:12px 16px max(18px,env(safe-area-inset-bottom)); text-align:center; color:#e8dac2; font-size:13px; letter-spacing:1px; line-height:1.8; }
+.sid-hint small { display:block; font-size:10px; color:#bdad93; margin-top:3px; letter-spacing:.7px; }
+.sid-letter { position:absolute; z-index:9; touch-action:none; transform-origin:top left; width:140px; border:0; outline:none; perspective:1000px; }
+.sid-letter-pick { display:block; border:0; padding:0; margin:0; width:100%; background:none; border-radius:1px; text-align:left; touch-action:none; min-height:44px; }
+.sid-letter-packet { position:relative; display:block; width:100%; height:88px; background:linear-gradient(160deg,#f9eccd,#ddcba4); border:1px solid #c9b793; box-shadow:1px 3px 4px #2e210b33; padding:12px; color:#887151; }
+.sid-letter-packet:before { content:""; position:absolute; left:0; right:0; top:33%; height:1px; background:#b3a07b66; box-shadow:0 1px #fff7; }
+.sid-letter-packet:after { content:""; position:absolute; inset:0; background:linear-gradient(160deg,transparent 49%,#baa88633 50%,transparent 52%); }
+.sid-letter-packet em { display:block; font-size:11px; font-weight:400; font-style:normal; letter-spacing:1px; transform:rotate(-3deg); }
+.sid-letter-packet i { position:absolute; right:11px; bottom:8px; font-size:15px; font-style:normal; color:#a68b5e; }
+.sid-letter-reader { background:#f4e8cb; width:100%; box-shadow:2px 8px 16px #24180b55; border:1px solid #bfab84; touch-action:pan-y; max-height:calc(var(--view-height) - 175px); overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+.sid-segment { position:relative; background:linear-gradient(180deg,#b6a17a14,transparent 22px,#fff1 80%,#ad936222),#f5e8c9; padding:21px 23px; font-size:15px; line-height:1.9; white-space:pre-wrap; overflow-wrap:anywhere; border-bottom:1px solid #bba780; }
+.sid-segment:after { content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:linear-gradient(#a18a6026,#fff5); pointer-events:none; }
+.sid-segment small { display:block; font-size:10px; letter-spacing:1px; color:#90774e; margin-bottom:8px; }
+.sid-leaf { overflow:hidden; perspective:900px; transform-origin:top center; }
+.sid-leaf-face { transform-origin:top center; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.sid-opening-flap { position:absolute; left:0; top:0; width:100%; transform-origin:top center; pointer-events:none; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.sid-folding { overflow:hidden; perspective:1000px; }
+.sid-folding > .sid-segment { transform-origin:top center; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.sid-folding .sid-letter-actions,.sid-folding .sid-unfold,.sid-folding .sid-write { opacity:var(--controls-opacity,0); pointer-events:none; }
+.sid-carrier { transition:filter .24s; }
+.sid-unfold { display:block; border:0; border-top:1px solid #d4c09a; width:100%; min-height:52px; padding:13px 10px; color:#89714b; font-size:12px; letter-spacing:2px; background:linear-gradient(#d7c29a55,#eee0bd 6px,#e5d4ae); touch-action:pan-y; }
+.sid-letter-actions { display:flex; justify-content:space-between; align-items:center; padding:12px; gap:10px; background:#f0e2bf; }
+.sid-put { border:0; background:transparent; min-height:44px; padding:8px; font-size:12px; color:#8d7650; }
+.sid-pen { display:inline-flex; align-items:center; gap:6px; border:1px solid #b79b634d; border-radius:8px 17px 14px 9px; background:#fff5d666; box-shadow:1px 2px 0 #b59b6522; min-height:52px; min-width:98px; padding:5px 11px; color:#876a3d; transition:transform .18s,background .18s,box-shadow .18s; }
+.sid-pen-glyph { display:inline-block; font-size:36px; line-height:1; transform:scaleX(-1); transform-origin:center; animation:sidPenInvite 1.7s ease-in-out 2; }
+.sid-pen-caption { font-size:11px; letter-spacing:1px; white-space:nowrap; }
+.sid-pen:active { transform:translateY(2px); background:#dac49366; box-shadow:none; }
+.sid-writing-pen { display:inline-block; font-size:22px; transform:scaleX(-1); vertical-align:middle; animation:sidPenPickup .32s ease-out both; }
+@keyframes sidPenInvite { 0%,70%,100% { transform:scaleX(-1) translateY(0) rotate(0); } 30% { transform:scaleX(-1) translateY(-3px) rotate(-9deg); } 46% { transform:scaleX(-1) translateY(-1px) rotate(3deg); } }
+@keyframes sidPenPickup { from { opacity:.3; transform:scaleX(-1) translateY(8px) rotate(12deg); } to { opacity:1; transform:scaleX(-1) translateY(0) rotate(0); } }
+@media(hover:hover) { .sid-pen:hover { transform:translateY(-3px) rotate(-2deg); background:#fff3cd; box-shadow:2px 5px 8px #8c693324; } .sid-pen:hover .sid-pen-glyph { animation:none; transform:scaleX(-1) rotate(-9deg); } }
+@media(prefers-reduced-motion:reduce) { .sid-pen-glyph,.sid-writing-pen { animation:none; } .sid-pen { transition:none; } }
+.sid-write { padding:16px; background:#f4e8cb; }
+.sid-write label { color:#8b734e; font-size:12px; }
+.sid-write textarea { max-height:140px; font-family:inherit; }
+.sid-write-actions { display:flex; justify-content:space-between; gap:8px; margin-top:10px; }
+.sid-message { font-size:12px; margin:8px 0 0; color:#977a4c; }
+.sid-letter.is-reading { touch-action:pan-y; }
+.sid-letter.is-reading .sid-letter-pick { display:none; }
+.sid-letter:not(.is-reading) .sid-letter-reader { display:none; }
+.sid-room-reading .sid-carrier { filter:brightness(.8); }
+@media(max-width:420px) { .sid-page { padding:20px 13px 12px; } .sid-page-kicker { margin-bottom:12px; } .sid-cover-back { padding:23px 10px; } .sid-toolbar { padding-left:15px; padding-right:15px; } }
+@media(max-height:500px) { .sid-stage { --page-h:200px; --page-w:142px; } .sid-toolbar { padding-top:8px; } .sid-hint { min-height:43px; padding-top:6px; padding-bottom:8px; font-size:11px; } .sid-page { padding:15px 14px; } .sid-page p { font-size:11px; line-height:1.8; } .sid-page-kicker { margin-bottom:8px; } .sid-letter-reader { max-height:calc(var(--view-height) - 116px); } }
+
+body[data-phase="siddhartha"] #shop { filter:blur(var(--sid-backdrop-blur,0px)); }
+.siddhartha-room:not(.sid-keyboard) button:focus { outline:none; }
+.sid-keyboard button:focus-visible { outline:2px solid #dfba72; outline-offset:4px; }
+.sid-cover-front { transform:translateZ(.5px); }
+.sid-cover-back { transform:rotateY(180deg) translateZ(.5px); }
+
+/* Letter typography and original stationery; book covers and shop type stay scoped separately. */
+.sid-letter-reader,.sid-segment,.sid-letter-actions,.sid-write {
+  background-color:#eee3cc;
+  background-image:var(--sid-letter-stock);
+  background-position:center top;
+  background-size:1000px auto;
+  background-repeat:repeat;
+}
+.sid-segment {
+  font-family:"PaperYozai","Kaiti SC","STKaiti",serif;
+  font-synthesis:none;
+  font-size:18px;
+  line-height:2;
+  letter-spacing:.4px;
+  color:#514637;
+}
+.sid-segment small { font-size:12px; letter-spacing:.7px; color:#8c775a; }
+.sid-letter-packet {
+  background-color:#eee3cc;
+  background-image:linear-gradient(160deg,#fff2,transparent 65%,#b19b7522),var(--sid-letter-stock);
+  background-size:100% 100%,1000px auto;
+  background-position:center top;
+  background-repeat:no-repeat,repeat;
+}
+.sid-letter-packet em { font-family:"PaperYozai","Kaiti SC","STKaiti",serif; font-synthesis:none; font-size:clamp(12px,2.5vw,14px); line-height:1.6; }
+.sid-letter-packet { height:var(--packet-height,88px); padding:calc(12px * var(--packet-zoom,1)); }
+.sid-letter-packet em { font-size:calc(12px * var(--packet-zoom,1)); }
+.sid-letter-packet i { font-size:calc(15px * var(--packet-zoom,1)); right:calc(11px * var(--packet-zoom,1)); bottom:calc(8px * var(--packet-zoom,1)); }
+.sid-letter-reader { min-height:min(var(--packet-height,88px),calc(var(--view-height) - 175px)); }
+.sid-unfold {
+  background-color:#eee3cc;
+  background-image:linear-gradient(#bda67e44,transparent 8px),var(--sid-letter-stock);
+  background-size:100% 100%,1000px auto;
+  background-position:center top;
+  background-repeat:no-repeat,repeat;
+}
+.sid-write textarea { font-family:"PaperYozai","Kaiti SC","STKaiti",serif; font-synthesis:none; font-size:18px; line-height:1.9; color:#514637; background:#fffaf066; }
+@media(max-width:600px) { .sid-segment { font-size:17px; } }
+
+/* Other titles use the same book geometry, with their own binding and title length. */
+.siddhartha-room:not([data-reader-book="siddhartha"]) .sid-cover-front {
+  background:repeating-linear-gradient(0deg,#fff1 0 1px,transparent 1px 4px),linear-gradient(110deg,#fff2,#0002),var(--reader-cover);
+  color:#3d3b2d;
+}
+.siddhartha-room:not([data-reader-book="siddhartha"]) .sid-cover-back { border-color:var(--reader-cover); }
+.siddhartha-room:not([data-reader-book="siddhartha"]) .sid-cover-title { font-size:min(22px,max(12px,calc((var(--page-h) - 100px) / var(--title-length) - 3px))); letter-spacing:3px; white-space:nowrap; }
+.siddhartha-room:not([data-reader-book="siddhartha"]) .sid-page h2 { white-space:normal; overflow-wrap:anywhere; line-height:1.5; letter-spacing:1px; }
+
+/* The three table books keep their exact illustrated cover during pickup and reading. */
+.siddhartha-room[data-cover-art="true"] .sid-cover-front { background-image:url("assets/scene/game-room-window-v065.png"); background-size:var(--cover-art-size); background-position:var(--cover-art-position); background-repeat:no-repeat; border:0; box-shadow:inset 3px 0 #3c2e1822,2px 2px 0 #4a3a2522; }
+.siddhartha-room[data-cover-art="true"] .sid-cover-front:after { display:none; }
+.siddhartha-room[data-cover-art="true"] .sid-cover-front > span { display:none; }
+
+.siddhartha-room[data-cover-art="true"] .sid-cover-front { clip-path:var(--cover-art-clip); }
+.siddhartha-room[data-cover-art="true"] .sid-backboard { background:var(--reader-cover); box-shadow:2px 5px 0 #8b7855,7px 18px 26px #130e0b66; }
+
+/* Hold the object in the room; chrome and live guidance stay available to assistive input. */
+.sid-toolbar,.sid-hint { position:absolute; width:1px; height:1px; min-height:0; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.sid-keyboard .sid-toolbar:focus-within { width:auto; height:auto; clip-path:none; margin:0; top:max(12px,env(safe-area-inset-top)); right:16px; overflow:visible; }
+.sid-keyboard .sid-toolbar > span { display:none; }
+.sid-stage { flex:1; }
+.sid-position { top:48%; }
+.sid-cover { cursor:grab; }
+.siddhartha-room[data-step="book-drag"] .sid-cover,.siddhartha-room[data-step="cover-drag"] .sid-cover { cursor:grabbing; }
+.sid-position:after { content:""; position:absolute; left:calc(50% - 5px); bottom:-31px; width:10px; height:10px; border-right:1.5px solid #efe1bb99; border-bottom:1.5px solid #efe1bb99; transform:rotate(45deg); pointer-events:none; opacity:0; }
+.siddhartha-room[data-step="held"] .sid-position:after { animation:sidLower 2s ease-in-out 2; }
+@keyframes sidLower { 0%,100% { opacity:0; translate:0 -3px; } 30%,65% { opacity:.65; } 80% { translate:0 5px; opacity:0; } }
+.sid-return-target:after { content:""; position:absolute; inset:2px; border-radius:4px; box-shadow:inset 0 0 12px #f5d89399,0 0 8px #f7e0ad55; pointer-events:none; }
+@media(prefers-reduced-motion:reduce) { .sid-position:after { animation:none!important; } }

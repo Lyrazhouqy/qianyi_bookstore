@@ -1,0 +1,13 @@
+{
+  "name": "paper-bookshop-playtest",
+  "version": "0.6.24",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "test": "playwright test",
+    "preview": "node scripts/preview.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2"
+  }
+}

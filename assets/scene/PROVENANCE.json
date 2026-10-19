@@ -1,0 +1,12 @@
+{
+  "asset": "assets/scene/bookshop-room-reference.png",
+  "source": "user supplied reference image for main room redesign, 2026-10-18",
+  "originalFile": "codex-clipboard-1153c4f0-770a-4d46-9494-2ee4878c3c83.png",
+  "dimensions": [
+    1448,
+    1086
+  ],
+  "sha256": "6c8d8c3c0fb846cf383c416667a451027dac1508566dd78429c6d7d68a207b3d",
+  "bytes": 2015849,
+  "transformation": "none; original file copied byte-for-byte; interactive UI is separate DOM"
+}
