@@ -8,7 +8,7 @@ window.Siddhartha = (() => {
   let heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};
   const running = new Set();
   const query = selector => room.querySelector(selector);
-  function setStep(value) { step=value; room.dataset.step=value;cover?.setAttribute('aria-busy',String(!['held','open','letter','packet','idle'].includes(value)));if(value==='open')requestAnimationFrame(checkCue); }
+  function setStep(value) { step=value; room.dataset.step=value;cover?.setAttribute('aria-busy',String(!['held','open','letter','packet','idle'].includes(value)));if(value==='open')requestAnimationFrame(()=>{placeLetter();checkCue();}); }
   const record=(type,detail={})=>window.BookRhythm.record(type,book?.[0],detail);
   function checkCue(){
     if(cueSeen||room.hidden||step!=='open'||artifact?.kind!=='postcard'||paper.hidden)return;
@@ -35,9 +35,10 @@ window.Siddhartha = (() => {
   function placeLetter() {
     if (!room || room.hidden) return;
     const target=dock.getBoundingClientRect(), bounds=stage.getBoundingClientRect();
-    const width=Math.min(368,bounds.width-32);
-    const x0=target.left-bounds.left+4,y0=target.top-bounds.top;
-    const x1=(bounds.width-width)/2;
+    const paired=room.dataset.readingLayout==='paired',page=query('.sid-page').getBoundingClientRect();
+    const width=paired?Math.max(100,page.width-16):Math.min(368,bounds.width-32);
+    const x0=paired?page.left-bounds.left+(page.width-target.width)/2:target.left-bounds.left+4,y0=target.top-bounds.top;
+    const x1=paired?page.left-bounds.left+8:(bounds.width-width)/2;
     const dockWidth=Math.max(90,target.width),shownWidth=(1-extraction)*dockWidth+extraction*width;
     paper.style.width=shownWidth+'px';
     paper.style.setProperty('--packet-zoom',String(shownWidth/dockWidth));
@@ -85,6 +86,7 @@ window.Siddhartha = (() => {
   }
   function allParts() { if(artifact.getParts)return artifact.getParts();return artifact.kind==='relay' ? letter.concat(callbacks.replies().map((text,index)=>['你的续写 '+(index+1),text])) : artifact.parts; }
   function insideCopy(){
+    room.dataset.readingLayout=['stack','note','fold'].includes(artifact?.kind)?'paired':'centered';
     const candidate=artifact?.quotation;
     const quoted=candidate?.verified===true&&candidate.bookTitle===book[1]&&typeof candidate.text==='string'&&candidate.text.trim()&&typeof candidate.source==='string'&&candidate.source.trim();
     const copy=query('.sid-inside-copy');copy.dataset.kind=quoted?'quotation':'synopsis';room.dataset.leftContent=copy.dataset.kind;copy.scrollTop=0;
@@ -275,7 +277,7 @@ window.Siddhartha = (() => {
   }
   function bindDrag(element,kind,cornerZone=false) {
     element.addEventListener('pointerdown',event=>{
-      if(kind==='cover'&&progress>.98&&event.target.closest('.sid-inside-copy[data-kind="quotation"]'))return;
+      if(kind==='cover'&&progress>.98&&event.target.closest('.sid-inside-copy')&&(room.dataset.readingLayout==='paired'||room.dataset.leftContent==='quotation'))return;
       if(cornerZone&&(event.target.closest('.sid-paper-traces')||!nearPaper(event)||paper.contains(event.target)))return;
       if(busy || gesture || event.button!==0 || kind==='cover'&&extraction>0 || kind==='letter'&&(progress<.98||extraction===1))return;
       gesture={kind,owner:element,id:event.pointerId,x:event.clientX,y:event.clientY,at:performance.now(),from:kind==='cover'?progress:extraction,moved:false,axis:null,viewportW:innerWidth,viewportH:innerHeight,lastY:event.clientY,lastAt:performance.now(),velocityY:0};
@@ -347,7 +349,7 @@ window.Siddhartha = (() => {
     cover.setAttribute('aria-description','轻点或左右拖动翻书。合上后向下拖动收起，也可轻点场景空白处。');
     stage.addEventListener('click',event=>{if((event.target===stage || event.target===position || event.target===room) && !busy && !gesture && performance.now()>=ignoreClick){if(writing||secretDesk?.editing())room.querySelector('textarea:focus')?.blur();else returnToShelf();}});
     bindDrag(cover,'cover');bindDrag(query('.sid-letter-pick'),'letter');bindDrag(room,'letter',true);
-    cover.addEventListener('click',event=>{if(progress>.98&&event.target.closest('.sid-inside-copy[data-kind="quotation"]'))return;if(busy&&step==='picking'){openOnArrival=true;room.dataset.openQueued='true';return;}if(performance.now()<ignoreClick)return;
+    cover.addEventListener('click',event=>{if(progress>.98&&event.target.closest('.sid-inside-copy')&&(room.dataset.readingLayout==='paired'||room.dataset.leftContent==='quotation'))return;if(busy&&step==='picking'){openOnArrival=true;room.dataset.openQueued='true';return;}if(performance.now()<ignoreClick)return;
       const r=paper.getBoundingClientRect();
       if(event.detail&&artifact&&progress>.98&&extraction===0&&event.clientX>=r.left-10&&event.clientX<=r.right+10&&event.clientY>=r.top-10&&event.clientY<=r.bottom+10){takeLetter({unfoldOnArrival:true});return;}
       hinge(progress>.5?0:1);});

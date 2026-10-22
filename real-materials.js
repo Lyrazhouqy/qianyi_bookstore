@@ -18,6 +18,12 @@ window.BookRealMaterials=()=>JSON.parse(JSON.stringify({
       "author": "qianyi-603484b24fce",
       "authorName": "Vickyyy🌟",
       "front": "纳瓦尔宝典真是满篇鸡汤[加油]适合经典重读",
+      "quotation": {
+        "text": "依靠出租时间是不可能致富的。你必须拥有股权（企业的部分所有权），才能实现财务自由。",
+        "bookTitle": "纳瓦尔宝典",
+        "source": "《纳瓦尔宝典》·“如何致富（不靠运气）”第4条",
+        "verified": true
+      },
       "back": "",
       "stock": "cream",
       "replies": []

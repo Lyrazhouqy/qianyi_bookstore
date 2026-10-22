@@ -212,9 +212,10 @@
   },
   "insideCover": {
     "location": "left inner cover",
+    "ordinaryNoteLayout": "passage or synopsis on left; active note opens and scrolls on right without overlap",
     "selection": "verified excerpt associated with active paper and matching book, otherwise synopsis",
     "trustedSource": "reviewed static real-materials seed only",
-    "verifiedExcerptsInCurrentPool": 0,
+    "verifiedExcerptsInCurrentPool": 1,
     "longExcerpt": "scroll within left paper without closing the book"
   },
   "camera": {

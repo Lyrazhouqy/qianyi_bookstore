@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-22",
+  "branch": "feat/rhythm-v014",
+  "scope": "local development; no push or deployment; browser emulation, not physical iPhone",
+  "stats": {
+    "startTime": "2026-10-22T13:51:47.358Z",
+    "duration": 235790.497,
+    "expected": 92,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    "chromium-small",
+    "webkit-small",
+    "chromium-iPhone14",
+    "webkit-iPhone14"
+  ],
+  "test_files": [
+    "tests/quotation.spec.cjs",
+    "tests/motion.spec.cjs",
+    "tests/reading-pacing.spec.cjs",
+    "tests/page-curl.spec.cjs",
+    "tests/rhythm.spec.cjs"
+  ],
+  "runtime_hashes_unchanged_through_test": true,
+  "test_source_sha256": {
+    "tests/quotation.spec.cjs": "7bb116535bf7bbb06b2a61ed124a0c6957a0c330741aed55e80558e030fdc0a4",
+    "tests/motion.spec.cjs": "58e27182dd34f764fc4b6510ff27f43f45a208c3ea7d6be6669952e32bbd79fd",
+    "tests/reading-pacing.spec.cjs": "275585bb4d02be5d175f731d78e55ae6632db507e78eadc9b7131cce7f7d4f83",
+    "tests/page-curl.spec.cjs": "bae4ed6a682be8940a66957a6b6bf776aa851b10c8e3e21d36ce28576db37227",
+    "tests/rhythm.spec.cjs": "c2647f129147177ea5e6098384a4ff6031fbbbc268a1db629bf1f4df5aafab0b"
+  },
+  "source_materials": {
+    "existing_notes": 44,
+    "verified_pairs": 1,
+    "all_existing_material_bytes_preserved_except_one_quotation": true
+  }
+}

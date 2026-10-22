@@ -183,3 +183,19 @@ body[data-phase="siddhartha"] #shop { filter:blur(var(--sid-backdrop-blur,0px));
 
 .sid-inside-copy[data-kind="quotation"] { max-height:75%; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; touch-action:pan-y; }
 .siddhartha-room[data-left-content="quotation"][data-step="open"] .sid-cover { touch-action:pan-y; }
+
+/* A reader's note opens over the right page, leaving its passage visible on the left. */
+.siddhartha-room[data-reading-layout="paired"].sid-room-reading .sid-carrier { filter:none; }
+.siddhartha-room[data-reading-layout="paired"] .sid-inside-copy { max-height:75%; overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y; scrollbar-width:thin; }
+.siddhartha-room[data-reading-layout="paired"] .sid-inside-copy .sid-synopsis { font-size:14px; line-height:1.9; }
+.siddhartha-room[data-reading-layout="paired"] .sid-inside-copy .sid-discovery-hint { display:none; }
+.siddhartha-room[data-reading-layout="paired"] .sid-letter-reader { max-height:calc(var(--view-height) - 112px); }
+.siddhartha-room[data-reading-layout="paired"] .sid-segment { padding:14px 12px; font-size:16px; line-height:1.9; letter-spacing:0; }
+.siddhartha-room[data-reading-layout="paired"] .sid-letter-actions { flex-direction:column; gap:0; padding:6px; }
+.siddhartha-room[data-reading-layout="paired"] .sid-letter-actions > button { width:100%; min-width:0; }
+.siddhartha-room[data-reading-layout="paired"] .sid-stack-pen img { max-width:100%; }
+.siddhartha-room[data-reading-layout="paired"] .sid-put { padding:6px 2px; }
+.siddhartha-room[data-reading-layout="paired"] .sid-write { padding:10px 8px; }
+.siddhartha-room[data-reading-layout="paired"] .sid-write-actions { flex-wrap:wrap; }
+.siddhartha-room[data-reading-layout="paired"] .sid-write textarea { width:100%; min-width:0; }
+.siddhartha-room[data-reading-layout="paired"][data-step="letter"] .sid-cover { touch-action:pan-y; }
