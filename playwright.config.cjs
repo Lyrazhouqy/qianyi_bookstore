@@ -10,8 +10,8 @@ const viewports = [
 module.exports = defineConfig({
   testDir:'./tests', testMatch:'**/*.spec.cjs', timeout:60000, expect:{timeout:5000},
   fullyParallel:true, workers:2,
-  reporter:[['list'],['json',{outputFile:'evidence/bookshop-v0130/final-results.json'}]],
+  reporter:[['list'],['json',{outputFile:process.env.BOOKSHOP_REPORT || 'evidence/bookshop-v0140/final-results.json'}]],
   use:{baseURL:process.env.BASE_URL || 'http://127.0.0.1:4173',trace:'retain-on-failure',screenshot:'only-on-failure'},
-  outputDir:'evidence/bookshop-v0130/final-test-results',
+  outputDir:'evidence/bookshop-v0140/test-results',
   projects:['chromium','webkit'].flatMap(browserName=>viewports.map(([name,viewport])=>({name:browserName+'-'+name,testIgnore:[...(name==='iPhone14'?[]:['**/mobile.spec.cjs'])],use:{...devices['iPhone 13'],browserName,viewport,deviceScaleFactor:1,...(name==='desktop'?{isMobile:false,hasTouch:false}:{})}})))
 });

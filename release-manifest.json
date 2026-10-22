@@ -4,11 +4,12 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.13.0",
+  "build": "paper-bookshop-game-v0.14.0",
   "staticFiles": [
     "index.html",
     "styles.css",
     "content.js",
+    "rhythm.js",
     "app.js",
     "siddhartha.css",
     "siddhartha.js",
@@ -67,15 +68,15 @@
     "assets/fonts/book-title-serif-v0113.woff2",
     "assets/fonts/book-title-serif-OFL.txt"
   ],
-  "status": "production-v0.13.0-resource-hashes-and-mobile-browser-smoke-verified",
+  "status": "development-v0.14.0-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
-    "capacity": 19,
-    "books": 19,
+    "capacity": 20,
+    "books": 20,
     "reserved": 0,
     "rows": [
       7,
-      5,
+      6,
       7
     ]
   },
@@ -116,7 +117,7 @@
     "standingBooks": 4,
     "catalogueEntry": "original drawer handle"
   },
-  "totalBooks": 31,
+  "totalBooks": 34,
   "returnInteraction": {
     "version": "direct-drag-v0.6.7",
     "closedBook": "downward drag, short drag rebounds",
@@ -192,7 +193,7 @@
       "ownWriting": "add a line to yourself; foreign notes accept replies"
     },
     "discovery": {
-      "playtest": "?v=0.13.0&playtest=discovery&reader=A",
+      "playtest": "?v=0.14.0&playtest=discovery&reader=A",
       "pool": "44 reviewed historical group excerpts in 30 real books; unchanged cat and legacy fictional fixtures retained",
       "revisit": "fully read current paper and replies then return before advancing the opening selection; page turns can browse all paper at any time",
       "refresh": "keeps selected opening page and reading progress; no inactivity expiry",
@@ -203,10 +204,10 @@
     }
   },
   "collection": {
-    "main": 19,
+    "main": 20,
     "front": 10,
-    "coffee": 2,
-    "total": 31,
+    "coffee": 4,
+    "total": 34,
     "cat": "unchanged sprite, source coordinates, content and original mechanism"
   },
   "insideCover": {
@@ -223,7 +224,7 @@
   },
   "stacks": {
     "leftFront": 3,
-    "coffee": 2,
+    "coffee": 4,
     "motion": "upper books settle into removed book space; rise before reinsertion",
     "orientation": "horizontal side spines and visible page edges"
   },
@@ -262,7 +263,7 @@
         "#e4d5b3"
       ]
     },
-    "iconStyle": "all28 physical spines have no icons; existing cover illustrations retained",
+    "iconStyle": "all31 physical spines have no icons; existing cover illustrations retained",
     "titleLayout": "upright centered with title-length-aware font size, horizontal title width expanded and font enlarged"
   },
   "previousMobilePlaytest": {
@@ -686,5 +687,21 @@
       "No multiplayer server; local saves are origin-specific"
     ],
     "publicAccessEvidence": "evidence/deployment-v0130/anonymous-access.json"
+  },
+  "development": {
+    "version": "0.14.0",
+    "branch": "feat/rhythm-v014",
+    "sourceCommit": "eb3d922",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.0&playtest=rhythm",
+    "deployed": false,
+    "authoredKeepsake": {
+      "book": "night",
+      "id": "keepsake-night-postcard-v014",
+      "source": "authored-playtest",
+      "storage": "static definition outside reader message pool"
+    },
+    "eventRecording": "opt-in playtest=rhythm, memory only; enum/count details, no reading text or names",
+    "replyDrafts": "existing per-reader draft object, namespaced by reply:bookId:paperId",
+    "evidence": "docs/validation/v0140/REPORT.md"
   }
 }

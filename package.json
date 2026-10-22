@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "node scripts/serve.cjs",
     "test": "playwright test",
-    "preview": "node scripts/preview.cjs"
+    "preview": "node scripts/preview.cjs",
+    "test:rhythm": "playwright test tests/rhythm.spec.cjs tests/collection.spec.cjs tests/discovery.spec.cjs tests/discovery-reopen.spec.cjs tests/page-curl.spec.cjs tests/reading-pacing.spec.cjs tests/siddhartha.spec.cjs tests/motion.spec.cjs --project=chromium-small --project=webkit-small --project=chromium-iPhone14 --project=webkit-iPhone14",
+    "test:discovery-engine": "node --test tests/discovery-engine.cjs"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2"

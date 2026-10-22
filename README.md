@@ -2,9 +2,11 @@
 
 从既有线上动画版恢复的静态游戏工程。当前交付边界见 [HANDOFF.md](HANDOFF.md)。
 
+当前开发分支 `feat/rhythm-v014` 为 v0.14.0，未覆盖生产 v0.13.0。本地验收入口：<http://127.0.0.1:4173/?v=0.14.0&playtest=rhythm>。S1–S4 实现、分阶段测试、开放式探索与已知限制集中在[验收记录](docs/validation/v0140/REPORT.md)。本地 URL 的版本参数用于辨认当前源码，并非历史快照。
+
 2026-10-22 已推送并发布 v0.13.0，游戏源码提交 `5b49c2ed001973350e9cb71532f3c8712cbfb03b`。正式入口：<https://paper-bookshop-playtest.vercel.app/v0.13.0/>。正式入口已在无认证上下文验证可直接访问。现有 Vercel 保护设置未改；唯一部署地址的备用免登录分享链接在本机 `.preview/mobile-playtest-v0130.json`，有效期 30 天，勿提交带分享参数的链接或浏览器认证状态。60 个线上资源 SHA256 全部匹配，Chromium/WebKit 的 320/390px 手机模拟流程通过；不代表物理手机验收。部署 ID、固定地址、资源哈希和回退部署见 `release-manifest.json` 的 `deployment`，详细证据在本机 `evidence/deployment-v0130/`。从 localhost 切到线上是新来源，本地存档不会自动迁移。
 
-源码仓库：<https://github.com/Lyrazhouqy/qianyi_bookstore>，当前源码版本 `0.13.0`。安装后按以下命令运行；无需构建。历史设计稿和批量截图、录像留在本机，`evidence/baseline/` 与 `evidence/bookshop-v0624/manifest.json` 保留已提交旧版的校验值；当前同书全部便笺可翻阅、取消额度/等待记录见 `evidence/bookshop-v0130/manifest.json`，前版全部书脊去图案与书名适配记录见 `evidence/bookshop-v0120/manifest.json`，前版其余九本立书图案统一记录见 `evidence/bookshop-v0119/manifest.json`，前版简洁扁平封面/书脊图案与四本书统一记录见 `evidence/bookshop-v0118/manifest.json`，前版五色同色封皮/书脊、加厚与印刷字记录见 `evidence/bookshop-v0117/manifest.json`，前版参考布面书脊与两本平放书放大记录见 `evidence/bookshop-v0116/manifest.json`，前版书摞贴合与浅黄书脊记录见 `evidence/bookshop-v0115/manifest.json`，前版深色字形与随书侧转修正见 `evidence/bookshop-v0114/manifest.json`，前版宋体书名尝试见 `evidence/bookshop-v0113/manifest.json`，前版直接取书/封皮字体记录见 `evidence/bookshop-v0112/manifest.json`，前版书摞实体与底图修正见 `evidence/bookshop-v0111/manifest.json`，前版设计稿书籍与选书交互记录在 `evidence/bookshop-v0110/manifest.json`，前版横向书摞恢复记录在 `evidence/bookshop-v0102/manifest.json`，前版排列与原文关联记录在 `evidence/bookshop-v0101/manifest.json`，前版真实书目上架记录在 `evidence/bookshop-v0100/manifest.json`，上一版页角记录在 `evidence/bookshop-v095/manifest.json`；旧版盲测与样式补丁证据分别保留在 `evidence/bookshop-v090/` 和 `evidence/bookshop-v091/`。
+源码仓库：<https://github.com/Lyrazhouqy/qianyi_bookstore>，当前源码版本 `0.14.0`。安装后按以下命令运行；无需构建。历史设计稿和批量截图、录像留在本机，`evidence/baseline/` 与 `evidence/bookshop-v0624/manifest.json` 保留已提交旧版的校验值；当前同书全部便笺可翻阅、取消额度/等待记录见 `evidence/bookshop-v0130/manifest.json`，前版全部书脊去图案与书名适配记录见 `evidence/bookshop-v0120/manifest.json`，前版其余九本立书图案统一记录见 `evidence/bookshop-v0119/manifest.json`，前版简洁扁平封面/书脊图案与四本书统一记录见 `evidence/bookshop-v0118/manifest.json`，前版五色同色封皮/书脊、加厚与印刷字记录见 `evidence/bookshop-v0117/manifest.json`，前版参考布面书脊与两本平放书放大记录见 `evidence/bookshop-v0116/manifest.json`，前版书摞贴合与浅黄书脊记录见 `evidence/bookshop-v0115/manifest.json`，前版深色字形与随书侧转修正见 `evidence/bookshop-v0114/manifest.json`，前版宋体书名尝试见 `evidence/bookshop-v0113/manifest.json`，前版直接取书/封皮字体记录见 `evidence/bookshop-v0112/manifest.json`，前版书摞实体与底图修正见 `evidence/bookshop-v0111/manifest.json`，前版设计稿书籍与选书交互记录在 `evidence/bookshop-v0110/manifest.json`，前版横向书摞恢复记录在 `evidence/bookshop-v0102/manifest.json`，前版排列与原文关联记录在 `evidence/bookshop-v0101/manifest.json`，前版真实书目上架记录在 `evidence/bookshop-v0100/manifest.json`，上一版页角记录在 `evidence/bookshop-v095/manifest.json`；旧版盲测与样式补丁证据分别保留在 `evidence/bookshop-v090/` 和 `evidence/bookshop-v091/`。
 
 ```sh
 npm ci
@@ -17,16 +19,17 @@ macOS 下需要跨聊天回合保留预览时，运行 `npm run preview`。它�
 
 ```sh
 npx playwright install chromium webkit
-npm test
+npm run test:discovery-engine
+npm run test:rhythm
 node tests/baseline.cjs
 node scripts/capture-siddhartha.cjs
 ```
 
-`npm test` 在 Chromium / WebKit 的五种视口覆盖共享阅读器、13本书点击/归位、接力续写与线索、窗景预设/上传/刷新恢复；本轮定向结果见 HANDOFF 最末段和对应 evidence manifest。模拟触摸不替代真实iPhone验收。
+`npm run test:rhythm` 定向验证 Chromium/WebKit 的320×568与390×844，共148项，覆盖节奏路径、34本实体书、便笺可读与旧档、页角、阅读器和动画。`npm test` 仍保留历史全量入口，本轮没有将未运行的旧布局用例宣称为通过。模拟触摸不替代真实iPhone验收。
 
 - `evidence/baseline/`：恢复部署的原始 HTML、来源、缺陷复现和截图。
 - `evidence/verification/`：本轮报告、逐帧动画证据、截图、视频及测试结果。
-- 静态发布白名单：以 `release-manifest.json` 的 `staticFiles` 为准，包含当前60项运行资源。
+- 静态发布白名单：以 `release-manifest.json` 的 `staticFiles` 为准，包含当前61项运行资源。
 
 延续 `paperbook-v3` 本机存储键，刷新会读取已保存的续写与发现。「重新到访」重新计算本次翻书次数，保留发现和已写入的文字。当前尚未接入多人或跨设备同步。
 

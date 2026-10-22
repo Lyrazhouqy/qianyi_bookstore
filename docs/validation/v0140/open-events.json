@@ -1,0 +1,92 @@
+[
+  {
+    "elapsed_ms": 0,
+    "book_id": null,
+    "event_type": "session_start",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 19100,
+    "book_id": "questions",
+    "event_type": "book_open",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 49040,
+    "book_id": "questions",
+    "event_type": "page_turn",
+    "detail": {
+      "page": 4,
+      "pages": 4
+    }
+  },
+  {
+    "elapsed_ms": 120539,
+    "book_id": "questions",
+    "event_type": "book_return",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 129140,
+    "book_id": "bigtech",
+    "event_type": "book_open",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 171105,
+    "book_id": "bigtech",
+    "event_type": "book_return",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 180794,
+    "book_id": "tao",
+    "event_type": "book_open",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 238829,
+    "book_id": "tao",
+    "event_type": "book_return",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 248622,
+    "book_id": "questions",
+    "event_type": "book_open",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 288020,
+    "book_id": "questions",
+    "event_type": "book_return",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 297663,
+    "book_id": "presence",
+    "event_type": "book_open",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 335937,
+    "book_id": "presence",
+    "event_type": "page_turn",
+    "detail": {
+      "page": 3,
+      "pages": 3
+    }
+  },
+  {
+    "elapsed_ms": 370260,
+    "book_id": "presence",
+    "event_type": "book_return",
+    "detail": {}
+  },
+  {
+    "elapsed_ms": 371852,
+    "book_id": null,
+    "event_type": "session_end",
+    "detail": {}
+  }
+]

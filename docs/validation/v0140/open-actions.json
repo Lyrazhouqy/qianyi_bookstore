@@ -1,0 +1,853 @@
+[
+  {
+    "at": "2026-10-22T11:30:49.687Z",
+    "kind": "start",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "entry": "http://127.0.0.1:4173/?v=0.14.0&playtest=rhythm",
+    "tool": "Playwright Chromium headless, touchscreen tap and CDP touch drag",
+    "cuaLimitation": "getState timed out after 30 seconds; kernel reset"
+  },
+  {
+    "at": "2026-10-22T11:30:49.795Z",
+    "kind": "screenshot",
+    "file": "000-entry.png"
+  },
+  {
+    "at": "2026-10-22T11:31:07.862Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 163,
+    "y": 245,
+    "label": "choose-visible-book"
+  },
+  {
+    "at": "2026-10-22T11:31:08.341Z",
+    "kind": "screenshot",
+    "file": "001-choose-visible-book.png"
+  },
+  {
+    "at": "2026-10-22T11:31:15.297Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 800,
+    "label": "book-cover-ready"
+  },
+  {
+    "at": "2026-10-22T11:31:16.528Z",
+    "kind": "screenshot",
+    "file": "002-book-cover-ready.png"
+  },
+  {
+    "at": "2026-10-22T11:31:29.879Z",
+    "kind": "action",
+    "action": "drag",
+    "x1": 253,
+    "y1": 405,
+    "x2": 131,
+    "y2": 405,
+    "label": "open-book-touch-drag"
+  },
+  {
+    "at": "2026-10-22T11:31:30.765Z",
+    "kind": "screenshot",
+    "file": "003-open-book-touch-drag.png"
+  },
+  {
+    "at": "2026-10-22T11:31:38.062Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 291,
+    "y": 478,
+    "label": "open-found-note"
+  },
+  {
+    "at": "2026-10-22T11:31:38.497Z",
+    "kind": "screenshot",
+    "file": "004-open-found-note.png"
+  },
+  {
+    "at": "2026-10-22T11:31:44.742Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "note-ready-to-read"
+  },
+  {
+    "at": "2026-10-22T11:31:45.867Z",
+    "kind": "screenshot",
+    "file": "005-note-ready-to-read.png"
+  },
+  {
+    "at": "2026-10-22T11:32:09.656Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 288,
+    "y": 430,
+    "label": "tap-note-center"
+  },
+  {
+    "at": "2026-10-22T11:32:10.087Z",
+    "kind": "screenshot",
+    "file": "006-tap-note-center.png"
+  },
+  {
+    "at": "2026-10-22T11:32:18.592Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "reading-expanded-note"
+  },
+  {
+    "at": "2026-10-22T11:32:19.741Z",
+    "kind": "screenshot",
+    "file": "007-reading-expanded-note.png"
+  },
+  {
+    "at": "2026-10-22T11:32:28.244Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 304,
+    "y": 483,
+    "label": "choose-to-respond"
+  },
+  {
+    "at": "2026-10-22T11:32:28.674Z",
+    "kind": "screenshot",
+    "file": "008-choose-to-respond.png"
+  },
+  {
+    "at": "2026-10-22T11:32:29.347Z",
+    "kind": "action",
+    "action": "fill",
+    "label": "compose-agent-reply"
+  },
+  {
+    "at": "2026-10-22T11:32:29.789Z",
+    "kind": "screenshot",
+    "file": "009-compose-agent-reply.png"
+  },
+  {
+    "at": "2026-10-22T11:32:36.780Z",
+    "kind": "action",
+    "action": "role",
+    "name": "夹在便笺下面",
+    "label": "save-agent-reply"
+  },
+  {
+    "at": "2026-10-22T11:32:37.237Z",
+    "kind": "screenshot",
+    "file": "010-save-agent-reply.png"
+  },
+  {
+    "at": "2026-10-22T11:32:37.883Z",
+    "kind": "action",
+    "action": "note",
+    "note": "Agent判断：第一本书里有多位书友的不同页，足以让我停下来读并写一次回应。纸角与便笺边缘靠得近，先前点击下缘实际翻到下一页；点中心才展开。",
+    "label": "first-reading-observation"
+  },
+  {
+    "at": "2026-10-22T11:32:37.883Z",
+    "kind": "agent-observation",
+    "note": "Agent判断：第一本书里有多位书友的不同页，足以让我停下来读并写一次回应。纸角与便笺边缘靠得近，先前点击下缘实际翻到下一页；点中心才展开。"
+  },
+  {
+    "at": "2026-10-22T11:32:38.307Z",
+    "kind": "screenshot",
+    "file": "011-first-reading-observation.png"
+  },
+  {
+    "at": "2026-10-22T11:32:46.223Z",
+    "kind": "action",
+    "action": "role",
+    "name": "折好，放回夹页 ↘",
+    "label": "fold-first-note"
+  },
+  {
+    "at": "2026-10-22T11:32:46.673Z",
+    "kind": "screenshot",
+    "file": "012-fold-first-note.png"
+  },
+  {
+    "at": "2026-10-22T11:32:47.326Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "first-note-folded"
+  },
+  {
+    "at": "2026-10-22T11:32:48.466Z",
+    "kind": "screenshot",
+    "file": "013-first-note-folded.png"
+  },
+  {
+    "at": "2026-10-22T11:32:48.931Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 31,
+    "y": 650,
+    "label": "leave-first-book"
+  },
+  {
+    "at": "2026-10-22T11:32:49.393Z",
+    "kind": "screenshot",
+    "file": "014-leave-first-book.png"
+  },
+  {
+    "at": "2026-10-22T11:32:50.035Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "room-after-first-book"
+  },
+  {
+    "at": "2026-10-22T11:32:51.179Z",
+    "kind": "screenshot",
+    "file": "015-room-after-first-book.png"
+  },
+  {
+    "at": "2026-10-22T11:32:57.906Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 204,
+    "y": 500,
+    "label": "choose-second-book"
+  },
+  {
+    "at": "2026-10-22T11:32:58.380Z",
+    "kind": "screenshot",
+    "file": "016-choose-second-book.png"
+  },
+  {
+    "at": "2026-10-22T11:32:59.009Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "second-cover-ready"
+  },
+  {
+    "at": "2026-10-22T11:33:00.169Z",
+    "kind": "screenshot",
+    "file": "017-second-cover-ready.png"
+  },
+  {
+    "at": "2026-10-22T11:33:13.012Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 204,
+    "y": 406,
+    "label": "open-second-book"
+  },
+  {
+    "at": "2026-10-22T11:33:13.468Z",
+    "kind": "screenshot",
+    "file": "018-open-second-book.png"
+  },
+  {
+    "at": "2026-10-22T11:33:14.116Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "second-book-reading"
+  },
+  {
+    "at": "2026-10-22T11:33:15.251Z",
+    "kind": "screenshot",
+    "file": "019-second-book-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:33:23.708Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 288,
+    "y": 478,
+    "label": "open-second-note"
+  },
+  {
+    "at": "2026-10-22T11:33:24.146Z",
+    "kind": "screenshot",
+    "file": "020-open-second-note.png"
+  },
+  {
+    "at": "2026-10-22T11:33:24.811Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "second-note-reading"
+  },
+  {
+    "at": "2026-10-22T11:33:25.937Z",
+    "kind": "screenshot",
+    "file": "021-second-note-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:33:36.789Z",
+    "kind": "action",
+    "action": "role",
+    "name": "折好，放回夹页 ↘",
+    "label": "fold-second-note"
+  },
+  {
+    "at": "2026-10-22T11:33:37.264Z",
+    "kind": "screenshot",
+    "file": "022-fold-second-note.png"
+  },
+  {
+    "at": "2026-10-22T11:33:37.892Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "second-note-folded"
+  },
+  {
+    "at": "2026-10-22T11:33:39.033Z",
+    "kind": "screenshot",
+    "file": "023-second-note-folded.png"
+  },
+  {
+    "at": "2026-10-22T11:33:39.495Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 30,
+    "y": 650,
+    "label": "leave-second-book"
+  },
+  {
+    "at": "2026-10-22T11:33:39.954Z",
+    "kind": "screenshot",
+    "file": "024-leave-second-book.png"
+  },
+  {
+    "at": "2026-10-22T11:33:40.599Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "back-to-room"
+  },
+  {
+    "at": "2026-10-22T11:33:41.749Z",
+    "kind": "screenshot",
+    "file": "025-back-to-room.png"
+  },
+  {
+    "at": "2026-10-22T11:33:42.201Z",
+    "kind": "action",
+    "action": "drag",
+    "x1": 302,
+    "y1": 601,
+    "x2": 74,
+    "y2": 601,
+    "label": "explore-cropped-room"
+  },
+  {
+    "at": "2026-10-22T11:33:43.075Z",
+    "kind": "screenshot",
+    "file": "026-explore-cropped-room.png"
+  },
+  {
+    "at": "2026-10-22T11:33:49.555Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 119,
+    "y": 247,
+    "label": "choose-third-book"
+  },
+  {
+    "at": "2026-10-22T11:33:50.032Z",
+    "kind": "screenshot",
+    "file": "027-choose-third-book.png"
+  },
+  {
+    "at": "2026-10-22T11:33:57.967Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 201,
+    "y": 405,
+    "label": "open-third-book"
+  },
+  {
+    "at": "2026-10-22T11:33:58.425Z",
+    "kind": "screenshot",
+    "file": "028-open-third-book.png"
+  },
+  {
+    "at": "2026-10-22T11:33:59.072Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "third-book-reading"
+  },
+  {
+    "at": "2026-10-22T11:34:00.203Z",
+    "kind": "screenshot",
+    "file": "029-third-book-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:34:13.567Z",
+    "kind": "action",
+    "action": "drag",
+    "x1": 286,
+    "y1": 481,
+    "x2": 286,
+    "y2": 316,
+    "label": "pull-third-note"
+  },
+  {
+    "at": "2026-10-22T11:34:14.440Z",
+    "kind": "screenshot",
+    "file": "030-pull-third-note.png"
+  },
+  {
+    "at": "2026-10-22T11:34:14.670Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "pulled-third-note"
+  },
+  {
+    "at": "2026-10-22T11:34:15.800Z",
+    "kind": "screenshot",
+    "file": "031-pulled-third-note.png"
+  },
+  {
+    "at": "2026-10-22T11:34:23.280Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 201,
+    "y": 403,
+    "label": "unfold-third-note"
+  },
+  {
+    "at": "2026-10-22T11:34:23.739Z",
+    "kind": "screenshot",
+    "file": "032-unfold-third-note.png"
+  },
+  {
+    "at": "2026-10-22T11:34:24.383Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "third-note-reading"
+  },
+  {
+    "at": "2026-10-22T11:34:25.521Z",
+    "kind": "screenshot",
+    "file": "033-third-note-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:34:43.411Z",
+    "kind": "action",
+    "action": "note",
+    "note": "Agent判断：第三本的便笺是一段个人理解，我读完后没有想立刻接话。想回第一本翻翻前面的页，因为开头一次拖动已到了第3页，尚未看见前面内容；这是当前自选兴趣，不知道是否有后续任务。",
+    "label": "reading-pause-observation"
+  },
+  {
+    "at": "2026-10-22T11:34:43.411Z",
+    "kind": "agent-observation",
+    "note": "Agent判断：第三本的便笺是一段个人理解，我读完后没有想立刻接话。想回第一本翻翻前面的页，因为开头一次拖动已到了第3页，尚未看见前面内容；这是当前自选兴趣，不知道是否有后续任务。"
+  },
+  {
+    "at": "2026-10-22T11:34:43.854Z",
+    "kind": "screenshot",
+    "file": "034-reading-pause-observation.png"
+  },
+  {
+    "at": "2026-10-22T11:34:44.514Z",
+    "kind": "action",
+    "action": "role",
+    "name": "折好，放回夹页 ↘",
+    "label": "fold-third-note"
+  },
+  {
+    "at": "2026-10-22T11:34:45.005Z",
+    "kind": "screenshot",
+    "file": "035-fold-third-note.png"
+  },
+  {
+    "at": "2026-10-22T11:34:45.617Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "third-note-folded"
+  },
+  {
+    "at": "2026-10-22T11:34:46.757Z",
+    "kind": "screenshot",
+    "file": "036-third-note-folded.png"
+  },
+  {
+    "at": "2026-10-22T11:34:47.221Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 29,
+    "y": 652,
+    "label": "leave-third-book"
+  },
+  {
+    "at": "2026-10-22T11:34:47.670Z",
+    "kind": "screenshot",
+    "file": "037-leave-third-book.png"
+  },
+  {
+    "at": "2026-10-22T11:34:48.325Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "room-after-third-book"
+  },
+  {
+    "at": "2026-10-22T11:34:49.473Z",
+    "kind": "screenshot",
+    "file": "038-room-after-third-book.png"
+  },
+  {
+    "at": "2026-10-22T11:34:57.543Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 61,
+    "y": 245,
+    "label": "revisit-first-book"
+  },
+  {
+    "at": "2026-10-22T11:34:57.984Z",
+    "kind": "screenshot",
+    "file": "039-revisit-first-book.png"
+  },
+  {
+    "at": "2026-10-22T11:34:58.646Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 201,
+    "y": 405,
+    "label": "open-revisited-book"
+  },
+  {
+    "at": "2026-10-22T11:34:59.069Z",
+    "kind": "screenshot",
+    "file": "040-open-revisited-book.png"
+  },
+  {
+    "at": "2026-10-22T11:34:59.750Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "revisited-pages"
+  },
+  {
+    "at": "2026-10-22T11:35:00.891Z",
+    "kind": "screenshot",
+    "file": "041-revisited-pages.png"
+  },
+  {
+    "at": "2026-10-22T11:35:08.894Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 288,
+    "y": 432,
+    "label": "read-earlier-page-note"
+  },
+  {
+    "at": "2026-10-22T11:35:09.359Z",
+    "kind": "screenshot",
+    "file": "042-read-earlier-page-note.png"
+  },
+  {
+    "at": "2026-10-22T11:35:09.997Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "earlier-page-note-reading"
+  },
+  {
+    "at": "2026-10-22T11:35:11.143Z",
+    "kind": "screenshot",
+    "file": "043-earlier-page-note-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:35:33.935Z",
+    "kind": "action",
+    "action": "role",
+    "name": "折好，放回夹页 ↘",
+    "label": "fold-revisited-note"
+  },
+  {
+    "at": "2026-10-22T11:35:34.382Z",
+    "kind": "screenshot",
+    "file": "044-fold-revisited-note.png"
+  },
+  {
+    "at": "2026-10-22T11:35:35.039Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "revisited-note-folded"
+  },
+  {
+    "at": "2026-10-22T11:35:36.173Z",
+    "kind": "screenshot",
+    "file": "045-revisited-note-folded.png"
+  },
+  {
+    "at": "2026-10-22T11:35:36.642Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 30,
+    "y": 651,
+    "label": "leave-revisited-book"
+  },
+  {
+    "at": "2026-10-22T11:35:37.087Z",
+    "kind": "screenshot",
+    "file": "046-leave-revisited-book.png"
+  },
+  {
+    "at": "2026-10-22T11:35:37.745Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "room-to-find-mentioned-book"
+  },
+  {
+    "at": "2026-10-22T11:35:38.866Z",
+    "kind": "screenshot",
+    "file": "047-room-to-find-mentioned-book.png"
+  },
+  {
+    "at": "2026-10-22T11:35:46.430Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 166,
+    "y": 286,
+    "label": "choose-book-mentioned-in-note"
+  },
+  {
+    "at": "2026-10-22T11:35:46.860Z",
+    "kind": "screenshot",
+    "file": "048-choose-book-mentioned-in-note.png"
+  },
+  {
+    "at": "2026-10-22T11:35:47.533Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "mentioned-book-cover"
+  },
+  {
+    "at": "2026-10-22T11:35:48.658Z",
+    "kind": "screenshot",
+    "file": "049-mentioned-book-cover.png"
+  },
+  {
+    "at": "2026-10-22T11:35:53.967Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 201,
+    "y": 405,
+    "label": "open-mentioned-book"
+  },
+  {
+    "at": "2026-10-22T11:35:54.434Z",
+    "kind": "screenshot",
+    "file": "050-open-mentioned-book.png"
+  },
+  {
+    "at": "2026-10-22T11:35:55.070Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "mentioned-book-reading"
+  },
+  {
+    "at": "2026-10-22T11:35:56.182Z",
+    "kind": "screenshot",
+    "file": "051-mentioned-book-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:36:02.929Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 288,
+    "y": 430,
+    "label": "open-mentioned-book-note"
+  },
+  {
+    "at": "2026-10-22T11:36:03.366Z",
+    "kind": "screenshot",
+    "file": "052-open-mentioned-book-note.png"
+  },
+  {
+    "at": "2026-10-22T11:36:04.031Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "mentioned-note-reading"
+  },
+  {
+    "at": "2026-10-22T11:36:05.176Z",
+    "kind": "screenshot",
+    "file": "053-mentioned-note-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:36:22.252Z",
+    "kind": "action",
+    "action": "role",
+    "name": "折好，放回夹页 ↘",
+    "label": "fold-mentioned-note"
+  },
+  {
+    "at": "2026-10-22T11:36:22.718Z",
+    "kind": "screenshot",
+    "file": "054-fold-mentioned-note.png"
+  },
+  {
+    "at": "2026-10-22T11:36:23.355Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "mentioned-note-folded"
+  },
+  {
+    "at": "2026-10-22T11:36:24.477Z",
+    "kind": "screenshot",
+    "file": "055-mentioned-note-folded.png"
+  },
+  {
+    "at": "2026-10-22T11:36:24.959Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 343,
+    "y": 518,
+    "label": "turn-to-next-visible-page"
+  },
+  {
+    "at": "2026-10-22T11:36:25.382Z",
+    "kind": "screenshot",
+    "file": "056-turn-to-next-visible-page.png"
+  },
+  {
+    "at": "2026-10-22T11:36:26.062Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "next-page-ready"
+  },
+  {
+    "at": "2026-10-22T11:36:27.213Z",
+    "kind": "screenshot",
+    "file": "057-next-page-ready.png"
+  },
+  {
+    "at": "2026-10-22T11:36:33.531Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 288,
+    "y": 430,
+    "label": "open-next-page-note"
+  },
+  {
+    "at": "2026-10-22T11:36:33.960Z",
+    "kind": "screenshot",
+    "file": "058-open-next-page-note.png"
+  },
+  {
+    "at": "2026-10-22T11:36:34.634Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "last-note-reading"
+  },
+  {
+    "at": "2026-10-22T11:36:35.753Z",
+    "kind": "screenshot",
+    "file": "059-last-note-reading.png"
+  },
+  {
+    "at": "2026-10-22T11:36:54.841Z",
+    "kind": "action",
+    "action": "note",
+    "note": "Agent判断：已读到同一本书的不同短评，内容差异促成一次跨书选择；最后这张很短，展开和折回的动作成本比阅读本身更突出。没有看到奖励、明确任务或需要等待回复的提示。当前自然愿意告一段落；没有为未遇见内容补路线。",
+    "label": "closing-observation"
+  },
+  {
+    "at": "2026-10-22T11:36:54.841Z",
+    "kind": "agent-observation",
+    "note": "Agent判断：已读到同一本书的不同短评，内容差异促成一次跨书选择；最后这张很短，展开和折回的动作成本比阅读本身更突出。没有看到奖励、明确任务或需要等待回复的提示。当前自然愿意告一段落；没有为未遇见内容补路线。"
+  },
+  {
+    "at": "2026-10-22T11:36:55.266Z",
+    "kind": "screenshot",
+    "file": "060-closing-observation.png"
+  },
+  {
+    "at": "2026-10-22T11:36:55.944Z",
+    "kind": "action",
+    "action": "role",
+    "name": "折好，放回夹页 ↘",
+    "label": "fold-last-note"
+  },
+  {
+    "at": "2026-10-22T11:36:56.390Z",
+    "kind": "screenshot",
+    "file": "061-fold-last-note.png"
+  },
+  {
+    "at": "2026-10-22T11:36:57.048Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "last-note-folded"
+  },
+  {
+    "at": "2026-10-22T11:36:58.181Z",
+    "kind": "screenshot",
+    "file": "062-last-note-folded.png"
+  },
+  {
+    "at": "2026-10-22T11:36:58.652Z",
+    "kind": "action",
+    "action": "tap",
+    "x": 28,
+    "y": 650,
+    "label": "put-last-book-away"
+  },
+  {
+    "at": "2026-10-22T11:36:59.112Z",
+    "kind": "screenshot",
+    "file": "063-put-last-book-away.png"
+  },
+  {
+    "at": "2026-10-22T11:36:59.754Z",
+    "kind": "action",
+    "action": "settle",
+    "ms": 700,
+    "label": "room-before-ending"
+  },
+  {
+    "at": "2026-10-22T11:37:00.913Z",
+    "kind": "screenshot",
+    "file": "064-room-before-ending.png"
+  },
+  {
+    "at": "2026-10-22T11:37:01.357Z",
+    "kind": "action",
+    "action": "finish",
+    "label": "export-and-close"
+  },
+  {
+    "at": "2026-10-22T11:37:01.361Z",
+    "kind": "recorder-exported",
+    "file": "rhythm-export.json"
+  },
+  {
+    "at": "2026-10-22T11:37:01.462Z",
+    "kind": "screenshot",
+    "file": "065-final.png"
+  },
+  {
+    "at": "2026-10-22T11:37:01.511Z",
+    "kind": "end",
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/bookshop-v0140/open-exploration/video/936b9d4c596913a8d8b9a236d12ad375.webm"
+  }
+]
