@@ -1,0 +1,33 @@
+{
+  "scope": "Chromium CDP simulated native touch in isolated contexts; not physical iPhone or blind playtest",
+  "results": [
+    {
+      "width": 320,
+      "books": [
+        "tao",
+        "japan",
+        "solitude",
+        "weeks"
+      ],
+      "directSpineTouch": true,
+      "flatMotion": true,
+      "readAndReturn": true,
+      "dragToShelf": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "books": [
+        "tao",
+        "japan",
+        "solitude",
+        "weeks"
+      ],
+      "directSpineTouch": true,
+      "flatMotion": true,
+      "readAndReturn": true,
+      "dragToShelf": true,
+      "errors": []
+    }
+  ]
+}

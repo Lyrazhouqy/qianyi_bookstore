@@ -2,6 +2,21 @@
 window.Siddhartha = (() => {
   const clamp = value => Math.max(0, Math.min(1, value));
   const escapeHTML = value => String(value).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  // Square flat marks stay square on a full cover; side-view sprites are never stretched.
+  const coverMarks={
+    leaf:'<path d="M17 65C10 33 32 14 70 12c-1 38-19 59-53 53Z"/>',
+    mountain:'<path d="M5 65 27 27l15 21 13-33 24 50Z"/>',
+    stone:'<ellipse cx="40" cy="32" rx="17" ry="13"/><path d="M7 59q16-12 33 0t33 0" fill="none" stroke="currentColor" stroke-width="6"/>',
+    bird:'<path d="M6 46c17 4 20-5 18-24l22 15 25-7-13 16c-5 18-27 23-41 13l13-4Z"/>',
+    links:'<g fill="none" stroke="currentColor" stroke-width="8"><rect x="12" y="16" width="29" height="40" rx="14" transform="rotate(35 26 36)"/><rect x="38" y="31" width="29" height="40" rx="14" transform="rotate(35 52 51)"/></g>',
+    pond:'<path d="M12 57c-6-16 3-25 9-25V19h13v11h12V19h13v13c17 5 18 33 1 33H25Z"/>',
+    flower:'<path d="M40 14c20-20 40 12 20 24 28 10 7 40-13 27-4 28-38 17-32-7-26-6-13-38 9-29-3-10 5-19 16-15Z"/><circle cx="39" cy="44" r="11" fill="var(--reader-cover)"/>',
+    factory:'<path d="M9 68V43l19-14v14l18-14v14h13V15h11v53Z"/>',
+    sail:'<path d="M35 11v42H9Zm7 9 29 33H42ZM5 58h70L63 70H18Z"/>',
+    key:'<path d="M29 11a17 17 0 1 0 0 34v25h9v-9h11v-9H38V43a17 17 0 0 0-9-32Zm0 9a8 8 0 1 1 0 16 8 8 0 0 1 0-16Z"/>',
+    temple:'<path d="m5 27 35-17 35 17v7H5Zm8 12h9v23h-9Zm22 0h10v23H35Zm23 0h9v23h-9ZM7 67h66v7H7Z"/>',
+    sun:'<path d="M13 65a27 27 0 0 1 54 0Z"/><path d="M40 8v12M10 23l8 8M70 23l-8 8M3 48h11m63 0H66" fill="none" stroke="currentColor" stroke-width="5"/>'
+  };
   let room,stage,position,carrier,cover,dock,paper,reader,hint,returnButton;
   let source,callbacks,book,artifact,step='idle',busy=false,progress=0,extraction=0,sheetSpread=0,visibleParts=1,writing=false,draft='',ignoreClick=0,ignoreClickKind=null,gesture=null,returnPending=false,returnInProgress=false;
   let secretDesk,openOnArrival=false,queuedBook=null,cueSeen=false;
@@ -241,6 +256,29 @@ window.Siddhartha = (() => {
     const origin=source.querySelector('.spine-face').getBoundingClientRect(),rect=carrier.getBoundingClientRect();
     const dx=origin.left+origin.width/2-rect.left-rect.width/2,dy=origin.top+origin.height/2-rect.top-rect.height/2;
     const front=query('.sid-cover-front'),scale=origin.height/front.offsetHeight;
+    if(source.matches('.pile-book,.painted-flat')){
+      // Keep a rigid, sideways binding: one scale, with rotation and foreshortening.
+      const flatScale=origin.width/front.offsetHeight;
+      const tilt=Math.acos(clamp(origin.height/(front.offsetWidth*flatScale)))*180/Math.PI;
+      const start=picking?{x:0,y:0,scale:1,tilt:0,amount:0}:{...heldDrag};
+      const upper=source.closest('.book-pile')?[...source.parentElement.querySelectorAll('.pile-book')].filter(el=>Number(el.style.getPropertyValue('--pile-index'))<Number(source.style.getPropertyValue('--pile-index'))):[];
+      room.dataset.flightModel='rigid-flat';
+      await tween(picking?760:540,t=>{
+        const u=picking?t:1-t,lift=smooth(clamp(u/.22)),turn=smooth(clamp((u-.22)/.78));
+        const s=flatScale*(1+.05*lift)*(1-turn)+start.scale*turn;
+        const x=(dx+14*lift)*(1-turn)+start.x*turn;
+        const y=(dy-7*lift)*(1-turn)+start.y*turn-Math.sin(turn*Math.PI)*16;
+        carrier.style.transform='translate('+x+'px,'+y+'px) scale3d('+s+','+s+','+s+') rotateZ('+(-90*(1-turn)+(-.8+start.tilt)*turn)+'deg) rotateY('+(-tilt*(1-turn))+'deg)';
+        const gap=smooth(clamp((u-.22)/.28));
+        for(const el of upper)el.style.translate='0 calc(var(--scene-scale) * var(--pile-step) * '+gap+')';
+        room.style.backgroundColor='rgba(37,30,23,'+(.62*turn*(1-.65*start.amount))+')';
+        stage.style.setProperty('--book-presence',String(turn*(1-.6*start.amount)));
+        document.documentElement.style.setProperty('--sid-backdrop-blur',(1.5*turn*(1-start.amount))+'px');
+      },t=>t);
+      if(!picking)for(const el of upper)el.style.removeProperty('translate');
+      stage.classList.remove('sid-in-flight');return;
+    }
+    room.dataset.flightModel='upright';
     const widthRatio=origin.width/(front.offsetWidth*scale),angle=Math.acos(clamp(widthRatio))*180/Math.PI;
     // The shelf uses a generous visible spine on short rows. Match that face
     // before revealing the full cover, rather than jumping to a thinner shape.
@@ -323,7 +361,7 @@ window.Siddhartha = (() => {
   function create() {
     room=document.createElement('div');room.className='siddhartha-room';room.hidden=true;
     room.setAttribute('role','dialog');room.setAttribute('aria-modal','true');room.setAttribute('aria-label','悉达多，书与一封接力信');
-    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span></span><span class="sid-cover-back"><small>此书留在这里</small><span class="sid-inside-copy"><strong>关于这本书</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
+    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small>此书留在这里</small><span class="sid-inside-copy"><strong>关于这本书</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
     room.addEventListener('pointerdown',()=>{room.classList.remove('sid-keyboard');if(ignoreClickKind==='page'){ignoreClick=0;ignoreClickKind=null;}},true);
     room.addEventListener('click',event=>{
       if(event.target.closest('.sid-paper-traces'))return;
@@ -402,7 +440,10 @@ window.Siddhartha = (() => {
     query('.sid-letter-packet em').textContent=artifact?.label || '';
     query('.sid-letter-packet i').textContent=artifact?.kind==='rose'?'🥀':artifact?.kind==='envelope'?'✉':'⌁';
     room.style.setProperty('--reader-cover',getComputedStyle(button).getPropertyValue('--book-color'));
-    room.dataset.coverArt=String(!!handlers.coverArt);
+    room.dataset.coverMaterial=handlers.coverArt?.material||'illustrated';
+    room.dataset.coverArt=String(!!handlers.coverArt&&handlers.coverArt.material!=='cloth');
+    query('.sid-binding span').textContent=book[1];
+    query('.sid-cover-mark').innerHTML=handlers.coverArt?.material==='cloth'?'<svg viewBox="0 0 80 80" focusable="false">'+(coverMarks[handlers.coverArt.mark]||coverMarks.leaf)+'</svg>':'';
     for(const property of ['--cover-art-size','--cover-art-position','--cover-art-clip','--cover-art-image']) {
       if(handlers.coverArt)room.style.setProperty(property,getComputedStyle(button).getPropertyValue(property));
       else room.style.removeProperty(property);

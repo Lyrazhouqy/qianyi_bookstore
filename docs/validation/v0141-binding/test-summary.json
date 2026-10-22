@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-22",
+  "build": "paper-bookshop-game-v0.14.1",
+  "branch": "feat/rhythm-v014",
+  "stats": {
+    "startTime": "2026-10-22T15:09:36.657Z",
+    "duration": 394932.42799999996,
+    "expected": 140,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "runtime_hashes_unchanged_through_final_tests": true,
+  "scope": "local Chromium/WebKit simulated mobile; no physical iPhone, no deployment",
+  "test_files": [
+    "tests/binding-motion.spec.cjs",
+    "tests/collection.spec.cjs",
+    "tests/motion.spec.cjs",
+    "tests/siddhartha.spec.cjs",
+    "tests/reading-pacing.spec.cjs",
+    "tests/quotation.spec.cjs",
+    "tests/rhythm.spec.cjs"
+  ],
+  "test_source_sha256": {
+    "tests/binding-motion.spec.cjs": "c8896516653decae17b255d0668f2f2075af64d22d6ba21c56b0b113ad16a3a4",
+    "tests/collection.spec.cjs": "d757b712b4ba015b51eced1f7558595e5d017551fb797f613c1973f6a48df7a4",
+    "tests/motion.spec.cjs": "58e27182dd34f764fc4b6510ff27f43f45a208c3ea7d6be6669952e32bbd79fd",
+    "tests/siddhartha.spec.cjs": "753a3f5b7f7111d92f6579820558b4f41f51b941790de6003902045dc1f883e2",
+    "tests/reading-pacing.spec.cjs": "275585bb4d02be5d175f731d78e55ae6632db507e78eadc9b7131cce7f7d4f83",
+    "tests/quotation.spec.cjs": "7bb116535bf7bbb06b2a61ed124a0c6957a0c330741aed55e80558e030fdc0a4",
+    "tests/rhythm.spec.cjs": "c2647f129147177ea5e6098384a4ff6031fbbbc268a1db629bf1f4df5aafab0b"
+  }
+}

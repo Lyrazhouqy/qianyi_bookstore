@@ -83,5 +83,8 @@ window.BookArrangement=(()=>{
   coffee.innerHTML=cleanPlate('coffee-clean',334,1102,138,96)+pile('coffee',[['gobi','flatHill'],['altay','flatRose'],['garden','flatHill'],['kafka','flatNight']],350,1186,145);
   for(const id of Object.keys(simpleSkins)){const b=document.querySelector(`.spine[data-id="${id}"]`),[x,y,w,h]=simpleSkins[id],image=quietSkins[id]?quietAtlas:simpleAtlas;b.style.setProperty('--cover-art-image',`url("${image}")`);b.style.setProperty('--cover-art-size',`${simpleSize/w*100}% ${simpleSize/h*100}%`);b.style.setProperty('--cover-art-position',`${x/(simpleSize-w)*100}% ${y/(simpleSize-h)*100}%`);b.style.setProperty('--cover-art-clip',clip);}
  }
- return{renderWall,renderTables,hitAt,targetFor,coverArt:id=>simpleSkins[id]?{painted:true}:null};
+ // Spine sprites are narrow side views, not front-cover artwork. Keep the two
+ // actual illustrated fronts; other books use the reader's full cloth binding.
+ const marks={siddhartha:'leaf',night:'leaf',questions:'mountain',tao:'stone',courage:'bird',bondage:'links',vegetarian:'leaf',toad:'pond',otherlife:'flower',bigtech:'factory',naval:'sail',fiscal:'key',symposium:'temple',tendays:'sun'};
+ return{renderWall,renderTables,hitAt,targetFor,coverArt:id=>['prince','lychee'].includes(id)?{painted:true}:{material:'cloth',mark:marks[id]||'leaf'}};
 })();

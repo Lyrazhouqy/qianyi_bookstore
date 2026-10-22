@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.0",
+  "build": "paper-bookshop-game-v0.14.1",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -68,7 +68,7 @@
     "assets/fonts/book-title-serif-v0113.woff2",
     "assets/fonts/book-title-serif-OFL.txt"
   ],
-  "status": "development-v0.14.0-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.1-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -704,5 +704,15 @@
     "eventRecording": "opt-in playtest=rhythm, memory only; enum/count details, no reading text or names",
     "replyDrafts": "existing per-reader draft object, namespaced by reply:bookId:paperId",
     "evidence": "docs/validation/v0140/REPORT.md"
+  },
+  "bindingRefinement": {
+    "version": "0.14.1",
+    "branch": "feat/rhythm-v014",
+    "front": "full cloth cover and square flat mark; no widened spine atlas; original cat/prince/lychee illustrated fronts kept",
+    "horizontalFlight": "extract, uniform scale3d and rotate from horizontal tilted pose, reverse for insertion",
+    "pile": "upper books settle only after clearance, lift before reinsertion",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.1&playtest=rhythm",
+    "evidence": "docs/validation/v0141-binding/REPORT.md",
+    "production": "unchanged v0.13.0"
   }
 }
