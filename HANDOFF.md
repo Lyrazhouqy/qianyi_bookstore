@@ -706,3 +706,5 @@
 - 先创建隔离部署 `dpl_G8XsQxV3wgjhG1EpTyhU7EnngS61`，60资源远程SHA256匹配，四手机环境通过。其 promotion API 返回422，未将失败称为发布；随后以相同白名单创建明确 production 部署 `dpl_AzX2E39tmvzL2XRtBC2Aq7uAYkGk`，状态READY且两生产域名已指向该部署。正式固定入口 https://paper-bookshop-playtest.vercel.app/v0.13.0/ ，唯一部署固定URL及回退旧部署 `dpl_EgtnxRQQd6PyDrK92HAPUXGopr82` 见 release-manifest 的 deployment。
 - 正式部署60资源再次远程SHA256全匹配；Chromium/WebKit各320/390，共四环境实际线上模拟触摸验证31本、拿起封面→翻开、历史署名纸、翻页换纸/一页一张、写自己的纸、归还、无文字选区和页面错误。初始隔离检查三环境通过，第四环境随机开到末页而测试仅找next，修正为选择当前可用方向后四环境通过；正式四环境亦全通过。引擎8/8再核对。未修改游戏运行字节以迎合测试，也未把它当成新盲测或真实iPhone验收。
 - 隔离构建日志无构建错误，部署运行错误日志查询无记录；这是纯静态游戏，不将空的函数日志当成长期客户端监控。正式资源/浏览器结果、阶段证据、release.json在本机 evidence/deployment-v0130，manifest保存全部60源hash、源码提交、缓存配置、固定URL和回退ID。接下来可使用免登录固定版本链接在手机上验收手感。
+
+- 发布后额外以全新、无cookie的请求上下文验证正式固定入口：HTTP200且build为v0.13.0，无需登录；证据anonymous-access.json。该公共固定路径无需分享参数，不受备用唯一部署分享链接30天有效期限制。生产构建日志完成且无错误，生产错误/致命运行日志无记录；未据此宣称长期监控。

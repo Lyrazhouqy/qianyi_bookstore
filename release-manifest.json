@@ -167,7 +167,9 @@
     "baseUrl": "https://paper-bookshop-playtest-oc4l3qpzn-zhouxixis-projects-b5eae314.vercel.app/v0.13.0/",
     "accessFile": ".preview/mobile-playtest-v0130.json",
     "expiresAt": "1970-01-21T18:40:49.524Z",
-    "evidence": "evidence/deployment-v0130/release.json"
+    "evidence": "evidence/deployment-v0130/release.json",
+    "publicUrl": "https://paper-bookshop-playtest.vercel.app/v0.13.0/",
+    "publicAccessVerified": true
   },
   "secrets": {
     "storage": "paperbook-secrets-v1",
@@ -682,6 +684,7 @@
     "limitations": [
       "Browser touch emulation; no physical iPhone acceptance",
       "No multiplayer server; local saves are origin-specific"
-    ]
+    ],
+    "publicAccessEvidence": "evidence/deployment-v0130/anonymous-access.json"
   }
 }
