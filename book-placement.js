@@ -71,9 +71,9 @@ window.BookArrangement=(()=>{
  function targetFor(event){const button=event.target.closest('.spine');return !button?null:event.detail===0||!button.closest('.book-pile')?button:hitAt(event.clientX,event.clientY)||button;}
  function renderWall(root){
   const row1=[['siddhartha',238,261,67,159],['questions',305,261,67,159],['tao',372,261,67,159],['naval',573,261,67,159],['fiscal',640,261,67,159]];
-  const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159],['night',573,464,67,159]];
+  const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159],['night',525,464,60,159]];
   const row3=[['toad',238,650,67,178],['otherlife',305,650,67,178],['bigtech',372,650,67,178],['symposium',573,650,67,178],['tendays',640,650,67,178]];
-  root.innerHTML=`<div class="wall-clean top" aria-hidden="true"></div><div class="wall-clean middle" aria-hidden="true"></div><div class="wall-clean bottom" aria-hidden="true"></div>`+[...row1,...row2,...row3].map(args=>standing(...args)).join('')+pile('wall-top',[['diamond','flatOchre'],['presence','flatIvory']],439,420,134)+pile('wall-middle',[['red','flatRose'],['solitude','flatSea']],439,623,120)+pile('wall-bottom',[['notetaking','flatCloud'],['drive','flatOchre']],439,828,134);
+  root.innerHTML=`<div class="wall-clean top" aria-hidden="true"></div><div class="wall-clean middle" aria-hidden="true"></div><div class="wall-clean bottom" aria-hidden="true"></div>`+[...row1,...row2,...row3].map(args=>standing(...args)).join('')+pile('wall-top',[['diamond','flatOchre'],['presence','flatIvory']],439,420,134)+pile('wall-middle',[['red','flatRose'],['solitude','flatSea']],424,623,96)+pile('wall-bottom',[['notetaking','flatCloud'],['drive','flatOchre']],439,828,134);
 
  }
  function renderTables(front,coffee){

@@ -234,7 +234,7 @@ shelves(); renderDisplayBooks(); updateViewport(); status(); window.BookSecrets.
 
 if (new URLSearchParams(location.search).get('focus') === 'siddhartha') {
   const book = $('shelves').querySelector('[data-id="siddhartha"]');
-  $('shelves').scrollLeft = book.closest('.shelf').offsetLeft;
+  book.scrollIntoView({block:'center',inline:'center',behavior:'instant'});
   book.classList.add('focus-book');
   document.querySelector('.tip').textContent = '《悉达多》· 轻触书脊，拿到面前';
 }

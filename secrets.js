@@ -137,6 +137,9 @@ window.BookSecrets=(()=>{
     }
     function artifactAt(id){return id==='preset'?presetArtifact():id===keepsake()?.id?keepsakeArtifact():asCurrentItem(id);}
     function asCurrentItem(id){const item=visibleList().find(x=>x.id===id);return item?asArtifact(item):null;}
+    const replyKey=id=>'reply:'+book[0]+':'+id;
+    function replyDraft(id){const value=drafts()[replyKey(id)]?.text;return typeof value==='string'?value.slice(0,3000):'';}
+    function saveReplyDraft(id,value){return saveDraft(replyKey(id),value?{kind:'reply',text:value.slice(0,3000)}:null);}
     function pageCommitted(id){current=id;keepSelection(book[0],id);renderTabs();window.BookRhythm.record('page_turn',book[0],{page:order.indexOf(current)+1,pages:order.length});}
     function arrange(allowDraw=false){
       const all=list();
@@ -244,13 +247,13 @@ window.BookSecrets=(()=>{
       if(saving)return;
       if(event.target.closest('.sid-desk-close'))dismiss();else if(event.target.closest('.sid-bury'))bury();
     });
-    return {reset(next,original){book=next;preset=original;form=null;saving=false;prepared=false;readHere=new Set();editor.hidden=true;room.classList.remove('sid-composing');arrange();chooseInitial();renderTabs();},opening,returned,initialArtifact(){return artifactAt(current);},editing:()=>!editor.hidden||saving,dismiss};
+    return {reset(next,original){book=next;preset=original;form=null;saving=false;prepared=false;readHere=new Set();editor.hidden=true;room.classList.remove('sid-composing');arrange();chooseInitial();renderTabs();},opening,returned,replyDraft,saveReplyDraft,initialArtifact(){return artifactAt(current);},editing:()=>!editor.hidden||saving,dismiss};
   }
   function mountPlaytest(){
     if(director){const data=read();for(const [id] of books)director.sync(id,data.books[id]||[],actor);}
     decorate();if(!demo)return;
     const ticket=document.createElement('aside');ticket.className='revisit-ticket';ticket.setAttribute('aria-label','本机重访试玩');
-    ticket.innerHTML='<button class="revisit-toggle" aria-expanded="false">'+(discoveryDemo?'发现试玩':'本机试玩')+' · '+actor+' ↗</button><div class="revisit-choices" hidden><small>同一浏览器模拟三位书友</small>'+['A','B','N'].map(id=>'<a href="?v=0.13.0&playtest='+(discoveryDemo?'discovery':'revisit')+'&reader='+id+'" '+(id===actor?'aria-current="page"':'')+'>'+id+' · '+({A:'没有自己的留言',B:'有自己的旧便笺',N:'新便笺的主人'}[id])+'</a>').join('')+'<button class="revisit-reset">重演这次相遇</button><a href="?v=0.13.0">回到原存档</a></div>';
+    ticket.innerHTML='<button class="revisit-toggle" aria-expanded="false">'+(discoveryDemo?'发现试玩':'本机试玩')+' · '+actor+' ↗</button><div class="revisit-choices" hidden><small>同一浏览器模拟三位书友</small>'+['A','B','N'].map(id=>'<a href="?v=0.14.0&playtest='+(discoveryDemo?'discovery':'revisit')+'&reader='+id+'" '+(id===actor?'aria-current="page"':'')+'>'+id+' · '+({A:'没有自己的留言',B:'有自己的旧便笺',N:'新便笺的主人'}[id])+'</a>').join('')+'<button class="revisit-reset">重演这次相遇</button><a href="?v=0.14.0">回到原存档</a></div>';
     document.body.appendChild(ticket);const toggle=ticket.querySelector('.revisit-toggle'),choices=ticket.querySelector('.revisit-choices');
     toggle.addEventListener('click',()=>{choices.hidden=!choices.hidden;toggle.setAttribute('aria-expanded',String(!choices.hidden));});
     ticket.querySelector('.revisit-reset').addEventListener('click',()=>{for(const key of [KEY,...['A','B','N'].flatMap(id=>[prefix+'-reading-v1-'+id,prefix+'-drafts-v1-'+id,prefix+'-game-v1-'+id,...(discoveryDemo?['paperbook-discovery-visit-v1-'+id]:[])])])localStorage.removeItem(key);location.reload();});

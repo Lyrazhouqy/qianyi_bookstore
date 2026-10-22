@@ -9,7 +9,7 @@ async function all(page) {while(await page.locator('.sid-unfold').count()){await
 async function put(page) {await page.getByRole('button',{name:'折好，放回夹页'}).tap();await step(page,'open');}
 async function back(page) {await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveAttribute('data-phase','idle');await expect(room(page)).toBeHidden();await expect(page.locator('.is-out')).toHaveCount(0);}
 const errors=new WeakMap();
-test.beforeEach(async({page})=>{const list=[];errors.set(page,list);page.on('pageerror',e=>list.push(e.message));await page.goto('/?focus=siddhartha');await expect(page.locator('.spine')).toHaveCount(16);});
+test.beforeEach(async({page})=>{const list=[];errors.set(page,list);page.on('pageerror',e=>list.push(e.message));await page.route('**/real-materials.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookRealMaterials=()=>({});'}));await page.goto('/?focus=siddhartha');await expect(page.locator('.spine')).toHaveCount(34);});
 test.afterEach(async({page})=>expect(errors.get(page)).toEqual([]));
 test('one tap extracts and opens the letter, then unfolds and returns',async({page})=>{
  await pick(page);await expect(page.locator('.sid-cover')).toHaveAttribute('aria-expanded','false');await expect(page.locator('.sid-letter')).toBeHidden();await expect(page.locator('.sid-cover-front')).toBeVisible();await expect(page.locator('.sid-cover-back')).toBeHidden();

@@ -77,7 +77,7 @@ window.Siddhartha = (() => {
     const releasedDrag=step==='cover-drag';
     busy=true;setStep(target?'opening':'closing');
     const from=progress;
-    await tween(Math.max(240,(returnInProgress?460:680)*Math.abs(target-from)),t=>pose(from+(target-from)*t),releasedDrag?glide:smooth);
+    await tween(Math.max(240,(returnInProgress?360:680)*Math.abs(target-from)),t=>pose(from+(target-from)*t),releasedDrag?glide:smooth);
     busy=false;delete room.dataset.openQueued;pose(target);setStep(target?'open':'held');if(target)artifact?.onReveal?.();
     guidance(target?(artifact?(artifact.kind==='relay'?'书页间，露出一角折信':'书页间，藏着'+artifact.label):'翻过的书页，也记得来过的人'):'轻点封面，或向左拖开',target?(artifact?'轻点纸角直接展开，也可以向上抽出':'这次没有遇见新的阅读痕迹。'):'也可以随时放回原来的书位');
     returnButton.textContent='收起手中的书';
@@ -130,13 +130,14 @@ window.Siddhartha = (() => {
     if(visibleParts<all.length && !['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-unfold">'+escapeHTML(artifact.unfoldLabel || '沿折痕展开下一段 ⌄')+'</button>');
     if(['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-flip" data-sid="flip">'+(visibleParts===1?'翻到背面 ↻':'翻回正面 ↺')+'</button>');
     if(writing) reader.insertAdjacentHTML('beforeend','<div class="sid-write"><label for="sid-reply"><span class="sid-writing-pen" aria-hidden="true">✎</span> '+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'在信的末尾续写')+'</label><textarea id="sid-reply" maxlength="'+(artifact.kind==='stack'?600:3000)+'" placeholder="'+escapeHTML(artifact.writePlaceholder||'写给留下这张纸的人……')+'">'+escapeHTML(draft)+'</textarea><div class="sid-write-actions"><button class="sid-put" data-sid="cancel">放下笔</button><button class="btn" data-sid="save">'+(artifact.kind==='stack'?'夹在便笺下面':'留在信上')+'</button></div><p class="sid-message" role="status"></p></div>');
-    reader.insertAdjacentHTML('beforeend','<div class="sid-letter-actions"><button class="sid-put" data-sid="put">折好，放回夹页 ↘</button>'+((artifact.kind==='relay'||artifact.kind==='stack')&&visibleParts===all.length&&!writing?'<button class="sid-pen'+(artifact.kind==='stack'?' sid-stack-pen':'')+(artifact.invite?' is-inviting':'')+'" aria-label="'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔续写')+'" data-sid="write">'+(artifact.kind==='stack'?'<img src="assets/scene/fountain-pen-burgundy-v075.png" alt="" draggable="false">':'<span class="sid-pen-glyph" aria-hidden="true">✎</span>')+'<span class="sid-pen-caption" aria-hidden="true">'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔')+'</span></button>':'')+'</div>');
+    reader.insertAdjacentHTML('beforeend','<div class="sid-letter-actions"><button class="sid-put" data-sid="put">'+(artifact.kind==='postcard'?'放回夹页 ↘':'折好，放回夹页 ↘')+'</button>'+((artifact.kind==='relay'||artifact.kind==='stack')&&visibleParts===all.length&&!writing?'<button class="sid-pen sid-stack-pen'+(artifact.invite?' is-inviting':'')+'" aria-label="'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔续写')+'" data-sid="write"><img src="assets/scene/fountain-pen-burgundy-v075.png" alt="" draggable="false"><span class="sid-pen-caption" aria-hidden="true">'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔')+'</span></button>':'')+'</div>');
   }
   function buildLetter() { const all=allParts();visibleParts=Math.max(1,Math.min(all.length,artifact.initialParts?.()||1));reader.innerHTML=all.slice(0,visibleParts).map(segmentHTML).join('');writing=false;letterControls(); }
   async function takeLetter({unfoldOnArrival=false} = {}) {
     if(!artifact || busy || progress<.98 || ['packet','letter'].includes(step))return;
     busy=true;setStep('pulling-letter');const from=extraction;
-    await tween(unfoldOnArrival?480:620,t=>{extraction=from+(1-from)*t;placeLetter();});
+    const ordinary=['note','stack'].includes(artifact.kind);
+    await tween(ordinary?(unfoldOnArrival?240:320):(unfoldOnArrival?480:620),t=>{extraction=from+(1-from)*t;placeLetter();});
     extraction=1;room.classList.add('sid-room-reading');
     busy=false;placeLetter();setStep('packet');
     query('.sid-letter-pick').setAttribute('aria-label',artifact.kind==='relay'?'展开折信':'展开'+artifact.label);
@@ -155,7 +156,7 @@ window.Siddhartha = (() => {
     const flap=query('.sid-letter-packet').cloneNode(true);flap.classList.add('sid-opening-flap');flap.setAttribute('aria-hidden','true');paper.appendChild(flap);
     reader.classList.add('sid-folding');
     const foldedHeight=parseFloat(getComputedStyle(paper).getPropertyValue('--packet-height'));
-    await tween(620,t=>{sheetSpread=t;reader.style.height=(foldedHeight+(height-foldedHeight)*t)+'px';face.style.transform='rotateX('+(-88*(1-t))+'deg)';face.style.filter='brightness('+(.8+.2*t)+')';flap.style.transform='rotateX('+(175*t)+'deg)';flap.style.opacity=String(1-clamp((t-.55)/.35));reader.style.setProperty('--controls-opacity',String(clamp((t-.65)/.35)));placeLetter();});
+    await tween(['note','stack'].includes(artifact.kind)?260:620,t=>{sheetSpread=t;reader.style.height=(foldedHeight+(height-foldedHeight)*t)+'px';face.style.transform='rotateX('+(-88*(1-t))+'deg)';face.style.filter='brightness('+(.8+.2*t)+')';flap.style.transform='rotateX('+(175*t)+'deg)';flap.style.opacity=String(1-clamp((t-.55)/.35));reader.style.setProperty('--controls-opacity',String(clamp((t-.65)/.35)));placeLetter();});
     flap.remove();reader.classList.remove('sid-folding');reader.style.height='';face.style.transform='';face.style.filter='';busy=false;setStep('letter');
     placeLetter();artifact.onRead?.();if(artifact.kind==='relay')record('relay_open',{parts:visibleParts});guidance(artifact.title,artifact.detail);artifact.invite=false;
     if(returnPending)returnToShelf();
@@ -192,29 +193,30 @@ window.Siddhartha = (() => {
   }
   async function putLetter() {
     if(busy || extraction===0)return;
+    const returnedParts=paper.classList.contains('is-reading')?visibleParts:0,ordinary=['note','stack'].includes(artifact.kind);
     busy=true;setStep('putting-letter');writing=false;document.activeElement?.blur();
     const scrollFrom=reader.scrollTop;
-    if(scrollFrom)await tween(180,t=>{reader.scrollTop=scrollFrom*(1-t);});
+    if(scrollFrom){if(returnInProgress)reader.scrollTop=0;else await tween(180,t=>{reader.scrollTop=scrollFrom*(1-t);});}
     reader.classList.add('sid-folding');reader.style.setProperty('--controls-opacity','0');
     const leaves=[...reader.querySelectorAll('.sid-leaf')].reverse();
     const folding=leaves.map(leaf=>({leaf,face:leaf.firstElementChild,height:leaf.getBoundingClientRect().height}));
-    if(folding.length)await tween(300,t=>{for(const {leaf,face,height} of folding){leaf.style.height=(height*Math.cos(t*Math.PI/2))+'px';face.style.transform='rotateX('+(-90*t)+'deg)';}placeLetter();});
+    if(folding.length)await tween(returnInProgress?180:300,t=>{for(const {leaf,face,height} of folding){leaf.style.height=(height*Math.cos(t*Math.PI/2))+'px';face.style.transform='rotateX('+(-90*t)+'deg)';}placeLetter();});
     for(const {leaf} of folding)leaf.remove();
     if(paper.classList.contains('is-reading')&&artifact.kind!=='postcard') {
       const face=reader.querySelector('.sid-segment'),height=reader.getBoundingClientRect().height;
       const flap=query('.sid-letter-packet').cloneNode(true);flap.classList.add('sid-opening-flap');flap.setAttribute('aria-hidden','true');paper.appendChild(flap);
       const foldedHeight=parseFloat(getComputedStyle(paper).getPropertyValue('--packet-height'));
-      await tween(returnInProgress?280:420,t=>{sheetSpread=1-t;reader.style.height=(height+(foldedHeight-height)*t)+'px';flap.style.transform='rotateX('+(175*(1-t))+'deg)';flap.style.opacity=String(clamp((t-.2)/.4));if(face){face.style.transformOrigin='top';face.style.transform='rotateX('+(-88*t)+'deg)';}placeLetter();});
+      await tween(ordinary?220:returnInProgress?220:420,t=>{sheetSpread=1-t;reader.style.height=(height+(foldedHeight-height)*t)+'px';flap.style.transform='rotateX('+(175*(1-t))+'deg)';flap.style.opacity=String(clamp((t-.2)/.4));if(face){face.style.transformOrigin='top';face.style.transform='rotateX('+(-88*t)+'deg)';}placeLetter();});
       flap.remove();
       reader.style.height='';if(face)face.style.transform='';
     }
     reader.classList.remove('sid-folding');reader.innerHTML='';sheetSpread=0;paper.classList.remove('is-reading');room.classList.remove('sid-room-reading');
     query('.sid-letter-pick').setAttribute('aria-label',artifact?.pickLabel || '从夹页抽出接力信');
     const from=extraction;
-    await tween(returnInProgress?320:480,t=>{extraction=from*(1-t);placeLetter();});
+    await tween(ordinary?220:returnInProgress?240:480,t=>{extraction=from*(1-t);placeLetter();});
     extraction=0;busy=false;placeLetter();setStep('open');
     if(artifact.kind==='postcard')record('artifact_return',{kind:'postcard'});
-    if(artifact.kind==='relay')record('relay_return',{parts:visibleParts});
+    if(artifact.kind==='relay')record('relay_return',{parts:returnedParts});
     guidance(artifact.kind==='relay'?'信已经回到原来的夹页':artifact.label+'已经回到原来的夹页','可以再取出来，或合书放回');
     if(returnPending)returnToShelf();
   }
@@ -241,7 +243,7 @@ window.Siddhartha = (() => {
     // The shelf uses a generous visible spine on short rows. Match that face
     // before revealing the full cover, rather than jumping to a thinner shape.
     const stretch=Math.max(1,widthRatio),start=picking?{x:0,y:0,scale:1,tilt:0,amount:0}:{...heldDrag};
-    await tween(picking?720:620,t=>{
+    await tween(picking?720:500,t=>{
       const p=picking?t:1-t,s=scale+(start.scale-scale)*p;
       carrier.style.transform='translate('+(dx*(1-p)+start.x*p)+'px,'+(dy*(1-p)+start.y*p-Math.sin(p*Math.PI)*12)+'px) scale('+s*(stretch+(1-stretch)*p)+','+s+') rotateY('+(-angle*(1-p))+'deg) rotateZ('+((-.8+start.tilt)*p)+'deg)';
       room.style.backgroundColor='rgba(37,30,23,'+(.62*p*(1-.65*start.amount))+')';
@@ -351,18 +353,18 @@ window.Siddhartha = (() => {
       hinge(progress>.5?0:1);});
     query('.sid-letter-pick').addEventListener('click',()=>{if(ignoreClickKind!=='letter'||performance.now()>=ignoreClick){if(extraction===1)openLetter();else takeLetter({unfoldOnArrival:true});}});
     returnButton.addEventListener('click',returnToShelf);
-    reader.addEventListener('input',event=>{if(event.target.id==='sid-reply')draft=event.target.value;});
+    reader.addEventListener('input',event=>{if(event.target.id==='sid-reply'){draft=event.target.value;secretDesk.saveReplyDraft(artifact.localId||'preset',draft);}});
     reader.addEventListener('click',event=>{
       if(busy)return;
       if(event.target.closest('[data-sid="flip"]')){flipPaper();return;}
       if(event.target.closest('.sid-unfold')) {unfoldNext();return;}
       const action=event.target.closest('[data-sid]')?.dataset.sid;
       if(action==='put')putLetter();
-      else if(action==='write' && (artifact.kind==='relay'||artifact.kind==='stack')){writing=true;letterControls();query('textarea').focus();query('textarea').scrollIntoView({block:'nearest'});}
+      else if(action==='write' && (artifact.kind==='relay'||artifact.kind==='stack')){draft=secretDesk.replyDraft(artifact.localId||'preset');writing=true;if(artifact.kind==='relay')record('relay_pen_click');letterControls();query('textarea').focus();query('textarea').scrollIntoView({block:'nearest'});}
       else if(action==='cancel'){writing=false;letterControls();}
-      else if(action==='save' && (artifact.kind==='relay'||artifact.kind==='stack')){
+      else if(action==='save' && writing && (artifact.kind==='relay'||artifact.kind==='stack')){
         const text=query('textarea').value.trim();if(!text){query('.sid-message').textContent='写一点什么，再留给下一位读者。';return;}
-        if(artifact.write){const result=artifact.write(text);if(!result.ok){query('.sid-message').textContent=result.message;return;}}else callbacks.write(text);draft='';writing=false;letterControls();unfoldNext();
+        if(artifact.write){const result=artifact.write(text);if(!result.ok){query('.sid-message').textContent=result.message;return;}}else callbacks.write(text);secretDesk.saveReplyDraft(artifact.localId||'preset','');if(artifact.kind==='relay')record('relay_save',{parts:allParts().length});draft='';writing=false;letterControls();unfoldNext();
       }
     });
     document.addEventListener('keydown',event=>{
