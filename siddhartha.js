@@ -4,11 +4,18 @@ window.Siddhartha = (() => {
   const escapeHTML = value => String(value).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   let room,stage,position,carrier,cover,dock,paper,reader,hint,returnButton;
   let source,callbacks,book,artifact,step='idle',busy=false,progress=0,extraction=0,sheetSpread=0,visibleParts=1,writing=false,draft='',ignoreClick=0,ignoreClickKind=null,gesture=null,returnPending=false,returnInProgress=false;
-  let secretDesk,openOnArrival=false,queuedBook=null;
+  let secretDesk,openOnArrival=false,queuedBook=null,cueSeen=false;
   let heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};
   const running = new Set();
   const query = selector => room.querySelector(selector);
-  function setStep(value) { step=value; room.dataset.step=value;cover?.setAttribute('aria-busy',String(!['held','open','letter','packet','idle'].includes(value))); }
+  function setStep(value) { step=value; room.dataset.step=value;cover?.setAttribute('aria-busy',String(!['held','open','letter','packet','idle'].includes(value)));if(value==='open')requestAnimationFrame(checkCue); }
+  const record=(type,detail={})=>window.BookRhythm.record(type,book?.[0],detail);
+  function checkCue(){
+    if(cueSeen||room.hidden||step!=='open'||artifact?.kind!=='postcard'||paper.hidden)return;
+    const r=paper.getBoundingClientRect(),s=getComputedStyle(paper);
+    if(s.visibility==='hidden'||r.width<=0||r.height<=0||r.left<0||r.right>innerWidth||r.top<0||r.bottom>innerHeight)return;
+    cueSeen=true;record('artifact_cue_seen',{kind:'postcard'});
+  }
   function guidance(text,detail='') { hint.innerHTML=text+(detail?'<small>'+detail+'</small>':''); }
   const smooth = t => t*t*t*(t*(t*6-15)+10);
   const glide = t => 1-Math.pow(1-t,3);
@@ -86,7 +93,7 @@ window.Siddhartha = (() => {
     const source=query('.sid-quotation-source');source.hidden=!quoted;source.textContent=quoted?'—— '+candidate.source:'';
   }
   function chooseArtifact(next){
-    artifact=next;insideCopy();room.dataset.stock=next?.stock||'cream';room.dataset.artifact=next?.kind||'none';
+    artifact=next;cueSeen=false;insideCopy();room.dataset.stock=next?.stock||'cream';room.dataset.artifact=next?.kind||'none';room.dataset.artifactSource=next?.source||'';
     room.setAttribute('aria-label',book[1]+(next?'，书与'+next.label:'，书籍阅读'));
     paper.querySelector('.sid-letter-packet em').textContent=next?.label||'';paper.querySelector('.sid-letter-packet i').textContent=next?.kind==='rose'?'🥀':next?.kind==='envelope'?'✉':'⌁';paper.querySelector('.sid-letter-pick').setAttribute('aria-label',next?.pickLabel||'取出夹页');query('.sid-discovery-hint').textContent=next?'……好像有人在这里留下了什么。':'也可以在这页夹一点什么。';placeLetter();
   }
@@ -113,12 +120,15 @@ window.Siddhartha = (() => {
   async function turnPaperPage(next,direction,commit){
     const turn=startPageTurn(direction);return turn?turn.finish(next,commit):false;
   }
-  function segmentHTML(part,index) { return '<div class="sid-segment" data-segment="'+index+'"><small>'+escapeHTML(part[0])+'</small>'+escapeHTML(part[1])+'</div>'; }
+  function segmentHTML(part,index) {
+    const picture=artifact.kind==='postcard'&&index===0?'<svg class="sid-postcard-picture" viewBox="0 0 320 150" aria-hidden="true"><rect width="320" height="150" fill="#a6b9ac"/><circle cx="245" cy="38" r="23" fill="#e9c477"/><path d="M0 116L85 39 183 126 245 81 320 128V150H0Z" fill="#718c7b"/><path d="M0 139Q96 93 181 135T320 133V150H0Z" fill="#d3bc8c"/><path d="M126 44l21 9 26-14 8 3-19 17 18 10-5 5-27-6-13 11-5-2 6-15-17-12z" fill="#f7edd4"/></svg>':'';
+    return '<div class="sid-segment" data-segment="'+index+'"><small>'+escapeHTML(part[0])+'</small>'+picture+escapeHTML(part[1])+'</div>';
+  }
   function letterControls() {
     query('.sid-unfold')?.remove();query('.sid-letter-actions')?.remove();query('.sid-write')?.remove();
     const all=allParts();
-    if(visibleParts<all.length && artifact.kind!=='fold') reader.insertAdjacentHTML('beforeend','<button class="sid-unfold">'+escapeHTML(artifact.unfoldLabel || '沿折痕展开下一段 ⌄')+'</button>');
-    if(artifact.kind==='fold') reader.insertAdjacentHTML('beforeend','<button class="sid-flip" data-sid="flip">'+(visibleParts===1?'翻到背面 ↻':'翻回正面 ↺')+'</button>');
+    if(visibleParts<all.length && !['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-unfold">'+escapeHTML(artifact.unfoldLabel || '沿折痕展开下一段 ⌄')+'</button>');
+    if(['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-flip" data-sid="flip">'+(visibleParts===1?'翻到背面 ↻':'翻回正面 ↺')+'</button>');
     if(writing) reader.insertAdjacentHTML('beforeend','<div class="sid-write"><label for="sid-reply"><span class="sid-writing-pen" aria-hidden="true">✎</span> '+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'在信的末尾续写')+'</label><textarea id="sid-reply" maxlength="'+(artifact.kind==='stack'?600:3000)+'" placeholder="'+escapeHTML(artifact.writePlaceholder||'写给留下这张纸的人……')+'">'+escapeHTML(draft)+'</textarea><div class="sid-write-actions"><button class="sid-put" data-sid="cancel">放下笔</button><button class="btn" data-sid="save">'+(artifact.kind==='stack'?'夹在便笺下面':'留在信上')+'</button></div><p class="sid-message" role="status"></p></div>');
     reader.insertAdjacentHTML('beforeend','<div class="sid-letter-actions"><button class="sid-put" data-sid="put">折好，放回夹页 ↘</button>'+((artifact.kind==='relay'||artifact.kind==='stack')&&visibleParts===all.length&&!writing?'<button class="sid-pen'+(artifact.kind==='stack'?' sid-stack-pen':'')+(artifact.invite?' is-inviting':'')+'" aria-label="'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔续写')+'" data-sid="write">'+(artifact.kind==='stack'?'<img src="assets/scene/fountain-pen-burgundy-v075.png" alt="" draggable="false">':'<span class="sid-pen-glyph" aria-hidden="true">✎</span>')+'<span class="sid-pen-caption" aria-hidden="true">'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔')+'</span></button>':'')+'</div>');
   }
@@ -138,13 +148,16 @@ window.Siddhartha = (() => {
   async function openLetter() {
     if(busy || extraction!==1 || paper.classList.contains('is-reading'))return;
     busy=true;setStep('unfolding');paper.classList.add('is-reading');buildLetter();
+    if(artifact.kind==='postcard'){
+      await tween(240,t=>{reader.style.opacity=String(t);placeLetter();});reader.style.opacity='';busy=false;setStep('letter');placeLetter();artifact.onRead?.();record('artifact_open',{kind:'postcard',face:'front'});guidance(artifact.title,artifact.detail);if(returnPending)returnToShelf();return;
+    }
     const face=reader.querySelector('.sid-segment'),height=Math.min(reader.scrollHeight,parseFloat(getComputedStyle(reader).maxHeight));
     const flap=query('.sid-letter-packet').cloneNode(true);flap.classList.add('sid-opening-flap');flap.setAttribute('aria-hidden','true');paper.appendChild(flap);
     reader.classList.add('sid-folding');
     const foldedHeight=parseFloat(getComputedStyle(paper).getPropertyValue('--packet-height'));
     await tween(620,t=>{sheetSpread=t;reader.style.height=(foldedHeight+(height-foldedHeight)*t)+'px';face.style.transform='rotateX('+(-88*(1-t))+'deg)';face.style.filter='brightness('+(.8+.2*t)+')';flap.style.transform='rotateX('+(175*t)+'deg)';flap.style.opacity=String(1-clamp((t-.55)/.35));reader.style.setProperty('--controls-opacity',String(clamp((t-.65)/.35)));placeLetter();});
     flap.remove();reader.classList.remove('sid-folding');reader.style.height='';face.style.transform='';face.style.filter='';busy=false;setStep('letter');
-    placeLetter();artifact.onRead?.();guidance(artifact.title,artifact.detail);artifact.invite=false;
+    placeLetter();artifact.onRead?.();if(artifact.kind==='relay')record('relay_open',{parts:visibleParts});guidance(artifact.title,artifact.detail);artifact.invite=false;
     if(returnPending)returnToShelf();
   }
   async function unfoldNext() {
@@ -164,18 +177,18 @@ window.Siddhartha = (() => {
       reader.style.setProperty('--controls-opacity',String(clamp((t-.65)/.35)));placeLetter();
     });
     leaf.style.height='';face.style.transform='';face.style.filter='';reader.style.height='';reader.classList.remove('sid-folding');
-    placeLetter();busy=false;setStep('letter');
+    placeLetter();busy=false;setStep('letter');if(artifact.kind==='relay')record('relay_unfold',{parts:visibleParts});
     // Move only the paper's scroll surface, never the stage or the surrounding book.
     reader.scrollTo({top:Math.max(0,leaf.offsetTop+leaf.offsetHeight-reader.clientHeight),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
     if(returnPending)returnToShelf();
   }
   async function flipPaper(){
-    if(busy||artifact.kind!=='fold')return;
+    if(busy||!['fold','postcard'].includes(artifact.kind))return;
     busy=true;setStep('flipping');
     await tween(160,t=>{reader.style.transform='perspective(900px) rotateY('+(t*90)+'deg)';});
     visibleParts=visibleParts===1?2:1;reader.innerHTML=segmentHTML(allParts()[visibleParts-1],visibleParts-1);letterControls();placeLetter();
     await tween(180,t=>{reader.style.transform='perspective(900px) rotateY('+(-90*(1-t))+'deg)';});
-    reader.style.transform='';busy=false;setStep('letter');placeLetter();if(returnPending)returnToShelf();
+    reader.style.transform='';busy=false;setStep('letter');placeLetter();if(artifact.kind==='postcard'){const face=visibleParts===1?'front':'back';artifact.onFlip?.(face);record('artifact_flip',{kind:'postcard',face});}if(returnPending)returnToShelf();
   }
   async function putLetter() {
     if(busy || extraction===0)return;
@@ -187,7 +200,7 @@ window.Siddhartha = (() => {
     const folding=leaves.map(leaf=>({leaf,face:leaf.firstElementChild,height:leaf.getBoundingClientRect().height}));
     if(folding.length)await tween(300,t=>{for(const {leaf,face,height} of folding){leaf.style.height=(height*Math.cos(t*Math.PI/2))+'px';face.style.transform='rotateX('+(-90*t)+'deg)';}placeLetter();});
     for(const {leaf} of folding)leaf.remove();
-    if(paper.classList.contains('is-reading')) {
+    if(paper.classList.contains('is-reading')&&artifact.kind!=='postcard') {
       const face=reader.querySelector('.sid-segment'),height=reader.getBoundingClientRect().height;
       const flap=query('.sid-letter-packet').cloneNode(true);flap.classList.add('sid-opening-flap');flap.setAttribute('aria-hidden','true');paper.appendChild(flap);
       const foldedHeight=parseFloat(getComputedStyle(paper).getPropertyValue('--packet-height'));
@@ -200,6 +213,8 @@ window.Siddhartha = (() => {
     const from=extraction;
     await tween(returnInProgress?320:480,t=>{extraction=from*(1-t);placeLetter();});
     extraction=0;busy=false;placeLetter();setStep('open');
+    if(artifact.kind==='postcard')record('artifact_return',{kind:'postcard'});
+    if(artifact.kind==='relay')record('relay_return',{parts:visibleParts});
     guidance(artifact.kind==='relay'?'信已经回到原来的夹页':artifact.label+'已经回到原来的夹页','可以再取出来，或合书放回');
     if(returnPending)returnToShelf();
   }
@@ -212,7 +227,7 @@ window.Siddhartha = (() => {
     if(progress>0) await hinge(0);
     busy=true;setStep('returning');paper.hidden=true;
     await flyBook(false);
-    secretDesk?.returned?.();
+    secretDesk?.returned?.();record('book_return');
     room.hidden=true;room.style.backgroundColor='';source.classList.remove('is-out','sid-return-target');$('shop').inert=false;document.documentElement.classList.remove('reader-open');busy=false;returnInProgress=false;setStep('idle');source.focus({preventScroll:true});const next=queuedBook;queuedBook=null;next?.classList.remove('sid-next-target');callbacks.close(next);
   }
   async function flyBook(picking) {
@@ -317,6 +332,7 @@ window.Siddhartha = (() => {
     },true);
 
     document.body.appendChild(room);stage=query('.sid-stage');position=query('.sid-position');carrier=query('.sid-carrier');cover=query('.sid-cover');dock=query('.sid-dock');paper=query('.sid-letter');reader=query('.sid-letter-reader');reader.hidden=false;hint=query('.sid-hint');returnButton=query('.sid-return');
+    new IntersectionObserver(checkCue,{threshold:1}).observe(paper);
     secretDesk=window.BookSecrets.mount(room,{
       choose:(next,{duringCover=false}={})=>{if(busy||gesture&&(!duringCover||gesture.kind!=='cover')||extraction>0)return false;chooseArtifact(next);return true;},
       turnPage:turnPaperPage,
@@ -372,7 +388,7 @@ window.Siddhartha = (() => {
     artifact=secretDesk.initialArtifact();
     queuedBook=null;delete room.dataset.openQueued;room.dataset.readerBook=book[0];
     room.style.setProperty('--title-length',String(book[1].length));
-    room.dataset.artifact=artifact?.kind || 'none';room.dataset.stock=artifact?.stock||'cream';
+    cueSeen=false;room.dataset.artifact=artifact?.kind || 'none';room.dataset.artifactSource=artifact?.source||'';room.dataset.stock=artifact?.stock||'cream';
     room.setAttribute('aria-label',book[1]+(artifact?'，书与'+artifact.label:'，书籍阅读'));
     query('.sid-toolbar > span').textContent='纸间 · '+book[1];
     query('.sid-page h2').textContent='《'+book[1]+'》';
@@ -391,7 +407,7 @@ window.Siddhartha = (() => {
     $('shop').inert=true;document.documentElement.classList.add('reader-open');pose(0);
     button.classList.add('is-out');guidance('');
     await flyBook(true);
-    busy=false;pose(0);setStep('held');guidance('轻点或左右拖动翻书','合上后向下拖动收起，或轻点场景空白处');returnButton.textContent='收起手中的书';cover.focus({preventScroll:true});
+    busy=false;pose(0);setStep('held');record('book_open');guidance('轻点或左右拖动翻书','合上后向下拖动收起，或轻点场景空白处');returnButton.textContent='收起手中的书';cover.focus({preventScroll:true});
     if(returnPending)returnToShelf();else if(openOnArrival)hinge(1);
   }
   return {open};

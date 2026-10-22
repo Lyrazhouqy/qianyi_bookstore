@@ -1,6 +1,27 @@
 /* Original full Yozai font and letter stock reused from the referenced family project. */
 @font-face { font-family:"PaperYozai"; src:url("assets/fonts/yozai.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
 :root { --sid-letter-stock:url("assets/paper/letter-paper-texture.png"); }
+
+/* One rigid keepsake. Its colored edge and stamp differ from folded reader notes. */
+.siddhartha-room[data-artifact="postcard"] .sid-letter-packet {
+  border:3px solid #718c7b; border-left-width:7px; background-color:#e8dbc0;
+  box-shadow:2px 4px 0 #b6a37c,3px 7px 10px #32281344;
+}
+.siddhartha-room[data-artifact="postcard"] .sid-letter-packet:before {
+  left:auto; right:8px; top:8px; width:22px; height:27px; border:2px dashed #9e7d56;
+  background:#c5af7a; box-shadow:none;
+}
+.siddhartha-room[data-artifact="postcard"] .sid-letter-packet:after {
+  left:10%; right:auto; top:auto; bottom:10%; width:40%; height:25%;
+  background:#718c7b; clip-path:polygon(0 100%,38% 0,65% 75%,80% 40%,100% 100%);
+}
+.siddhartha-room[data-artifact="postcard"] .sid-letter-packet i { display:none; }
+.siddhartha-room[data-artifact="postcard"] .sid-letter-reader { border:5px solid #e3d2ac; background-color:#efe1c3; }
+.siddhartha-room[data-artifact="postcard"] .sid-segment { min-height:185px; padding:18px; }
+.siddhartha-room[data-artifact="postcard"] .sid-segment small { font-size:12px; }
+.sid-postcard-picture { display:block; width:100%; height:auto; margin:12px 0; border:6px solid #f2e7cd; }
+.sid-flip { display:block; min-height:44px; padding:10px 20px; border:0; color:#655238; background:#e8d9b6; font:inherit; }
+.siddhartha-room[data-artifact="postcard"] .sid-letter-actions { padding:8px 12px; }
 .focus-book .spine-face { box-shadow:inset 4px 0 #0002,0 0 0 2px #dfbd74; }
 .siddhartha-room { position:fixed; inset:0; top:var(--view-top); height:var(--view-height); z-index:130; background:#251e17b5; color:#594630; display:flex; flex-direction:column; overflow:hidden; isolation:isolate; }
 .siddhartha-room:before { content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 70%,#e2c99b33,transparent 65%); }

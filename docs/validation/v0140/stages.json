@@ -1,0 +1,37 @@
+{
+  "baselineCommit": "96834f2c71325b1dfe5e8699346e8b0f6f0d35b0",
+  "baseline": {
+    "browserStats": {
+      "startTime": "2026-10-22T11:09:43.370Z",
+      "duration": 141352.744,
+      "expected": 72,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "engine": {
+      "passed": 8,
+      "failed": 0
+    },
+    "sourceHashes": "evidence/bookshop-v0140/preflight/baseline.json"
+  },
+  "S1": {
+    "browserStats": {
+      "startTime": "2026-10-22T11:18:09.267Z",
+      "duration": 13831.794,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "scope": "Chromium/WebKit320 and390 phone touch simulation",
+    "cases": [
+      "ordinary exploration and postcard front/back/return/revisit",
+      "opt-in enum-only event recording"
+    ]
+  },
+  "limitations": [
+    "Not physical iPhone acceptance",
+    "No production deployment"
+  ]
+}

@@ -14,7 +14,7 @@ window.BookArrangement=(()=>{
  const simpleAtlas='assets/scene/simple-book-icons-v0118.png',simpleSize=1254;
  const quietAtlas='assets/scene/quiet-spine-icons-v0119.png';
  const quietSkins={
-  siddhartha:[322,34,148,410,'#72999c'],questions:[552,34,148,410,'#d6b46b'],tao:[784,34,148,410,'#a4ad7e'],
+  siddhartha:[322,34,148,410,'#72999c'],night:[322,34,148,410,'#72999c'],questions:[552,34,148,410,'#d6b46b'],tao:[784,34,148,410,'#a4ad7e'],
   courage:[322,456,148,389,'#72999c'],bondage:[552,456,148,389,'#bb846c'],vegetarian:[784,456,148,389,'#e4d5b3'],
   toad:[322,857,148,365,'#72999c'],otherlife:[552,857,148,365,'#d6b46b'],bigtech:[784,857,148,365,'#a4ad7e']
  };
@@ -71,7 +71,7 @@ window.BookArrangement=(()=>{
  function targetFor(event){const button=event.target.closest('.spine');return !button?null:event.detail===0||!button.closest('.book-pile')?button:hitAt(event.clientX,event.clientY)||button;}
  function renderWall(root){
   const row1=[['siddhartha',238,261,67,159],['questions',305,261,67,159],['tao',372,261,67,159],['naval',573,261,67,159],['fiscal',640,261,67,159]];
-  const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159]];
+  const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159],['night',573,464,67,159]];
   const row3=[['toad',238,650,67,178],['otherlife',305,650,67,178],['bigtech',372,650,67,178],['symposium',573,650,67,178],['tendays',640,650,67,178]];
   root.innerHTML=`<div class="wall-clean top" aria-hidden="true"></div><div class="wall-clean middle" aria-hidden="true"></div><div class="wall-clean bottom" aria-hidden="true"></div>`+[...row1,...row2,...row3].map(args=>standing(...args)).join('')+pile('wall-top',[['diamond','flatOchre'],['presence','flatIvory']],439,420,134)+pile('wall-middle',[['red','flatRose'],['solitude','flatSea']],439,623,120)+pile('wall-bottom',[['notetaking','flatCloud'],['drive','flatOchre']],439,828,134);
 
@@ -80,7 +80,7 @@ window.BookArrangement=(()=>{
   const art=tableBooks[0],pad=10;
   const old=`left:${(art.x-pad)/940*100}%;top:${(art.y-pad)/1672*100}%;width:${(art.width+pad*2)/940*100}%;height:${(art.height+pad*2)/1672*100}%;--book-color:${art.color};--cover-art-size:${940/art.width*100}% ${1673/art.height*100}%;--cover-art-position:${art.x/(940-art.width)*100}% ${art.y/(1673-art.height)*100}%;--cover-art-clip:${art.clip};`;
   front.innerHTML=cleanPlate('front-left-clean',185,1254,160,184)+cleanPlate('front-right-clean',697,1360,91,76)+cleanPlate('front-lower-clean',180,1451,217,79)+cleanPlate('front-lower-right-clean',665,1452,115,80)+`<button class="spine display-book" data-id="cat" aria-label="抽出《猫的来信》" style="${old}"><span class="spine-face" aria-hidden="true"></span></button>`+book('prince',354,1300,96,124,skins.prince,'painted-cover')+book('lychee',466,1293,96,131,skins.lychee,'painted-cover')+pile('front-left',[['habits','flatNight'],['japan','flatOchre'],['tokyo','flatIvory']],193,1424,150)+book('weeks',674,1428-96,132,96,skins.flatField,'painted-flat',true)+pile('front-lower',[['sentence','flatIvory'],['submarine','flatSea']],186,1522,162)+book('seventh',642,1522-96,156,96,skins.flatRose,'painted-flat',true);
-  coffee.innerHTML=cleanPlate('coffee-clean',334,1102,138,96)+pile('coffee',[['gobi','flatHill'],['altay','flatRose']],350,1186,145);
+  coffee.innerHTML=cleanPlate('coffee-clean',334,1102,138,96)+pile('coffee',[['gobi','flatHill'],['altay','flatRose'],['garden','flatHill'],['kafka','flatNight']],350,1186,145);
   for(const id of Object.keys(simpleSkins)){const b=document.querySelector(`.spine[data-id="${id}"]`),[x,y,w,h]=simpleSkins[id],image=quietSkins[id]?quietAtlas:simpleAtlas;b.style.setProperty('--cover-art-image',`url("${image}")`);b.style.setProperty('--cover-art-size',`${simpleSize/w*100}% ${simpleSize/h*100}%`);b.style.setProperty('--cover-art-position',`${x/(simpleSize-w)*100}% ${y/(simpleSize-h)*100}%`);b.style.setProperty('--cover-art-clip',clip);}
  }
  return{renderWall,renderTables,hitAt,targetFor,coverArt:id=>simpleSkins[id]?{painted:true}:null};

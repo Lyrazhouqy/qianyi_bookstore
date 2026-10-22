@@ -128,6 +128,16 @@ window.BookSecrets=(()=>{
     const asArtifact=item=>artifactFor(book[0],item,()=>{readHere.add(item.id);renderTabs();});
     function presetArtifact(){if(!preset)return null;return {...preset,onReveal:()=>{director?.discover(book[0],'preset');keepSelection(book[0],'preset');},initialParts:()=>preset.kind==='relay'?1+(reading.books[book[0]]?.presetParts||0):1,onRead:()=>{readHere.add('preset');director?.discover(book[0],'preset');preset.onRead?.();},onUnfold:count=>{readHere.add('preset');const record=reading.books[book[0]]||={items:{}};record.presetParts=Math.max(record.presetParts||0,count-1);try{localStorage.setItem(READS,JSON.stringify(reading));}catch{}if(count>=4||preset.kind==='envelope')director?.rest();preset.onUnfold?.(count);}};}
     function visibleList(){return director?director.available(book[0],list(),actor):list();}
+    const keepsake=()=>authoredKeepsakes[book[0]];
+    function keepsakeArtifact(){
+      const item=keepsake();if(!item)return null;
+      return {...item,localId:item.id,onReveal:()=>keepSelection(book[0],item.id),
+        onRead:()=>{readHere.add(item.id);remember(book[0],{...item,replies:[]});},
+        onFlip:face=>{remember(book[0],{...item,replies:[]},face==='back'?1:0);}};
+    }
+    function artifactAt(id){return id==='preset'?presetArtifact():id===keepsake()?.id?keepsakeArtifact():asCurrentItem(id);}
+    function asCurrentItem(id){const item=visibleList().find(x=>x.id===id);return item?asArtifact(item):null;}
+    function pageCommitted(id){current=id;keepSelection(book[0],id);renderTabs();window.BookRhythm.record('page_turn',book[0],{page:order.indexOf(current)+1,pages:order.length});}
     function arrange(allowDraw=false){
       const all=list();
       if(director){
@@ -138,7 +148,7 @@ window.BookSecrets=(()=>{
         offered=allowDraw?director.draw(book[0],candidates):director.snapshot().visit?.draws[book[0]]||null;
       }
       const items=visibleList().slice().reverse().sort((a,b)=>unread(book[0],b)-unread(book[0],a));
-      order=[...items.map(x=>x.id),...(preset?['preset']:[])];
+      order=[...items.map(x=>x.id),...(preset?['preset']:[]),...(keepsake()?[keepsake().id]:[])];
       if(items.length&&items.every(x=>x.author===actor)&&!order.includes('preset'))order.unshift('book-intro');
     }
     function chooseInitial(){
@@ -149,14 +159,13 @@ window.BookSecrets=(()=>{
       if(!director||prepared)return;
       arrange();const ownReply=visibleList().some(item=>unread(book[0],item)===3);
       if(!ownReply)arrange(true);
-      chooseInitial();prepared=host.choose(current==='preset'?presetArtifact():asCurrent(),{duringCover:true});director.acknowledge(book[0]);renderTabs();
+      chooseInitial();prepared=host.choose(artifactAt(current),{duringCover:true});director.acknowledge(book[0]);renderTabs();
     }
     function returned(){
       if(!director||!readHere.has(current))return;
       const count=current==='preset'?reading.books[book[0]]?.presetParts||0:seen(book[0],visibleList().find(x=>x.id===current)||{}).replies||0;
       if(count+1>=host.partsCount())director.returned(book[0]);
     }
-    const asCurrent=()=>{const item=visibleList().find(x=>x.id===current);return item?asArtifact(item):null;};
     function renderTabs(){
       tools.querySelector('.sid-paper-tabs').hidden=true;
       if(!book||cornerDrag)return;
@@ -165,7 +174,7 @@ window.BookSecrets=(()=>{
       // Repositioning the book must not replace a focused corner between keydown and click.
       if(traces.innerHTML!==navigation)traces.innerHTML=navigation;
       const active=items.find(x=>x.id===current);room.dataset.freshPaper=String(!!active&&unread(book[0],active)>0);
-      room.dataset.paperOwner=active?.author===actor?'own':active?'other':current==='book-intro'?'intro':'original';
+      room.dataset.paperOwner=active?.author===actor?'own':active?'other':current==='book-intro'?'intro':current===keepsake()?.id?'authored-playtest':'original';
       room.dataset.hasPageTurn=String(order.length>1);
       // Set the physical dock before measuring it, including a newly buried first note.
       room.querySelector('.sid-dock').style.bottom=order.length>1?'78px':'';
@@ -177,8 +186,8 @@ window.BookSecrets=(()=>{
     }
     async function selectPaper(id,direction){
       if(room.dataset.step!=='open')return;
-      if(!order.includes(id))return;const item=visibleList().find(x=>x.id===id);if(!['preset','book-intro'].includes(id)&&!item)return;
-      await host.turnPage(id==='preset'?presetArtifact():item?asArtifact(item):null,1,()=>{current=id;keepSelection(book[0],id);renderTabs();});
+      if(!order.includes(id))return;
+      await host.turnPage(artifactAt(id),1,()=>pageCommitted(id));
     }
     function beginCorner(event){
       const button=event.target.closest('[data-paper-id]');if(!button||cornerDrag||event.button!==0||room.dataset.step!=='open')return;
@@ -196,8 +205,7 @@ window.BookSecrets=(()=>{
       if(drag.button.hasPointerCapture(drag.pointer))drag.button.releasePointerCapture(drag.pointer);
       const moved=Math.max(Math.abs(drag.dx),Math.abs(drag.dy))>7,amount=-drag.dx/Math.min(150,drag.width*.8);
       cancel ||= drag.viewportW!==innerWidth||drag.viewportH!==innerHeight||moved&&(Math.abs(drag.dy)>Math.abs(drag.dx)*1.3||amount<.28);
-      const item=visibleList().find(x=>x.id===drag.id),next=drag.id==='preset'?presetArtifact():item?asArtifact(item):null;
-      try{await drag.turn.finish(next,()=>{current=drag.id;keepSelection(book[0],current);renderTabs();},cancel);}finally{traces.classList.remove('is-turning');renderTabs();}
+      try{await drag.turn.finish(artifactAt(drag.id),()=>pageCommitted(drag.id),cancel);}finally{traces.classList.remove('is-turning');renderTabs();}
     }
     function stash(){if(!form)return true;form.front=editor.querySelector('[name="front"]').value;const ok=saveDraft(book[0],form);editor.querySelector('.sid-secret-message').textContent=ok?'':'这张纸还没收稳，先别离开。';return ok;}
     function drawEditor(){
@@ -236,7 +244,7 @@ window.BookSecrets=(()=>{
       if(saving)return;
       if(event.target.closest('.sid-desk-close'))dismiss();else if(event.target.closest('.sid-bury'))bury();
     });
-    return {reset(next,original){book=next;preset=original;form=null;saving=false;prepared=false;readHere=new Set();editor.hidden=true;room.classList.remove('sid-composing');arrange();chooseInitial();renderTabs();},opening,returned,initialArtifact(){return current==='preset'?presetArtifact():asCurrent();},editing:()=>!editor.hidden||saving,dismiss};
+    return {reset(next,original){book=next;preset=original;form=null;saving=false;prepared=false;readHere=new Set();editor.hidden=true;room.classList.remove('sid-composing');arrange();chooseInitial();renderTabs();},opening,returned,initialArtifact(){return artifactAt(current);},editing:()=>!editor.hidden||saving,dismiss};
   }
   function mountPlaytest(){
     if(director){const data=read();for(const [id] of books)director.sync(id,data.books[id]||[],actor);}

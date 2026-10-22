@@ -5,12 +5,12 @@ async function directPick(page,id){
  if(await book.locator('.painted-title').count()&&await book.evaluate(e=>!!e.closest('.book-pile'))){const r=await book.locator('.painted-title').boundingBox();await page.mouse.click(r.x+r.width/2,r.y+r.height/2);}else await book.click();
 }
 
-test('all 31 physical books have separate usable touch centers and open the matching cover',async({page})=>{
+test('all 34 physical books have separate usable touch centers and open the matching cover',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/?v=0.10.0');
  expect(await page.evaluate(async()=>{const image=new Image();image.src='assets/scene/book-arrangement-v0110.png';await image.decode();return [image.naturalWidth,image.naturalHeight];})).toEqual([942,1669]);
- await expect(page.locator('.spine')).toHaveCount(31);await expect(page.locator('#shelves .spine')).toHaveCount(19);await expect(page.locator('#display-books .spine')).toHaveCount(10);await expect(page.locator('#coffee-books .spine')).toHaveCount(2);
- const ids=await page.locator('.spine').evaluateAll(els=>els.map(el=>el.dataset.id));expect(new Set(ids).size).toBe(31);
+ await expect(page.locator('.spine')).toHaveCount(34);await expect(page.locator('#shelves .spine')).toHaveCount(20);await expect(page.locator('#display-books .spine')).toHaveCount(10);await expect(page.locator('#coffee-books .spine')).toHaveCount(4);
+ const ids=await page.locator('.spine').evaluateAll(els=>els.map(el=>el.dataset.id));expect(new Set(ids).size).toBe(34);
  expect(await page.locator('.placed-title,.spine-title').evaluateAll(els=>els.filter(el=>el.scrollWidth>el.clientWidth+1||el.scrollHeight>el.clientHeight+1).map(el=>el.textContent))).toEqual([]);
  for(const id of ids){
   const book=page.locator('.spine[data-id="'+id+'"]');await book.scrollIntoViewIfNeeded();
