@@ -10,7 +10,7 @@
   function updateJournal(){
     document.querySelector('[data-visit-label]').textContent=state.visits?'翻过 '+state.visits+' 次旧书':'书店很安静';
     document.getElementById('journal-summary').textContent=state.visits?'你翻过 '+state.visits+' 次旧书，遇见 '+state.small+' 处阅读痕迹。':'还没翻开今天的第一本书。随手看看，故事就藏在书页间。';
-    document.getElementById('book-catalogue').innerHTML=books.map((book,i)=>'<button class="catalogue-book" data-book="'+book[0]+'" style="--catalogue-color:'+palette[i]+'"><span><strong>'+esc(book[1])+'</strong><small>'+ (state.seen.includes(book[0])?'来过的书页':'翻开看看')+'</small></span></button>').join('');
+    document.getElementById('book-catalogue').innerHTML=[...sceneBookIds.map(id=>books.find(book=>book[0]===id)),...books.filter(book=>!sceneBookIds.includes(book[0])&&(state.seen.includes(book[0])||book[0]==='ship'))].map((book,i)=>'<button class="catalogue-book" data-book="'+book[0]+'" style="--catalogue-color:'+palette[i%palette.length]+'"><span><strong>'+esc(book[1])+'</strong><small>'+ (!sceneBookIds.includes(book[0])?'抽屉里留着的旧书':state.seen.includes(book[0])?'来过的书页':'翻开看看')+'</small></span></button>').join('');
   }
   function showSheet(sheet,opener){
     if(document.body.dataset.phase!=='idle')return;
@@ -29,7 +29,8 @@
   document.getElementById('book-catalogue').addEventListener('click',event=>{
     const choice=event.target.closest('[data-book]');if(!choice)return;
     pickingBook.add(catalogue);catalogue.close();const book=document.querySelector('.spine[data-id="'+choice.dataset.book+'"]');
-    book.scrollIntoView({block:'center',inline:'center',behavior:'instant'});book.focus({preventScroll:true});book.click();
+    if(book){book.scrollIntoView({block:'center',inline:'center',behavior:'instant'});book.focus({preventScroll:true});book.click();}
+    else{const drawer=document.getElementById('open-book-index');drawer.scrollIntoView({block:'center',inline:'center',behavior:'instant'});openBook(choice.dataset.book,drawer);}
   });
   const windowScenes={original:null,seaside:'assets/scene/window-seaside-v065.png',rain:'assets/scene/window-rain-v0611.png',sunset:'assets/scene/window-sunset-v0611.png',snow:'assets/scene/window-snow-v0611.png'};
   const windowKey='paperbook-window-v1',windowMessage=document.getElementById('window-message');
@@ -121,7 +122,7 @@
     if(viewport.hasPointerCapture(id))viewport.releasePointerCapture(id);
   }
   function sizeScene(){
-    const width=Math.max(440,Math.min(viewport.clientWidth*1.12,viewport.clientHeight*940/1672));
+    const width=Math.max(620,Math.min(viewport.clientWidth*1.12,viewport.clientHeight*940/1672));
     const centerX=(viewport.scrollLeft+lastWidth/2-world.offsetLeft)/sceneScale;
     const centerY=(viewport.scrollTop+lastHeight/2-world.offsetTop)/sceneScale;
     endDrag();

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-22",
+  "method": "two built-in image_gen calls, transparent original PNGs copied unchanged; no raster edits",
+  "calls": 2,
+  "assets": [
+    {
+      "asset": "simple-book-icons-v0118.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-bb58ad38-377a-4ed5-a950-8469a2c34569.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "8d0a0aeb4c59c5b4caa4bdc5c3e7c921eafcc900da1a7ae7e5a8073918a4e95a",
+      "prompt": "simple-book-icons-v0118.prompt.md"
+    },
+    {
+      "asset": "horizontal-books-v0118.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-62b2db2d-380d-4870-8856-f863dc701f72.png",
+      "size": [
+        906,
+        1735
+      ],
+      "sha256": "170ed3eda176cddf803d0033ef22210083ffdfe1f8ee8c2a0039c7536de7cf31",
+      "prompt": "horizontal-books-v0118.prompt.md"
+    }
+  ],
+  "references": [
+    "book-arrangement-v0110.png",
+    "horizontal-books-v0117.png"
+  ],
+  "integration": "CSS crop six new objects; live existing Serif printed titles; four upright spines also provide their matching held cover; horizontal sheet decoration-only replacement retains calibrated footprint",
+  "subjects": {
+    "prince": "large crescent, small person and one semicircle planet",
+    "lychee": "one large lychee silhouette and two leaves",
+    "naval": "ivory sailboat on blue",
+    "fiscal": "sage key on ochre",
+    "symposium": "ivory arch on sage",
+    "tendays": "ochre half sun on brick",
+    "horizontal": "one moon, mountain, leaf, sun or bird per cover and smaller matching spine icon"
+  },
+  "invariants": [
+    "all31 book identities and distribution",
+    "visible binding thickness and shelf support",
+    "original cat sprite/data/mechanism",
+    "reader/letter mechanics and storage",
+    "letter font/stock and book title Serif font"
+  ]
+}

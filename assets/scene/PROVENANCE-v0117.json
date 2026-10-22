@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22",
+  "method": "one built-in image_gen precise-object-edit; original RGBA PNG copied unchanged",
+  "calls": 1,
+  "input": "horizontal-books-v0116.png",
+  "styleReference": "/var/folders/sh/0hr9s5l57vsdgw3rmrc7x7wm0000gn/T/codex-clipboard-61969438-f054-4ecf-a954-083b19635c62.png",
+  "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-044f5c01-b936-40a1-a428-e004d0442b76.png",
+  "asset": "horizontal-books-v0117.png",
+  "size": [
+    906,
+    1735
+  ],
+  "sha256": "cfdec85d3fbba044fde5a56cfa3056b3dc90af21cdbf020ac03ab33f5a5e556c",
+  "prompt": "horizontal-books-v0117.prompt.md",
+  "integration": "five CSS source rectangles, each cover and front one palette color; render height400 per890 width and physical stack pitch186 per890 width. Per-row foot rotation and alpha-foot offset keep bindings supported; lower cubby hides back cover behind existing tabletop fascia. No raster transformations. Live Noto Serif SC400 dark titles, glyph direction maintained.",
+  "palette": [
+    "#72999c",
+    "#d6b46b",
+    "#a4ad7e",
+    "#bb846c",
+    "#e4d5b3"
+  ],
+  "invariants": [
+    "book identities and data",
+    "direct cover then open then note then return",
+    "cat book artwork/mechanism",
+    "original letter font and paper",
+    "room/window/music/lamp/bouquet"
+  ]
+}

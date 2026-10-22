@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.6.24",
+  "build": "paper-bookshop-game-v0.13.0",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -49,14 +49,35 @@
     "bouquet.js",
     "assets/scene/bouquet-empty-v0622.png",
     "assets/scene/bouquet-tulips-v0624.png",
-    "assets/scene/bouquet-daisies-v0624.png"
+    "assets/scene/bouquet-daisies-v0624.png",
+    "secrets.js",
+    "secrets.css",
+    "assets/scene/fountain-pen-burgundy-v075.png",
+    "discovery.js",
+    "discovery-pool.js",
+    "real-materials.js",
+    "book-placement.js",
+    "book-placement.css",
+    "assets/scene/book-arrangement-v0110.png",
+    "assets/scene/stack-clean-v0111.png",
+    "assets/scene/horizontal-books-v0120.png",
+    "assets/scene/simple-book-icons-v0118.png",
+    "assets/scene/quiet-spine-icons-v0119.png",
+    "assets/scene/blank-spines-v0120.png",
+    "assets/fonts/book-title-serif-v0113.woff2",
+    "assets/fonts/book-title-serif-OFL.txt"
   ],
-  "status": "local-v0.6.24-bouquet-cycle; fixed-mobile-preview-remains-v0.6.23",
+  "status": "local-v0.13.0-approved-concept-interactions; fixed-mobile-preview-remains-v0.6.23",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
-    "capacity": 13,
-    "books": 13,
-    "reserved": 0
+    "capacity": 19,
+    "books": 19,
+    "reserved": 0,
+    "rows": [
+      7,
+      5,
+      7
+    ]
   },
   "scenery": {
     "presets": [
@@ -78,21 +99,30 @@
     "frame": "continuous glazing behind paper-painted arch, crossbars and sill"
   },
   "display": {
-    "books": 3,
+    "books": 10,
     "ids": [
-      "leaves",
-      "clouds",
+      "prince",
+      "lychee",
+      "habits",
+      "japan",
+      "tokyo",
+      "weeks",
+      "sentence",
+      "submarine",
+      "seventh",
       "cat"
     ],
-    "catalogueEntry": "drawer handle"
+    "horizontalBooks": 6,
+    "standingBooks": 4,
+    "catalogueEntry": "original drawer handle"
   },
-  "totalBooks": 16,
+  "totalBooks": 31,
   "returnInteraction": {
     "version": "direct-drag-v0.6.7",
     "closedBook": "downward drag, short drag rebounds",
     "scene": "tap blank scene to fold and put away; writing only blurs",
     "keyboard": "Escape, focusable accessible return",
-    "scope": "all sixteen books"
+    "scope": "all physical collection books"
   },
   "paperPlacement": {
     "version": "book-centered-v0.6.8",
@@ -138,5 +168,99 @@
     "accessFile": ".preview/mobile-playtest-v0623.json",
     "expiresAt": "2026-11-18T14:29:13+00:00",
     "evidence": "evidence/mobile-playtest-v0623/deployment.json"
+  },
+  "secrets": {
+    "storage": "paperbook-secrets-v1",
+    "drafts": "paperbook-secret-drafts-v1",
+    "kinds": [
+      "stack"
+    ],
+    "scope": "this browser only; no cross-player publication",
+    "legacyReadKinds": [
+      "fold",
+      "stack",
+      "relay"
+    ],
+    "revisit": {
+      "author": "per-note and per-reply",
+      "readState": "per reader, front and revealed replies",
+      "initialSelection": "own new replies first, then stable opening paper preferring unseen others; all remaining papers accessible by page turn",
+      "playtest": "?playtest=revisit&reader=A|B|N; isolated local simulation, no network sharing",
+      "paperPresentation": "one note per page; every paper in a book is reachable, own paper stays on its own page; right-edge corner navigation unchanged",
+      "ownWriting": "add a line to yourself; foreign notes accept replies"
+    },
+    "discovery": {
+      "playtest": "?v=0.13.0&playtest=discovery&reader=A",
+      "pool": "44 reviewed historical group excerpts in 30 real books; unchanged cat and legacy fictional fixtures retained",
+      "revisit": "fully read current paper and replies then return before advancing the opening selection; page turns can browse all paper at any time",
+      "refresh": "keeps selected opening page and reading progress; no inactivity expiry",
+      "availability": "all papers in a book, including unknown, known and own; no random access gate",
+      "openingSelection": "one stable random unseen-other opening page, read-and-return permits advancing; own new replies first",
+      "paperCount": "no12-write or24-read note cap",
+      "legacySaves": "old null offers, found counters and quiet flags do not block existing notes"
+    }
+  },
+  "collection": {
+    "main": 19,
+    "front": 10,
+    "coffee": 2,
+    "total": 31,
+    "cat": "unchanged sprite, source coordinates, content and original mechanism"
+  },
+  "insideCover": {
+    "location": "left inner cover",
+    "selection": "verified excerpt associated with active paper and matching book, otherwise synopsis",
+    "trustedSource": "reviewed static real-materials seed only",
+    "verifiedExcerptsInCurrentPool": 0,
+    "longExcerpt": "scroll within left paper without closing the book"
+  },
+  "camera": {
+    "minimumSceneWidth": 620,
+    "interaction": "native touch panning and mouse dragging",
+    "minimumBookHitPx": 44
+  },
+  "stacks": {
+    "leftFront": 3,
+    "coffee": 2,
+    "motion": "upper books settle into removed book space; rise before reinsertion",
+    "orientation": "horizontal side spines and visible page edges"
+  },
+  "arrangement": {
+    "source": "approved generated concept atlas",
+    "standing": "single tap picks a book",
+    "piles": "direct tap on a visible spine picks that specific book; no fan/chooser stage",
+    "target": "44px button bounds; shared compact pointer areas resolve to nearest visible spine",
+    "dismiss": "original book return flow",
+    "covers": "existing illustrated held covers and front prince/lychee/cat retained, upright scene spines use separate plain cloth atlas",
+    "materialPool": "unchanged44 source notes",
+    "horizontalArt": "small front-spine icons removed from all five colored source books, top cover moon/mountain/leaf/sun/bird retained, existing thick binding geometry",
+    "titleFont": "self-hosted Noto Serif SC400 printed Song/Ming-style titles, dark ink no shadow, glyphs turn with horizontal book; original raster title font not identified, letter font unchanged",
+    "sideDisplayBooks": {
+      "weeks": {
+        "width": 132,
+        "previousWidth": 104,
+        "base": 1428
+      },
+      "seventh": {
+        "width": 156,
+        "previousWidth": 131,
+        "base": 1522
+      }
+    },
+    "bindingGeometry": {
+      "renderWidth": 890,
+      "renderHeight": 400,
+      "stackPitch": 186,
+      "previousStackPitchRatio": "118/1085",
+      "palette": [
+        "#72999c",
+        "#d6b46b",
+        "#a4ad7e",
+        "#bb846c",
+        "#e4d5b3"
+      ]
+    },
+    "iconStyle": "all28 physical spines have no icons; existing cover illustrations retained",
+    "titleLayout": "upright centered with title-length-aware font size, horizontal title width expanded and font enlarged"
   }
 }

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-22",
+  "method": "one built-in image_gen precise-object-edit; original PNG copied unchanged, alpha preserved",
+  "calls": 1,
+  "input": "horizontal-books-v0115.png",
+  "styleReference": "/var/folders/sh/0hr9s5l57vsdgw3rmrc7x7wm0000gn/T/codex-clipboard-4f1729ca-5253-4c53-ac0a-f71d4120ad2a.png",
+  "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-ce5f074f-72ea-4ef3-a434-3e4276660156.png",
+  "asset": "horizontal-books-v0116.png",
+  "size": [
+    1254,
+    1254
+  ],
+  "sha256": "85383761d318272b3f30abb05506dab5f8df6d0e8946a240aac891d9b6035f19",
+  "prompt": "horizontal-books-v0116.prompt.md",
+  "integration": "same CSS atlas rectangles and settled stacking geometry; sage cloth front, fine gold rules and small city print, live dark Kai lettering; weeks width104 to132, seventh131 to156",
+  "invariants": [
+    "direct pickup then held cover then tap to open",
+    "original cat book",
+    "reader, paper and letter font",
+    "room, music, windows, lamp, bouquet"
+  ]
+}

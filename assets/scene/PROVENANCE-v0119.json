@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-22",
+  "method": "two built-in image_gen calls: nine-spine generation then upper-rule removal; raw RGBA PNGs copied unchanged, no raster manipulation",
+  "calls": 2,
+  "styleReference": "simple-book-icons-v0118.png",
+  "assets": [
+    {
+      "asset": "quiet-spine-icons-v0119-draft.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-b2bea19f-95c0-4254-8776-294f5576b8bc.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "fb4a70c8e9dd65b2350304aab68d2283818280393596864363886108ee9e505e",
+      "prompt": "quiet-spine-icons-v0119.prompt.md",
+      "runtime": false
+    },
+    {
+      "asset": "quiet-spine-icons-v0119.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-d0e23b42-d1b0-49d1-9776-b7428c5f6bb1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "c73af09d9ce599add22a5102ce32edaf45b3a116d6553a82be759d8e8e4ed055",
+      "prompt": "quiet-spine-icons-v0119-cleanup.prompt.md",
+      "runtime": true
+    }
+  ],
+  "integration": "nine CSS sprite rectangles, original scene slots and root touch targets, existing self-hosted Serif live titles, same new spine artwork reused on held covers; footer icons and title areas kept separate",
+  "icons": {
+    "siddhartha": "single leaf",
+    "questions": "one mountain silhouette",
+    "tao": "pebble and broad wave",
+    "courage": "single bird",
+    "bondage": "two chunky links",
+    "vegetarian": "single leaf",
+    "toad": "frog head",
+    "otherlife": "one four-petal flower",
+    "bigtech": "one factory block"
+  },
+  "invariants": [
+    "book identities/distribution",
+    "blue/ochre/sage/brick/ivory palette",
+    "reader and notes/storage",
+    "cat sprite and mechanism",
+    "letter stock and original letter font",
+    "v0118 horizontal binding geometry and atlas"
+  ]
+}

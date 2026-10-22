@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-20",
+  "tool": "built-in imagegen",
+  "reference": "assets/scene/room-layout-v0613.png",
+  "referenceRole": "paper collage style only",
+  "asset": "assets/scene/fountain-pen-v072.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-4e5630d2-f638-45eb-937e-3871f0ae0ffe.png",
+  "prompt": "fountain-pen-v072.prompt.md",
+  "sha256": "d204f71a48f8327996b6fe69711227a6341412637124ec830ec4ded83624e3c9",
+  "dimensions": [
+    2058,
+    764
+  ],
+  "pngColorType": 6,
+  "runtime": "Original generated PNG and alpha copied without pixel edits, rendered as an isolated prop above the upper-right book corner or beside wider layouts. Existing paper and game images unchanged."
+}

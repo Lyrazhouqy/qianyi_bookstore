@@ -1,0 +1,12 @@
+const{chromium,expect}=require('@playwright/test');const fs=require('node:fs');
+(async()=>{const browser=await chromium.launch(),results=[];try{for(const width of [320,390]){
+ const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1});
+ const page=await context.newPage(),cdp=await context.newCDPSession(page);
+ await page.route('**/real-materials.js',async route=>{const response=await route.fetch();await route.fulfill({response,body:await response.text()+`\nconst originalPool=window.BookRealMaterials;window.BookRealMaterials=()=>{const rows=originalPool();rows.naval[0].quotation={bookTitle:'纳瓦尔宝典',verified:true,text:'【QA测试文字，非真实原著】'+'用于检查左页滚动。'.repeat(60),source:'QA测试资料'};return rows;};`});});
+ await page.addInitScript(()=>localStorage.setItem('paperbook-discovery-v1',JSON.stringify({version:1,known:{naval:['qianyi-naval-18005']},baseline:{},changes:{},visit:{id:'touch-qa',seed:1,lastActive:Date.now(),draws:{naval:null},explored:1,found:3,lastFound:1,dry:0,quiet:0,events:[]}})));
+ await page.goto('http://127.0.0.1:4173/?v=0.10.1');await page.locator('.spine[data-id="naval"]').tap();await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-step','held');await page.locator('.sid-cover').tap();await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-step','open');
+ const copy=page.locator('.sid-inside-copy');await expect(copy).toHaveAttribute('data-kind','quotation');const r=await copy.boundingBox(),x=r.x+r.width/2,y=r.y+r.height*.8;
+ const touch=(type,x,y)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints:type==='touchEnd'?[]:[{x,y,radiusX:3,radiusY:3}]});await touch('touchStart',x,y);
+ for(let i=1;i<=10;i++){await touch('touchMove',x,y-i*7);await page.evaluate(()=>new Promise(requestAnimationFrame));}await touch('touchEnd');await expect.poll(()=>copy.evaluate(el=>el.scrollTop)).toBeGreaterThan(0);await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-step','open');expect(await page.evaluate(()=>getSelection().toString())).toBe('');
+ results.push({width,scrollTop:await copy.evaluate(el=>el.scrollTop),step:'open'});await page.screenshot({path:`evidence/bookshop-v0101/quotation-touch-${width}.png`});await context.close();
+ }}finally{await browser.close();}fs.writeFileSync('evidence/bookshop-v0101/quotation-touch.json',JSON.stringify({scope:'Chromium CDP simulated touch, isolated QA quotation fixture, not actual source or physical phone',results},null,2)+'\n');})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-22",
+  "method": "two built-in image_gen calls; source PNGs copied unchanged, alpha preserved; CSS source rectangles, no raster retouch/crop",
+  "promptFile": "stack-assets-v0111.prompt.md",
+  "assets": [
+    {
+      "asset": "stack-clean-v0111.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-bbf11657-c519-4ff9-a8f8-76264763891d.png",
+      "size": [
+        940,
+        1673
+      ],
+      "sha256": "9bab77c97e555ef640a1f333d1d2c1ab4ae77b113ffafe113583df31cc8b270f"
+    },
+    {
+      "asset": "horizontal-books-v0111.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-3c055489-308e-41ff-8ce7-4d62da68d92f.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "c79c09ad301c921b0f6a7ec7ae926dda9fae306bbc8769e07d598330d1166c70"
+    }
+  ],
+  "integration": "clean plate sampled only in five local table/cubby regions; other room art untouched; whole transparent horizontal books replace stretched decorative spine strips",
+  "invariants": [
+    "31 existing book identities",
+    "original cat sprite, position and note",
+    "unchanged reading, discovery, font and letter paper"
+  ]
+}

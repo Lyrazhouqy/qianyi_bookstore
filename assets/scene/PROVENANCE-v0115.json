@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-22",
+  "method": "one built-in image_gen precise-object-edit; PNG copied unchanged with alpha preserved",
+  "input": "horizontal-books-v0111.png",
+  "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-4ad4a4aa-ecac-49d3-b014-0074a0efccfd.png",
+  "asset": "horizontal-books-v0115.png",
+  "size": [
+    1254,
+    1254
+  ],
+  "sha256": "3c3026591dfc2f6a9b1fa3262cc89c4ad3069f21781ff494035ca647e0556fad",
+  "prompt": "horizontal-books-v0115.prompt.md",
+  "integration": "CSS source rectangles retain full-book top/spine/pages; stack pitch118 source pixels scaled by width, front foot compensation11 source pixels, support surface anchors, front-foot rotation-1deg; no brightness/saturation adjustment",
+  "invariants": [
+    "existing book identities, reader and letter font/stock",
+    "original cat book",
+    "original furniture/window/music/lamp/bouquet assets"
+  ]
+}

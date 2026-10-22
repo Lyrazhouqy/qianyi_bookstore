@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-20",
+  "tool": "built-in imagegen edit",
+  "reference": "assets/scene/fountain-pen-v072.png",
+  "change": "deep burgundy barrel, grip and posted cap; ochre-brass details and paper collage style retained",
+  "asset": "assets/scene/fountain-pen-burgundy-v075.png",
+  "generatedSource": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-72d09543-d4b7-4209-b5ee-25490c21d8d6.png",
+  "prompt": "fountain-pen-burgundy-v075.prompt.md",
+  "sha256": "0f32126ac222e3a819431ec9b0d8d4df47b054409b7a11e3055c3a5648346e05",
+  "dimensions": [
+    2058,
+    764
+  ],
+  "pngColorType": 6,
+  "runtime": "Generated image and transparent alpha copied unchanged; original green source retained."
+}

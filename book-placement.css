@@ -1,0 +1,52 @@
+/* Approved paper-collage concept used as a sprite atlas, rather than colored DOM slabs. */
+.wall-clean { position:absolute; left:calc(248/940*100%); width:calc(452/940*100%); height:calc(174/1672*100%); pointer-events:none; background:#704018 url("assets/scene/room-layout-v0613.png") no-repeat; background-size:940% 2390%; background-position:65.48% 16.22%; }
+.wall-clean.top { top:calc(246/1672*100%); }.wall-clean.middle { top:calc(447/1672*100%); width:calc(311/940*100%); }.wall-clean.bottom { top:calc(646/1672*100%); height:calc(182/1672*100%); }
+#shelves .painted-book,.display-stage .painted-book { position:absolute; padding:0; border:0; background:none; min-width:44px; min-height:44px; pointer-events:auto; display:flex; justify-content:center; align-items:flex-end; touch-action:pan-x pan-y; -webkit-tap-highlight-color:transparent; }
+#shelves .painted-book .spine-face,.display-stage .painted-book .spine-face { position:absolute; left:auto; top:auto; bottom:0; inset-inline:auto; height:96%; width:auto; aspect-ratio:var(--sprite-ratio); min-width:0; min-height:0; max-width:94%; padding:0; border:0; border-radius:0; background-image:var(--art-image,url("assets/scene/book-arrangement-v0110.png")); background-size:var(--art-size); background-position:var(--art-position); background-repeat:no-repeat; background-color:transparent; background-blend-mode:normal; clip-path:var(--art-clip); box-shadow:none; filter:drop-shadow(1px 2px 1px #42290e35); writing-mode:horizontal-tb; transform:none; transition:translate .22s,filter .22s; pointer-events:none; }
+#shelves .painted-book.is-out .spine-face,.display-stage .painted-book.is-out .spine-face { visibility:hidden; }
+.display-stage .painted-cover .spine-face { width:94%; height:100%; aspect-ratio:auto; }
+.display-stage .painted-flat .spine-face { width:100%; height:auto; aspect-ratio:var(--sprite-ratio); }
+.painted-title { display:block; position:absolute; inset:0; text-align:center; align-content:center; padding:2px 4px; color:var(--painted-ink,#473f2c); font-family:var(--book-title-font); font-size:clamp(10px,calc(var(--scene-scale)*18px),12px); line-height:1.05; white-space:nowrap; overflow:hidden; text-shadow:none; }
+.book-pile { position:absolute; pointer-events:none; }
+#shelves .book-pile .pile-book,.display-stage .book-pile .pile-book { left:0; top:calc(var(--pile-index)*var(--scene-scale)*var(--pile-step)); width:100%; height:calc(var(--scene-scale)*var(--pile-book-height)); z-index:calc(var(--pile-count) - var(--pile-index)); min-width:44px; min-height:44px; pointer-events:auto; }
+#shelves .book-pile .pile-book .spine-face,.display-stage .book-pile .pile-book .spine-face { top:0; bottom:auto; width:100%; height:calc(var(--scene-scale)*var(--pile-book-height)); max-width:none; aspect-ratio:890/400; }
+.painted-book:focus-visible { outline:2px solid #e4d1a3; outline-offset:2px; border-radius:3px; }
+.book-pile:has(.pile-book.is-out) .pile-book:not(.is-out) { filter:brightness(.94); }
+.siddhartha-room[data-cover-art="true"] .sid-cover-front { background-image:var(--cover-art-image,url("assets/scene/game-room-window-v065.png")); }
+@media(prefers-reduced-motion:reduce) { .book-pile .pile-book,.painted-book .spine-face { transition:none!important; } }
+
+/* One whole horizontal book: visible top cover, spine and page block, never a stretched spine strip. */
+.stack-clean { position:absolute; pointer-events:none; background-image:url("assets/scene/stack-clean-v0111.png"); background-repeat:no-repeat; mask-image:linear-gradient(90deg,transparent,#000 3% 97%,transparent),linear-gradient(transparent,#000 3% 97%,transparent); mask-composite:intersect; }
+#shelves .book-pile .pile-book .spine-face,.display-stage .book-pile .pile-book .spine-face,.display-stage .painted-flat .spine-face { clip-path:none; filter:drop-shadow(0 1px 1px #3e2a1740); }
+.book-pile .painted-title,.painted-flat .painted-title { inset:55% 22% 5% 6%; padding:0; line-height:1; transform:rotate(calc(-1 * var(--binding-angle))); color:var(--painted-ink,#343a2a); font-size:clamp(10px,calc(var(--scene-scale)*17px),17px); text-shadow:none; }
+
+#shelves .book-pile .spine-face:before { content:none; }
+
+/* Serif printed book titles match the reference; letter handwriting stays separate. */
+@font-face { font-family:"BookTitleSerif"; src:url("assets/fonts/book-title-serif-v0113.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+:root { --book-title-font:"BookTitleSerif","Songti SC","STSong",serif; }
+.painted-title,.sid-cover-title,.sid-cover-edition { font-family:var(--book-title-font); font-synthesis:none; }
+@media(hover:hover) { .painted-book:hover .spine-face { filter:brightness(1.06); } }
+
+/* These were upright-spine titles before the books were laid down. Rotate the
+   full vertical setting, including glyphs, with the horizontal book. */
+.book-pile .painted-title-letters,.painted-flat .painted-title-letters { position:absolute; left:50%; top:50%; display:block; width:1em; height:max-content; writing-mode:vertical-rl; text-orientation:upright; white-space:nowrap; line-height:1; letter-spacing:.015em; transform:translate(-50%,-50%) rotate(-90deg); transform-origin:center; }
+
+.display-stage .painted-flat .painted-title { font-size:clamp(9px,calc(var(--scene-scale)*18px),18px); }
+
+/* Level the painted front foot, use the physical binding thickness for the
+   stack pitch, and keep the dark print entirely on each visible cloth spine. */
+#shelves .book-pile .pile-book .spine-face,.display-stage .book-pile .pile-book .spine-face,.display-stage .painted-flat .spine-face { transform:rotate(var(--binding-angle)); translate:0 calc(var(--scene-scale)*var(--binding-foot-pad)); transform-origin:50% 100%; }
+.book-pile .painted-title { inset:55% 22% 5% 6%; font-size:calc(var(--scene-scale)*var(--pile-type-size)); }
+
+/* The lower cubby occludes the back of its books behind the tabletop fascia. */
+.book-pile[data-pile="front-lower"] { clip-path:inset(calc(var(--scene-scale)*var(--pile-crop-top)) 0 0); }
+
+/* Quiet illustrated covers and four matching spines use live printed titles. */
+.painted-simple.painted-standing .painted-title { inset:12% 10%; padding:0; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; text-orientation:upright; font-size:calc(var(--scene-scale)*var(--standing-title-size)); line-height:1.12; }
+.painted-simple.painted-cover .painted-title { inset:13% 7% auto; padding:0; font-size:calc(var(--scene-scale)*14px); line-height:1.65; writing-mode:horizontal-tb; }
+.siddhartha-room[data-cover-art="true"][data-reader-book="prince"] .sid-cover-title,
+.siddhartha-room[data-cover-art="true"][data-reader-book="lychee"] .sid-cover-title { display:block; position:absolute; inset:13% 7% auto; margin:0; padding:0; font-size:clamp(21px,5vw,34px); font-weight:400; color:#242b21; letter-spacing:.03em; line-height:1.3; writing-mode:horizontal-tb; text-align:center; }
+
+.siddhartha-room[data-cover-art="true"]:not([data-reader-book="cat"]):not([data-reader-book="prince"]):not([data-reader-book="lychee"]) .sid-cover-title { display:block; position:absolute; top:15%; left:50%; transform:translateX(-50%); margin:0; color:#242b21; letter-spacing:.08em; }
+

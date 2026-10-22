@@ -1,8 +1,8 @@
 'use strict';
 const $ = id => document.getElementById(id);
-const STORAGE_KEY = 'paperbook-v3';
+const STORAGE_KEY = window.BookSecrets.gameKey;
 const colors = ['#738676', '#b17b64', '#778d9c'];
-const freshState = () => ({visits:0, seen:[], found:[], small:0, rose:false, stamp:false, replies:[], mode:'natural'});
+const freshState = () => ({visits:window.BookSecrets.demo&&!window.BookSecrets.discoveryDemo?1:0, seen:window.BookSecrets.demo&&!window.BookSecrets.discoveryDemo?['night']:[], found:window.BookSecrets.demo&&!window.BookSecrets.discoveryDemo?['night']:[], small:window.BookSecrets.demo&&!window.BookSecrets.discoveryDemo?1:0, rose:false, stamp:false, replies:[], mode:'natural'});
 const esc = value => String(value).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function load() {
   try {
@@ -61,30 +61,8 @@ async function motion(element, frames, duration) {
   } catch { /* Cancellation still proceeds to a stable, interactive state. */ }
   finally { if (animation) { animations.delete(animation); animation.cancel(); } }
 }
-function shelves() {
-  // Thirteen physical bays: five / three / five. The middle-right globe stays in place.
-  // A 94-unit bay is at least 44 CSS px at the smallest (440-unit) scene scale.
-  const rows = [
-    {y:261,h:159,slots:[['ship',93,'#7ca6ad'],['prince',90,'#d47757'],['rain',78,'#91a7ae'],['stranger',92,'#e8dfbe'],['forest',84,'#a6b17f']]},
-    {y:464,h:159,slots:[['siddhartha',95,'#e9c776'],['station',80,'#c99c83'],['garden',93,'#8e9c70']]},
-    {y:650,h:178,slots:[['night',88,'#dfbd65'],['kafka',96,'#e9dfbb'],['letters',90,'#c87a59'],['other',90,'#749ba2'],['slow',86,'#e0c58a']]}
-  ];
-  $('shelves').innerHTML='<div class="shelf">'+rows.map((row,r)=>'<div class="tier tier-'+r+'" style="top:'+row.y/1672*100+'%;height:'+row.h/1672*100+'%">'+row.slots.map((slot,column)=>{
-    const placement='left:'+(238+column*94)/940*100+'%;width:'+94/940*100+'%;';
-    const rest='<span class="book-slot-rest" aria-hidden="true" style="'+placement+'"></span>';
-    if (!slot) return '<span class="book-slot is-empty" aria-hidden="true" data-slot="'+r+'-'+column+'" style="'+placement+'"></span>'+rest;
-    const [id,height,color]=slot,book=books.find(item=>item[0]===id);
-    return rest+'<button class="book-slot spine" data-slot="'+r+'-'+column+'" data-id="'+id+'" aria-label="抽出《'+book[1]+'》" style="'+placement+'--book-height:'+height+'%;--book-color:'+color+'"><span class="spine-face">'+book[1]+'</span></button>';
-  }).join('')+'</div>').join('')+'</div>';
-}
-
-function renderDisplayBooks() {
-  $('display-books').innerHTML=tableBooks.map(art=>{
-    const book=books.find(item=>item[0]===art.id),pad=10;
-    const style='left:'+(art.x-pad)/940*100+'%;top:'+(art.y-pad)/1672*100+'%;width:'+(art.width+pad*2)/940*100+'%;height:'+(art.height+pad*2)/1672*100+'%;--book-color:'+art.color+';--cover-art-size:'+940/art.width*100+'% '+1673/art.height*100+'%;--cover-art-position:'+art.x/(940-art.width)*100+'% '+art.y/(1673-art.height)*100+'%;--cover-art-clip:'+art.clip+';';
-    return '<button class="spine display-book" data-id="'+art.id+'" aria-label="抽出《'+book[1]+'》" title="'+book[1]+'" style="'+style+'"><span class="spine-face" aria-hidden="true"></span></button>';
-  }).join('');
-}
+function shelves() { window.BookArrangement.renderWall($('shelves')); }
+function renderDisplayBooks() { window.BookArrangement.renderTables($('display-books'),$('coffee-books')); }
 
 function show(html, {keepScroll = false} = {}) {
   const scrollTop = $('paper-scroll').scrollTop;
@@ -119,9 +97,9 @@ function sourceTransform() {
   return 'translate(' + (rect.left + rect.width/2 - panel.left - panel.width/2) + 'px,' + (rect.top + rect.height/2 - panel.top - panel.height/2) + 'px) scale(' + rect.width/panel.width + ',' + rect.height/panel.height + ')';
 }
 function readingArtifact(id) {
-  if (id === 'siddhartha') return {kind:'relay', label:'留给下一位读者', pickLabel:'从夹页抽出接力信', title:'一封留给下一位读者的信', detail:'沿折痕展开，读到末尾后可以续写'};
+  if (id === 'siddhartha') return {discoveryManaged:window.BookSecrets.discoveryDemo,kind:'relay', label:'留给下一位读者', pickLabel:'从夹页抽出接力信', title:'一封留给下一位读者的信', detail:'沿折痕展开，读到末尾后可以续写'};
   if (id === 'ship' && (state.rose || state.mode === 'dense' || state.visits >= 3)) return {
-    kind:'rose', label:'干玫瑰与纸条', pickLabel:'查看夹页中的干玫瑰', title:'干枯的玫瑰', detail:'纸条上，留着通往另一本书的线索',
+    discoveryManaged:window.BookSecrets.discoveryEnabled,alreadyKnown:state.rose,kind:'rose', label:'干玫瑰与纸条', pickLabel:'查看夹页中的干玫瑰', title:'干枯的玫瑰', detail:'纸条上，留着通往另一本书的线索',
     parts:[['干枯的玫瑰','🥀\n\n一张纸条：另一朵玫瑰守着一个小惊喜。也许你知道去哪里找。']],
     onRead:()=>{state.rose=true;status();}
   };
@@ -130,6 +108,7 @@ function readingArtifact(id) {
     parts:state.stamp ? [['玫瑰邮票','🌹\n\n这段跨书寻宝到这里结束了。']] : [['一只旧信封','书页间有一只不显眼的信封，封口上压着玫瑰印记。'],['玫瑰邮票','🌹\n\n这段跨书寻宝到这里结束了。']],
     onUnfold:()=>{state.stamp=true;status();}
   };
+  if(window.BookSecrets.discoveryEnabled&&notes[id])return {discoveryManaged:true,alreadyKnown:state.found.includes(id)||state.mode==='dense',kind:'note',label:'一张书友便笺',pickLabel:'展开书友便笺',title:'一张书友便笺',detail:'读完后，可以折好放回原来的夹页',parts:[['书友留下的便笺',notes[id]]],onRead:()=>{if(!state.found.includes(id)){state.found.push(id);state.small=state.found.length;status();}}};
   if (notes[id] && !state.found.includes(id) && (firstVisitNotes.has(id) || state.mode === 'dense' || state.visits % 3 === 2)) {
     state.found.push(id);state.small=state.found.length;
   }
@@ -139,15 +118,16 @@ function readingArtifact(id) {
 async function openBook(id, button) {
   if (phase !== 'idle') return;
   setPhase('siddhartha');
+  const revisit=state.seen.includes(id);
   state.visits++;
   if (!state.seen.includes(id)) state.seen.push(id);
   const artifact=readingArtifact(id);
   status();
   window.BookReader.open(button, {
-    book:books.find(book=>book[0]===id), artifact, coverArt:tableBooks.find(book=>book.id===id) || null,
+    book:books.find(book=>book[0]===id), artifact, revisit, coverArt:tableBooks.find(book=>book.id===id)||window.BookArrangement.coverArt(id),
     replies:()=>state.replies,
     write:text=>{state.replies.push(text);status();},
-    close:()=>setPhase('idle')
+    close:next=>{setPhase('idle');if(next)openBook(next.dataset.id,next);}
   });
 }
 async function closeBook() {
@@ -229,7 +209,7 @@ $('contents').addEventListener('click', event => {
   else if (action === 'note') turnPage(() => show('<h2>一张书友便笺</h2><div class="artifact">' + esc(notes[selected]) + '</div><button class="btn" data-action="back">← 回到简介</button>'));
 });
 $('contents').addEventListener('input', event => { if (event.target.id === 'reply') draft = event.target.value; });
-$('room-viewport').addEventListener('click', event => { const button = event.target.closest('.spine'); if (button) openBook(button.dataset.id,button); });
+$('room-viewport').addEventListener('click', event => { const button = window.BookArrangement.targetFor(event); if (button) openBook(button.dataset.id,button); });
 $('close').addEventListener('click',closeBook);
 $('shade').addEventListener('click',event => { if (event.target === $('shade')) closeBook(); });
 $('restart').addEventListener('click',() => { if (phase !== 'idle') return; state.visits = 0; state.seen = []; status(); });
@@ -250,7 +230,7 @@ window.visualViewport?.addEventListener('scroll',updateViewport);
 document.addEventListener('visibilitychange',() => { if (document.hidden) settleAnimations(); });
 window.addEventListener('pagehide',save);
 window.addEventListener('pageshow',updateViewport);
-shelves(); renderDisplayBooks(); updateViewport(); status();
+shelves(); renderDisplayBooks(); updateViewport(); status(); window.BookSecrets.mountPlaytest();
 
 if (new URLSearchParams(location.search).get('focus') === 'siddhartha') {
   const book = $('shelves').querySelector('[data-id="siddhartha"]');

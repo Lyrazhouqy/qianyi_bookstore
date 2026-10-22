@@ -1,7 +1,14 @@
 <!doctype html>
-<html lang="zh-CN" data-build="paper-bookshop-game-v0.6.24" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="book-centered-v0.6.8">
+<html lang="zh-CN" data-build="paper-bookshop-game-v0.13.0" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="book-centered-v0.6.8">
 <head>
   <meta charset="UTF-8">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/book-title-serif-v0113.woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/scene/book-arrangement-v0110.png">
+  <link rel="preload" as="image" href="assets/scene/horizontal-books-v0120.png">
+  <link rel="preload" as="image" href="assets/scene/simple-book-icons-v0118.png">
+  <link rel="preload" as="image" href="assets/scene/quiet-spine-icons-v0119.png">
+  <link rel="preload" as="image" href="assets/scene/blank-spines-v0120.png">
+  <link rel="preload" as="image" href="assets/scene/stack-clean-v0111.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <meta name="theme-color" content="#e8dcc8">
   <title>纸间书店 · 翻开旧书</title>
@@ -13,7 +20,14 @@
   <link rel="stylesheet" href="music.css">
   <link rel="stylesheet" href="lamp.css">
   <link rel="stylesheet" href="bouquet.css">
+  <link rel="stylesheet" href="book-placement.css">
+  <link rel="stylesheet" href="secrets.css">
   <script src="content.js" defer></script>
+  <script src="book-placement.js" defer></script>
+  <script src="discovery.js" defer></script>
+  <script src="discovery-pool.js" defer></script>
+  <script src="real-materials.js" defer></script>
+  <script src="secrets.js" defer></script>
   <script src="siddhartha.js" defer></script>
   <script src="app.js" defer></script>
   <script src="room.js" defer></script>
@@ -60,7 +74,7 @@
         </button>
         <div class="shelf-stage">
           <button class="scene-object shelf-wood" id="goto-shelves" aria-label="查看书架"></button>
-          <div class="shelves" id="shelves" aria-label="十三本可拿起的旧书"></div>
+          <div class="shelves" id="shelves" aria-label="主书架上十九本可拿起的书"></div>
         </div>
         <button class="scene-object wall-note" data-journal aria-label="书店手记" title="看看墙上的便笺"></button>
         <svg class="lamp-cord-art" viewBox="0 0 940 1672" preserveAspectRatio="none" aria-hidden="true"><defs><path id="lamp-cord" d="M140 784Q140 820 140 886"/></defs><use href="#lamp-cord" class="lamp-cord-shadow"/><use href="#lamp-cord" class="lamp-cord-line"/></svg>
@@ -86,8 +100,9 @@
         <button class="scene-object bouquet-touch" id="touch-bouquet" aria-label="轻碰花束"></button>
         <button class="scene-object bouquet-vase" id="change-bouquet" aria-label="换一束花，当前：小白花" title="换一束花"></button>
         <span class="sr-only" id="bouquet-message" role="status"></span>
-        <div class="display-stage" id="display-books" role="group" aria-label="陈列架上三本可拿起的书"></div>
-        <button class="scene-object drawer-handle" id="open-book-index" aria-label="查看陈列桌上的藏书" title="拉开抽屉看看藏书"></button>
+        <div class="display-stage" id="coffee-books" role="group" aria-label="茶几上两本可拿起的书"></div>
+        <div class="display-stage" id="display-books" role="group" aria-label="陈列架上十本可拿起的书"></div>
+        <button class="scene-object drawer-handle" id="open-book-index" aria-label="查看陈列桌上的藏书" title="拉开抽屉看看藏书"><span class="spine-face archive-binding" aria-hidden="true"></span></button>
       </div>
       </div>
     </section>

@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-22",
+  "type": "reuse of user-approved imagegen design as CSS sprite atlas; no additional image generation this turn",
+  "asset": "book-arrangement-v0110.png",
+  "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-b2f2bb45-bc7d-44a2-89c2-f39b5d0167d8.png",
+  "sha256": "fa3328e179e315701c1e160ecdafa472aebf51081bed09b441ad17efc41c241a",
+  "canonicalSize": [
+    942,
+    1669
+  ],
+  "method": "CSS source rectangles and silhouette clips in book-placement.js/css; source raster unchanged",
+  "invariants": [
+    "existing furniture remains",
+    "original cat art and mechanism unchanged",
+    "no raw chat export in assets"
+  ]
+}

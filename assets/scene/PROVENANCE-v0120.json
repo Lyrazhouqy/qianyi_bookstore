@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-22",
+  "method": "two built-in image_gen calls; transparent PNGs copied unchanged, no raster editing",
+  "calls": 2,
+  "assets": [
+    {
+      "asset": "blank-spines-v0120.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-bad7fca3-c871-4877-9a04-eeb587373a1f.png",
+      "size": [
+        1388,
+        1133
+      ],
+      "sha256": "52fe1883291bb5bf7bd82990c3c3d4dcba2fa8a3c73d7c5ff973781f8511ad93",
+      "prompt": "blank-spines-v0120.prompt.md"
+    },
+    {
+      "asset": "horizontal-books-v0120.png",
+      "source": "/Users/zhouqingyi/.codex/generated_images/01a14c70-46ca-77e1-994d-cb5b73ae76fe/exec-66f59323-0951-4ee0-8780-ab70cf4656e7.png",
+      "size": [
+        906,
+        1735
+      ],
+      "sha256": "e897ce01225166f8da08475dccae15740367fce82a5349429369496679950236",
+      "prompt": "horizontal-books-v0120.prompt.md"
+    }
+  ],
+  "integration": "five unmarked cloth sprites supply all13 upright spines, independent of the existing illustrated held-cover sources; five horizontal books have only the small front-spine icon removed, retaining top-cover illustrations and binding geometry",
+  "titleLayout": "upright names centered in76percent of spine height, font scaled by title length up to22 scene units; horizontal title region expanded to72percent width, pile type scale88 to98 per890, single flat type16 to18",
+  "invariants": [
+    "held cover atlases with illustrations kept byte-identical",
+    "31 identities and19+10+2 distribution",
+    "book thickness, touch targets and picking resolution",
+    "reader/letter/return/save and discovery mechanisms",
+    "cat cover and mechanism",
+    "letter stock and fonts"
+  ]
+}
