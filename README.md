@@ -2,11 +2,11 @@
 
 从既有线上动画版恢复的静态游戏工程。当前交付边界见 [HANDOFF.md](HANDOFF.md)。
 
-当前开发分支 `feat/rhythm-v014` 为 v0.14.0，未覆盖生产 v0.13.0。本地验收入口：<http://127.0.0.1:4173/?v=0.14.0&playtest=rhythm>。S1–S4 实现、分阶段测试、开放式探索与已知限制集中在[验收记录](docs/validation/v0140/REPORT.md)。本地 URL 的版本参数用于辨认当前源码，并非历史快照。
+当前开发分支 `feat/rhythm-v014` 为 v0.14.3，未覆盖生产 v0.13.0。本地验收入口：<http://127.0.0.1:4173/?v=0.14.3&playtest=rhythm>。S1–S4 实现、分阶段测试、开放式探索与已知限制集中在[验收记录](docs/validation/v0140/REPORT.md)。本地 URL 的版本参数用于辨认当前源码，并非历史快照。
 
 2026-10-22 已推送并发布 v0.13.0，游戏源码提交 `5b49c2ed001973350e9cb71532f3c8712cbfb03b`。正式入口：<https://paper-bookshop-playtest.vercel.app/v0.13.0/>。正式入口已在无认证上下文验证可直接访问。现有 Vercel 保护设置未改；唯一部署地址的备用免登录分享链接在本机 `.preview/mobile-playtest-v0130.json`，有效期 30 天，勿提交带分享参数的链接或浏览器认证状态。60 个线上资源 SHA256 全部匹配，Chromium/WebKit 的 320/390px 手机模拟流程通过；不代表物理手机验收。部署 ID、固定地址、资源哈希和回退部署见 `release-manifest.json` 的 `deployment`，详细证据在本机 `evidence/deployment-v0130/`。从 localhost 切到线上是新来源，本地存档不会自动迁移。
 
-源码仓库：<https://github.com/Lyrazhouqy/qianyi_bookstore>，当前源码版本 `0.14.0`。安装后按以下命令运行；无需构建。历史设计稿和批量截图、录像留在本机，`evidence/baseline/` 与 `evidence/bookshop-v0624/manifest.json` 保留已提交旧版的校验值；当前同书全部便笺可翻阅、取消额度/等待记录见 `evidence/bookshop-v0130/manifest.json`，前版全部书脊去图案与书名适配记录见 `evidence/bookshop-v0120/manifest.json`，前版其余九本立书图案统一记录见 `evidence/bookshop-v0119/manifest.json`，前版简洁扁平封面/书脊图案与四本书统一记录见 `evidence/bookshop-v0118/manifest.json`，前版五色同色封皮/书脊、加厚与印刷字记录见 `evidence/bookshop-v0117/manifest.json`，前版参考布面书脊与两本平放书放大记录见 `evidence/bookshop-v0116/manifest.json`，前版书摞贴合与浅黄书脊记录见 `evidence/bookshop-v0115/manifest.json`，前版深色字形与随书侧转修正见 `evidence/bookshop-v0114/manifest.json`，前版宋体书名尝试见 `evidence/bookshop-v0113/manifest.json`，前版直接取书/封皮字体记录见 `evidence/bookshop-v0112/manifest.json`，前版书摞实体与底图修正见 `evidence/bookshop-v0111/manifest.json`，前版设计稿书籍与选书交互记录在 `evidence/bookshop-v0110/manifest.json`，前版横向书摞恢复记录在 `evidence/bookshop-v0102/manifest.json`，前版排列与原文关联记录在 `evidence/bookshop-v0101/manifest.json`，前版真实书目上架记录在 `evidence/bookshop-v0100/manifest.json`，上一版页角记录在 `evidence/bookshop-v095/manifest.json`；旧版盲测与样式补丁证据分别保留在 `evidence/bookshop-v090/` 和 `evidence/bookshop-v091/`。
+源码仓库：<https://github.com/Lyrazhouqy/qianyi_bookstore>，当前源码版本 `0.14.3`。安装后按以下命令运行；无需构建。历史设计稿和批量截图、录像留在本机，`evidence/baseline/` 与 `evidence/bookshop-v0624/manifest.json` 保留已提交旧版的校验值；当前同书全部便笺可翻阅、取消额度/等待记录见 `evidence/bookshop-v0130/manifest.json`，前版全部书脊去图案与书名适配记录见 `evidence/bookshop-v0120/manifest.json`，前版其余九本立书图案统一记录见 `evidence/bookshop-v0119/manifest.json`，前版简洁扁平封面/书脊图案与四本书统一记录见 `evidence/bookshop-v0118/manifest.json`，前版五色同色封皮/书脊、加厚与印刷字记录见 `evidence/bookshop-v0117/manifest.json`，前版参考布面书脊与两本平放书放大记录见 `evidence/bookshop-v0116/manifest.json`，前版书摞贴合与浅黄书脊记录见 `evidence/bookshop-v0115/manifest.json`，前版深色字形与随书侧转修正见 `evidence/bookshop-v0114/manifest.json`，前版宋体书名尝试见 `evidence/bookshop-v0113/manifest.json`，前版直接取书/封皮字体记录见 `evidence/bookshop-v0112/manifest.json`，前版书摞实体与底图修正见 `evidence/bookshop-v0111/manifest.json`，前版设计稿书籍与选书交互记录在 `evidence/bookshop-v0110/manifest.json`，前版横向书摞恢复记录在 `evidence/bookshop-v0102/manifest.json`，前版排列与原文关联记录在 `evidence/bookshop-v0101/manifest.json`，前版真实书目上架记录在 `evidence/bookshop-v0100/manifest.json`，上一版页角记录在 `evidence/bookshop-v095/manifest.json`；旧版盲测与样式补丁证据分别保留在 `evidence/bookshop-v090/` 和 `evidence/bookshop-v091/`。
 
 ```sh
 npm ci
@@ -259,3 +259,5 @@ v0.6.0 游戏场景：<http://127.0.0.1:4173/?v=0.6.0>。全屏插画房间里�
 2026-10-22 当前开发 **v0.14.1**：修正把书脊素材拉宽成封面的裁剪；横放书先抽离，再等比缩放、转向到手中，归位反向，上层书随取归落下/抬起。猫/小王子/荔枝原完整封面保持。相关两引擎四手机环境140/140及320/390模拟原生触摸通过；[验证及动画复看](docs/validation/v0141-binding/REPORT.md)。[当前本机试玩](http://127.0.0.1:4173/?v=0.14.1&playtest=rhythm)，分支feat/rhythm-v014，仅本地未推送/部署，生产仍v0.13.0；物理iPhone与真人手感待验收。
 
 2026-10-23 当前开发 **v0.14.2**：《小王子》独立明信片页使用用户提供的星空原图，按比例完整呈现，可翻面、收回及重访。原信封/邮票、便笺、夜航西飞明信片与存档保持。两引擎四手机环境44/44通过，[证据](docs/validation/v0142/REPORT.md)。[本机试玩](http://127.0.0.1:4173/?v=0.14.2&playtest=rhythm)，未推送/部署。
+
+2026-10-23 当前开发 **v0.14.3**：小王子明信片缩成短画幅，保留小王子、狐狸、金色云朵，纸边加入原创星空情话。原图字节不变，翻面/收回沿用；Chromium/WebKit两手机尺寸44/44通过，[证据](docs/validation/v0143/REPORT.md)。仅本地开发，未部署。

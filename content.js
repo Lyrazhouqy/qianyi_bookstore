@@ -3,7 +3,7 @@ const notes={stranger:'不表现悲伤，真的就等于不悲伤吗？',garden:
 const letter=[['书友 A','我曾以为寻找答案，是为了有一天能够停下来。'],['书友 B','也许我们寻找的不是答案，而是值得继续追问的问题。'],['书友 C','我第二次读这本书，最喜欢的反而是那些没有回答的部分。']];
 
 // Authored demonstration object, separate from book-club messages and player saves.
-const authoredKeepsakes={prince:{id:'keepsake-prince-postcard-v0142',source:'user-supplied-image',kind:'postcard',label:'一张星空明信片',pickLabel:'取出小王子的星空明信片',title:'小王子的明信片',detail:'翻到背面看看，也可以收回书里',picture:{src:'assets/scene/prince-postcard-user-v0142.png',alt:'小王子和狐狸坐在草地上，望着星星与金色云朵'},parts:[['星空明信片',''],['明信片背面','收件人：下一位读者。']]},night:{id:'keepsake-night-postcard-v014',source:'authored-playtest',kind:'postcard',label:'一角旧明信片',pickLabel:'抽出旧明信片',title:'一张没有寄出的明信片',detail:'可以翻到背面看看，也可以收回书里',parts:[['原创演示 · 旧明信片','留给远方。'],['原创演示 · 明信片背面','收件人：下一次出发的自己。\n\n原来，远方也可以先留在这里。']]}};
+const authoredKeepsakes={prince:{id:'keepsake-prince-postcard-v0142',source:'user-supplied-image',kind:'postcard',label:'一张星空明信片',pickLabel:'取出小王子的星空明信片',title:'小王子的明信片',detail:'翻到背面看看，也可以收回书里',picture:{src:'assets/scene/prince-postcard-user-v0142.png',alt:'小王子和狐狸坐在草地上，望着星星与金色云朵'},parts:[['星空明信片','你望向星星时，\n我就在其中一颗上想你。'],['明信片背面','收件人：下一位读者。']]},night:{id:'keepsake-night-postcard-v014',source:'authored-playtest',kind:'postcard',label:'一角旧明信片',pickLabel:'抽出旧明信片',title:'一张没有寄出的明信片',detail:'可以翻到背面看看，也可以收回书里',parts:[['原创演示 · 旧明信片','留给远方。'],['原创演示 · 明信片背面','收件人：下一次出发的自己。\n\n原来，远方也可以先留在这里。']]}};
 
 // Authored game keepsakes in the four new fictional books are available on first visit.
 const firstVisitNotes = new Set(['rain','forest','station','slow','leaves','clouds','cat']);

@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.2",
+  "build": "paper-bookshop-game-v0.14.3",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -69,7 +69,7 @@
     "assets/fonts/book-title-serif-OFL.txt",
     "assets/scene/prince-postcard-user-v0142.png"
   ],
-  "status": "development-v0.14.2-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.3-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -717,13 +717,15 @@
     "production": "unchanged v0.13.0"
   },
   "princePostcard": {
-    "version": "0.14.2",
+    "version": "0.14.3",
     "source": "user supplied image; original PNG bytes preserved",
     "book": "prince",
     "id": "keepsake-prince-postcard-v0142",
     "image": "assets/scene/prince-postcard-user-v0142.png",
-    "layout": "portrait image fits whole within viewport; no crop or stretch",
-    "localUrl": "http://127.0.0.1:4173/?v=0.14.2&playtest=rhythm",
-    "existing": "night postcard, real notes, rose envelope and old saves preserved"
+    "layout": "short display frame; CSS crops excess sky and grass with object-fit cover, original PNG unchanged; prince and fox kept",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.3&playtest=rhythm",
+    "existing": "night postcard, real notes, rose envelope and old saves preserved",
+    "caption": "你望向星星时，\n我就在其中一颗上想你。",
+    "captionSource": "original game copy inspired by the Little Prince; not a quotation"
   }
 }
