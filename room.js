@@ -33,9 +33,11 @@
     if(book){book.scrollIntoView({block:'center',inline:'center',behavior:'instant'});book.focus({preventScroll:true});book.click();}
     else{const drawer=document.getElementById('open-book-index');drawer.scrollIntoView({block:'center',inline:'center',behavior:'instant'});openBook(choice.dataset.book,drawer);}
   });
-  const windowScenes={original:null,seaside:'assets/scene/window-seaside-v065.png',rain:'assets/scene/window-rain-v0611.png',sunset:'assets/scene/window-sunset-v0611.png',snow:'assets/scene/window-snow-v0611.png'};
+  const windowScenes={original:'assets/scene/window-original-flat-v01415.png',seaside:'assets/scene/window-seaside-flat-v01415.png',rain:'assets/scene/window-rain-flat-v01415.png',sunset:'assets/scene/window-sunset-flat-v01415.png',snow:'assets/scene/window-snow-flat-v01415.png',nightSnow:'assets/scene/window-night-snow-flat-v01415.png'};
   const windowKey='paperbook-window-v1',windowMessage=document.getElementById('window-message');
   const windowView=document.getElementById('window-view'),windowPicture=document.getElementById('window-picture'),windowNext=document.getElementById('window-picture-next');
+  let removedWindowPhoto=null;
+  const clearWindowPhoto=document.getElementById('window-clear-photo'),undoWindowPhoto=document.getElementById('window-undo-photo');
   let windowState={scene:'original',custom:null},windowRevision=0,uploadRevision=0,finishSceneryFade=null,hasSavedWindow=false;
   const safePicture=value=>typeof value==='string' && value.length<5700000 && /^data:image\/(png|jpeg|webp|avif);base64,/.test(value);
   try {
@@ -69,16 +71,24 @@
   }
   async function changeScenery(next,persist=true,initial=false){
     const revision=++windowRevision;finishSceneryFade?.();
-    const source=next.scene==='custom'?next.custom:windowScenes[next.scene];
+    let source=next.scene==='custom'?next.custom:windowScenes[next.scene];
     if(source){
       try {const img=new Image();img.src=source;await img.decode();}
-      catch {if(revision===windowRevision){if(!persist||initial)await changeScenery({...windowState,scene:'original'},persist);else{windowMessage.textContent='这张图片暂时打不开，请换一张试试。';}}return;}
+      catch {
+        if(revision!==windowRevision)return;
+        // The painted garden beneath the overlay remains a local fallback.
+        if(next.scene==='original')source=null;
+        else if(!persist||initial){await changeScenery({...windowState,scene:'original'},persist);return;}
+        else{windowMessage.textContent='这张图片暂时打不开，请换一张试试。';return;}
+      }
     }
     if(revision!==windowRevision)return;
+    if(next.custom&&next.custom!==windowState.custom)removedWindowPhoto=null;
     windowState=next;
+    clearWindowPhoto.hidden=!next.custom;undoWindowPhoto.hidden=!removedWindowPhoto;
     document.querySelectorAll('[data-window-scene]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.windowScene===next.scene)));
     const preview=document.getElementById('window-custom-preview');preview.hidden=!next.custom;
-    if(next.custom)preview.src=next.custom;
+    if(next.custom)preview.src=next.custom;else preview.removeAttribute('src');
     document.querySelector('.photo-placeholder').toggleAttribute('hidden',!!next.custom);
     document.querySelector('.photo-add-badge').hidden=!next.custom;
     document.getElementById('window-photo-hint').textContent=next.custom?'点击更换':'点此上传';
@@ -93,6 +103,16 @@
     uploadRevision++;
     changeScenery({...windowState,scene:choice.dataset.windowScene});
   });
+  clearWindowPhoto.addEventListener('click',()=>{
+    if(!windowState.custom)return;
+    uploadRevision++;removedWindowPhoto={custom:windowState.custom,wasActive:windowState.scene==='custom'};
+    changeScenery({...windowState,scene:windowState.scene==='custom'?'original':windowState.scene,custom:null});
+  });
+  undoWindowPhoto.addEventListener('click',()=>{
+    if(!removedWindowPhoto)return;
+    uploadRevision++;const removed=removedWindowPhoto;removedWindowPhoto=null;
+    changeScenery({...windowState,custom:removed.custom,scene:removed.wasActive?'custom':windowState.scene});
+  });
   document.getElementById('window-file').addEventListener('change',async event=>{
     const input=event.currentTarget,file=input.files?.[0];input.value='';if(!file)return;
     const upload=++uploadRevision;windowRevision++;finishSceneryFade?.();
@@ -106,7 +126,15 @@
       await changeScenery({scene:'custom',custom:picture});
     }catch{if(upload===uploadRevision)windowMessage.textContent='这张图片暂时打不开，请换一张试试。';}
   });
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)finishSceneryFade?.();});
+  const sceneryWindow=document.getElementById('change-window');
+  function suspendSnow(){sceneryWindow.dataset.snowSuspended=String(document.hidden);}
+  suspendSnow();
+  // CSS handles movement; stop the small decorative layer when outside the camera.
+  const snowVisibility=new IntersectionObserver(entries=>{
+    sceneryWindow.dataset.snowVisible=String(entries[0].isIntersecting);
+  },{root:viewport});
+  snowVisibility.observe(sceneryWindow);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)finishSceneryFade?.();suspendSnow();});
   window.addEventListener('pagehide',()=>finishSceneryFade?.());
   // Choose once per page load; manual choices then stay put for this visit.
   changeScenery({...windowState,scene:randomScene(hasSavedWindow?windowState.scene:null)},true,true);

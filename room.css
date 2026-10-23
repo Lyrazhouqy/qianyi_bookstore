@@ -157,3 +157,25 @@ body:not([data-phase="idle"]) .cat-body { animation-play-state:paused; }
 /* Extend the drawing area above the seat for lifted ears, tail and paws. */
 .cat-motion { display:none; position:absolute; left:calc(-291/1342*100%); top:calc(-424/806*100%); width:calc(1790/1342*100%); height:calc(1230/806*100%); pointer-events:none; transform-origin:50% 95%; }
 .shop-cat:not([data-cat-action="rest"]) .cat-motion { display:block; }
+
+/* Local photo removal stays reversible until this page is closed. */
+.window-bottom { flex-wrap:wrap; }
+.window-photo-actions { display:flex; gap:8px; }
+.window-photo-actions .quiet-button { font-family:"PaperYozai",serif; padding:6px 4px; color:#6b8476; text-decoration:underline; text-underline-offset:3px; }
+
+/* Sparse flakes move in glass coordinates, beneath the unmoving wooden frame. */
+.window-snowfall { opacity:0; pointer-events:none; transition:opacity .6s ease; }
+.scene-window[data-scenery="nightSnow"] .window-snowfall { opacity:1; }
+.window-snowflake { animation:window-snow-drift var(--snow-duration) linear var(--snow-delay) infinite; animation-play-state:paused; }
+body[data-phase="idle"] .scene-window[data-scenery="nightSnow"][data-snow-visible="true"][data-snow-suspended="false"] .window-snowflake { animation-play-state:running; }
+@keyframes window-snow-drift {
+  from { transform:translate(0,-16px); }
+  to { transform:translate(var(--snow-drift),456px); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .window-snowfall { transition:none; }
+  .window-snowflake { animation:none; transform:translate(0,var(--snow-rest)); }
+}
+@media(max-height:500px) and (min-width:601px) {
+  .window-choices:has([data-window-scene="nightSnow"]) { grid-template-columns:repeat(7,minmax(0,1fr)); }
+}

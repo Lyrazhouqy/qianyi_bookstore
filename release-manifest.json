@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.14",
+  "build": "paper-bookshop-game-v0.14.15",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -76,9 +76,15 @@
     "cat.js",
     "assets/scene/calico-tail-low-cels-v01413.png",
     "assets/scene/calico-ear-cels-v01413.png",
-    "assets/scene/calico-belly-cels-v01413.png"
+    "assets/scene/calico-belly-cels-v01413.png",
+    "assets/scene/window-original-flat-v01415.png",
+    "assets/scene/window-seaside-flat-v01415.png",
+    "assets/scene/window-rain-flat-v01415.png",
+    "assets/scene/window-sunset-flat-v01415.png",
+    "assets/scene/window-snow-flat-v01415.png",
+    "assets/scene/window-night-snow-flat-v01415.png"
   ],
-  "status": "development-v0.14.14-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.15-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -811,5 +817,29 @@
     "revision": "mobile-fit-v1",
     "behavior": "safe-area and visual-viewport layout, portrait paired reading, wider landscape pages and reachable form actions",
     "evidence": "docs/validation/mobile-fit/REPORT.md"
+  },
+  "flatWindowScenery": {
+    "revision": "v0.14.15",
+    "scenes": [
+      "original",
+      "seaside",
+      "rain",
+      "sunset",
+      "snow",
+      "nightSnow"
+    ],
+    "assets": [
+      "assets/scene/window-original-flat-v01415.png",
+      "assets/scene/window-seaside-flat-v01415.png",
+      "assets/scene/window-rain-flat-v01415.png",
+      "assets/scene/window-sunset-flat-v01415.png",
+      "assets/scene/window-snow-flat-v01415.png",
+      "assets/scene/window-night-snow-flat-v01415.png"
+    ],
+    "generation": "built-in image_gen; one call per scene; original generated PNGs copied unchanged",
+    "prompts": "assets/scene/window-flat-v01415.prompts.md",
+    "photo": "upload entry retained; explicit local photo removal with session undo; no global photo purge",
+    "evidence": "docs/validation/window-flat/REPORT.md",
+    "animation": "nightSnow: 22 clipped SVG flakes, 27-45 second CSS loops; pause offscreen, document hidden, and while reading; static reduced motion"
   }
 }

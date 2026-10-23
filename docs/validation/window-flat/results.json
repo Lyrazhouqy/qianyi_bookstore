@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-23",
+  "boundary": "Playwright browser simulation; not physical phone acceptance; not deployed",
+  "runs": {
+    "first": {
+      "stats": {
+        "startTime": "2026-10-23T08:51:44.670Z",
+        "duration": 43727.796,
+        "expected": 14,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": [],
+      "source": "evidence/window-flat/first.json"
+    },
+    "final": {
+      "stats": {
+        "startTime": "2026-10-23T08:53:38.342Z",
+        "duration": 180857.831,
+        "expected": 66,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": [],
+      "source": "evidence/window-flat/final.json"
+    },
+    "night-final": {
+      "stats": {
+        "startTime": "2026-10-23T09:03:29.309Z",
+        "duration": 203327.30599999998,
+        "expected": 77,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "errors": [],
+      "source": "evidence/window-flat/night-final.json"
+    },
+    "confirmed": {
+      "stats": {
+        "startTime": "2026-10-23T09:08:57.815Z",
+        "duration": 160241.752,
+        "expected": 54,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": [],
+      "source": "evidence/window-flat/confirmed.json"
+    },
+    "smoke": {
+      "stats": {
+        "startTime": "2026-10-23T09:12:35.730Z",
+        "duration": 18175.392,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "errors": [],
+      "source": "evidence/window-flat/smoke.json"
+    }
+  }
+}

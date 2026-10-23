@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-23T17:08:56.209563+08:00",
+  "sha256": {
+    "room.js": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+    "room.css": "76de40611822ce77c3bc94843c38a37dfe1469f9e18adb71e8b52b1e646acb93",
+    "index.html": "f8c7365b68c72ca702bba8334ae9f00ed644ff907cf9cb8bb0d793fe0231056c",
+    "mobile.css": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+    "tests/window.spec.cjs": "06fa69853405b46593a7237f4797ef04ddd27d6ff0e726d63fd1667a2e6714a8",
+    "tests/window-snow.spec.cjs": "5073303416e575f5e054de2eae3733380bcecfab452a0cdb779767980e048100",
+    "assets/scene/window-night-snow-flat-v01415.png": "133845153b257584df9952e81aa01d11ed6fe555a300bba1fefcb54a89cd04c0",
+    "assets/scene/window-rain-flat-v01415.png": "fa8e3834f1312644da189c02f1b7282e9dd83b51a7354dffd72ffbb4f7a43282",
+    "assets/scene/window-seaside-flat-v01415.png": "f62ade043bde980bfa54b2a685065288232a143eaa6f48e982b8149c634d07d6",
+    "assets/scene/window-original-flat-v01415.png": "bf9cabdd61aa0f941e7ea9a63f3d9c48223406471e2faa9e1d2d320ed8a6d89f",
+    "assets/scene/window-snow-flat-v01415.png": "83670f4dcc4603663a9e86ae9d192c00bf2f4beadd12aec9bf90c1c6aee669d5",
+    "assets/scene/window-sunset-flat-v01415.png": "251e1e2e9bcf542bd9fc5489ff80d9f29d99b6aac3396cca48414bed306ada94"
+  },
+  "afterAt": "2026-10-23T17:11:52.517859+08:00",
+  "after": {
+    "room.js": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+    "room.css": "76de40611822ce77c3bc94843c38a37dfe1469f9e18adb71e8b52b1e646acb93",
+    "index.html": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+    "mobile.css": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+    "tests/window.spec.cjs": "06fa69853405b46593a7237f4797ef04ddd27d6ff0e726d63fd1667a2e6714a8",
+    "tests/window-snow.spec.cjs": "5073303416e575f5e054de2eae3733380bcecfab452a0cdb779767980e048100",
+    "assets/scene/window-night-snow-flat-v01415.png": "133845153b257584df9952e81aa01d11ed6fe555a300bba1fefcb54a89cd04c0",
+    "assets/scene/window-rain-flat-v01415.png": "fa8e3834f1312644da189c02f1b7282e9dd83b51a7354dffd72ffbb4f7a43282",
+    "assets/scene/window-seaside-flat-v01415.png": "f62ade043bde980bfa54b2a685065288232a143eaa6f48e982b8149c634d07d6",
+    "assets/scene/window-original-flat-v01415.png": "bf9cabdd61aa0f941e7ea9a63f3d9c48223406471e2faa9e1d2d320ed8a6d89f",
+    "assets/scene/window-snow-flat-v01415.png": "83670f4dcc4603663a9e86ae9d192c00bf2f4beadd12aec9bf90c1c6aee669d5",
+    "assets/scene/window-sunset-flat-v01415.png": "251e1e2e9bcf542bd9fc5489ff80d9f29d99b6aac3396cca48414bed306ada94"
+  },
+  "unchanged": {
+    "room.js": true,
+    "room.css": true,
+    "index.html": false,
+    "mobile.css": true,
+    "tests/window.spec.cjs": true,
+    "tests/window-snow.spec.cjs": true,
+    "assets/scene/window-night-snow-flat-v01415.png": true,
+    "assets/scene/window-rain-flat-v01415.png": true,
+    "assets/scene/window-seaside-flat-v01415.png": true,
+    "assets/scene/window-original-flat-v01415.png": true,
+    "assets/scene/window-snow-flat-v01415.png": true,
+    "assets/scene/window-sunset-flat-v01415.png": true
+  },
+  "http": {
+    "index.html": {
+      "sha256": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+      "matchesCurrentFile": true
+    },
+    "room.js": {
+      "sha256": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+      "matchesCurrentFile": true
+    },
+    "room.css": {
+      "sha256": "76de40611822ce77c3bc94843c38a37dfe1469f9e18adb71e8b52b1e646acb93",
+      "matchesCurrentFile": true
+    },
+    "mobile.css": {
+      "sha256": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+      "matchesCurrentFile": true
+    },
+    "assets/scene/window-night-snow-flat-v01415.png": {
+      "sha256": "133845153b257584df9952e81aa01d11ed6fe555a300bba1fefcb54a89cd04c0",
+      "matchesCurrentFile": true
+    },
+    "assets/scene/window-rain-flat-v01415.png": {
+      "sha256": "fa8e3834f1312644da189c02f1b7282e9dd83b51a7354dffd72ffbb4f7a43282",
+      "matchesCurrentFile": true
+    },
+    "assets/scene/window-seaside-flat-v01415.png": {
+      "sha256": "f62ade043bde980bfa54b2a685065288232a143eaa6f48e982b8149c634d07d6",
+      "matchesCurrentFile": true
+    },
+    "assets/scene/window-original-flat-v01415.png": {
+      "sha256": "bf9cabdd61aa0f941e7ea9a63f3d9c48223406471e2faa9e1d2d320ed8a6d89f",
+      "matchesCurrentFile": true
+    },
+    "assets/scene/window-snow-flat-v01415.png": {
+      "sha256": "83670f4dcc4603663a9e86ae9d192c00bf2f4beadd12aec9bf90c1c6aee669d5",
+      "matchesCurrentFile": true
+    },
+    "assets/scene/window-sunset-flat-v01415.png": {
+      "sha256": "251e1e2e9bcf542bd9fc5489ff80d9f29d99b6aac3396cca48414bed306ada94",
+      "matchesCurrentFile": true
+    }
+  },
+  "smoke": {
+    "at": "2026-10-23T17:12:34.468909+08:00",
+    "sha256": {
+      "index.html": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+      "room.js": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+      "room.css": "76de40611822ce77c3bc94843c38a37dfe1469f9e18adb71e8b52b1e646acb93",
+      "tests/window-snow.spec.cjs": "5073303416e575f5e054de2eae3733380bcecfab452a0cdb779767980e048100"
+    },
+    "windowHTML": {
+      "windowView": "53acf377a03e4bbcefeefcc8a3b8133a763282bd3c433a94818ad7069c3039a1",
+      "windowDialog": "4c16e2efb773aaccde956681a02b26fffea4c2cc9ce40398ced31ecd41bb36c4"
+    },
+    "afterAt": "2026-10-23T17:14:09.933724+08:00",
+    "after": {
+      "index.html": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+      "room.js": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+      "room.css": "76de40611822ce77c3bc94843c38a37dfe1469f9e18adb71e8b52b1e646acb93",
+      "tests/window-snow.spec.cjs": "5073303416e575f5e054de2eae3733380bcecfab452a0cdb779767980e048100"
+    },
+    "unchanged": {
+      "index.html": true,
+      "room.js": true,
+      "room.css": true,
+      "tests/window-snow.spec.cjs": true
+    },
+    "windowHTMLAfter": {
+      "windowView": "53acf377a03e4bbcefeefcc8a3b8133a763282bd3c433a94818ad7069c3039a1",
+      "windowDialog": "4c16e2efb773aaccde956681a02b26fffea4c2cc9ce40398ced31ecd41bb36c4"
+    },
+    "windowHTMLUnchanged": true
+  }
+}

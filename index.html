@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.14" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
+<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.15" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
 <head>
   <meta charset="UTF-8">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/book-title-serif-v0113.woff2" crossorigin>
@@ -63,7 +63,32 @@
         <button class="scene-window" id="change-window" aria-label="更换窗外风景" title="轻点窗户，换一幅风景">
           <svg class="window-view" id="window-view" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true" hidden>
             <defs><clipPath id="window-glass"><path d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z"/></clipPath></defs>
-            <g clip-path="url(#window-glass)"><image id="window-picture" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice"/><image id="window-picture-next" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice" opacity="0"/></g>
+            <g clip-path="url(#window-glass)"><image id="window-picture" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice"/><image id="window-picture-next" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+              <g class="window-snowfall" fill="#f6f0df">
+                <circle class="window-snowflake" cx="24" cy="0" r="1.2" opacity="0.46" style="--snow-duration:27s;--snow-delay:-0.0s;--snow-drift:12px;--snow-rest:-16.0px"/>
+                <circle class="window-snowflake" cx="71" cy="0" r="1.6" opacity="0.65" style="--snow-duration:34s;--snow-delay:-21.01s;--snow-drift:-10px;--snow-rest:275.7px"/>
+                <circle class="window-snowflake" cx="118" cy="0" r="1.1" opacity="0.5" style="--snow-duration:41s;--snow-delay:-9.68s;--snow-drift:7px;--snow-rest:95.4px"/>
+                <circle class="window-snowflake" cx="165" cy="0" r="2.2" opacity="0.82" style="--snow-duration:29s;--snow-delay:-24.77s;--snow-drift:-15px;--snow-rest:387.1px"/>
+                <circle class="window-snowflake" cx="212" cy="0" r="1.4" opacity="0.58" style="--snow-duration:36s;--snow-delay:-17.0s;--snow-drift:18px;--snow-rest:206.8px"/>
+                <circle class="window-snowflake" cx="30" cy="0" r="1.8" opacity="0.7" style="--snow-duration:43s;--snow-delay:-3.88s;--snow-drift:-6px;--snow-rest:26.6px"/>
+                <circle class="window-snowflake" cx="77" cy="0" r="2.6" opacity="0.9" style="--snow-duration:31s;--snow-delay:-21.95s;--snow-drift:12px;--snow-rest:318.3px"/>
+                <circle class="window-snowflake" cx="124" cy="0" r="1.2" opacity="0.46" style="--snow-duration:38s;--snow-delay:-12.4s;--snow-drift:-10px;--snow-rest:138.0px"/>
+                <circle class="window-snowflake" cx="171" cy="0" r="1.6" opacity="0.65" style="--snow-duration:45s;--snow-delay:-42.49s;--snow-drift:7px;--snow-rest:429.7px"/>
+                <circle class="window-snowflake" cx="218" cy="0" r="1.1" opacity="0.5" style="--snow-duration:33s;--snow-delay:-18.56s;--snow-drift:-15px;--snow-rest:249.4px"/>
+                <circle class="window-snowflake" cx="36" cy="0" r="2.2" opacity="0.82" style="--snow-duration:40s;--snow-delay:-7.21s;--snow-drift:18px;--snow-rest:69.1px"/>
+                <circle class="window-snowflake" cx="83" cy="0" r="1.4" opacity="0.58" style="--snow-duration:28s;--snow-delay:-22.35s;--snow-drift:-6px;--snow-rest:360.8px"/>
+                <circle class="window-snowflake" cx="130" cy="0" r="1.8" opacity="0.7" style="--snow-duration:35s;--snow-delay:-14.57s;--snow-drift:12px;--snow-rest:180.5px"/>
+                <circle class="window-snowflake" cx="177" cy="0" r="2.6" opacity="0.9" style="--snow-duration:42s;--snow-delay:-1.45s;--snow-drift:-10px;--snow-rest:0.3px"/>
+                <circle class="window-snowflake" cx="224" cy="0" r="1.2" opacity="0.46" style="--snow-duration:30s;--snow-delay:-19.57s;--snow-drift:7px;--snow-rest:292.0px"/>
+                <circle class="window-snowflake" cx="42" cy="0" r="1.6" opacity="0.65" style="--snow-duration:37s;--snow-delay:-10.01s;--snow-drift:-15px;--snow-rest:111.7px"/>
+                <circle class="window-snowflake" cx="89" cy="0" r="1.1" opacity="0.5" style="--snow-duration:44s;--snow-delay:-39.1s;--snow-drift:18px;--snow-rest:403.4px"/>
+                <circle class="window-snowflake" cx="136" cy="0" r="2.2" opacity="0.82" style="--snow-duration:32s;--snow-delay:-16.21s;--snow-drift:-6px;--snow-rest:223.1px"/>
+                <circle class="window-snowflake" cx="183" cy="0" r="1.4" opacity="0.58" style="--snow-duration:39s;--snow-delay:-4.86s;--snow-drift:12px;--snow-rest:42.8px"/>
+                <circle class="window-snowflake" cx="230" cy="0" r="1.8" opacity="0.7" style="--snow-duration:27s;--snow-delay:-20.05s;--snow-drift:-10px;--snow-rest:334.5px"/>
+                <circle class="window-snowflake" cx="48" cy="0" r="2.6" opacity="0.9" style="--snow-duration:34s;--snow-delay:-12.26s;--snow-drift:7px;--snow-rest:154.2px"/>
+                <circle class="window-snowflake" cx="95" cy="0" r="1.2" opacity="0.46" style="--snow-duration:41s;--snow-delay:-40.13s;--snow-drift:-15px;--snow-rest:446.0px"/>
+              </g>
+            </g>
           </svg>
           <svg class="window-frame" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true">
             <defs>
@@ -126,15 +151,17 @@
     <dialog class="shop-sheet window-sheet" id="window-settings" aria-labelledby="window-settings-title">
       <div class="sheet-heading window-heading"><div><small>窗 外 一 景</small><h2 id="window-settings-title">今天，望向哪里？</h2></div><button class="sheet-close" data-close-sheet aria-label="收起窗外风景">×</button></div>
       <div class="window-choices">
-        <button class="window-choice" data-window-scene="original" aria-label="树影" aria-pressed="true"><span class="window-thumbnail window-original" aria-hidden="true"></span><strong>树影</strong><small><span class="window-current">正在看 · </span>叶影轻摇</small></button>
-        <button class="window-choice" data-window-scene="seaside" aria-label="海风" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-seaside-v065.png" alt="" loading="lazy" draggable="false"><strong>海风</strong><small><span class="window-current">正在看 · </span>海浪慢慢</small></button>
-        <button class="window-choice" data-window-scene="rain" aria-label="雨后山色" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-rain-v0611.png" alt="" loading="lazy" draggable="false"><strong>雨后山色</strong><small><span class="window-current">正在看 · </span>雨歇山青</small></button>
-        <button class="window-choice" data-window-scene="sunset" aria-label="晚霞" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-sunset-v0611.png" alt="" loading="lazy" draggable="false"><strong>晚霞</strong><small><span class="window-current">正在看 · </span>落日余温</small></button>
-        <button class="window-choice" data-window-scene="snow" aria-label="初雪" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-snow-v0611.png" alt="" loading="lazy" draggable="false"><strong>初雪</strong><small><span class="window-current">正在看 · </span>静静落雪</small></button>
+        <button class="window-choice" data-window-scene="original" aria-label="树影" aria-pressed="true"><img class="window-thumbnail" src="assets/scene/window-original-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>树影</strong><small><span class="window-current">正在看 · </span>叶影轻摇</small></button>
+        <button class="window-choice" data-window-scene="seaside" aria-label="海风" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-seaside-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>海风</strong><small><span class="window-current">正在看 · </span>海浪慢慢</small></button>
+        <button class="window-choice" data-window-scene="rain" aria-label="雨后山色" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-rain-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>雨后山色</strong><small><span class="window-current">正在看 · </span>雨歇山青</small></button>
+        <button class="window-choice" data-window-scene="sunset" aria-label="晚霞" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-sunset-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>晚霞</strong><small><span class="window-current">正在看 · </span>落日余温</small></button>
+        <button class="window-choice" data-window-scene="snow" aria-label="初雪" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-snow-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>初雪</strong><small><span class="window-current">正在看 · </span>静静落雪</small></button>
+        <button class="window-choice" data-window-scene="nightSnow" aria-label="雪夜" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-night-snow-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>雪夜</strong><small><span class="window-current">正在看 · </span>静静飘雪</small></button>
         <button class="window-choice" data-window-scene="custom" aria-label="上传自己的照片" aria-pressed="false" id="window-custom-choice"><span class="window-thumbnail window-upload-art"><img id="window-custom-preview" alt="" hidden><svg class="photo-placeholder" viewBox="0 0 100 100" aria-hidden="true"><rect x="13" y="15" width="66" height="70" rx="3" fill="#faf3df" stroke="#b8ae91" stroke-width="2" transform="rotate(-5 46 50)"/><path d="M22 65L38 45L50 59L60 50L73 67Z" fill="#aebc94"/><circle cx="61" cy="32" r="7" fill="#e7c87d"/><circle cx="76" cy="75" r="18" fill="#77948a"/><path d="M76 66V84M67 75H85" stroke="#faf6e8" stroke-width="3" stroke-linecap="round"/></svg><span class="photo-add-badge" aria-hidden="true" hidden>＋</span></span><strong>自己的照片</strong><small><span class="window-current">正在看 · </span><span id="window-photo-hint">点此上传</span></small></button>
       </div>
       <div class="window-bottom">
         <div><p class="window-message" id="window-message" role="status"></p><p class="window-upload-note">本机图片 · 最大4MB</p></div>
+        <div class="window-photo-actions"><button type="button" class="quiet-button" id="window-clear-photo" aria-label="移除自己的照片" hidden>移除照片</button><button type="button" class="quiet-button" id="window-undo-photo" hidden>撤销移除</button></div>
         <input type="file" id="window-file" accept="image/png,image/jpeg,image/webp,image/avif" aria-label="选择自己的照片" hidden>
       </div>
     </dialog>
