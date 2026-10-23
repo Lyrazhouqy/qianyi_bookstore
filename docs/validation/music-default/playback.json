@@ -1,0 +1,27 @@
+[
+  {
+    "engine": "chromium",
+    "initial": {
+      "state": "ready"
+    },
+    "after": {
+      "state": "playing",
+      "time": 0.378682,
+      "volume": 0.40800265717669687
+    },
+    "gestureRequired": true
+  },
+  {
+    "engine": "webkit",
+    "initial": {
+      "state": "playing",
+      "time": 0
+    },
+    "after": {
+      "state": "playing",
+      "time": 0.21236569498061358,
+      "volume": 0.42
+    },
+    "gestureRequired": false
+  }
+]

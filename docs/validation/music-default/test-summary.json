@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-23T06:50:10.610Z",
+  "stats": {
+    "startTime": "2026-10-23T06:48:37.201Z",
+    "duration": 51973.192,
+    "expected": 40,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    "chromium-small",
+    "chromium-SE",
+    "chromium-iPhone14",
+    "chromium-ProMax",
+    "chromium-landscape",
+    "chromium-desktop",
+    "webkit-small",
+    "webkit-SE",
+    "webkit-iPhone14",
+    "webkit-ProMax",
+    "webkit-landscape",
+    "webkit-desktop"
+  ],
+  "files": [
+    "tests/music.spec.cjs",
+    "tests/music-default.spec.cjs",
+    "tests/bouquet-change.spec.cjs"
+  ],
+  "runtimeFiles": 62
+}

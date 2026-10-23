@@ -14,7 +14,7 @@
     for(const button of grid.children){const chosen=button.dataset.track===selected,playing=chosen&&mode==='playing';button.setAttribute('aria-pressed',String(chosen));button.classList.toggle('is-playing',playing);button.querySelector('small').textContent=(playing?'正在放 · ':chosen&&mode==='loading'?'唱针落下 · ':'')+records.find(r=>r[0]===button.dataset.track)[2];}
     const playing=mode==='playing'||mode==='loading';toggle.setAttribute('aria-label',playing?'暂停音乐':'播放音乐');toggle.querySelector('span').textContent=playing?'Ⅱ':'▷';toggle.querySelector('.music-toggle-label').textContent=playing?'停一会儿':started?'继续播放':'放张唱片';
     opener.setAttribute('aria-label','留声机，挑一张唱片');opener.title=mode==='playing'?'正在播放《'+record()[1]+'》':'挑一张唱片';
-    status.textContent=mode==='playing'?'《'+record()[1]+'》 · 陪你慢慢翻书':mode==='loading'?'唱针轻轻落下……':mode==='error'?'这张唱片暂时没响，再点一次试试。':mode==='paused'?'唱针歇一会儿。':'挑一张唱片，陪你慢慢翻书。';
+    status.textContent=mode==='playing'?'《'+record()[1]+'》 · 陪你慢慢翻书':mode==='loading'?'唱针轻轻落下……':mode==='error'?'这张唱片暂时没响，再点一次试试。':mode==='paused'?'唱针歇一会儿。':mode==='ready'?'轻触书店，让唱片陪你慢慢翻书。':'挑一张唱片，陪你慢慢翻书。';
   }
   function retire(audio){audio.pause();audio.removeAttribute('src');audio.load();audio.remove();voices.delete(audio);}
   function fade(next,token){
@@ -35,15 +35,23 @@
     audio.addEventListener('playing',()=>{if(token!==revision)return;mode='playing';render();fade(audio,token);});
     audio.addEventListener('pause',()=>{if(token===revision&&current===audio)pause();});
     audio.addEventListener('waiting',()=>{if(token===revision&&mode==='playing'){mode='loading';render();}});
-    const failed=()=>{if(token!==revision)return;++revision;cancelAnimationFrame(frame);for(const voice of [...voices]){retire(voice);voice.remove();}current=null;mode='error';render();};
+    const failed=error=>{if(token!==revision)return;++revision;cancelAnimationFrame(frame);for(const voice of [...voices]){retire(voice);voice.remove();}current=null;mode=error?.name==='NotAllowedError'?'ready':'error';render();};
     audio.addEventListener('error',failed,{once:true});
     audio.play()?.catch(failed);
     // At most two voices are needed for a switch. Rapid taps retire stale choices.
     for(const voice of [...voices])if(voice!==audio&&voice.paused){retire(voice);voice.remove();}
   }
   function pause(){resumePoint=current?{track:selected,time:current.currentTime}:resumePoint;++revision;cancelAnimationFrame(frame);for(const audio of [...voices]){retire(audio);audio.remove();}current=null;mode='paused';render();}
-  sheet.addEventListener('sheetopened',()=>{if(!started)play();});
+  // Audible autoplay may be denied until a real touch/click or keyboard gesture.
+  // A user pause or media error never opts back into automatic retries.
+  function unlock(event){
+    if(!event.isTrusted||event.target.closest?.('#music-toggle, [data-track]'))return;
+    if(event.type==='keydown'&&!['Enter',' '].includes(event.key))return;
+    if(mode==='ready'||(mode==='loading'&&current?.paused))play();
+  }
+  document.addEventListener('click',unlock,true);
+  document.addEventListener('keydown',unlock,true);
   grid.addEventListener('click',event=>{const choice=event.target.closest('[data-track]');if(choice)play(choice.dataset.track);});
   toggle.addEventListener('click',()=>mode==='playing'||mode==='loading'?pause():play());
-  window.addEventListener('pagehide',pause);render();
+  window.addEventListener('pagehide',pause);play();
 })();
