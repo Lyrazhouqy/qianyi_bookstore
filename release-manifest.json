@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.7",
+  "build": "paper-bookshop-game-v0.14.8",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -69,7 +69,7 @@
     "assets/fonts/book-title-serif-OFL.txt",
     "assets/scene/prince-postcard-user-v0142.png"
   ],
-  "status": "development-v0.14.7-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.8-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -756,5 +756,11 @@
     "localUrl": "http://127.0.0.1:4173/?v=0.14.7&playtest=rhythm",
     "behavior": "curved corner and 12-panel paper bend with moving cast shadow; single corner, drafts and old saves preserved",
     "evidence": "docs/validation/v0147/REPORT.md"
+  },
+  "pageFeel": {
+    "version": "0.14.8",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.8&playtest=rhythm",
+    "behavior": "physical free-edge tracking; recent release velocity and reversal; shorter settling; anonymous folded-paper preview",
+    "evidence": "docs/validation/v0148/REPORT.md"
   }
 }

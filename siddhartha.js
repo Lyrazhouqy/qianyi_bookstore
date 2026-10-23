@@ -117,7 +117,7 @@ window.Siddhartha = (() => {
     room.setAttribute('aria-label',book[1]+(next?'，书与'+next.label:'，书籍阅读'));
     paper.querySelector('.sid-letter-packet em').textContent=next?.label||'';paper.querySelector('.sid-letter-packet i').textContent=next?.kind==='rose'?'🥀':next?.kind==='envelope'?'✉':'⌁';paper.querySelector('.sid-letter-pick').setAttribute('aria-label',next?.pickLabel||'取出夹页');query('.sid-discovery-hint').textContent=next?'……好像有人在这里留下了什么。':'也可以在这页夹一点什么。';placeLetter();
   }
-  function startPageTurn(direction,drag=false){
+  function startPageTurn(direction,drag=false,nextArtifact=null){
     if(busy||gesture||extraction>0||step!=='open')return false;
     busy=true;setStep(drag?'page-drag':'page-turn');
     const page=query('.sid-page'),target=page.getBoundingClientRect(),bounds=stage.getBoundingClientRect();
@@ -125,6 +125,8 @@ window.Siddhartha = (() => {
     const width=page.offsetWidth,height=page.offsetHeight,count=12,span=width/count,panels=[];
     leaf.className='sid-turning-leaf';leaf.setAttribute('aria-hidden','true');leaf.inert=true;leaf.dataset.model='curved-paper';
     under.className='sid-turn-under';cast.className='sid-turn-cast';under.setAttribute('aria-hidden','true');cast.setAttribute('aria-hidden','true');
+    const previewTitle=document.createElement('div');previewTitle.className='sid-turn-preview-title';previewTitle.textContent='《'+book[1]+'》';under.appendChild(previewTitle);
+    if(nextArtifact){const previewPaper=document.createElement('div');previewPaper.className='sid-turn-preview-paper';under.appendChild(previewPaper);}
     if(artifact){const oldPaper=paper.cloneNode(true);oldPaper.hidden=false;oldPaper.inert=true;oldPaper.querySelector('.sid-letter-reader')?.remove();
       oldPaper.style.left=(parseFloat(paper.style.left)-(target.left-bounds.left))+'px';oldPaper.style.top=(parseFloat(paper.style.top)-(target.top-bounds.top))+'px';face.appendChild(oldPaper);}
     for(let i=0;i<count;i++){
@@ -135,10 +137,13 @@ window.Siddhartha = (() => {
     carrier.append(under,cast,leaf);paper.style.visibility='hidden';
     let progress=0,finished=false;
     function move(value){
-      progress=clamp(value);const lift=Math.sin(Math.PI*progress),sweep=Math.PI*progress;
+      progress=clamp(value);const lift=Math.sin(Math.PI*progress),sweep=Math.PI*progress,bend=lift*.82+.055*(1-progress);
+      // Keep the free edge under the finger while the middle of the sheet bows.
+      const spread=panels.reduce((sum,_,i)=>sum+Math.cos(bend*((i+.5)/count-.5)),0)/count;
+      const base=Math.acos(Math.max(-1,Math.min(1,Math.cos(sweep)/spread)));
       let x=0,z=1;
       panels.forEach((panel,i)=>{
-        const u=(i+.5)/count,angle=sweep+(lift*.86+.1*(1-progress))*(u-.24);
+        const u=(i+.5)/count,angle=base+bend*(u-.5);
         panel.style.transform='translate3d('+x.toFixed(3)+'px,0,'+z.toFixed(3)+'px) rotateY('+(-direction*angle*180/Math.PI).toFixed(3)+'deg)';
         panel.style.setProperty('--bend-light',String(lift*(.08+.17*Math.abs(Math.sin(angle)))));
         x+=span*Math.cos(angle);z+=direction*span*Math.sin(angle);
@@ -147,11 +152,12 @@ window.Siddhartha = (() => {
       cast.style.width=(width*.72)+'px';cast.style.left=(Math.cos(sweep)*width*.52-width*.36)+'px';cast.style.opacity=String(lift*.78);
       under.style.opacity=String(1-clamp((progress-.94)/.06));
     }
-    move(0);
-    return {move,async finish(next,commit,cancel=false){
+    move(drag?.025:0);
+    return {move,async finish(next,commit,cancel=false,{velocity=0,dragged=false}={}){
       if(finished)return false;finished=true;setStep(cancel?'page-rebound':'page-turn');const from=progress;
       try{
-        await tween(Math.max(180,(cancel?260:480)*Math.abs((cancel?0:1)-from)),t=>move(from+((cancel?0:1)-from)*t),cancel?glide:t=>t*t*(3-2*t));
+        const duration=cancel?Math.max(150,Math.min(230,from*320)):dragged?Math.max(150,Math.min(360,390*(1-from)/(1+Math.abs(velocity)*.5))):340;
+        await tween(duration,t=>move(from+((cancel?0:1)-from)*t),cancel||dragged?glide:t=>t*t*(3-2*t));
         if(!cancel){chooseArtifact(next);commit();artifact?.onReveal?.();}
       }finally{leaf.remove();under.remove();cast.remove();paper.style.visibility='';busy=false;setStep('open');placeLetter();}
       guidance(artifact?.label||'翻到另一页','每一页，留着一位书友的话');if(returnPending)returnToShelf();return !cancel;
@@ -163,7 +169,7 @@ window.Siddhartha = (() => {
     try{
       if(extraction>0)await putLetter();
       if(extraction>0||returnPending||returnInProgress||busy||step!=='open')return false;
-      const turn=startPageTurn(direction);return turn?await turn.finish(next,commit):false;
+      const turn=startPageTurn(direction,false,next);return turn?await turn.finish(next,commit):false;
     }finally{pageAdvance=false;}
   }
   function segmentHTML(part,index) {

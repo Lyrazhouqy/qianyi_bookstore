@@ -200,21 +200,25 @@ window.BookSecrets=(()=>{
     }
     function beginCorner(event){
       const button=event.target.closest('[data-paper-id]');if(!button||cornerDrag||event.button!==0||room.dataset.step!=='open')return;
-      event.preventDefault();cornerDrag={button,id:button.dataset.paperId,direction:Number(button.dataset.direction),pointer:event.pointerId,x:event.clientX,y:event.clientY,at:performance.now(),width:room.querySelector('.sid-page').getBoundingClientRect().width,viewportW:innerWidth,viewportH:innerHeight,dx:0,dy:0};
-      const turn=host.startPageTurn(1,true);if(!turn){cornerDrag=null;return;}
+      event.preventDefault();cornerDrag={button,id:button.dataset.paperId,direction:Number(button.dataset.direction),pointer:event.pointerId,x:event.clientX,y:event.clientY,at:performance.now(),width:room.querySelector('.sid-page').getBoundingClientRect().width,viewportW:innerWidth,viewportH:innerHeight,dx:0,dy:0,samples:[{x:event.clientX,at:event.timeStamp}]};
+      const turn=host.startPageTurn(1,true,artifactAt(button.dataset.paperId));if(!turn){cornerDrag=null;return;}
       cornerDrag.turn=turn;traces.classList.add('is-turning');button.setPointerCapture(event.pointerId);
     }
     function moveCorner(event){
       if(!cornerDrag||cornerDrag.pointer!==event.pointerId)return;event.preventDefault();cornerDrag.dx=event.clientX-cornerDrag.x;cornerDrag.dy=event.clientY-cornerDrag.y;
-      cornerDrag.turn.move(-cornerDrag.dx/Math.min(150,cornerDrag.width*.8));
+      const now=event.timeStamp;cornerDrag.samples.push({x:event.clientX,at:now});while(cornerDrag.samples.length>2&&cornerDrag.samples[1].at<now-80)cornerDrag.samples.shift();
+      const pull=Math.max(0,Math.min(2,-cornerDrag.dx/cornerDrag.width));
+      cornerDrag.turn.move(Math.acos(1-pull)/Math.PI);
     }
     async function finishCorner(event,cancel=false){
       if(!cornerDrag||event&&event.pointerId!==cornerDrag.pointer)return;
       const drag=cornerDrag;cornerDrag=null;ignorePageClick=performance.now()+500;host.suppressPageRelease();
       if(drag.button.hasPointerCapture(drag.pointer))drag.button.releasePointerCapture(drag.pointer);
-      const moved=Math.max(Math.abs(drag.dx),Math.abs(drag.dy))>7,amount=-drag.dx/Math.min(150,drag.width*.8);
-      cancel ||= drag.viewportW!==innerWidth||drag.viewportH!==innerHeight||moved&&(Math.abs(drag.dy)>Math.abs(drag.dx)*1.3||amount<.28);
-      try{await drag.turn.finish(artifactAt(drag.id),()=>pageCommitted(drag.id),cancel);}finally{traces.classList.remove('is-turning');renderTabs();}
+      const moved=Math.max(Math.abs(drag.dx),Math.abs(drag.dy))>7,distance=-drag.dx,first=drag.samples[0],last=drag.samples.at(-1);
+      const velocity=(event?.timeStamp??performance.now())-last.at<90?(last.x-first.x)/Math.max(12,last.at-first.at):0;
+      const projected=distance+Math.max(0,-velocity)*95,reversing=velocity>.18&&distance<drag.width*1.65;
+      cancel ||= drag.viewportW!==innerWidth||drag.viewportH!==innerHeight||moved&&(Math.abs(drag.dy)>Math.abs(drag.dx)*1.3||reversing||distance<18||projected<drag.width*.52);
+      try{await drag.turn.finish(artifactAt(drag.id),()=>pageCommitted(drag.id),cancel,{velocity,dragged:moved});}finally{traces.classList.remove('is-turning');renderTabs();}
     }
     function stash(){if(!form)return true;form.front=editor.querySelector('[name="front"]').value;const ok=saveDraft(book[0],form);editor.querySelector('.sid-secret-message').textContent=ok?'':'这张纸还没收稳，先别离开。';return ok;}
     function drawEditor(){

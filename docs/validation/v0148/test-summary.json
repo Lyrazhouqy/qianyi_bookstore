@@ -1,0 +1,53 @@
+{
+  "version": "0.14.8",
+  "date": "2026-10-23",
+  "phases": {
+    "initial-results.json": {
+      "raw": "evidence/bookshop-v0148/initial-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:08:03.420Z",
+        "duration": 34114.556,
+        "expected": 23,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    "feel-results.json": {
+      "raw": "evidence/bookshop-v0148/feel-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:10:00.052Z",
+        "duration": 14463.742,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "final-results.json": {
+      "raw": "evidence/bookshop-v0148/final-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:11:33.918Z",
+        "duration": 165664.685,
+        "expected": 124,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "touch-fix-results.json": {
+      "raw": "evidence/bookshop-v0148/touch-fix-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:16:29.821Z",
+        "duration": 96395.102,
+        "expected": 64,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "nativeInitial": "short-flick check failed before event timestamp refinement; original tool output was not saved as a raw file",
+  "finalNative": "native-touch.json",
+  "proofLimits": "browser mobile viewports and Chromium protocol touch; no physical iPhone or fresh blind playtest"
+}

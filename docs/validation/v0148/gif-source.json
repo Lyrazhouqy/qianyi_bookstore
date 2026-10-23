@@ -1,0 +1,13 @@
+{
+  "source": "evidence/bookshop-v0148/native-390/885d074c4ada636229e1f84e9c33a063.webm",
+  "startSeconds": 8,
+  "durationSeconds": 3.7,
+  "crop": [
+    390,
+    520,
+    0,
+    90
+  ],
+  "fps": 20,
+  "note": "isolated native touch protocol recording, cropped without motion interpolation"
+}
