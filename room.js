@@ -33,7 +33,7 @@
     if(book){book.scrollIntoView({block:'center',inline:'center',behavior:'instant'});book.focus({preventScroll:true});book.click();}
     else{const drawer=document.getElementById('open-book-index');drawer.scrollIntoView({block:'center',inline:'center',behavior:'instant'});openBook(choice.dataset.book,drawer);}
   });
-  const windowScenes={original:'assets/scene/window-original-flat-v01415.png',seaside:'assets/scene/window-seaside-flat-v01415.png',rain:'assets/scene/window-rain-flat-v01415.png',sunset:'assets/scene/window-sunset-flat-v01415.png',snow:'assets/scene/window-snow-flat-v01415.png',nightSnow:'assets/scene/window-night-snow-flat-v01415.png'};
+  const windowScenes={original:'assets/scene/window-original-flat-v01415.png',rain:'assets/scene/window-rain-flat-v01415.png',nightSnow:'assets/scene/window-night-snow-flat-v01415.png'};
   const windowKey='paperbook-window-v1',windowMessage=document.getElementById('window-message');
   const windowView=document.getElementById('window-view'),windowPicture=document.getElementById('window-picture'),windowNext=document.getElementById('window-picture-next');
   let removedWindowPhoto=null;
@@ -42,7 +42,11 @@
   const safePicture=value=>typeof value==='string' && value.length<5700000 && /^data:image\/(png|jpeg|webp|avif);base64,/.test(value);
   try {
     const saved=JSON.parse(localStorage.getItem(windowKey));
-    if(saved && ([...Object.keys(windowScenes),'custom']).includes(saved.scene)){windowState={scene:saved.scene,custom:safePicture(saved.custom)?saved.custom:null};hasSavedWindow=true;}
+    if(saved && ([...Object.keys(windowScenes),'custom','seaside','sunset','snow']).includes(saved.scene)){
+      // Retired views leave the saved upload intact; only the chosen view migrates.
+      const scene=Object.hasOwn(windowScenes,saved.scene)||saved.scene==='custom'?saved.scene:'original';
+      windowState={scene,custom:safePicture(saved.custom)?saved.custom:null};hasSavedWindow=true;
+    }
     if(windowState.scene==='custom'&&!windowState.custom)windowState.scene='original';
   } catch { /* Missing storage leaves the illustrated views available. */ }
   function randomScene(exclude=windowState.scene){

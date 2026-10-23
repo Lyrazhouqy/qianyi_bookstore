@@ -8,7 +8,7 @@
 
 手机尺寸适配见[本轮记录](docs/validation/mobile-fit/REPORT.md)：320–430px竖屏、横屏、平板和桌面；保留左原文/右便笺，增加安全区与可见视口处理。
 
-窗外六景已统一为扁平纸感插画，新增缓慢飘雪的雪夜，保留空白上传与照片移除/撤销，见[窗景记录](docs/validation/window-flat/REPORT.md)。
+窗外保留树影、雨后山色、雪夜三景，分别有轻摆叶片、缓慢水纹、稀疏飘雪；移除海风/晚霞/初雪，保留空白上传与照片移除/撤销，见[窗景动态记录](docs/validation/window-quiet/REPORT.md)。
 
 2026-10-22 已推送并发布 v0.13.0，游戏源码提交 `5b49c2ed001973350e9cb71532f3c8712cbfb03b`。正式入口：<https://paper-bookshop-playtest.vercel.app/v0.13.0/>。正式入口已在无认证上下文验证可直接访问。现有 Vercel 保护设置未改；唯一部署地址的备用免登录分享链接在本机 `.preview/mobile-playtest-v0130.json`，有效期 30 天，勿提交带分享参数的链接或浏览器认证状态。60 个线上资源 SHA256 全部匹配，Chromium/WebKit 的 320/390px 手机模拟流程通过；不代表物理手机验收。部署 ID、固定地址、资源哈希和回退部署见 `release-manifest.json` 的 `deployment`，详细证据在本机 `evidence/deployment-v0130/`。从 localhost 切到线上是新来源，本地存档不会自动迁移。
 

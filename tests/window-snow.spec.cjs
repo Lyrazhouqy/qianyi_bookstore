@@ -44,8 +44,8 @@ test('night snow visibly moves inside the glass, stops off camera and while read
   await page.locator('#change-window').scrollIntoViewIfNeeded();
   await expect.poll(async()=>(await flakeState(page)).play).toBe('running');
   await page.getByRole('button',{name:'更换窗外风景',exact:true}).tap();
-  await page.getByRole('button',{name:'海风',exact:true}).tap();
-  await expect(page.locator('#change-window')).toHaveAttribute('data-scenery','seaside');
+  await page.getByRole('button',{name:'雨后山色',exact:true}).tap();
+  await expect(page.locator('#change-window')).toHaveAttribute('data-scenery','rain');
   await expect(page.locator('.window-snowfall')).toHaveCSS('opacity','0');
   expect((await flakeState(page)).play).toBe('paused');
 });

@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-23T17:29:24.322934+08:00",
+  "files": {
+    "index.html": "0c6a1477d8201ff604c41f81d6791854538adacec573d01519fb56bf11d4172c",
+    "room.js": "4cf2a5810f432f56261acb9384978a0689b5e68e6a4c6841de7b6b253a342fe6",
+    "room.css": "2a41640bbcd48639ab4c1042799ecb12dfc5ea1bfaa187925c8220b9e2478d9e",
+    "tests/window-quiet.spec.cjs": "22f35af8742aa9bd35673c1c3ffa94dd1f2c368b40be5bac4c249c575c15ff47"
+  },
+  "windowHTML": {
+    "view": "cae6b39a72e286b6adaf4b6eed931e20ed925c3fea7647c193ac46c9468a7ff0",
+    "dialog": "0af2ac36c63854d48407c0f26cc2b1b9daad65154bbf75aadd48a801c5496974"
+  },
+  "afterAt": "2026-10-23T17:31:16.894422+08:00",
+  "after": {
+    "index.html": "0c6a1477d8201ff604c41f81d6791854538adacec573d01519fb56bf11d4172c",
+    "room.js": "4cf2a5810f432f56261acb9384978a0689b5e68e6a4c6841de7b6b253a342fe6",
+    "room.css": "2a41640bbcd48639ab4c1042799ecb12dfc5ea1bfaa187925c8220b9e2478d9e",
+    "tests/window-quiet.spec.cjs": "22f35af8742aa9bd35673c1c3ffa94dd1f2c368b40be5bac4c249c575c15ff47"
+  },
+  "unchanged": {
+    "index.html": true,
+    "room.js": true,
+    "room.css": true,
+    "tests/window-quiet.spec.cjs": true
+  },
+  "windowHTMLAfter": {
+    "view": "cae6b39a72e286b6adaf4b6eed931e20ed925c3fea7647c193ac46c9468a7ff0",
+    "dialog": "0af2ac36c63854d48407c0f26cc2b1b9daad65154bbf75aadd48a801c5496974"
+  },
+  "windowHTMLUnchanged": true,
+  "http": {
+    "index.html": {
+      "sha256": "0c6a1477d8201ff604c41f81d6791854538adacec573d01519fb56bf11d4172c",
+      "matchesCurrentFile": true
+    },
+    "room.js": {
+      "sha256": "4cf2a5810f432f56261acb9384978a0689b5e68e6a4c6841de7b6b253a342fe6",
+      "matchesCurrentFile": true
+    },
+    "room.css": {
+      "sha256": "2a41640bbcd48639ab4c1042799ecb12dfc5ea1bfaa187925c8220b9e2478d9e",
+      "matchesCurrentFile": true
+    }
+  }
+}

@@ -108,7 +108,7 @@ body { margin:0; background:#eee4cd url("assets/paper/letter-paper-texture.png")
 .window-choice[aria-pressed="true"] small { color:#598e97; }
 .window-message { margin:0; min-height:0; line-height:1.6; }.window-message:empty { display:none; }
 .window-upload-note { margin:0; color:#9a8c7b; font-size:11px; line-height:1.7; }
-@media(max-height:500px) and (min-width:601px) { .window-sheet .window-choices { grid-template-columns:repeat(5,minmax(0,1fr)); }.window-choices:has([data-window-scene="custom"]) { grid-template-columns:repeat(6,minmax(0,1fr)); } }
+@media(max-height:500px) and (min-width:601px) { .window-sheet .window-choices { grid-template-columns:repeat(4,minmax(0,1fr)); }.window-choices:has([data-window-scene="custom"]) { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 
 .window-sheet .window-choice .window-upload-art { position:relative; display:grid; place-items:center; overflow:hidden; background:#e8dfc9; }
 .photo-placeholder { width:72%; height:72%; max-width:105px; pointer-events:none; }
@@ -163,6 +163,29 @@ body:not([data-phase="idle"]) .cat-body { animation-play-state:paused; }
 .window-photo-actions { display:flex; gap:8px; }
 .window-photo-actions .quiet-button { font-family:"PaperYozai",serif; padding:6px 4px; color:#6b8476; text-decoration:underline; text-underline-offset:3px; }
 
+/* The room and painted landscape stay still; only two leaves or three ripples move. */
+.window-ambient { opacity:0; pointer-events:none; transition:opacity .6s ease; }
+.scene-window[data-scenery="original"] .window-tree-breeze,
+.scene-window[data-scenery="rain"] .window-river-ripples { opacity:1; }
+.window-leaf { transform-origin:0 0; animation:window-leaf-sway 11s ease-in-out -3s infinite; }
+.window-leaf-right { animation-duration:14s; animation-delay:-8s; }
+.window-ripple { opacity:.2; animation:window-ripple-drift var(--ripple-duration) ease-in-out var(--ripple-delay) infinite; }
+.window-ambient-motion { animation-play-state:paused; }
+body[data-phase="idle"] .scene-window[data-snow-visible="true"][data-snow-suspended="false"][data-scenery="original"] .window-leaf,
+body[data-phase="idle"] .scene-window[data-snow-visible="true"][data-snow-suspended="false"][data-scenery="rain"] .window-ripple { animation-play-state:running; }
+@keyframes window-leaf-sway {
+  0%,100% { transform:rotate(-3deg); }
+  50% { transform:translate(1px,1px) rotate(5deg); }
+}
+@keyframes window-ripple-drift {
+  0%,100% { opacity:.12; transform:translate(-2px,0) scaleX(.92); }
+  50% { opacity:.3; transform:translate(2px,1px) scaleX(1.08); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .window-ambient { transition:none; }
+  .window-ambient-motion { animation:none!important; }
+}
+
 /* Sparse flakes move in glass coordinates, beneath the unmoving wooden frame. */
 .window-snowfall { opacity:0; pointer-events:none; transition:opacity .6s ease; }
 .scene-window[data-scenery="nightSnow"] .window-snowfall { opacity:1; }
@@ -177,5 +200,5 @@ body[data-phase="idle"] .scene-window[data-scenery="nightSnow"][data-snow-visibl
   .window-snowflake { animation:none; transform:translate(0,var(--snow-rest)); }
 }
 @media(max-height:500px) and (min-width:601px) {
-  .window-choices:has([data-window-scene="nightSnow"]) { grid-template-columns:repeat(7,minmax(0,1fr)); }
+  .window-choices:has([data-window-scene="nightSnow"]) { grid-template-columns:repeat(4,minmax(0,1fr)); }
 }

@@ -65,9 +65,18 @@
           <g class="lamp-light"><ellipse cx="90" cy="780" rx="175" ry="160" fill="url(#floor-lamp-halo)"/><path d="M20 790H165L365 1250Q130 1320 -120 1250Z" fill="url(#floor-lamp-cone)"/><path d="M45 675Q90 647 137 675L170 785Q89 813 8 785Z" fill="#ffd06b" opacity=".5"/></g>
         </svg>
         <button class="scene-window" id="change-window" aria-label="更换窗外风景" title="轻点窗户，换一幅风景">
-          <svg class="window-view" id="window-view" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true" hidden>
+          <svg class="window-view" id="window-view" data-window-revision="quiet-v2" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true" hidden>
             <defs><clipPath id="window-glass"><path d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z"/></clipPath></defs>
             <g clip-path="url(#window-glass)"><image id="window-picture" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice"/><image id="window-picture-next" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+              <g class="window-tree-breeze window-ambient" fill="#8c9d61">
+                <g transform="translate(37 192)"><g class="window-leaf window-leaf-left window-ambient-motion"><path d="M0 0Q-10-13-4-22Q10-18 0 0Z"/><path d="M0 0Q8-14 19-12Q22 0 0 0Z" fill="#a4af73"/></g></g>
+                <g transform="translate(243 286)"><g class="window-leaf window-leaf-right window-ambient-motion"><path d="M0 0Q-18-2-17-13Q-5-17 0 0Z"/><path d="M0 0Q-4-18 5-23Q16-13 0 0Z" fill="#a4af73"/></g></g>
+              </g>
+              <g class="window-river-ripples window-ambient" fill="none" stroke="#edf0dc" stroke-width="1.6" stroke-linecap="round">
+                <g transform="translate(124 298)"><path class="window-ripple window-ambient-motion" d="M-12 0Q0-2 12 0" style="--ripple-delay:-2s;--ripple-duration:9s"/></g>
+                <g transform="translate(160 323)"><path class="window-ripple window-ambient-motion" d="M-17 0Q0 2 17 0" style="--ripple-delay:-7s;--ripple-duration:12s"/></g>
+                <g transform="translate(200 349)"><path class="window-ripple window-ambient-motion" d="M-15 0Q0-2 15 0" style="--ripple-delay:-4s;--ripple-duration:10s"/></g>
+              </g>
               <g class="window-snowfall" fill="#f6f0df">
                 <circle class="window-snowflake" cx="24" cy="0" r="1.2" opacity="0.46" style="--snow-duration:27s;--snow-delay:-0.0s;--snow-drift:12px;--snow-rest:-16.0px"/>
                 <circle class="window-snowflake" cx="71" cy="0" r="1.6" opacity="0.65" style="--snow-duration:34s;--snow-delay:-21.01s;--snow-drift:-10px;--snow-rest:275.7px"/>
@@ -169,10 +178,7 @@
       <div class="sheet-heading window-heading"><div><small>窗 外 一 景</small><h2 id="window-settings-title">今天，望向哪里？</h2></div><button class="sheet-close" data-close-sheet aria-label="收起窗外风景">×</button></div>
       <div class="window-choices">
         <button class="window-choice" data-window-scene="original" aria-label="树影" aria-pressed="true"><img class="window-thumbnail" src="assets/scene/window-original-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>树影</strong><small><span class="window-current">正在看 · </span>叶影轻摇</small></button>
-        <button class="window-choice" data-window-scene="seaside" aria-label="海风" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-seaside-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>海风</strong><small><span class="window-current">正在看 · </span>海浪慢慢</small></button>
         <button class="window-choice" data-window-scene="rain" aria-label="雨后山色" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-rain-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>雨后山色</strong><small><span class="window-current">正在看 · </span>雨歇山青</small></button>
-        <button class="window-choice" data-window-scene="sunset" aria-label="晚霞" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-sunset-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>晚霞</strong><small><span class="window-current">正在看 · </span>落日余温</small></button>
-        <button class="window-choice" data-window-scene="snow" aria-label="初雪" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-snow-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>初雪</strong><small><span class="window-current">正在看 · </span>静静落雪</small></button>
         <button class="window-choice" data-window-scene="nightSnow" aria-label="雪夜" aria-pressed="false"><img class="window-thumbnail" src="assets/scene/window-night-snow-flat-v01415.png" alt="" loading="lazy" draggable="false"><strong>雪夜</strong><small><span class="window-current">正在看 · </span>静静飘雪</small></button>
         <button class="window-choice" data-window-scene="custom" aria-label="上传自己的照片" aria-pressed="false" id="window-custom-choice"><span class="window-thumbnail window-upload-art"><img id="window-custom-preview" alt="" hidden><svg class="photo-placeholder" viewBox="0 0 100 100" aria-hidden="true"><rect x="13" y="15" width="66" height="70" rx="3" fill="#faf3df" stroke="#b8ae91" stroke-width="2" transform="rotate(-5 46 50)"/><path d="M22 65L38 45L50 59L60 50L73 67Z" fill="#aebc94"/><circle cx="61" cy="32" r="7" fill="#e7c87d"/><circle cx="76" cy="75" r="18" fill="#77948a"/><path d="M76 66V84M67 75H85" stroke="#faf6e8" stroke-width="3" stroke-linecap="round"/></svg><span class="photo-add-badge" aria-hidden="true" hidden>＋</span></span><strong>自己的照片</strong><small><span class="window-current">正在看 · </span><span id="window-photo-hint">点此上传</span></small></button>
       </div>
