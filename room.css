@@ -140,3 +140,12 @@ body:has(.siddhartha-room[data-step="returning"]) .display-stage .pile-left,body
 @media(prefers-reduced-motion:reduce) { .display-stage .pile-left,.display-stage .pile-coffee { transition:none; } }
 /* Six-character titles stay in one column inside the denser wall case. */
 .shelf-stage .spine-face { font-size:clamp(12px,calc(var(--scene-scale)*18px),14px); }
+
+/* A quiet companion rests on the seat plane, without claiming a touch target. */
+.shop-cat { position:absolute; left:calc(180/940*100%); top:calc(1000/1672*100%); width:calc(165/940*100%); aspect-ratio:1342/806; pointer-events:none; user-select:none; }
+.shop-cat[data-resting="stool"] { left:calc(800/940*100%); top:calc(1317/1672*100%); width:calc(136/940*100%); }
+.cat-body { position:relative; display:block; width:100%; height:auto; pointer-events:none; transform-origin:50% 93%; animation:cat-breath 5.6s ease-in-out infinite; }
+.cat-contact { position:absolute; left:12%; right:10%; bottom:5%; height:8%; border-radius:50%; background:#56331f30; filter:blur(calc(var(--scene-scale)*2px)); }
+@keyframes cat-breath { 0%,100% { transform:scale(1); } 45% { transform:scale(1.007,1.018); } }
+body:not([data-phase="idle"]) .cat-body { animation-play-state:paused; }
+@media(prefers-reduced-motion:reduce) { .cat-body { animation:none; } }

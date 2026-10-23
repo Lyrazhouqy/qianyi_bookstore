@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.11",
+  "build": "paper-bookshop-game-v0.14.12",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -67,9 +67,10 @@
     "assets/scene/blank-spines-v0120.png",
     "assets/fonts/book-title-serif-v0113.woff2",
     "assets/fonts/book-title-serif-OFL.txt",
-    "assets/scene/prince-postcard-user-v0142.png"
+    "assets/scene/prince-postcard-user-v0142.png",
+    "assets/scene/sleeping-calico-cat-v01412.png"
   ],
-  "status": "development-v0.14.11-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.12-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -780,5 +781,10 @@
     "localUrl": "http://127.0.0.1:4173/?v=0.14.11&playtest=rhythm",
     "behavior": "default playback on entry; restore saved track; policy denial waits for first trusted click or keyboard activation; explicit pause stays paused for this visit",
     "evidence": "docs/validation/music-default/REPORT.md"
+  },
+  "sleepingCat": {
+    "version": "0.14.12",
+    "behavior": "one round calico sleeping cat; sofa or stool chosen once on load, stable during visit; subtle breathing and reduced-motion support",
+    "evidence": "docs/validation/sleeping-cat/REPORT.md"
   }
 }

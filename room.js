@@ -111,6 +111,11 @@
   // Choose once per page load; manual choices then stay put for this visit.
   changeScenery({...windowState,scene:randomScene(hasSavedWindow?windowState.scene:null)},true,true);
   const world=viewport.querySelector('.room-world');
+  // One quiet resting place for the whole visit, independent of reading progress.
+  const cat=document.getElementById('shop-cat');
+  const resting=Math.random()<.5?'sofa':'stool';
+  cat.dataset.resting=resting;
+  cat.setAttribute('aria-label','三花小猫蜷在'+(resting==='sofa'?'沙发':'凳子')+'上睡觉');
   let sceneScale=1,ready=false,drag=null,dragFinishedAt=-Infinity,lastWidth=0,lastHeight=0;
   function goToShelf(animate=true){
     viewport.scrollTo({top:Math.max(0,world.offsetTop+556*sceneScale-viewport.clientHeight/2),behavior:animate&&!reduced()?'smooth':'instant'});
