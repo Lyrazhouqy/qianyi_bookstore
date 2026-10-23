@@ -1,0 +1,15 @@
+{
+  "version": "0.14.9",
+  "date": "2026-10-23",
+  "stats": {
+    "startTime": "2026-10-23T06:23:30.417Z",
+    "duration": 64540.68,
+    "expected": 48,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "raw": "evidence/bookshop-v0149/final-results.json",
+  "scope": "existing page-craft, page-curl and single-corner suites; Chromium/WebKit 320/390",
+  "limits": "browser simulation, no physical iPhone or new playtest"
+}
