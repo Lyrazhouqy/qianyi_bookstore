@@ -37,6 +37,13 @@ window.BookSecrets=(()=>{
     const peek=document.createElement('span');peek.className='book-paper-peek';peek.setAttribute('aria-hidden','true');
     peek.innerHTML='<svg viewBox="0 0 40 28" focusable="false"><path class="peek-paper" d="M4 25 10 4Q21 1 33 3L36 25Z"/><path class="peek-fold" d="M10 4Q14 12 19 12L4 25Z"/><path class="peek-rim" d="M10 4Q21 1 33 3L36 25M10 4Q14 12 19 12"/></svg>';return peek;
   }
+  const paperAnchors=new WeakMap();
+  function alignPaper(face){
+    const anchor=paperAnchors.get(face);if(!anchor)return;
+    const style=getComputedStyle(face);
+    Object.assign(anchor.style,{left:style.left,top:style.top,right:style.right,bottom:style.bottom,width:style.width,height:style.height,transform:style.transform,transformOrigin:style.transformOrigin,translate:style.translate});
+  }
+  const paperResize=new ResizeObserver(entries=>{for(const {target} of entries)alignPaper(target);});
   function decorate(){
     const data=read();
     for(const spine of document.querySelectorAll('.spine[data-id]')){
@@ -44,7 +51,10 @@ window.BookSecrets=(()=>{
       const visible=director?director.available(spine.dataset.id,all,actor):all;
       const fresh=visible.some(item=>director?unread(spine.dataset.id,item)===3||unread(spine.dataset.id,item)===1:unread(spine.dataset.id,item)>0)||!!director?.changed(spine.dataset.id);
       const face=spine.querySelector('.spine-face');
-      if(face&&!face.querySelector('.book-paper-peek'))face.appendChild(paperPeek());
+      if(face&&!paperAnchors.has(face)){
+        face.querySelector('.book-paper-peek')?.remove();
+        const anchor=document.createElement('span');anchor.className='book-paper-anchor';anchor.setAttribute('aria-hidden','true');anchor.appendChild(paperPeek());spine.appendChild(anchor);paperAnchors.set(face,anchor);alignPaper(face);paperResize.observe(face);
+      }
       spine.classList.toggle('has-new-paper',fresh);
       spine.setAttribute('aria-description',fresh?'书页边多露出了一点纸角':'');
     }

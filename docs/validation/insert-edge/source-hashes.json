@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-23T08:16:09.619Z",
+  "scope": "3 changed runtime files; before/after final-fixed, next-click-current and final native touch; concurrent CSS/scene edits excluded",
+  "files": {
+    "secrets.js": {
+      "sha256": "efba43c8fa9669af53a7b34a1ecf0e683f3cc4e4fc3ffa9d10227222ec8736d3",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "secrets.css": {
+      "sha256": "3078f8a03751883dbf76965ce1bffd377196a0342002dcfe618aa0906592b10a",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.js": {
+      "sha256": "99fe2fa8c089b83bf4f4fc77e93134f8fc3c16a6ea38454c63f6b0f4d7bf5fec",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    }
+  },
+  "reports": {
+    "first": {
+      "startTime": "2026-10-23T07:56:44.097Z",
+      "duration": 17015.839,
+      "expected": 6,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "position": {
+      "startTime": "2026-10-23T07:59:23.077Z",
+      "duration": 14859.401,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final": {
+      "startTime": "2026-10-23T08:01:34.426Z",
+      "duration": 120926.715,
+      "expected": 56,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "final-fixed": {
+      "startTime": "2026-10-23T08:10:51.884Z",
+      "duration": 102014.644,
+      "expected": 60,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "next-click": {
+      "startTime": "2026-10-23T08:10:52.899Z",
+      "duration": 128633.87400000001,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "next-click-current": {
+      "startTime": "2026-10-23T08:13:53.199Z",
+      "duration": 14063.011,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

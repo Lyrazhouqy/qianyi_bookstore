@@ -1,0 +1,24 @@
+[
+  {
+    "baseline": true,
+    "phase": "siddhartha",
+    "book": "vegetarian",
+    "clicks": [
+      {
+        "target": "sid-cover",
+        "step": "returning"
+      }
+    ]
+  },
+  {
+    "baseline": false,
+    "phase": "siddhartha",
+    "book": "vegetarian",
+    "clicks": [
+      {
+        "target": "sid-cover",
+        "step": "returning"
+      }
+    ]
+  }
+]

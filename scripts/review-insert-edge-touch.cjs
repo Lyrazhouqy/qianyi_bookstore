@@ -1,0 +1,18 @@
+const {chromium,expect}=require('@playwright/test'),fs=require('node:fs');
+(async()=>{const browser=await chromium.launch(),results=[];try{for(const width of [320,390]){
+ const height=width===320?568:844,folder=`evidence/insert-edge/touch-${width}`;fs.mkdirSync(folder,{recursive:true});const context=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true,recordVideo:{dir:folder}}),page=await context.newPage(),cdp=await context.newCDPSession(page),errors=[],trail=[];page.on('pageerror',e=>errors.push(e.message));
+ const touch=(type,x,y)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints:type==='touchEnd'?[]:[{x,y,radiusX:3,radiusY:3}]});
+ async function tap(selector){const e=page.locator(selector);await e.scrollIntoViewIfNeeded();const r=await e.boundingBox();await touch('touchStart',r.x+r.width/2,r.y+r.height/2);await touch('touchEnd');}
+ const step=s=>expect(page.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
+ await page.addInitScript(()=>localStorage.setItem('paperbook-discovery-v1',JSON.stringify({version:1,known:{},baseline:{},changes:{siddhartha:true,habits:true},visit:{id:'edge-touch',seed:1,lastActive:1,draws:{},events:[]}})));
+ await page.goto('http://127.0.0.1:4173/?playtest=rhythm');
+ for(const [id,edge] of [['siddhartha','head'],['habits','foot']]){
+  const source=page.locator('.spine[data-id="'+id+'"]');await source.scrollIntoViewIfNeeded();await expect(source.locator('.book-paper-anchor > .book-paper-peek')).toBeVisible();
+  const face=await source.locator('.spine-face').boundingBox(),peek=await source.locator('.book-paper-peek').boundingBox();
+  const clip={x:Math.max(0,face.x-15),y:Math.max(0,face.y-15),width:Math.min(width,face.x+face.width+20)-Math.max(0,face.x-15),height:Math.min(height,face.y+face.height+15)-Math.max(0,face.y-15)};await page.screenshot({path:folder+'/'+id+'-shelf.png',clip});
+  await tap('.spine[data-id="'+id+'"] .painted-title');await step('held');await expect(source.locator('.book-paper-anchor')).toBeHidden();await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-insert-edge',edge);await expect(page.locator('.sid-carrier > .book-paper-peek')).toBeVisible();await page.screenshot({path:folder+'/'+id+'-held.png'});
+  const held=await page.locator('.sid-carrier > .book-paper-peek').boundingBox(),book=await page.locator('.sid-cover-front').boundingBox();if(edge==='head'){expect(held.y).toBeLessThan(book.y);expect(held.y+held.height).toBeGreaterThan(book.y);}else{expect(held.y).toBeLessThan(book.y+book.height);expect(held.y+held.height).toBeGreaterThan(book.y+book.height);}
+  await tap('.sid-cover');await step('open');expect(await page.locator('.sid-carrier > .book-paper-peek').evaluate(e=>Number(getComputedStyle(e).opacity))).toBe(0);await tap('.sid-letter-pick');await step('letter');await expect(page.locator('.sid-letter-reader')).toBeVisible();await tap('.sid-page-next');await step('open');await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveAttribute('data-phase','idle');await expect(page.locator('.is-out')).toHaveCount(0);trail.push({id,edge,source:face,peek,held,book});
+ }
+ expect(errors).toEqual([]);const video=await page.video().path();await context.close();results.push({width,engine:'Chromium',input:'CDP native touch for actual spine, cover, paper and corner; keyboard Escape to return',source:'full pools, change notification seeded in isolated storage',trail,errors,video});
+ }}finally{await browser.close();}fs.writeFileSync('evidence/insert-edge/touch-results.json',JSON.stringify(results,null,2)+'\n');console.log(results.map(r=>({width:r.width,books:r.trail.map(x=>x.id),errors:r.errors})));})().catch(e=>{console.error(e);process.exitCode=1;});

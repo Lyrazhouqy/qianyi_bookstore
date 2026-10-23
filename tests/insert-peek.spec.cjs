@@ -4,8 +4,8 @@ async function enter(p,motion=false){await p.emulateMedia({reducedMotion:motion?
 async function pick(p,id){await p.locator('#open-book-index').tap();await p.locator('[data-book="'+id+'"]').tap();await step(p,'held');}
 async function back(p){await p.keyboard.press('Escape');await expect(p.locator('body')).toHaveAttribute('data-phase','idle');}
 test('paper is a small tucked corner inside the book face and leaves no tag on the empty shelf',async({page})=>{
- await enter(page);const source=page.locator('.spine[data-id="tao"]'),peek=source.locator('.spine-face > .book-paper-peek');await expect(source).toHaveClass(/has-new-paper/);await expect(peek).toBeVisible();
- const shape=await peek.evaluate(e=>{const r=e.getBoundingClientRect(),b=e.parentElement.getBoundingClientRect(),s=getComputedStyle(e),ghost=getComputedStyle(e.closest('.spine'),'::after');return{width:r.width/b.width,height:r.height/b.height,pointer:s.pointerEvents,ghost:ghost.content};});
+ await enter(page);const source=page.locator('.spine[data-id="tao"]'),peek=source.locator('.book-paper-anchor > .book-paper-peek');await expect(source).toHaveClass(/has-new-paper/);await expect(peek).toBeVisible();
+ const shape=await peek.evaluate(e=>{const r=e.getBoundingClientRect(),b=e.closest('.spine').querySelector('.spine-face').getBoundingClientRect(),s=getComputedStyle(e),ghost=getComputedStyle(e.closest('.spine'),'::after');return{width:r.width/b.width,height:r.height/b.height,pointer:s.pointerEvents,ghost:ghost.content};});
  expect(shape.width).toBeLessThan(.4);expect(shape.height).toBeLessThan(.15);expect(shape.pointer).toBe('none');expect(['none','normal']).toContain(shape.ghost);
  await page.screenshot({path:test.info().outputPath('shelf-corner.png'),animations:'disabled'});await pick(page,'tao');await expect(peek).toBeHidden();await expect(page.locator('.sid-carrier > .book-paper-peek')).toBeVisible();await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-insert-peek','true');
  const paper=await page.locator('.sid-carrier > .book-paper-peek').boundingBox(),book=await page.locator('.sid-cover-front').boundingBox();expect(paper.x).toBeGreaterThan(book.x);expect(paper.x+paper.width).toBeLessThan(book.x+book.width);expect(paper.y).toBeLessThan(book.y+6);expect(paper.y+paper.height).toBeGreaterThan(book.y);
@@ -17,11 +17,26 @@ test('the corner travels with upright and stacked books and yields to the real l
   await pick(page,id);const peek=page.locator('.sid-carrier > .book-paper-peek');await expect(peek).toBeVisible();
   const frames=await page.evaluate(async()=>{const carrier=document.querySelector('.sid-carrier'),peek=carrier.querySelector(':scope > .book-paper-peek'),frames=[];document.querySelector('.sid-cover').click();await new Promise(resolve=>{function sample(){frames.push({parent:peek.parentElement===carrier,opacity:Number(getComputedStyle(peek).opacity),step:document.querySelector('.siddhartha-room').dataset.step});if(frames.at(-1).step==='open')resolve();else requestAnimationFrame(sample);}requestAnimationFrame(sample);});return frames;});
   expect(frames.length).toBeGreaterThan(3);expect(frames.every(x=>x.parent)).toBe(true);expect(frames.at(-1).opacity).toBe(0);await expect(page.locator('.sid-letter-pick')).toBeVisible();await expect(page.locator('.sid-create-pen')).toBeVisible();await back(page);
-  const source=page.locator('.spine[data-id="'+id+'"]');expect(await source.locator('.book-paper-peek').evaluate(e=>getComputedStyle(e).display==='block')).toBe(await source.evaluate(e=>e.classList.contains('has-new-paper')));
+  const source=page.locator('.spine[data-id="'+id+'"]');expect(await source.locator('.book-paper-anchor').evaluate(e=>getComputedStyle(e).display==='block')).toBe(await source.evaluate(e=>e.classList.contains('has-new-paper')));
  }
  expect(errors).toEqual([]);
 });
 test('holding and opening does not mark paper read, and books without a cue inherit no leftover corner',async({page})=>{
  await enter(page);await pick(page,'tao');await page.locator('.sid-cover').tap();await step(page,'open');expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('paperbook-secret-reading-v1'))?.books.tao?.items||{})).toEqual({});await back(page);
  await pick(page,'cat');await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-insert-peek','false');await expect(page.locator('.sid-carrier > .book-paper-peek')).toBeHidden();await page.locator('.sid-cover').tap();await step(page,'open');await expect(page.locator('.sid-letter-pick')).toBeVisible();await back(page);
+});
+
+test('upright tips emerge from the head and horizontal tips from the page block, including after resizing',async({page})=>{
+ await enter(page);for(const size of [page.viewportSize(),{width:430,height:932}]){
+  await page.setViewportSize(size);
+  for(const id of ['tao','japan']){
+   const source=page.locator('.spine[data-id="'+id+'"]');await source.scrollIntoViewIfNeeded();
+   await expect.poll(()=>source.evaluate(e=>{const a=e.querySelector('.book-paper-anchor').getBoundingClientRect(),f=e.querySelector('.spine-face').getBoundingClientRect();return Math.max(...['x','y','width','height'].map(k=>Math.abs(a[k]-f[k])));})).toBeLessThan(1);
+   const face=await source.locator('.spine-face').boundingBox(),peek=await source.locator('.book-paper-peek').boundingBox();
+   if(id==='tao'){expect(peek.y).toBeLessThan(face.y);expect(peek.y+peek.height).toBeGreaterThan(face.y);expect(peek.x+peek.width/2).toBeGreaterThan(face.x+face.width*.45);}
+   else {expect(peek.x+peek.width).toBeGreaterThan(face.x+face.width);expect(peek.x).toBeLessThan(face.x+face.width);expect(peek.y).toBeGreaterThan(face.y+face.height*.3);expect(peek.y+peek.height).toBeLessThan(face.y+face.height*.7);}
+  }
+ }
+ await page.screenshot({path:test.info().outputPath('page-edge-placement.png'),animations:'disabled'});
+ await pick(page,'japan');await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-insert-edge','foot');const peek=await page.locator('.sid-carrier > .book-paper-peek').boundingBox(),book=await page.locator('.sid-cover-front').boundingBox();expect(peek.y).toBeLessThan(book.y+book.height);expect(peek.y+peek.height).toBeGreaterThan(book.y+book.height);await page.screenshot({path:test.info().outputPath('horizontal-held-foot.png'),animations:'disabled'});
 });

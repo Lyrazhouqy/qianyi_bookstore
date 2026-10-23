@@ -445,7 +445,8 @@ window.Siddhartha = (() => {
     room.addEventListener('click',event=>{
       if(event.target.closest('.sid-paper-traces'))return;
       if(!returnInProgress&&performance.now()>=ignoreClick&&step==='open'&&nearPaper(event)&&!paper.contains(event.target)){event.stopPropagation();takeLetter({unfoldOnArrival:true});return;}
-      if(!returnInProgress||event.target.closest('.sid-letter,.sid-secret-tools,.sid-secret-editor'))return;
+      // A drag release on the returning book must not click through to a shelf behind it.
+      if(!returnInProgress||event.target.closest('.sid-carrier,.sid-letter,.sid-secret-tools,.sid-secret-editor'))return;
       const viewport=$('room-viewport').getBoundingClientRect();
       if(event.clientX<viewport.left||event.clientX>viewport.right||event.clientY<viewport.top||event.clientY>viewport.bottom)return;
       const target=window.BookArrangement.hitAt(event.clientX,event.clientY);
@@ -511,6 +512,7 @@ window.Siddhartha = (() => {
     secretDesk.reset(book,artifact);
     artifact=secretDesk.initialArtifact();
     room.dataset.insertPeek=String(button.classList.contains('has-new-paper')&&!!artifact);
+    room.dataset.insertEdge=button.matches('.pile-book,.painted-flat')?'foot':'head';
     queuedBook=null;delete room.dataset.openQueued;room.dataset.readerBook=book[0];
     room.style.setProperty('--title-length',String(book[1].length));
     cueSeen=false;room.dataset.artifact=artifact?.kind || 'none';room.dataset.artifactSource=artifact?.source||'';room.dataset.stock=artifact?.stock||'cream';

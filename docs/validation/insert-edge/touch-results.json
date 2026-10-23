@@ -1,0 +1,134 @@
+[
+  {
+    "width": 320,
+    "engine": "Chromium",
+    "input": "CDP native touch for actual spine, cover, paper and corner; keyboard Escape to return",
+    "source": "full pools, change notification seeded in isolated storage",
+    "trail": [
+      {
+        "id": "siddhartha",
+        "edge": "head",
+        "source": {
+          "x": 24.716766357421875,
+          "y": 192.34375,
+          "width": 35.484375,
+          "height": 100.65625
+        },
+        "peek": {
+          "x": 42.39569091796875,
+          "y": 187.06666564941406,
+          "width": 9.62725830078125,
+          "height": 8.518325805664062
+        },
+        "held": {
+          "x": 156.30184936523438,
+          "y": 136.69058227539062,
+          "width": 32.74908447265625,
+          "height": 28.376251220703125
+        },
+        "book": {
+          "x": 86.15702819824219,
+          "y": 148.49368286132812,
+          "width": 148.68585205078125,
+          "height": 266.9986877441406
+        }
+      },
+      {
+        "id": "habits",
+        "edge": "foot",
+        "source": {
+          "x": 108.17878723144531,
+          "y": 298.7662658691406,
+          "width": 100.9805908203125,
+          "height": 49.245269775390625
+        },
+        "peek": {
+          "x": 203.318115234375,
+          "y": 315.7024230957031,
+          "width": 9.343414306640625,
+          "height": 11.05853271484375
+        },
+        "held": {
+          "x": 151.26490783691406,
+          "y": 400.21466064453125,
+          "width": 30.34613037109375,
+          "height": 25.416412353515625
+        },
+        "book": {
+          "x": 86.15702819824219,
+          "y": 148.49368286132812,
+          "width": 148.68585205078125,
+          "height": 266.9986877441406
+        }
+      }
+    ],
+    "errors": [],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/insert-edge/touch-320/bd62d0d9199b8fb211f7e718e42313fe.webm"
+  },
+  {
+    "width": 390,
+    "engine": "Chromium",
+    "input": "CDP native touch for actual spine, cover, paper and corner; keyboard Escape to return",
+    "source": "full pools, change notification seeded in isolated storage",
+    "trail": [
+      {
+        "id": "siddhartha",
+        "edge": "head",
+        "source": {
+          "x": 40.716766357421875,
+          "y": 192.34375,
+          "width": 35.484375,
+          "height": 100.65625
+        },
+        "peek": {
+          "x": 58.39569091796875,
+          "y": 187.06666564941406,
+          "width": 9.62725830078125,
+          "height": 8.518325805664062
+        },
+        "held": {
+          "x": 198.53659057617188,
+          "y": 242.21139526367188,
+          "width": 32.749053955078125,
+          "height": 28.376251220703125
+        },
+        "book": {
+          "x": 103.20671081542969,
+          "y": 253.8774871826172,
+          "width": 184.5865020751953,
+          "height": 332.2310333251953
+        }
+      },
+      {
+        "id": "habits",
+        "edge": "foot",
+        "source": {
+          "x": 18.178787231445312,
+          "y": 574.7662353515625,
+          "width": 100.9805908203125,
+          "height": 49.24530029296875
+        },
+        "peek": {
+          "x": 113.318115234375,
+          "y": 591.702392578125,
+          "width": 9.343406677246094,
+          "height": 11.05859375
+        },
+        "held": {
+          "x": 191.60708618164062,
+          "y": 570.5181884765625,
+          "width": 30.34613037109375,
+          "height": 25.41650390625
+        },
+        "book": {
+          "x": 103.20671081542969,
+          "y": 253.8774871826172,
+          "width": 184.5865020751953,
+          "height": 332.2310333251953
+        }
+      }
+    ],
+    "errors": [],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/insert-edge/touch-390/34eb86b1d9059fe9b0bfe4c141469a83.webm"
+  }
+]
