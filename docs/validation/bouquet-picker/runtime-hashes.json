@@ -1,0 +1,510 @@
+{
+  "version": "0.14.10",
+  "verifiedAt": "2026-10-23T06:42:34.125Z",
+  "scopedSourceUnchanged": true,
+  "parallelDrift": {
+    "files": [
+      "secrets.css"
+    ],
+    "commit": "0055264",
+    "description": "parallel page-corner styling changed during test run; not a single frozen whole-project snapshot"
+  },
+  "files": [
+    {
+      "file": "index.html",
+      "bytes": 17896,
+      "sha256": "62821eadcb3861f3331ad707688e9faad345a3926da968e0c56a24f7e300dafb",
+      "beforeSha256": "62821eadcb3861f3331ad707688e9faad345a3926da968e0c56a24f7e300dafb",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "styles.css",
+      "bytes": 9669,
+      "sha256": "5e8fc0bf928c3bdcd65e0976617c4a435cf47bc68f08065f062774dba007fa9c",
+      "beforeSha256": "5e8fc0bf928c3bdcd65e0976617c4a435cf47bc68f08065f062774dba007fa9c",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "content.js",
+      "bytes": 8652,
+      "sha256": "b5c90442df53f9de147bd30bd140677dca68c0eef6b5c1c2b770ed7c4c2b3338",
+      "beforeSha256": "b5c90442df53f9de147bd30bd140677dca68c0eef6b5c1c2b770ed7c4c2b3338",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "rhythm.js",
+      "bytes": 1456,
+      "sha256": "d173e5733a0b6a36e5e7f7ea0d578eb34228324aa6f61b97b275898f1e278cf2",
+      "beforeSha256": "d173e5733a0b6a36e5e7f7ea0d578eb34228324aa6f61b97b275898f1e278cf2",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "app.js",
+      "bytes": 15844,
+      "sha256": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+      "beforeSha256": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "siddhartha.css",
+      "bytes": 27041,
+      "sha256": "8eaaa473dc1e066194175b60331e1f19e9d30ec44621fadf3eaf799dbde22130",
+      "beforeSha256": "8eaaa473dc1e066194175b60331e1f19e9d30ec44621fadf3eaf799dbde22130",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "siddhartha.js",
+      "bytes": 51454,
+      "sha256": "420fa4d764a4d7c9ff7771225196c9a8c0d3933090fbc718fa7bb7d99aed25d9",
+      "beforeSha256": "420fa4d764a4d7c9ff7771225196c9a8c0d3933090fbc718fa7bb7d99aed25d9",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/fonts/yozai.woff2",
+      "bytes": 7345312,
+      "sha256": "680e62f9c932aee56580db45ca0501c32b2381157dcbb5ce0fe31a4a7e8a1f3a",
+      "beforeSha256": "680e62f9c932aee56580db45ca0501c32b2381157dcbb5ce0fe31a4a7e8a1f3a",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/fonts/yozai-OFL.txt",
+      "bytes": 4497,
+      "sha256": "86b3a0b5162848503241d80ea9a309a6459690ba7dc547940758a6a689a53b02",
+      "beforeSha256": "86b3a0b5162848503241d80ea9a309a6459690ba7dc547940758a6a689a53b02",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/paper/letter-paper-texture.png",
+      "bytes": 993913,
+      "sha256": "d7883c673eac3ca5bc709f0f5ff3a46a9bae313a43751137095269f989dc0e46",
+      "beforeSha256": "d7883c673eac3ca5bc709f0f5ff3a46a9bae313a43751137095269f989dc0e46",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "room.css",
+      "bytes": 18900,
+      "sha256": "1a889492255a182d6eb03d1f86e1eba8c75c517bb32037745418f5b11a9e82eb",
+      "beforeSha256": "1a889492255a182d6eb03d1f86e1eba8c75c517bb32037745418f5b11a9e82eb",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "room.js",
+      "bytes": 12781,
+      "sha256": "6f18888cc54fc6e661e541313c3170af77248c31155111e11d5799ee1535aff0",
+      "beforeSha256": "6f18888cc54fc6e661e541313c3170af77248c31155111e11d5799ee1535aff0",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/game-room-window-v065.png",
+      "bytes": 1762512,
+      "sha256": "bedc13b4b7e5c19e75cfe0b61133e94aea63b8d89dc6fee3708b74cacfde4f8e",
+      "beforeSha256": "bedc13b4b7e5c19e75cfe0b61133e94aea63b8d89dc6fee3708b74cacfde4f8e",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/window-seaside-v065.png",
+      "bytes": 2319767,
+      "sha256": "889af7a6c51df39595c2a569a2a91af25526e752153036489fdddf65c0713f09",
+      "beforeSha256": "889af7a6c51df39595c2a569a2a91af25526e752153036489fdddf65c0713f09",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/display-empty-v066.png",
+      "bytes": 1732505,
+      "sha256": "369c276edb37c6bd10970feedec6a1c6fad3ea651d34f93a0e50c54feb9005b2",
+      "beforeSha256": "369c276edb37c6bd10970feedec6a1c6fad3ea651d34f93a0e50c54feb9005b2",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "music.css",
+      "bytes": 5652,
+      "sha256": "6bf14471ffacc1735e02d0abe5479280947ad691acbaa26dce026fa9f172554f",
+      "beforeSha256": "6bf14471ffacc1735e02d0abe5479280947ad691acbaa26dce026fa9f172554f",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "music.js",
+      "bytes": 5390,
+      "sha256": "7889ae6ceb7c917faf28c93c149eeec49a8d82200f742e124b5a167cbe70c79f",
+      "beforeSha256": "7889ae6ceb7c917faf28c93c149eeec49a8d82200f742e124b5a167cbe70c79f",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/water-sound.mp3",
+      "bytes": 7024266,
+      "sha256": "2ad96d1b877e4878f4892fdcd955c55c028f4c468637b65de5df95e618bad16e",
+      "beforeSha256": "2ad96d1b877e4878f4892fdcd955c55c028f4c468637b65de5df95e618bad16e",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/water-sound.png",
+      "bytes": 1992216,
+      "sha256": "4309fd1354d05998719be0c67d249ff9641cb3f5df3fe92c12baea2f0b83c0b6",
+      "beforeSha256": "4309fd1354d05998719be0c67d249ff9641cb3f5df3fe92c12baea2f0b83c0b6",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/slow-coffee.mp3",
+      "bytes": 2091093,
+      "sha256": "423d88b88b68bd244299ec1536cd141f41294aaaed1c24fea169d47daf92ed04",
+      "beforeSha256": "423d88b88b68bd244299ec1536cd141f41294aaaed1c24fea169d47daf92ed04",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/slow-coffee.png",
+      "bytes": 2353645,
+      "sha256": "8a02ad2d9418c652d1974ce708a13f6445df17dfe88d35ffabb2f26241152d6f",
+      "beforeSha256": "8a02ad2d9418c652d1974ce708a13f6445df17dfe88d35ffabb2f26241152d6f",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/star-lamp.mp3",
+      "bytes": 2168416,
+      "sha256": "0d3225aee6af5ce5c6a5d290383365c9b0a6944ddefbd88927427194aa129cfe",
+      "beforeSha256": "0d3225aee6af5ce5c6a5d290383365c9b0a6944ddefbd88927427194aa129cfe",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/star-lamp.png",
+      "bytes": 1814805,
+      "sha256": "a1997aa633e1788b4cd430c79937de9cd91652d2c0f4d413a968a7f9048b2acb",
+      "beforeSha256": "a1997aa633e1788b4cd430c79937de9cd91652d2c0f4d413a968a7f9048b2acb",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/spacing-out.mp3",
+      "bytes": 2355662,
+      "sha256": "5ca06d41f95235c7be5d4aea0ae74c8f92f287f189159c3d0b2d3ca586088e84",
+      "beforeSha256": "5ca06d41f95235c7be5d4aea0ae74c8f92f287f189159c3d0b2d3ca586088e84",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/spacing-out.png",
+      "bytes": 1625171,
+      "sha256": "ad44201a9137fea453ab661b3815f235cdb61ddf210e1365332b6a7c78d5b877",
+      "beforeSha256": "ad44201a9137fea453ab661b3815f235cdb61ddf210e1365332b6a7c78d5b877",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/tap-wood.mp3",
+      "bytes": 2276667,
+      "sha256": "e4fd42b26c4541ece549c021805ca6cb4c2fe48cc16e6bc5e2bfa16a4666d360",
+      "beforeSha256": "e4fd42b26c4541ece549c021805ca6cb4c2fe48cc16e6bc5e2bfa16a4666d360",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/tap-wood.png",
+      "bytes": 1983052,
+      "sha256": "178d011d9c87c4b5b7096f7b22948a6a091e90819bb6a3ca4d3ecbe47e365769",
+      "beforeSha256": "178d011d9c87c4b5b7096f7b22948a6a091e90819bb6a3ca4d3ecbe47e365769",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/wind-passing.mp3",
+      "bytes": 2933281,
+      "sha256": "5143592a1b278edd8aa7688136557064072bfc53339ee202cbc9d121e888a1d5",
+      "beforeSha256": "5143592a1b278edd8aa7688136557064072bfc53339ee202cbc9d121e888a1d5",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/wind-passing.png",
+      "bytes": 1867030,
+      "sha256": "b138d12395857f5a8ee44f107deac8bf5c235998e707628833be8f7c3d2fcbe7",
+      "beforeSha256": "b138d12395857f5a8ee44f107deac8bf5c235998e707628833be8f7c3d2fcbe7",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/bamboo-leaves.mp3",
+      "bytes": 2170088,
+      "sha256": "ee0866d9ff1d60f4bb4e7a3d9f8bbc5d67aba74ad3cc8de759b9a955c7606e27",
+      "beforeSha256": "ee0866d9ff1d60f4bb4e7a3d9f8bbc5d67aba74ad3cc8de759b9a955c7606e27",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/music/bamboo-leaves.png",
+      "bytes": 2168875,
+      "sha256": "5bc55dc9c231d8868659ade2967de83ca05bac3aec9c1ecfedfdff4afed0b75f",
+      "beforeSha256": "5bc55dc9c231d8868659ade2967de83ca05bac3aec9c1ecfedfdff4afed0b75f",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/window-rain-v0611.png",
+      "bytes": 2660310,
+      "sha256": "700f24d1665c6ac910a58204131cce49596d9a695433f3637e5628e7568c080e",
+      "beforeSha256": "700f24d1665c6ac910a58204131cce49596d9a695433f3637e5628e7568c080e",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/window-sunset-v0611.png",
+      "bytes": 2653979,
+      "sha256": "841d44d14325260f5e7fbb3ce54a5bfb300f40b61473e065771ad32686ebcee7",
+      "beforeSha256": "841d44d14325260f5e7fbb3ce54a5bfb300f40b61473e065771ad32686ebcee7",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/window-snow-v0611.png",
+      "bytes": 2611323,
+      "sha256": "3614094ca89848236ca63b924bf9564b058c05f101903ca88565d71c6d3be51d",
+      "beforeSha256": "3614094ca89848236ca63b924bf9564b058c05f101903ca88565d71c6d3be51d",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/sofa-cushions-v0612.png",
+      "bytes": 1744715,
+      "sha256": "176add17d1cc73ce32ddef2450323a83a96f4c68ef0d24eaa2dd41c1a05b7666",
+      "beforeSha256": "176add17d1cc73ce32ddef2450323a83a96f4c68ef0d24eaa2dd41c1a05b7666",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/room-layout-v0613.png",
+      "bytes": 1703367,
+      "sha256": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+      "beforeSha256": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/gramophone-clearance-v0614.png",
+      "bytes": 1681982,
+      "sha256": "4edb88e554ad96350587e8113174a03511920d0dfb6f09f4fc6105d2734666cd",
+      "beforeSha256": "4edb88e554ad96350587e8113174a03511920d0dfb6f09f4fc6105d2734666cd",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/window-wall-v0615.png",
+      "bytes": 1689969,
+      "sha256": "4227289f01b5c766d109427029631764b4ff7f91fac173bab987190a96484d36",
+      "beforeSha256": "4227289f01b5c766d109427029631764b4ff7f91fac173bab987190a96484d36",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "lamp.css",
+      "bytes": 1696,
+      "sha256": "9a5e5877579e49b0db0557f7e6f08fb54515287674bf53d94864062e262a0a58",
+      "beforeSha256": "9a5e5877579e49b0db0557f7e6f08fb54515287674bf53d94864062e262a0a58",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "lamp.js",
+      "bytes": 3430,
+      "sha256": "a5882956912b58fa94c1d06c654c2f8c024b8b5685afd539a91e163824174529",
+      "beforeSha256": "a5882956912b58fa94c1d06c654c2f8c024b8b5685afd539a91e163824174529",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "bouquet.css",
+      "bytes": 2975,
+      "sha256": "a235b13cf147e719ffad130d5df7a4b6118976945b3d9a7c02879e0bdf20da4b",
+      "beforeSha256": "a235b13cf147e719ffad130d5df7a4b6118976945b3d9a7c02879e0bdf20da4b",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "bouquet.js",
+      "bytes": 6552,
+      "sha256": "a9f78aebe19661523518c8987538c743f32d3fe942f56c894dbbbf3e75c819c0",
+      "beforeSha256": "a9f78aebe19661523518c8987538c743f32d3fe942f56c894dbbbf3e75c819c0",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/bouquet-empty-v0622.png",
+      "bytes": 1698405,
+      "sha256": "c2150290a2579617eaad3b035d209d455baaa4864d7ca2175a23754f76fcb9aa",
+      "beforeSha256": "c2150290a2579617eaad3b035d209d455baaa4864d7ca2175a23754f76fcb9aa",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/bouquet-tulips-v0624.png",
+      "bytes": 2109191,
+      "sha256": "9500b90a46a8ab3b536b1a5d33b52db9f376f237dd90e0180d00a84ccad6b842",
+      "beforeSha256": "9500b90a46a8ab3b536b1a5d33b52db9f376f237dd90e0180d00a84ccad6b842",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/bouquet-daisies-v0624.png",
+      "bytes": 2262870,
+      "sha256": "146b0fd2f313145ba8ba13d8db23d05b2ba27cfdf1b1bddd29b496bcffd2e5bd",
+      "beforeSha256": "146b0fd2f313145ba8ba13d8db23d05b2ba27cfdf1b1bddd29b496bcffd2e5bd",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "secrets.js",
+      "bytes": 27551,
+      "sha256": "94ef2d25bedf3bec70cb87636de4bed64a865d309a62cb927d9d99676e4159e1",
+      "beforeSha256": "94ef2d25bedf3bec70cb87636de4bed64a865d309a62cb927d9d99676e4159e1",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "secrets.css",
+      "bytes": 13280,
+      "sha256": "b144c8a1abf2c1a801899c805d373f4578e03040bdbb801757d11922591d4c99",
+      "beforeSha256": "aa51900cda81c1100b007fcbeb4845a684c5340ff831257e712317a0a3d0d344",
+      "unchangedSinceTestsStarted": false,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/fountain-pen-burgundy-v075.png",
+      "bytes": 618641,
+      "sha256": "0f32126ac222e3a819431ec9b0d8d4df47b054409b7a11e3055c3a5648346e05",
+      "beforeSha256": "0f32126ac222e3a819431ec9b0d8d4df47b054409b7a11e3055c3a5648346e05",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "discovery.js",
+      "bytes": 3815,
+      "sha256": "598150f963d4243124bff508db782a41bde97b8263e17be7ee6ff8d8cb2d4712",
+      "beforeSha256": "598150f963d4243124bff508db782a41bde97b8263e17be7ee6ff8d8cb2d4712",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "discovery-pool.js",
+      "bytes": 3473,
+      "sha256": "26509b91fe14c76347f938908d227af712c37ae5eaf0df3df3a05654aabf7902",
+      "beforeSha256": "26509b91fe14c76347f938908d227af712c37ae5eaf0df3df3a05654aabf7902",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "real-materials.js",
+      "bytes": 16964,
+      "sha256": "18ac013d92066315f1843b102da69429805d77fbc762a464b0efa8f5ad74e8e2",
+      "beforeSha256": "18ac013d92066315f1843b102da69429805d77fbc762a464b0efa8f5ad74e8e2",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "book-placement.js",
+      "bytes": 11202,
+      "sha256": "0778ba3a4af6b0e1af2ceceae48a60aa240d45e8e49227c5002787b76832b78b",
+      "beforeSha256": "0778ba3a4af6b0e1af2ceceae48a60aa240d45e8e49227c5002787b76832b78b",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "book-placement.css",
+      "bytes": 7225,
+      "sha256": "27ebeba711c8b0d9b681bb068343ae21a6da4e1e9637533163aa11ee2115180a",
+      "beforeSha256": "27ebeba711c8b0d9b681bb068343ae21a6da4e1e9637533163aa11ee2115180a",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/book-arrangement-v0110.png",
+      "bytes": 2104115,
+      "sha256": "fa3328e179e315701c1e160ecdafa472aebf51081bed09b441ad17efc41c241a",
+      "beforeSha256": "fa3328e179e315701c1e160ecdafa472aebf51081bed09b441ad17efc41c241a",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/stack-clean-v0111.png",
+      "bytes": 1683182,
+      "sha256": "9bab77c97e555ef640a1f333d1d2c1ab4ae77b113ffafe113583df31cc8b270f",
+      "beforeSha256": "9bab77c97e555ef640a1f333d1d2c1ab4ae77b113ffafe113583df31cc8b270f",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/horizontal-books-v0120.png",
+      "bytes": 1758254,
+      "sha256": "e897ce01225166f8da08475dccae15740367fce82a5349429369496679950236",
+      "beforeSha256": "e897ce01225166f8da08475dccae15740367fce82a5349429369496679950236",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/simple-book-icons-v0118.png",
+      "bytes": 1377334,
+      "sha256": "8d0a0aeb4c59c5b4caa4bdc5c3e7c921eafcc900da1a7ae7e5a8073918a4e95a",
+      "beforeSha256": "8d0a0aeb4c59c5b4caa4bdc5c3e7c921eafcc900da1a7ae7e5a8073918a4e95a",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/quiet-spine-icons-v0119.png",
+      "bytes": 880245,
+      "sha256": "c73af09d9ce599add22a5102ce32edaf45b3a116d6553a82be759d8e8e4ed055",
+      "beforeSha256": "c73af09d9ce599add22a5102ce32edaf45b3a116d6553a82be759d8e8e4ed055",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/blank-spines-v0120.png",
+      "bytes": 1923934,
+      "sha256": "52fe1883291bb5bf7bd82990c3c3d4dcba2fa8a3c73d7c5ff973781f8511ad93",
+      "beforeSha256": "52fe1883291bb5bf7bd82990c3c3d4dcba2fa8a3c73d7c5ff973781f8511ad93",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/fonts/book-title-serif-v0113.woff2",
+      "bytes": 30540,
+      "sha256": "010de6737da3513253f2ae7684c453f34945a8c410d974b0c418c4f5702677e5",
+      "beforeSha256": "010de6737da3513253f2ae7684c453f34945a8c410d974b0c418c4f5702677e5",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/fonts/book-title-serif-OFL.txt",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "beforeSha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    },
+    {
+      "file": "assets/scene/prince-postcard-user-v0142.png",
+      "bytes": 2015219,
+      "sha256": "b9c557b6ce5eead0afaf8d243057463ccb14a3d90cd642cecffca81ff2c0948a",
+      "beforeSha256": "b9c557b6ce5eead0afaf8d243057463ccb14a3d90cd642cecffca81ff2c0948a",
+      "unchangedSinceTestsStarted": true,
+      "httpStatus": 200
+    }
+  ]
+}

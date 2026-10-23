@@ -1,7 +1,6 @@
 {
   "version": "0.14.10",
   "date": "2026-10-23",
-  "baseCommit": "e91fae3",
   "phases": {
     "initial-results.json": {
       "raw": "evidence/bouquet-picker/initial-results.json",
@@ -59,5 +58,8 @@
       }
     }
   },
-  "proofLimits": "Chromium/WebKit mobile viewport and simulated touch; no physical iPhone"
+  "proofLimits": "Chromium/WebKit mobile viewport and simulated touch; no physical iPhone",
+  "initialBaseCommit": "e91fae3",
+  "parallelCommit": "0055264",
+  "sourceBoundary": "bouquet/dialog/music sources unchanged during tests; parallel secrets.css update recorded in runtime-hashes.json"
 }
