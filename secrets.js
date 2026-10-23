@@ -18,15 +18,17 @@ window.BookSecrets=(()=>{
   let reading=demo&&!discoveryDemo?{books:{night:{items:{'revisit-B':{front:true,replies:0}},last:actor==='N'?'revisit-N':'revisit-B'}}}:{books:{}};
   try{const saved=JSON.parse(localStorage.getItem(READS));if(saved?.books&&typeof saved.books==='object'&&!Array.isArray(saved.books))reading=saved;}catch{}
   function seen(bookId,item){return reading.books[bookId]?.items?.[item.id]||{};}
+  const storyFor=item=>window.BookAuthoredStories?.get(item.id);
+  function fullyRead(bookId,item){const mark=seen(bookId,item),story=storyFor(item);return !!mark.front&&(!story||(mark.storyParts||0)>=story.parts.length)&&(mark.replies||0)>=item.replies.length;}
   function unread(bookId,item){
     const mark=seen(bookId,item),own=item.author===actor;
-    if(!own&&!mark.front)return 2;
+    if(!own&&(!mark.front||storyFor(item)&&(mark.storyParts||0)<storyFor(item).parts.length))return 2;
     return item.replies.some((reply,i)=>i>=(mark.replies||0)&&typeof reply==='object'&&reply.author!==actor)?(own?3:1):0;
   }
   function keepSelection(bookId,id){const entry=reading.books[bookId]||={items:{}};entry.last=id;try{localStorage.setItem(READS,JSON.stringify(reading));}catch{}}
-  function remember(bookId,item,count=0){
+  function remember(bookId,item,count=0,storyParts=0){
     const book=reading.books[bookId]||={items:{}};book.items||={};
-    const old=book.items[item.id]||{};book.items[item.id]={front:true,replies:Math.max(old.replies||0,count)};book.last=item.id;
+    const old=book.items[item.id]||{};book.items[item.id]={...old,front:true,replies:Math.max(old.replies||0,count),...(storyParts?{storyParts:Math.max(old.storyParts||0,storyParts)}:{})};book.last=item.id;
     try{localStorage.setItem(READS,JSON.stringify(reading));}catch{}
     director?.discover(bookId,item.id);decorate();
   }
@@ -47,8 +49,11 @@ window.BookSecrets=(()=>{
   const dateFields=value=>validDate(value)?{date:validDate(value)}:{};
   const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
   const realSeed=demo&&!discoveryDemo?{}:window.BookRealMaterials();
+  const storySeed=demo&&!discoveryDemo?{}:window.BookAuthoredStories?.seed()||{};
+  const sourceSeed={};
+  for(const id of new Set([...Object.keys(realSeed),...Object.keys(storySeed)]))sourceSeed[id]=[...(realSeed[id]||[]),...(storySeed[id]||[])];
   let memory=discoveryDemo?window.BookDiscoveryPool():demo?seed():{version:1,books:{}},draftMemory={};
-  memory.books={...memory.books,...realSeed};
+  memory.books={...memory.books,...sourceSeed};
   function read(){
     try{
       const raw=JSON.parse(localStorage.getItem(KEY));
@@ -58,7 +63,7 @@ window.BookSecrets=(()=>{
         clean.books[id]=(Array.isArray(raw.books[id])?raw.books[id]:[]).filter(x=>x&&typeof x.id==='string'&&Object.hasOwn(kinds,x.kind)&&text(x.front).trim()&&(x.kind!=='fold'||text(x.back).trim())).map(x=>({id:x.id.slice(0,80),kind:x.kind,...dateFields(x.date),front:text(x.front),back:text(x.back),stock:Object.hasOwn(stocks,x.stock)?x.stock:'cream',author:typeof x.author==='string'?x.author.slice(0,40):'local',authorName:text(x.authorName).slice(0,30),replies:(Array.isArray(x.replies)?x.replies:[]).filter(y=>typeof y==='string'||y&&typeof y==='object'&&text(y.text).trim()).slice(0,60).map(y=>typeof y==='string'?text(y):{id:typeof y.id==='string'?y.id.slice(0,80):'',author:typeof y.author==='string'?y.author.slice(0,40):'local',authorName:text(y.authorName).slice(0,30),...dateFields(y.date),text:text(y.text)})}));
       }
       // Merge new source paper by stable identity; preserve old notes and their replies.
-      for(const [id,items] of Object.entries(realSeed)){
+      for(const [id,items] of Object.entries(sourceSeed)){
         const saved=clean.books[id]||[];
         clean.books[id]=[...items.filter(item=>!saved.some(old=>old.id===item.id)),...saved];
       }
@@ -81,8 +86,24 @@ window.BookSecrets=(()=>{
   function saveDraft(id,value){const next={...drafts()};if(value)next[id]=value;else delete next[id];draftMemory=next;try{localStorage.setItem(DRAFTS,JSON.stringify(next));return true;}catch{return false;}}
   function artifactFor(bookId,item,onChange=()=>{}){
     const get=()=>read().books[bookId]?.find(x=>x.id===item.id)||item;
+    const story=storyFor(item);
     const own=item.author===actor,replyNew=unread(bookId,item)===3;
     const name=own?'你':item.authorName||authorName(item.author);
+    const replyParts=x=>x.replies.map((reply,i)=>{const writer=typeof reply==='string'?'':reply.author===actor?'你':reply.authorName||authorName(reply.author);return [typeof reply==='string'?'留在纸上的回应 '+(i+1):writer+'的回应',typeof reply==='string'?reply:reply.text,typeof reply==='string'?null:{author:writer,date:validDate(reply.date)}];});
+    const write=value=>{
+      const result=commit(next=>{const x=next.books[bookId]?.find(x=>x.id===item.id);if(!x)return '找不到这张纸，请重新打开这本书。';if(x.replies.length>=60)return '这叠纸已满，换一张纸继续吧。';if(value.length>600)return '一张纸最多写600字，请稍微缩短。';x.replies.push({id:crypto.randomUUID(),author:actor,date:today(),text:value});});
+      if(result.ok){remember(bookId,get(),get().replies.length,story?.parts.length||0);onChange();}return result;
+    };
+    if(story)return {kind:story.kind,source:'authored-story',localId:item.id,stock:item.stock,quotation:null,
+      label:'纸间小故事 · '+(story.caption||story.title),pickLabel:'展开纸间小故事《'+(story.caption||story.title)+'》',title:'纸间小故事 · '+(story.caption||story.title),detail:'沿着折痕，看看后来发生了什么',
+      writeLabel:'接着写一句',writePlaceholder:story.prompt,replyLimit:600,
+      initialParts:()=>{const mark=seen(bookId,get()),body=Math.max(1,Math.min(story.parts.length,mark.storyParts||1));return body+(body===story.parts.length?Math.min(mark.replies||0,get().replies.length):0);},
+      fresh:!seen(bookId,item).front,invite:!fullyRead(bookId,item),unfoldLabel:story.kind==='relay'?'沿折痕，看看后来 ⌄':'掀开下面的半张纸 ⌄',
+      getParts:()=>[...story.parts.map((body,i)=>[i===0?'纸间小故事 · '+(story.caption||story.title):'纸上的下一句',body,i===story.parts.length-1?{author:'纸间书店 · 原创'}:null,i===0&&story.columns?{columns:story.columns}:null]),...replyParts(get())],
+      onReveal:()=>{director?.discover(bookId,item.id);keepSelection(bookId,item.id);},
+      onRead:()=>{remember(bookId,get(),0,1);onChange();},
+      onUnfold:count=>{remember(bookId,get(),Math.max(0,count-story.parts.length),Math.min(count,story.parts.length));onChange();},write
+    };
     return {kind:item.kind,localId:item.id,stock:item.stock,
       // Quotes come only from reviewed source material, never arbitrary saved player text.
       quotation:realSeed[bookId]?.find(note=>note.id===item.id)?.quotation||null,
@@ -96,10 +117,7 @@ window.BookSecrets=(()=>{
       onReveal:()=>{director?.discover(bookId,item.id);keepSelection(bookId,item.id);},
       onRead:()=>{remember(bookId,get());onChange();},
       onUnfold:count=>{remember(bookId,get(),count-1);if(count>=4)director?.rest();onChange();},
-      write:value=>{
-        const result=commit(next=>{const x=next.books[bookId]?.find(x=>x.id===item.id);if(!x)return '找不到这张纸，请重新打开这本书。';if(x.replies.length>=60)return '这叠纸已满，换一张纸继续吧。';if(value.length>600)return '一张纸最多写600字，请稍微缩短。';x.replies.push({id:crypto.randomUUID(),author:actor,date:today(),text:value});});
-        if(result.ok){remember(bookId,get(),get().replies.length);onChange();}return result;
-      }
+      write
     };
   }
   function mount(room,host){
@@ -151,7 +169,7 @@ window.BookSecrets=(()=>{
         for(const item of all)if(seen(book[0],item).front)director.discover(book[0],item.id);
         if(preset&&(!preset.discoveryManaged||preset.alreadyKnown))director.discover(book[0],'preset');
         const candidates=[...all.filter(x=>x.author!==actor),...(preset&&preset.discoveryManaged?[{id:'preset'}]:[])];
-        const readIds=all.filter(x=>seen(book[0],x).front&&(seen(book[0],x).replies||0)>=x.replies.length).map(x=>x.id);
+        const readIds=all.filter(x=>fullyRead(book[0],x)).map(x=>x.id);
         if(director.known(book[0],'preset'))readIds.push('preset');
         offered=allowDraw?director.draw(book[0],candidates,{lastId:reading.books[book[0]]?.last,readIds}):director.snapshot().visit?.draws[book[0]]||null;
       }
@@ -171,6 +189,8 @@ window.BookSecrets=(()=>{
     }
     function returned(){
       if(!director||!readHere.has(current))return;
+      const item=visibleList().find(x=>x.id===current);
+      if(item&&storyFor(item)){if(fullyRead(book[0],item))director.returned(book[0]);return;}
       const count=current==='preset'?reading.books[book[0]]?.presetParts||0:seen(book[0],visibleList().find(x=>x.id===current)||{}).replies||0;
       if(count+1>=host.partsCount())director.returned(book[0]);
     }

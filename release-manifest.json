@@ -51,6 +51,7 @@
     "assets/scene/bouquet-empty-v0622.png",
     "assets/scene/bouquet-tulips-v0624.png",
     "assets/scene/bouquet-daisies-v0624.png",
+    "stories.js",
     "secrets.js",
     "secrets.css",
     "assets/scene/fountain-pen-burgundy-v075.png",
@@ -786,5 +787,12 @@
     "version": "0.14.12",
     "behavior": "one round calico sleeping cat; sofa or stool chosen once on load, stable during visit; subtle breathing and reduced-motion support",
     "evidence": "docs/validation/sleeping-cat/REPORT.md"
+  },
+  "authoredStories": {
+    "revision": "humor-v1",
+    "stories": 14,
+    "papers": 18,
+    "source": "original fiction from the two approved humorous batches; not group messages or book quotations",
+    "evidence": "docs/validation/authored-stories/REPORT.md"
   }
 }

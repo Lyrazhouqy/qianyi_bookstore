@@ -11,7 +11,7 @@ async function pick(page,id){
 }
 async function seek(page,kind){
  for(let i=0;i<100;i++){
-  if(await page.locator('.siddhartha-room').getAttribute('data-artifact')===kind)return;
+  if(await page.locator('.siddhartha-room').getAttribute('data-artifact')===kind&&(kind!=='relay'||await page.locator('.siddhartha-room').getAttribute('data-artifact-source')!=='authored-story'))return;
   if(!await page.locator('.sid-page-next').count())break;
   await page.locator('.sid-page-next').tap();await step(page,'open');
  }

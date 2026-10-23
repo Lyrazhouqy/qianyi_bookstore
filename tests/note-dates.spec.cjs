@@ -1,4 +1,6 @@
 const {test,expect}=require('@playwright/test');
+// Keep this legacy/source fixture isolated; authored stories have their own full-pool suite.
+test.beforeEach(async({page})=>{await page.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));});
 const fs=require('fs'),vm=require('vm');const scope={window:{}};vm.createContext(scope);vm.runInContext(fs.readFileSync(require.resolve('../real-materials.js'),'utf8'),scope);const real=scope.window.BookRealMaterials().naval.find(x=>x.id==='qianyi-naval-22185');
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 async function open(p){await p.locator('.spine[data-id="naval"]').tap();await step(p,'held');await p.locator('.sid-cover').tap();await step(p,'open');}

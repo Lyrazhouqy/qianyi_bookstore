@@ -1,4 +1,6 @@
 const {test,expect}=require('@playwright/test');
+// Three-sheet fixture stays isolated; authored story page cycles have separate coverage.
+test.beforeEach(async({page})=>{await page.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));});
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 async function enter(p,{motion=false}={}){
  await p.emulateMedia({reducedMotion:motion?'no-preference':'reduce'});await p.route('**/real-materials.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookRealMaterials=()=>({});'}));

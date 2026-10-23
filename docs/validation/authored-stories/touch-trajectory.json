@@ -1,0 +1,98 @@
+[
+  {
+    "width": 320,
+    "engine": "Chromium",
+    "input": "CDP native touch; keyboard Escape for shelf return; no real-device claim",
+    "source": "full real and authored pools, deterministic opening seed only",
+    "errors": [],
+    "trail": [
+      {
+        "action": "open",
+        "book": "habits",
+        "at": 1792740647711
+      },
+      {
+        "action": "unfold-ending",
+        "id": "original-b-habits",
+        "at": 1792740649042
+      },
+      {
+        "action": "open-paper-direct-next",
+        "at": 1792740649950
+      },
+      {
+        "action": "open",
+        "book": "sentence",
+        "at": 1792740653622
+      },
+      {
+        "action": "long-three-folds",
+        "id": "original-b-locksmith",
+        "at": 1792740657300
+      },
+      {
+        "action": "open",
+        "book": "weeks",
+        "at": 1792740661897
+      },
+      {
+        "action": "cross-book-ending-first",
+        "id": "original-b-prep-3",
+        "at": 1792740663184
+      },
+      {
+        "action": "corner-touch-drag",
+        "at": 1792740664524
+      }
+    ],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/authored-stories/native-320/8738cc076ffeca4d4647060597303f7f.webm"
+  },
+  {
+    "width": 390,
+    "engine": "Chromium",
+    "input": "CDP native touch; keyboard Escape for shelf return; no real-device claim",
+    "source": "full real and authored pools, deterministic opening seed only",
+    "errors": [],
+    "trail": [
+      {
+        "action": "open",
+        "book": "habits",
+        "at": 1792740666691
+      },
+      {
+        "action": "unfold-ending",
+        "id": "original-b-habits",
+        "at": 1792740668042
+      },
+      {
+        "action": "open-paper-direct-next",
+        "at": 1792740668977
+      },
+      {
+        "action": "open",
+        "book": "sentence",
+        "at": 1792740672658
+      },
+      {
+        "action": "long-three-folds",
+        "id": "original-b-locksmith",
+        "at": 1792740676333
+      },
+      {
+        "action": "open",
+        "book": "weeks",
+        "at": 1792740680974
+      },
+      {
+        "action": "cross-book-ending-first",
+        "id": "original-b-prep-3",
+        "at": 1792740682257
+      },
+      {
+        "action": "corner-touch-drag",
+        "at": 1792740683597
+      }
+    ],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/authored-stories/native-390/ca1b8d2440fd84202d5641318f55cf68.webm"
+  }
+]

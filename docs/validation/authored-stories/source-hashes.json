@@ -1,0 +1,114 @@
+{
+  "recordedAt": "2026-10-23T07:33:10.913Z",
+  "scope": "11 story and reading runtime files; final 24 tests and final CDP touch ran between before/after checks; concurrent cat, globe, placement, index build versions excluded",
+  "scoped": {
+    "stories.js": {
+      "sha256": "3d9d236c2037a566e14eadac911dd1c1fd14e926e552aaf00e98795d7ff0a54b",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "secrets.js": {
+      "sha256": "03d56cda015fc31bf2673b51734f353134cfbf31251058d8a066477dc5797d22",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "secrets.css": {
+      "sha256": "950cae9f4e5fb713f05dfd3949f9c8965d4ee8b54a53f9583712578b43987653",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.js": {
+      "sha256": "b0dedf6d882e1ebdb4ffc29692a961669eb6cbc5ba8a446f1d3e7e930ffcf69f",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.css": {
+      "sha256": "8eaaa473dc1e066194175b60331e1f19e9d30ec44621fadf3eaf799dbde22130",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "discovery.js": {
+      "sha256": "598150f963d4243124bff508db782a41bde97b8263e17be7ee6ff8d8cb2d4712",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "discovery-pool.js": {
+      "sha256": "26509b91fe14c76347f938908d227af712c37ae5eaf0df3df3a05654aabf7902",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "real-materials.js": {
+      "sha256": "18ac013d92066315f1843b102da69429805d77fbc762a464b0efa8f5ad74e8e2",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "content.js": {
+      "sha256": "b5c90442df53f9de147bd30bd140677dca68c0eef6b5c1c2b770ed7c4c2b3338",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "app.js": {
+      "sha256": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "rhythm.js": {
+      "sha256": "d173e5733a0b6a36e5e7f7ea0d578eb34228324aa6f61b97b275898f1e278cf2",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    }
+  },
+  "reports": {
+    "first": {
+      "startTime": "2026-10-23T07:19:31.601Z",
+      "duration": 82410.482,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "reply-fix": {
+      "startTime": "2026-10-23T07:22:07.829Z",
+      "duration": 4268.68,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "compatibility": {
+      "startTime": "2026-10-23T07:23:46.193Z",
+      "duration": 242177.987,
+      "expected": 148,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "named-readers": {
+      "startTime": "2026-10-23T07:27:33.367Z",
+      "duration": 9325.394,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final-stories": {
+      "startTime": "2026-10-23T07:30:09.359Z",
+      "duration": 38902.07,
+      "expected": 24,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

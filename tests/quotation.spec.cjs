@@ -1,4 +1,6 @@
 const{test,expect}=require('@playwright/test');
+// Keep this legacy/source fixture isolated; authored stories have their own full-pool suite.
+test.beforeEach(async({page})=>{await page.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));});
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 async function enter(page,{trusted=false,mismatch=false,long=false}={}){
  // These marked fixtures exercise rendering; they are not quotations attributed to a real book.

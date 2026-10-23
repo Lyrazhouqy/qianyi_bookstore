@@ -1,4 +1,6 @@
 const {test,expect}=require('@playwright/test');
+// Keep this legacy/source fixture isolated; authored stories have their own full-pool suite.
+test.beforeEach(async({page})=>{await page.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));});
 const key='paperbook-discovery-visit-v1-A';
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 const snapshot=p=>p.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);

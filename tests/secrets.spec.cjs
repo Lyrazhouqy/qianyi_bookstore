@@ -1,4 +1,6 @@
 const {test,expect}=require('@playwright/test');
+// Keep this legacy/source fixture isolated; authored stories have their own full-pool suite.
+test.beforeEach(async({page})=>{await page.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));});
 const room=p=>p.locator('.siddhartha-room'),step=(p,s)=>expect(room(p)).toHaveAttribute('data-step',s);
 async function pick(p,id='cat'){const target=p.locator('.spine[data-id="'+id+'"]');await target.scrollIntoViewIfNeeded();if(await target.evaluate(e=>!!e.closest('.book-pile'))){const r=await target.locator('.painted-title').boundingBox();await p.mouse.click(r.x+r.width/2,r.y+r.height/2);}else await target.click();await step(p,'held');await p.locator('.sid-cover').click();await step(p,'open');}
 async function begin(p){await p.getByRole('button',{name:'拿起笔，在这本书里留张便笺'}).click();await step(p,'composing');}
