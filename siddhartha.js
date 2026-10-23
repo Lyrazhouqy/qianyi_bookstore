@@ -102,6 +102,7 @@ window.Siddhartha = (() => {
   function allParts() { if(artifact.getParts)return artifact.getParts();return artifact.kind==='relay' ? letter.concat(callbacks.replies().map((text,index)=>['你的续写 '+(index+1),text])) : artifact.parts; }
   function insideCopy(){
     room.dataset.readingLayout=['stack','note','fold'].includes(artifact?.kind)?'paired':'centered';
+    room.dataset.artifactPicture=String(!!artifact?.picture);
     const candidate=artifact?.quotation;
     const quoted=candidate?.verified===true&&candidate.bookTitle===book[1]&&typeof candidate.text==='string'&&candidate.text.trim()&&typeof candidate.source==='string'&&candidate.source.trim();
     const copy=query('.sid-inside-copy');copy.dataset.kind=quoted?'quotation':'synopsis';room.dataset.leftContent=copy.dataset.kind;copy.scrollTop=0;
@@ -138,7 +139,7 @@ window.Siddhartha = (() => {
     const turn=startPageTurn(direction);return turn?turn.finish(next,commit):false;
   }
   function segmentHTML(part,index) {
-    const picture=artifact.kind==='postcard'&&index===0?'<svg class="sid-postcard-picture" viewBox="0 0 320 150" aria-hidden="true"><rect width="320" height="150" fill="#a6b9ac"/><circle cx="245" cy="38" r="23" fill="#e9c477"/><path d="M0 116L85 39 183 126 245 81 320 128V150H0Z" fill="#718c7b"/><path d="M0 139Q96 93 181 135T320 133V150H0Z" fill="#d3bc8c"/><path d="M126 44l21 9 26-14 8 3-19 17 18 10-5 5-27-6-13 11-5-2 6-15-17-12z" fill="#f7edd4"/></svg>':'';
+    const picture=artifact.kind==='postcard'&&index===0?(artifact.picture?'<img class="sid-postcard-picture" src="'+escapeHTML(artifact.picture.src)+'" alt="'+escapeHTML(artifact.picture.alt)+'" draggable="false">':'<svg class="sid-postcard-picture" viewBox="0 0 320 150" aria-hidden="true"><rect width="320" height="150" fill="#a6b9ac"/><circle cx="245" cy="38" r="23" fill="#e9c477"/><path d="M0 116L85 39 183 126 245 81 320 128V150H0Z" fill="#718c7b"/><path d="M0 139Q96 93 181 135T320 133V150H0Z" fill="#d3bc8c"/><path d="M126 44l21 9 26-14 8 3-19 17 18 10-5 5-27-6-13 11-5-2 6-15-17-12z" fill="#f7edd4"/></svg>'):'';
     return '<div class="sid-segment" data-segment="'+index+'"><small>'+escapeHTML(part[0])+'</small>'+picture+escapeHTML(part[1])+'</div>';
   }
   function letterControls() {

@@ -20,6 +20,8 @@
 .siddhartha-room[data-artifact="postcard"] .sid-segment { min-height:185px; padding:18px; }
 .siddhartha-room[data-artifact="postcard"] .sid-segment small { font-size:12px; }
 .sid-postcard-picture { display:block; width:100%; height:auto; margin:12px 0; border:6px solid #f2e7cd; }
+.sid-postcard-picture:is(img) { width:auto; max-width:100%; height:auto; max-height:calc(var(--view-height) - 280px); object-fit:contain; margin:12px auto; }
+.siddhartha-room[data-artifact-picture="true"] .sid-letter-reader { max-height:calc(var(--view-height) - 64px); }
 .sid-flip { display:block; min-height:44px; padding:10px 20px; border:0; color:#655238; background:#e8d9b6; font:inherit; }
 .siddhartha-room[data-artifact="postcard"] .sid-letter-actions { padding:8px 12px; }
 .focus-book .spine-face { box-shadow:inset 4px 0 #0002,0 0 0 2px #dfbd74; }

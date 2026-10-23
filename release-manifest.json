@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.1",
+  "build": "paper-bookshop-game-v0.14.2",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -66,9 +66,10 @@
     "assets/scene/quiet-spine-icons-v0119.png",
     "assets/scene/blank-spines-v0120.png",
     "assets/fonts/book-title-serif-v0113.woff2",
-    "assets/fonts/book-title-serif-OFL.txt"
+    "assets/fonts/book-title-serif-OFL.txt",
+    "assets/scene/prince-postcard-user-v0142.png"
   ],
-  "status": "development-v0.14.1-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.2-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -714,5 +715,15 @@
     "localUrl": "http://127.0.0.1:4173/?v=0.14.1&playtest=rhythm",
     "evidence": "docs/validation/v0141-binding/REPORT.md",
     "production": "unchanged v0.13.0"
+  },
+  "princePostcard": {
+    "version": "0.14.2",
+    "source": "user supplied image; original PNG bytes preserved",
+    "book": "prince",
+    "id": "keepsake-prince-postcard-v0142",
+    "image": "assets/scene/prince-postcard-user-v0142.png",
+    "layout": "portrait image fits whole within viewport; no crop or stretch",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.2&playtest=rhythm",
+    "existing": "night postcard, real notes, rose envelope and old saves preserved"
   }
 }
