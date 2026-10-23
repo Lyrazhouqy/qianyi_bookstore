@@ -35,3 +35,13 @@ journal.js/css与HTML、明确静态白名单是本轮主体；room.js/app.js未
 BOOKSHOP_REPORT=evidence/shop-journal/initial.json npx playwright test tests/shop-journal.spec.cjs --project=chromium-small --project=webkit-small --project=chromium-iPhone14 --project=webkit-iPhone14 --output=evidence/shop-journal/initial
 node docs/validation/shop-journal/explore.cjs
 ```
+
+
+## 2026-10-23 标题与字号微调
+
+- 十则「关于……」标题改成紧扣手记的小短句，例如「本店暂不承诺次日达」「扶正三次，还是随它」「今日盈利：三张便笺」。不改正文、条目ID、排序、出字节奏或存档。
+- 手机正文18→16px，宽屏正文19→17px；行距1.95、标题15px保持。
+- 复用已有四页十则可达/正文完整/稳定布局用例，Chromium与WebKit各320×568、390×844、844×390共6/6，0失败/跳过/重试。两文件测试前后与当前HTTP哈希一致，见[text-size-results.json](text-size-results.json)。浏览器模拟，不是真实手机验收。
+- 原IAB页面无可见草稿后重载并打开手记，看到新标题、当前668px宽正文实测17px；拿书165、小发现11和玫瑰保持，未改输入或清档。未推送或部署。
+
+![调整后的手记](text-size-preview.jpg)

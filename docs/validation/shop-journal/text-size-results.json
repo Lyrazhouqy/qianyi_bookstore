@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-23",
+  "stats": {
+    "startTime": "2026-10-23T09:42:23.636Z",
+    "duration": 22431.653000000002,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "source": "evidence/journal-text-size/results.json",
+  "before": {
+    "journal.js": "599af9c678e305eca2f4afc424df97647bca8d052ea9b7ae4d2371979da05f66",
+    "journal.css": "f1335374d2bc6fad001560f7cf99eefcd20f9ef6154a5e6eeca0d06b135b3078"
+  },
+  "after": {
+    "journal.js": "599af9c678e305eca2f4afc424df97647bca8d052ea9b7ae4d2371979da05f66",
+    "journal.css": "f1335374d2bc6fad001560f7cf99eefcd20f9ef6154a5e6eeca0d06b135b3078"
+  },
+  "http": {
+    "journal.js": "599af9c678e305eca2f4afc424df97647bca8d052ea9b7ae4d2371979da05f66",
+    "journal.css": "f1335374d2bc6fad001560f7cf99eefcd20f9ef6154a5e6eeca0d06b135b3078"
+  },
+  "unchanged": true,
+  "httpMatches": true,
+  "boundary": "Chromium/WebKit phone viewport simulation, not physical device acceptance"
+}

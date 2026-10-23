@@ -3,16 +3,16 @@
   const sheet=document.getElementById('shop-journal');if(!sheet)return;
   // Original shopkeeper fiction. These never enter the real book-club note pool.
   const entries=[
-    {id:'closing',title:'关于关店',text:'准备关灯，发现沙发上还摊着一本书。\n等了一会儿，才想起来是我自己看的。\n店主偶尔也会舍不得走。'},
-    {id:'unfinished',title:'关于没写完的话',text:'收店时看到一张纸，写着：“其实我一直想说——”\n后面空着。\n先替他夹好。明天开门，还是这本书，这一页。'},
-    {id:'habits',books:['habits'],title:'关于《七个习惯》',text:'本店的猫有七个固定睡觉的位置。\n我每天整理书架，它每天检查我有没有擅自改动其中一个。'},
-    {id:'weeks',books:['weeks'],title:'关于《四千周》',text:'今天读到人生只有四千周，决定不再浪费时间。\n于是坐在沙发上，很认真地发了一会儿呆。'},
-    {id:'lychee',books:['lychee'],title:'关于《长安的荔枝》',text:'有人问，为什么不在店里卖荔枝。\n我说，读完这本书，你应该能理解本店对配送范围的谨慎。'},
-    {id:'prince',books:['prince'],title:'关于《小王子》',text:'今天有人在《小王子》里夹了一句话，没署名。\n我没有替他补上。有些人，大概想先被认出来，再介绍自己。'},
-    {id:'tao',books:['tao'],title:'关于《道德经》',text:'整理书架时，把《道德经》扶正了三次。\n它还是靠回旁边那本书。\n行吧，各有各的道。'},
-    {id:'night',books:['night'],title:'关于《夜航西飞》',text:'这本书今天被拿起来，又放回去。\n夹在里面的纸倒换了个位置。看来有人已经出发了，只是暂时还坐在沙发上。'},
-    {id:'fiscal',books:['fiscal'],title:'关于《财政密码》',text:'盘了一下本店的账：\n少了一支笔，多了三张便笺。\n钢笔后来在书里找到了。今天算盈利。'},
-    {id:'neighbours',books:['gobi','altay'],title:'关于书架上的邻居',text:'《走出戈壁》和《我的阿勒泰》又被放到了一起。\n一本走得很远，一本让我想住下来。\n茶还热着，我暂时哪儿也没去。'}
+    {id:'closing',title:'打烊了，店主还没走',text:'准备关灯，发现沙发上还摊着一本书。\n等了一会儿，才想起来是我自己看的。\n店主偶尔也会舍不得走。'},
+    {id:'unfinished',title:'破折号后面，留个座',text:'收店时看到一张纸，写着：“其实我一直想说——”\n后面空着。\n先替他夹好。明天开门，还是这本书，这一页。'},
+    {id:'habits',books:['habits'],title:'七个习惯，七个睡点',text:'本店的猫有七个固定睡觉的位置。\n我每天整理书架，它每天检查我有没有擅自改动其中一个。'},
+    {id:'weeks',books:['weeks'],title:'认真发呆，也算日程',text:'今天读到人生只有四千周，决定不再浪费时间。\n于是坐在沙发上，很认真地发了一会儿呆。'},
+    {id:'lychee',books:['lychee'],title:'本店暂不承诺次日达',text:'有人问，为什么不在店里卖荔枝。\n我说，读完这本书，你应该能理解本店对配送范围的谨慎。'},
+    {id:'prince',books:['prince'],title:'先认出你，再问姓名',text:'今天有人在《小王子》里夹了一句话，没署名。\n我没有替他补上。有些人，大概想先被认出来，再介绍自己。'},
+    {id:'tao',books:['tao'],title:'扶正三次，还是随它',text:'整理书架时，把《道德经》扶正了三次。\n它还是靠回旁边那本书。\n行吧，各有各的道。'},
+    {id:'night',books:['night'],title:'人坐着，心已经起飞',text:'这本书今天被拿起来，又放回去。\n夹在里面的纸倒换了个位置。看来有人已经出发了，只是暂时还坐在沙发上。'},
+    {id:'fiscal',books:['fiscal'],title:'今日盈利：三张便笺',text:'盘了一下本店的账：\n少了一支笔，多了三张便笺。\n钢笔后来在书里找到了。今天算盈利。'},
+    {id:'neighbours',books:['gobi','altay'],title:'远方很远，茶还很热',text:'《走出戈壁》和《我的阿勒泰》又被放到了一起。\n一本走得很远，一本让我想住下来。\n茶还热着，我暂时哪儿也没去。'}
   ];
   const ids=entries.map(e=>e.id),byId=new Map(entries.map(e=>[e.id,e]));
   const key='paperbook-journal-v1'+(window.BookSecrets.gameKey==='paperbook-v3'?'':':'+window.BookSecrets.gameKey);
