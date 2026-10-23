@@ -1,0 +1,32 @@
+[
+  {
+    "width": 320,
+    "engine": "chromium",
+    "input": "CDP native touch",
+    "source": "unmodified real materials; isolated browser storage",
+    "coverTouchDrag": true,
+    "pageCornerTouchDrag": true,
+    "noteSwipe": true,
+    "cornerDraftSaved": true,
+    "cancelledTouchRestored": true,
+    "postcardLeftSwipeFlip": true,
+    "postcardRightSwipeReturn": true,
+    "errors": [],
+    "video": "local ignored evidence/bookshop-v0145/native-320/ (full WebM); shareable MP4 in this report"
+  },
+  {
+    "width": 390,
+    "engine": "chromium",
+    "input": "CDP native touch",
+    "source": "unmodified real materials; isolated browser storage",
+    "coverTouchDrag": true,
+    "pageCornerTouchDrag": true,
+    "noteSwipe": true,
+    "cornerDraftSaved": true,
+    "cancelledTouchRestored": true,
+    "postcardLeftSwipeFlip": true,
+    "postcardRightSwipeReturn": true,
+    "errors": [],
+    "video": "local ignored evidence/bookshop-v0145/native-390/ (full WebM); shareable MP4 in this report"
+  }
+]

@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.4",
+  "build": "paper-bookshop-game-v0.14.5",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -69,7 +69,7 @@
     "assets/fonts/book-title-serif-OFL.txt",
     "assets/scene/prince-postcard-user-v0142.png"
   ],
-  "status": "development-v0.14.4-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.5-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -736,5 +736,12 @@
     "stableUntil": "complete current paper/replies and return book to shelf",
     "localUrl": "http://127.0.0.1:4173/?v=0.14.4&playtest=rhythm",
     "evidence": "docs/validation/v0144/REPORT.md"
+  },
+  "paperFeel": {
+    "version": "0.14.5",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.5&playtest=rhythm",
+    "interaction": "lift and unfold; swipe right or touch raised paper corner to tuck back; swipe postcard left to turn; reply drafts kept",
+    "evidence": "docs/validation/v0145/REPORT.md",
+    "production": "unchanged v0.13.0"
   }
 }

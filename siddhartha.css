@@ -229,3 +229,30 @@ body[data-phase="siddhartha"] #shop { filter:blur(var(--sid-backdrop-blur,0px));
 /* A quiet dated signature belongs to its sheet, not to the book introduction. */
 .sid-note-signature { padding:0; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:2px; margin-top:16px; color:#8c775a; font-size:12px; line-height:1.7; letter-spacing:0; white-space:normal; }
 .sid-note-signature time { font-size:11px; }
+
+/* The sheet itself is the back control; it remains reachable while text scrolls. */
+.sid-paper-return { display:none; position:absolute; z-index:28; top:0; right:0; width:52px; height:64px; min-width:44px; min-height:44px; padding:0; border:0; border-radius:0; background:transparent; color:#79603c; touch-action:none; }
+.sid-paper-return:before { content:""; position:absolute; top:0; right:0; width:42px; height:42px; background:linear-gradient(45deg,#b59a6899,#f9edc9 50%,#ead4a5 54%); clip-path:polygon(0 0,100% 0,100% 100%); filter:drop-shadow(-2px 3px 2px #6c4b2e55); }
+.sid-paper-return i { position:absolute; top:4px; right:5px; font:23px/1 serif; transform:rotate(-10deg); }
+.sid-paper-return span { position:absolute; top:40px; right:5px; font-size:11px; letter-spacing:1px; }
+.siddhartha-room[data-step="letter"] .sid-paper-return { display:block; }
+.sid-paper-return:hover:before,.sid-paper-return:active:before { background:linear-gradient(45deg,#b59a68,#fff3d0 50%,#e5c58a 54%); }
+.sid-sheet-hint { display:none; position:absolute; bottom:-24px; right:2px; color:#dfcba5; font-size:10px; line-height:1.6; letter-spacing:.5px; pointer-events:none; white-space:nowrap; }
+.siddhartha-room[data-step="letter"] .sid-sheet-hint { display:block; }
+.sid-letter-reader > .sid-segment:first-child > small { padding-right:40px; min-height:35px; }
+.sid-letter-reader .sid-letter-actions:empty { display:none; }
+.sid-letter-actions { justify-content:center; }
+.sid-letter-reader { -webkit-user-select:none; user-select:none; }
+.sid-letter-reader textarea { -webkit-user-select:text; user-select:text; }
+.sid-letter-packet { transition:box-shadow .12s; }
+.sid-discovering .sid-letter-packet { box-shadow:2px calc(5px + var(--sid-lift,0)*8px) 18px #30231166; }
+.sid-discovering .sid-letter-reader { box-shadow:3px 10px 22px #24180b66,0 0 8px #f7df9c44; }
+.sid-discovering[data-fresh="true"] .sid-opening-flap { background-image:linear-gradient(110deg,transparent 15%,#fff1c480 50%,transparent 78%),var(--sid-letter-stock); }
+.sid-sheet-dragging { will-change:translate,rotate; cursor:grabbing; }
+.sid-returning-sheet { backface-visibility:hidden; -webkit-backface-visibility:hidden; box-shadow:2px 6px 14px #24180b44; }
+@media(prefers-reduced-motion:reduce) { .sid-letter-packet { transition:none; } .sid-sheet-dragging { will-change:auto; } }
+
+.sid-postcard-picture:is(img) { height:clamp(128px,calc(var(--sid-sheet-space, var(--view-height)) - 260px),320px); }
+.sid-write textarea { min-height:96px; height:96px; max-height:120px; padding:8px; resize:none; font-size:16px; line-height:1.7; }
+.sid-write-actions { flex-wrap:nowrap!important; gap:6px; }
+.sid-write-actions button { flex:1; min-width:0; min-height:44px; padding:6px 2px; font-size:12px; white-space:nowrap; }

@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-23",
+  "version": "0.14.5",
+  "phases": {
+    "initial-compatibility": {
+      "stats": {
+        "startTime": "2026-10-23T03:42:38.996Z",
+        "duration": 65700.523,
+        "expected": 36,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0145/initial-results.json"
+    },
+    "initial-mouse-gestures": {
+      "stats": {
+        "startTime": "2026-10-23T03:44:37.354Z",
+        "duration": 40613.437,
+        "expected": 20,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0145/feel-initial-results.json"
+    },
+    "short-screen-recheck": {
+      "stats": {
+        "startTime": "2026-10-23T03:48:35.603Z",
+        "duration": 47844.795,
+        "expected": 26,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0145/feel-recheck-results.json"
+    },
+    "compatibility-before-touch-handoff-fix": {
+      "stats": {
+        "startTime": "2026-10-23T03:51:48.232Z",
+        "duration": 282845.167,
+        "expected": 144,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0145/final-results.json"
+    },
+    "final-touch-handoff-regression": {
+      "stats": {
+        "startTime": "2026-10-23T03:58:19.147Z",
+        "duration": 137343.732,
+        "expected": 64,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0145/touch-fix-results.json"
+    }
+  },
+  "motionMilliseconds": [
+    {
+      "project": "chromium-small",
+      "open": 507,
+      "return": 230
+    },
+    {
+      "project": "chromium-iPhone14",
+      "open": 517,
+      "return": 227
+    },
+    {
+      "project": "webkit-small",
+      "open": 543,
+      "return": 239
+    },
+    {
+      "project": "webkit-iPhone14",
+      "open": 538,
+      "return": 271
+    }
+  ]
+}

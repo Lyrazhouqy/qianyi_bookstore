@@ -244,7 +244,7 @@ window.BookSecrets=(()=>{
     traces.addEventListener('pointermove',moveCorner);
     traces.addEventListener('pointerup',event=>finishCorner(event));
     traces.addEventListener('pointercancel',event=>finishCorner(event,true));
-    traces.addEventListener('lostpointercapture',event=>finishCorner(event,true));
+    traces.addEventListener('lostpointercapture',event=>{if(event.target===cornerDrag?.button)finishCorner(event,true);});
     traces.addEventListener('click',event=>{if(event.detail&&performance.now()<ignorePageClick)return;const button=event.target.closest('[data-paper-id]');if(button)selectPaper(button.dataset.paperId,Number(button.dataset.direction));});
     window.addEventListener('resize',()=>finishCorner(null,true));
     editor.addEventListener('input',stash);
