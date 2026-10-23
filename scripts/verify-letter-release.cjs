@@ -1,0 +1,22 @@
+// Anonymous, isolated phone browser checks. Audio output is muted, not removed.
+process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY='1';
+const {chromium,webkit,expect}=require('@playwright/test'),fs=require('node:fs'),path=require('node:path');
+expect.configure({timeout:15000});
+const version=require('../package.json').version,base=process.env.BASE_URL||'https://paper-bookshop-playtest.vercel.app/v'+version+'/',out='evidence/deployment-v'+version.replaceAll('.','');fs.mkdirSync(out,{recursive:true});
+(async()=>{const previous=path.join(out,'online-typography.json'),results=fs.existsSync(previous)?JSON.parse(fs.readFileSync(previous)).results.filter(r=>r.passed):[];for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
+ const browser=await engine.launch({proxy:{server:'http://127.0.0.1:7890'}});
+ try{for(const width of [320,390]){if(results.some(r=>r.engine===name&&r.width===width&&r.passed))continue;
+  const context=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1});
+  await context.addInitScript(()=>{const Audio=window.Audio;window.Audio=class extends Audio{constructor(...a){super(...a);this.muted=true;}};const N=window.AudioContext||window.webkitAudioContext;if(N)window.AudioContext=class extends N{constructor(...a){super(...a);const g=super.createGain();g.gain.value=0;g.connect(super.destination);this.quietDestination=g;}get destination(){return this.quietDestination||super.destination;}};});
+  const p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));let row={engine:name,width};
+  try{
+   await p.emulateMedia({reducedMotion:'reduce'});const r=await p.goto(base+'?playtest=revisit&reader=A',{waitUntil:'commit',timeout:60000});expect(r.status()).toBe(200);await p.waitForFunction(()=>document.querySelectorAll('.spine').length===34&&document.documentElement.style.getPropertyValue('--scene-width')!==''&&document.body.dataset.phase==='idle',{},{timeout:45000});await expect(p.locator('html')).toHaveAttribute('data-build','paper-bookshop-game-v'+version);await p.waitForFunction(()=>document.fonts.check('16px PaperYozai'),{},{timeout:45000});
+   const step=s=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
+   await p.locator('#open-book-index').tap();await p.locator('[data-book="night"]').tap();await step('held');await p.locator('.sid-cover').tap();await step('open');await p.locator('.sid-letter-pick').tap();await step('letter');await p.waitForFunction(()=>document.fonts.check('16px PaperYozai','便笺回复你好'),{},{timeout:120000});
+   const type=await p.locator('.sid-segment').first().evaluate(e=>({font:getComputedStyle(e).fontFamily,size:parseFloat(getComputedStyle(e).fontSize),width:e.clientWidth,scroll:e.scrollWidth}));expect(type.font).toContain('PaperYozai');expect(type.size).toBeGreaterThanOrEqual(15);expect(type.size).toBeLessThanOrEqual(18);expect(type.scroll).toBeLessThanOrEqual(type.width+1);
+   await p.screenshot({path:path.join(out,name+'-'+width+'-letter.png')});while(await p.locator('.sid-unfold').count())await p.locator('.sid-unfold').tap();await p.locator('[data-sid="write"]').tap();const reply='【隔离验收】这张纸的字很清楚。\n换一行，也能好好放下。';await p.locator('#sid-reply').fill(reply);await expect(p.locator('#sid-reply')).toHaveCSS('font-size','16px');await expect(p.locator('#sid-reply')).toHaveCSS('line-height','28px');await p.screenshot({path:path.join(out,name+'-'+width+'-reply.png')});await p.locator('[data-sid="save"]').tap();await step('letter');await expect(p.locator('.sid-segment').last()).toContainText(reply);await p.keyboard.press('Escape');await expect(p.locator('body')).toHaveAttribute('data-phase','idle');expect(errors).toEqual([]);
+   row={...row,passed:true,publicStatus:r.status(),type,inputPx:16,lineHeightPx:28,replySaved:true,pageErrors:errors};console.log(name,width,'passed');
+  }catch(e){row={...row,passed:false,error:e.message.slice(0,1000),pageErrors:errors};console.log(name,width,'FAILED',e.message.split('\n')[0]);}
+  results.push(row);fs.writeFileSync(path.join(out,'online-typography.json'),JSON.stringify({version,url:base,at:new Date().toISOString(),boundary:'anonymous phone browser emulation, not physical iPhone or WeChat WebView acceptance',results},null,2)+'\n');await context.close();
+ }}finally{await browser.close();}
+}if(results.some(r=>!r.passed))process.exitCode=1;})().catch(e=>{console.error(e.message);process.exitCode=1;});

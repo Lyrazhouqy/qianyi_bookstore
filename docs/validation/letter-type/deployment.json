@@ -1,0 +1,17 @@
+{
+  "version": "0.14.18",
+  "deploymentId": "dpl_8M4kHoyxCMRNKuqcHMYZVK51xdVY",
+  "baseUrl": "https://paper-bookshop-playtest.vercel.app/v0.14.18/",
+  "uniqueDeploymentUrl": "https://paper-bookshop-playtest-adayiq8f1-zhouxixis-projects-b5eae314.vercel.app/v0.14.18/",
+  "sourceCommit": "bfd0271cc7c4224009af1d9ae75169174113309b",
+  "productionAlias": "paper-bookshop-playtest.vercel.app",
+  "rollbackDeployment": "dpl_4Rn1N4vQorVrySNQw5uCoPjuqACA",
+  "retainedVersionPaths": [
+    "/v0.14.17/",
+    "/v0.14.16/",
+    "/v0.13.0/"
+  ],
+  "deployedAt": "2026-10-23T16:01:12.419000+00:00",
+  "publicAccessEvidence": "docs/validation/letter-type/online-hashes.json",
+  "browserEvidence": "docs/validation/letter-type/online-results.json"
+}

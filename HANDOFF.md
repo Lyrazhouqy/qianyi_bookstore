@@ -1009,3 +1009,10 @@ v0.14.16已实际发布：部署dpl_EyU3rCuXEfxT1B6M7BjoH4bk3SRn，源码eefa5df
 已推送GitHub main/开发分支并部署原Vercel项目：dpl_4Rn1N4vQorVrySNQw5uCoPjuqACA，手机入口https://paper-bookshop-playtest.vercel.app/v0.14.17/；旧/v0.14.16/、/v0.13.0/保留，回退dpl_EyU3rCuXEfxT1B6M7BjoH4bk3SRn。线上核验结果见报告，勿沿用旧版本URL验收新版。
 
 本次匿名线上95项资源最终全部hash匹配；完整线上操作复核因Chromium导航/WebKit字体等待超时尚未完成，见报告phone-online.json。不可将本地通过当线上或真机验收。后续65972d0触屏提示只在开发分支，本次生产仍冻结d566557。
+
+
+## 2026-10-24 v0.14.18 信件/回复字体适配与生产发布
+
+- 统一纸面/回复标签/按钮的手写字体；正文按实际纸宽调整，窄纸15–17px、宽信16–18px，长昵称/署名/日期/回复换行；输入与占位统一16px/1.75行高，不低于16px。左原文右便笺、全部纸、读进度、回应与草稿结构保持；同步发布此前65972d0手机触摸反馈。
+- 本地Chromium/WebKit320/390/横屏字体18/18、既有并读/键盘/草稿/新建18/18。匿名线上四条阅读→回复→保存→归架最终4/4（分轮复核，首轮存在导航/字体截图等待超时）；聚焦21项线上hash全匹配，90项本地静态源与冻结包一致。失败过程与截图见docs/validation/letter-type/REPORT.md；浏览器手机/键盘模拟，不是真机/微信/真人阅读验收。
+- 已部署原项目production/READY：dpl_8M4kHoyxCMRNKuqcHMYZVK51xdVY，源码bfd0271；正式入口https://paper-bookshop-playtest.vercel.app/v0.14.18/，根同新版。保留/v0.14.17/、/v0.14.16/、/v0.13.0/；回退dpl_4Rn1N4vQorVrySNQw5uCoPjuqACA。未改保护设置、新建项目或操作原用户标签。发布记录与版本历史已写release-manifest。

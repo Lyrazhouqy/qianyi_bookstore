@@ -1,0 +1,134 @@
+{
+  "at": "2026-10-23T16:11:42.564Z",
+  "deploymentId": "dpl_8M4kHoyxCMRNKuqcHMYZVK51xdVY",
+  "expected": 21,
+  "resources": [
+    {
+      "file": "v0.14.18/index.html",
+      "status": 200,
+      "sha256": "f686b1a00d8a21b42c9e14075ab586e4b24e3aa5c9452b39d3b0a41efc073b89",
+      "bytes": 26798
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "sha256": "f686b1a00d8a21b42c9e14075ab586e4b24e3aa5c9452b39d3b0a41efc073b89",
+      "bytes": 26798
+    },
+    {
+      "file": "v0.14.18/content.js",
+      "status": 200,
+      "sha256": "75dd9df9ef3f035d8b286bb700be3459f201d97ddcc19ededc70f00899f6b26b",
+      "bytes": 9707
+    },
+    {
+      "file": "v0.14.18/app.js",
+      "status": 200,
+      "sha256": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+      "bytes": 15844
+    },
+    {
+      "file": "v0.14.18/siddhartha.css",
+      "status": 200,
+      "sha256": "1c3018588e45f631b79b35a3d77954924ee0ed8d2f0adb964b5f29a58b40bef3",
+      "bytes": 28537
+    },
+    {
+      "file": "v0.14.18/siddhartha.js",
+      "status": 200,
+      "sha256": "7de7bb2e1cc1faca9ed3a5f8a07a227732156e15fcf6ce0336c3f84ccf50f3e4",
+      "bytes": 54608
+    },
+    {
+      "file": "v0.14.18/assets/fonts/yozai.woff2",
+      "status": 200,
+      "sha256": "680e62f9c932aee56580db45ca0501c32b2381157dcbb5ce0fe31a4a7e8a1f3a",
+      "bytes": 7345312,
+      "transport": "anonymous curl through same proxy; full body"
+    },
+    {
+      "file": "v0.14.18/lamp.js",
+      "status": 200,
+      "sha256": "825b6975d3051fb86776ba81de0e8a194bc05e0bbeaf23a749f0bab8d98778b0",
+      "bytes": 5089
+    },
+    {
+      "file": "v0.14.18/wall-note.js",
+      "status": 200,
+      "sha256": "7707dccb2d83a785956052fdcd0d3cf2fa8a683b77eb6d3f4b157b06e781f602",
+      "bytes": 2242
+    },
+    {
+      "file": "v0.14.18/bouquet.js",
+      "status": 200,
+      "sha256": "87839efb0a6cbaa63b742558541fe960944c2b4d2fda73c347e7844dc109225d",
+      "bytes": 7633
+    },
+    {
+      "file": "v0.14.18/secrets.js",
+      "status": 200,
+      "sha256": "a484cf4dfcf9def3e57ec76f904416d0a3f86b01783db2d13d064be5b588da65",
+      "bytes": 31764
+    },
+    {
+      "file": "mobile.css",
+      "status": 200,
+      "sha256": "aae0c2488260e999f26cd32eeb3d74b99a7a01c6adbd7938f1988a47ec7d490c",
+      "bytes": 7179
+    },
+    {
+      "file": "v0.14.18/secrets.css",
+      "status": 200,
+      "sha256": "3078f8a03751883dbf76965ce1bffd377196a0342002dcfe618aa0906592b10a",
+      "bytes": 15187
+    },
+    {
+      "file": "v0.14.18/mobile.css",
+      "status": 200,
+      "sha256": "aae0c2488260e999f26cd32eeb3d74b99a7a01c6adbd7938f1988a47ec7d490c",
+      "bytes": 7179
+    },
+    {
+      "file": "v0.14.18/assets/fonts/book-title-serif-v0113.woff2",
+      "status": 200,
+      "sha256": "010de6737da3513253f2ae7684c453f34945a8c410d974b0c418c4f5702677e5",
+      "bytes": 30540
+    },
+    {
+      "file": "v0.14.18/room-touch.js",
+      "status": 200,
+      "sha256": "1b538a6d09312784019f88a74675839bbdfab855ce96392c16219a138e425814",
+      "bytes": 5780
+    },
+    {
+      "file": "room-touch.js",
+      "status": 200,
+      "sha256": "1b538a6d09312784019f88a74675839bbdfab855ce96392c16219a138e425814",
+      "bytes": 5780
+    },
+    {
+      "file": "v0.14.18/room-touch.css",
+      "status": 200,
+      "sha256": "36326495edb9d9ed4771b805943c55b3b2917da94b8d1cf04935bbc1d0590080",
+      "bytes": 2648
+    },
+    {
+      "file": "v0.14.17/index.html",
+      "status": 200,
+      "sha256": "53260b394a75957945f534e347b9a8bb9e2bc1640cd60d98ca7f034762a2df46",
+      "bytes": 26704
+    },
+    {
+      "file": "v0.14.16/index.html",
+      "status": 200,
+      "sha256": "b23e70d20e22fd8d2ecf219724f16146dce0e13d4d93478e23f7333edf665186",
+      "bytes": 26704
+    },
+    {
+      "file": "v0.13.0/index.html",
+      "status": 200,
+      "sha256": "ebaa21b03d4df73b9ccd5af9926eff0b21ba2d7b3a320765ea8b1d8149e678d8",
+      "bytes": 17298
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "version": "0.14.18",
+  "url": "https://paper-bookshop-playtest.vercel.app/v0.14.18/",
+  "at": "2026-10-23T16:14:20.171Z",
+  "boundary": "anonymous phone browser emulation, not physical iPhone or WeChat WebView acceptance",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "passed": true,
+      "publicStatus": 200,
+      "type": {
+        "font": "PaperYozai, \"Kaiti SC\", STKaiti, serif",
+        "size": 15,
+        "width": 122,
+        "scroll": 122
+      },
+      "inputPx": 16,
+      "lineHeightPx": 28,
+      "replySaved": true,
+      "pageErrors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "passed": true,
+      "publicStatus": 200,
+      "type": {
+        "font": "PaperYozai, \"Kaiti SC\", STKaiti, serif",
+        "size": 15,
+        "width": 87,
+        "scroll": 87
+      },
+      "inputPx": 16,
+      "lineHeightPx": 28,
+      "replySaved": true,
+      "pageErrors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "passed": true,
+      "publicStatus": 200,
+      "type": {
+        "font": "PaperYozai, \"Kaiti SC\", STKaiti, serif",
+        "size": 15.28,
+        "width": 157,
+        "scroll": 157
+      },
+      "inputPx": 16,
+      "lineHeightPx": 28,
+      "replySaved": true,
+      "pageErrors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "passed": true,
+      "publicStatus": 200,
+      "type": {
+        "font": "PaperYozai, \"Kaiti SC\", STKaiti, serif",
+        "size": 15.28,
+        "width": 157,
+        "scroll": 157
+      },
+      "inputPx": 16,
+      "lineHeightPx": 28,
+      "replySaved": true,
+      "pageErrors": []
+    }
+  ]
+}
