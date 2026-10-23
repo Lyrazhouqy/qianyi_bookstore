@@ -1,0 +1,77 @@
+{
+  "kind": "directed browser touch simulation of redesigned cels; branches forced; not blind player or real device",
+  "runs": [
+    {
+      "engine": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "log": [
+        {
+          "action": "tail",
+          "actual": "tail",
+          "busy": "true"
+        },
+        {
+          "after": "tail",
+          "state": "rest"
+        },
+        {
+          "action": "ears",
+          "actual": "ears",
+          "busy": "true"
+        },
+        {
+          "after": "ears",
+          "state": "rest"
+        },
+        {
+          "action": "belly",
+          "actual": "belly",
+          "busy": "true"
+        },
+        {
+          "after": "belly",
+          "state": "rest"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "log": [
+        {
+          "action": "tail",
+          "actual": "rest",
+          "busy": null
+        },
+        {
+          "after": "tail",
+          "state": "rest"
+        },
+        {
+          "action": "ears",
+          "actual": "ears",
+          "busy": "true"
+        },
+        {
+          "after": "ears",
+          "state": "rest"
+        },
+        {
+          "action": "belly",
+          "actual": "belly",
+          "busy": "true"
+        },
+        {
+          "after": "belly",
+          "state": "rest"
+        }
+      ]
+    }
+  ]
+}

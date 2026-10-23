@@ -141,11 +141,19 @@ body:has(.siddhartha-room[data-step="returning"]) .display-stage .pile-left,body
 /* Six-character titles stay in one column inside the denser wall case. */
 .shelf-stage .spine-face { font-size:clamp(12px,calc(var(--scene-scale)*18px),14px); }
 
-/* A quiet companion rests on the seat plane, without claiming a touch target. */
-.shop-cat { position:absolute; left:calc(180/940*100%); top:calc(1000/1672*100%); width:calc(165/940*100%); aspect-ratio:1342/806; pointer-events:none; user-select:none; }
+/* A quiet companion, with a seat-sized touch target and a fixed contact shadow. */
+.shop-cat { position:absolute; left:calc(180/940*100%); top:calc(1000/1672*100%); width:calc(165/940*100%); aspect-ratio:1342/806; pointer-events:auto; user-select:none; padding:0; border:0; background:none; min-width:44px; min-height:44px; cursor:pointer; touch-action:pan-x pan-y; -webkit-tap-highlight-color:transparent; overflow:visible; }
 .shop-cat[data-resting="stool"] { left:calc(800/940*100%); top:calc(1317/1672*100%); width:calc(136/940*100%); }
 .cat-body { position:relative; display:block; width:100%; height:auto; pointer-events:none; transform-origin:50% 93%; animation:cat-breath 5.6s ease-in-out infinite; }
 .cat-contact { position:absolute; left:12%; right:10%; bottom:5%; height:8%; border-radius:50%; background:#56331f30; filter:blur(calc(var(--scene-scale)*2px)); }
 @keyframes cat-breath { 0%,100% { transform:scale(1); } 45% { transform:scale(1.007,1.018); } }
 body:not([data-phase="idle"]) .cat-body { animation-play-state:paused; }
 @media(prefers-reduced-motion:reduce) { .cat-body { animation:none; } }
+
+.shop-cat:focus-visible { outline:2px solid #aa8b57; outline-offset:4px; border-radius:45%; }
+.shop-cat[aria-busy="true"] .cat-body { animation-play-state:paused; }
+.cat-body { overflow:visible; }
+
+/* Extend the drawing area above the seat for lifted ears, tail and paws. */
+.cat-motion { display:none; position:absolute; left:calc(-291/1342*100%); top:calc(-424/806*100%); width:calc(1790/1342*100%); height:calc(1230/806*100%); pointer-events:none; transform-origin:50% 95%; }
+.shop-cat:not([data-cat-action="rest"]) .cat-motion { display:block; }

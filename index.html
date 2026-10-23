@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.12" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
+<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.13" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
 <head>
   <meta charset="UTF-8">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/book-title-serif-v0113.woff2" crossorigin>
@@ -36,6 +36,7 @@
   <script src="music.js" defer></script>
   <script src="lamp.js" defer></script>
   <script src="bouquet.js" defer></script>
+  <script src="cat.js" defer></script>
 </head>
 <body data-phase="idle">
   <main id="shop">
@@ -101,7 +102,7 @@
         </svg>
         <button class="scene-object bouquet-touch" id="touch-bouquet" aria-label="轻碰花束"></button>
         <button class="scene-object bouquet-vase" id="change-bouquet" aria-label="花瓶，挑一束花，当前：小白花" title="挑一束花" aria-haspopup="dialog"></button>
-        <div class="shop-cat" id="shop-cat" data-resting="sofa" role="img" aria-label="三花小猫蜷在沙发上睡觉"><span class="cat-contact" aria-hidden="true"></span><svg class="cat-body" viewBox="51 184 1342 806" aria-hidden="true"><image href="assets/scene/sleeping-calico-cat-v01412.png" width="1429" height="1100"/></svg></div>
+        <button type="button" class="shop-cat" id="shop-cat" data-resting="sofa" data-cat-action="rest" aria-label="轻碰趴在沙发上的三花小猫"><span class="cat-contact" aria-hidden="true"></span><svg class="cat-body" viewBox="51 184 1342 806" aria-hidden="true"><image href="assets/scene/sleeping-calico-cat-v01412.png" width="1429" height="1100"/></svg></button>
         <div class="display-stage" id="coffee-books" role="group" aria-label="茶几上两本可拿起的书"></div>
         <div class="display-stage" id="display-books" role="group" aria-label="陈列架上十本可拿起的书"></div>
         <button class="scene-object drawer-handle" id="open-book-index" aria-label="查看陈列桌上的藏书" title="拉开抽屉看看藏书"><span class="spine-face archive-binding" aria-hidden="true"></span></button>

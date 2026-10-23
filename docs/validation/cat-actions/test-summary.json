@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23T08:25:37.486Z",
+  "main": {
+    "startTime": "2026-10-23T08:19:44.476Z",
+    "duration": 124093.437,
+    "expected": 59,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "bouquetSamplingFix": {
+    "startTime": "2026-10-23T08:23:53.860Z",
+    "duration": 7567.213999999999,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    "chromium-small",
+    "chromium-SE",
+    "chromium-iPhone14",
+    "chromium-ProMax",
+    "chromium-landscape",
+    "chromium-desktop",
+    "webkit-small",
+    "webkit-SE",
+    "webkit-iPhone14",
+    "webkit-ProMax",
+    "webkit-landscape",
+    "webkit-desktop"
+  ],
+  "note": "59/60 in final cel suite; bouquet fade observer moved to change commit, then its four project variants rechecked; not a clean single 60/60 run",
+  "files": [
+    "tests/cat-actions.spec.cjs",
+    "tests/sleeping-cat.spec.cjs",
+    "tests/bouquet-change.spec.cjs",
+    "tests/music-default.spec.cjs"
+  ],
+  "runtimeFiles": 72,
+  "drift": [
+    "siddhartha.js",
+    "secrets.js",
+    "mobile.css"
+  ]
+}

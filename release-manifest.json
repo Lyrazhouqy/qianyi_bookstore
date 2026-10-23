@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.12",
+  "build": "paper-bookshop-game-v0.14.13",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -69,9 +69,13 @@
     "assets/fonts/book-title-serif-v0113.woff2",
     "assets/fonts/book-title-serif-OFL.txt",
     "assets/scene/prince-postcard-user-v0142.png",
-    "assets/scene/sleeping-calico-cat-v01412.png"
+    "assets/scene/sleeping-calico-cat-v01412.png",
+    "cat.js",
+    "assets/scene/calico-tail-low-cels-v01413.png",
+    "assets/scene/calico-ear-cels-v01413.png",
+    "assets/scene/calico-belly-cels-v01413.png"
   ],
-  "status": "development-v0.14.12-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.13-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -794,5 +798,10 @@
     "papers": 18,
     "source": "original fiction from the two approved humorous batches; not group messages or book quotations",
     "evidence": "docs/validation/authored-stories/REPORT.md"
+  },
+  "catActions": {
+    "version": "0.14.13",
+    "behavior": "one random cel animation: low side-to-side tail swish/settle; listening ears/half-eye/blink; curl/side/back/stretch/settle; no pixel deformation or rigid spin",
+    "evidence": "docs/validation/cat-actions/REPORT.md"
   }
 }
