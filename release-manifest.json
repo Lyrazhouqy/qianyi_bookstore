@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.15",
+  "build": "paper-bookshop-game-v0.14.16",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -47,6 +47,7 @@
     "assets/scene/window-sunset-v0611.png",
     "assets/scene/window-snow-v0611.png",
     "assets/scene/sofa-cushions-v0612.png",
+    "assets/scene/sofa-cushion-plump-dots-20261023.png",
     "assets/scene/room-layout-v0613.png",
     "assets/scene/gramophone-clearance-v0614.png",
     "assets/scene/window-wall-v0615.png",
@@ -78,6 +79,9 @@
     "assets/scene/prince-postcard-user-v0142.png",
     "assets/scene/sleeping-calico-cat-v01412.png",
     "cat.js",
+    "globe.css",
+    "globe.js",
+    "assets/scene/globe-land-natural-earth-110m.json",
     "assets/scene/calico-tail-low-cels-v01413.png",
     "assets/scene/calico-ear-cels-v01413.png",
     "assets/scene/calico-belly-cels-v01413.png",
@@ -87,9 +91,11 @@
     "assets/scene/cat-letter-cover-v01416.png",
     "assets/scene/cat-daily-tree-v01416.png",
     "assets/scene/cat-daily-sofa-v01416.png",
-    "assets/scene/cat-daily-window-v01416.png"
+    "assets/scene/cat-daily-window-v01416.png",
+    "cup-steam.css",
+    "cup-steam.js"
   ],
-  "status": "development-v0.14.15-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "release-candidate-v0.14.16; production-currently-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -169,9 +175,10 @@
     "reference": "https://bookstore.longtailwriter.com/web/player.html?v=202607170500&day=day_03"
   },
   "cushions": {
-    "left": "sage-green rounded lumbar",
+    "left": "plump sage-green lumbar with warm-white polka dots and cream piping",
     "right": "dusty-rose flower",
-    "source": "assets/scene/sofa-cushions-v0612.png"
+    "source": "assets/scene/sofa-cushions-v0612.png",
+    "leftSource": "assets/scene/sofa-cushion-plump-dots-20261023.png"
   },
   "floorLamp": {
     "interaction": "pull 22px then release to toggle; short pull rebounds; tap/keyboard supported",
@@ -853,5 +860,15 @@
     "source": "built-in image_gen; supplied calico reference",
     "behavior": "independent full front art; three bound illustration pages; old notes and saves retained",
     "evidence": "docs/validation/cat-picture-book/REPORT.md"
+  },
+  "releaseCandidate": {
+    "version": "0.14.16",
+    "branch": "feat/rhythm-v014",
+    "projectId": "prj_3ppzRCOoA2Uk9XXmoDeraGFmQkZY",
+    "teamId": "team_XTc4QqHDaR6elWOhV42u6sGs",
+    "rollbackDeployment": "dpl_AzX2E39tmvzL2XRtBC2Aq7uAYkGk",
+    "retainedVersionPath": "/v0.13.0/",
+    "newVersionPath": "/v0.14.16/",
+    "evidence": "docs/validation/release-v01416/REPORT.md"
   }
 }

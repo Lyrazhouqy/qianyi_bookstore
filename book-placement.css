@@ -45,6 +45,34 @@
 /* Quiet illustrated covers and four matching spines use live printed titles. */
 .painted-simple.painted-standing .painted-title { inset:12% 10%; padding:0; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; text-orientation:upright; font-size:calc(var(--scene-scale)*var(--standing-title-size)); line-height:1.12; }
 .painted-simple.painted-cover .painted-title { inset:13% 7% auto; padding:0; font-size:calc(var(--scene-scale)*14px); line-height:1.65; writing-mode:horizontal-tb; }
+
+/* Upright covers on the display table lift like The Cat's Letter. */
+.display-stage .painted-cover .spine-face { transition:transform .18s,filter .18s; }
+@media(hover:hover) {
+  .display-stage .painted-cover:hover .spine-face { transform:translateY(-4px) rotate(-1deg); filter:brightness(1.04); }
+}
+
+/* Pull the visible book, keeping the enlarged hit target still. Piles keep
+   their binding angle and foot compensation so neighboring books stay seated. */
+#shelves .painted-standing .spine-face,
+#shelves .book-pile .pile-book .spine-face,
+.display-stage .book-pile .pile-book .spine-face,
+.display-stage .painted-flat .spine-face {
+  transition:translate .24s cubic-bezier(.22,.72,.25,1),transform .24s cubic-bezier(.22,.72,.25,1),filter .24s ease;
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+  #shelves .painted-standing.is-book-hover:not(.is-out) .spine-face {
+    translate:0 -5px;
+    transform:rotate(-.6deg) scale(1.018);
+    filter:drop-shadow(2px 5px 2px #42290e48) brightness(1.035);
+  }
+  #shelves .book-pile .pile-book.is-book-hover:not(.is-out) .spine-face,
+  .display-stage .book-pile .pile-book.is-book-hover:not(.is-out) .spine-face,
+  .display-stage .painted-flat.is-book-hover:not(.is-out) .spine-face {
+    translate:-6px calc(var(--scene-scale)*var(--binding-foot-pad));
+    filter:drop-shadow(3px 3px 2px #42290e4d) brightness(1.035);
+  }
+}
 .siddhartha-room[data-cover-art="true"][data-reader-book="prince"] .sid-cover-title,
 .siddhartha-room[data-cover-art="true"][data-reader-book="lychee"] .sid-cover-title { display:block; position:absolute; inset:13% 7% auto; margin:0; padding:0; font-size:clamp(21px,5vw,34px); font-weight:400; color:#242b21; letter-spacing:.03em; line-height:1.3; writing-mode:horizontal-tb; text-align:center; }
 

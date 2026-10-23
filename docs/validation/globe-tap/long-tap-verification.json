@@ -1,0 +1,14 @@
+{
+  "sourceHashes": {
+    "globe.js": "5fc65812c29526b8b4610f17e39752b2e666d5d56d910fc4823886d7cffe65cf",
+    "tests/globe.spec.cjs": "f4f1071298c3dbe45f59962139a42911334d061bf152b67b4d54804ccad1cb8e"
+  },
+  "tests": {
+    "startTime": "2026-10-23T07:51:39.736Z",
+    "duration": 23898.884000000002,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

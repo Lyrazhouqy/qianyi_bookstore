@@ -1,0 +1,23 @@
+{
+  "sourceHashes": {
+    "globe.js": "5e25a7b18154b205e54ef5b1cbec6b6f61835dddfbaa8f6c60f83b36aa07d72a",
+    "tests/globe-hover.spec.cjs": "dffd1f64eb906ed4fa5ba41e464ab47038d348368393432db85ba74c56158f36",
+    "tests/globe.spec.cjs": "f4f1071298c3dbe45f59962139a42911334d061bf152b67b4d54804ccad1cb8e"
+  },
+  "desktop": {
+    "startTime": "2026-10-23T08:04:15.481Z",
+    "duration": 6998.396000000001,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "mobile": {
+    "startTime": "2026-10-23T08:03:00.648Z",
+    "duration": 57187.791,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

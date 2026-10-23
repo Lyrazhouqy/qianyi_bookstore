@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-23",
+  "sourceSha256": "d71a831f573b46ff18b1ec02ba82e9d66a2f54fbbf601a17866df207aaaf7feb",
+  "results": [
+    {
+      "browser": "chromium",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "geometry": {
+        "left": 438.99043495424337,
+        "right": 562.9813623735982,
+        "bottom": 622.9632056451613,
+        "ids": [
+          "night",
+          "red",
+          "solitude"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "left": 438.99043495424337,
+        "right": 562.9813623735982,
+        "bottom": 622.9632056451613,
+        "ids": [
+          "night",
+          "red",
+          "solitude"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "geometry": {
+        "left": 438.99043495424337,
+        "right": 562.9813623735982,
+        "bottom": 622.9632056451613,
+        "ids": [
+          "night",
+          "red",
+          "solitude"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "left": 438.99043495424337,
+        "right": 562.9813623735982,
+        "bottom": 622.9632056451613,
+        "ids": [
+          "night",
+          "red",
+          "solitude"
+        ]
+      },
+      "errors": []
+    }
+  ]
+}

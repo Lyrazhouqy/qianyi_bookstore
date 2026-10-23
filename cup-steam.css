@@ -1,0 +1,6 @@
+/* Sparse warm steam stays anchored to the painted cup's opening (281,1120). */
+.cup-steam { position:absolute; left:calc(249/940*100%); top:calc(1038/1673*100%); width:calc(64/940*100%); height:calc(84/1673*100%); overflow:visible; pointer-events:none; user-select:none; }
+.cup-steam path { fill:none; stroke:#fff6e1; stroke-width:2.8; stroke-linecap:round; filter:blur(.65px); transform-box:view-box; transform-origin:32px 82px; opacity:0; animation:cup-steam-rise var(--steam-duration) ease-in-out var(--steam-delay) infinite paused; }
+body[data-phase="idle"] .cup-steam[data-visible="true"][data-suspended="false"] path { animation-play-state:running; }
+@keyframes cup-steam-rise { 0% { opacity:0; transform:translate(0,8px) scale(.85,.8); } 22% { opacity:.46; } 65% { opacity:.3; } 100% { opacity:0; transform:translate(var(--steam-drift),-20px) scale(1.15,1.12); } }
+@media(prefers-reduced-motion:reduce) { .cup-steam { display:none; } .cup-steam path { animation:none; } }

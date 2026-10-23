@@ -71,9 +71,10 @@ window.BookArrangement=(()=>{
  function targetFor(event){const button=event.target.closest('.spine');return !button?null:event.detail===0||!button.closest('.book-pile')?button:hitAt(event.clientX,event.clientY)||button;}
  function renderWall(root){
   const row1=[['siddhartha',238,261,67,159],['questions',305,261,67,159],['tao',372,261,67,159],['naval',573,261,67,159],['fiscal',640,261,67,159]];
-  const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159],['night',525,464,60,159]];
+  const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159]];
   const row3=[['toad',238,650,67,178],['otherlife',305,650,67,178],['bigtech',372,650,67,178],['symposium',573,650,67,178],['tendays',640,650,67,178]];
-  root.innerHTML=`<div class="wall-clean top" aria-hidden="true"></div><div class="wall-clean middle" aria-hidden="true"></div><div class="wall-clean bottom" aria-hidden="true"></div>`+[...row1,...row2,...row3].map(args=>standing(...args)).join('')+pile('wall-top',[['diamond','flatOchre'],['presence','flatIvory']],439,420,134)+pile('wall-middle',[['red','flatRose'],['solitude','flatSea']],424,623,96)+pile('wall-bottom',[['notetaking','flatCloud'],['drive','flatOchre']],439,828,134);
+  // Leave the globe bay clear; Night Flight belongs to the adjacent low stack.
+  root.innerHTML=`<div class="wall-clean top" aria-hidden="true"></div><div class="wall-clean middle" aria-hidden="true"></div><div class="wall-clean bottom" aria-hidden="true"></div>`+[...row1,...row2,...row3].map(args=>standing(...args)).join('')+pile('wall-top',[['diamond','flatOchre'],['presence','flatIvory']],439,420,134)+pile('wall-middle',[['night','flatNight'],['red','flatRose'],['solitude','flatSea']],439,623,124)+pile('wall-bottom',[['notetaking','flatCloud'],['drive','flatOchre']],439,828,134);
 
  }
  function renderTables(front,coffee){
@@ -87,4 +88,29 @@ window.BookArrangement=(()=>{
  // actual illustrated fronts; other books use the reader's full cloth binding.
  const marks={siddhartha:'leaf',night:'leaf',questions:'mountain',tao:'stone',courage:'bird',bondage:'links',vegetarian:'leaf',toad:'pond',otherlife:'flower',bigtech:'factory',naval:'sail',fiscal:'key',symposium:'temple',tendays:'sun'};
  return{renderWall,renderTables,hitAt,targetFor,coverArt:id=>['prince','lychee'].includes(id)?{painted:true}:{material:'cloth',mark:marks[id]||'leaf'}};
+})();
+
+// Enlarged pile hit areas overlap. Share the click resolver so hovering a lower
+// spine pulls that one book, rather than whichever transparent button is on top.
+(() => {
+ const hover=matchMedia('(hover:hover)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
+ const viewport=document.getElementById('room-viewport');
+ let current=null;
+ function select(next){
+  if(next===current)return;
+  current?.classList.remove('is-book-hover');current=next;
+  current?.classList.add('is-book-hover');
+ }
+ const clear=()=>select(null);
+ viewport.addEventListener('pointermove',event=>{
+  if(!hover.matches||reduced.matches||event.pointerType==='touch'||event.buttons||document.body.dataset.phase!=='idle'||viewport.classList.contains('is-dragging')){clear();return;}
+  const book=window.BookArrangement.hitAt(event.clientX,event.clientY);
+  select(book?.matches('.painted-standing:not(.is-out),.pile-book:not(.is-out),.painted-flat:not(.is-out)')?book:null);
+ },{passive:true});
+ viewport.addEventListener('pointerleave',clear);
+ viewport.addEventListener('pointerdown',clear,{passive:true});
+ viewport.addEventListener('scroll',clear,{passive:true});
+ new MutationObserver(()=>{if(document.body.dataset.phase!=='idle')clear();}).observe(document.body,{attributes:true,attributeFilter:['data-phase']});
+ hover.addEventListener('change',clear);reduced.addEventListener('change',clear);
+ window.addEventListener('blur',clear);window.addEventListener('resize',clear);
 })();

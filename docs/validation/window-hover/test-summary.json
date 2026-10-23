@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-23T09:03:14.688Z",
+  "desktop": {
+    "startTime": "2026-10-23T08:55:45.911Z",
+    "duration": 29227.599,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "mobileFullBeforeFixtureFix": {
+    "startTime": "2026-10-23T08:57:53.321Z",
+    "duration": 66130.212,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "mobileUploadAfterFixtureFix": {
+    "startTime": "2026-10-23T09:00:20.590Z",
+    "duration": 29118.788,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "interpretation": "Desktop 6 pass; four mobile preset/cue cases passed in full run, all four upload cases passed after correcting fixture to allow stored custom photos in refresh pool. No runtime code changed between these runs. Browser simulation, not real-device acceptance."
+}

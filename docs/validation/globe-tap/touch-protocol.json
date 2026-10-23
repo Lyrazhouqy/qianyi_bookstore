@@ -1,0 +1,14 @@
+[
+  {
+    "width": 320,
+    "tapAngleAfter900ms": 0.27239,
+    "finalAngle": 1.06856,
+    "autoStop": "passed"
+  },
+  {
+    "width": 390,
+    "tapAngleAfter900ms": 0.2794,
+    "finalAngle": 1.06684,
+    "autoStop": "passed"
+  }
+]

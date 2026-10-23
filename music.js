@@ -4,7 +4,7 @@
     ['water-sound','小水声','水珠轻响'],['slow-coffee','慢咖啡','咖啡慢晃'],['star-lamp','星星灯','小灯亮着'],['spacing-out','放空中','云在旁边'],['tap-wood','敲木头','木块轻敲'],['wind-passing','风吹过','窗帘动了'],['bamboo-leaves','竹叶响','叶子沙沙']
   ];
   const key='paperbook-music-v1',sheet=document.getElementById('music-settings'),grid=document.getElementById('music-records'),toggle=document.getElementById('music-toggle'),status=document.getElementById('music-status'),opener=document.getElementById('open-music');
-  let selected=records[0][0],current=null,revision=0,frame=0,started=false,mode='idle',resumePoint=null;
+  let selected=records[0][0],current=null,revision=0,frame=0,started=false,mode='idle',resumePoint=null,activated=false;
   const voices=new Set();
   try {const saved=JSON.parse(localStorage.getItem(key));if(records.some(r=>r[0]===saved?.track))selected=saved.track;}catch{}
   grid.innerHTML=records.map(([id,title,note])=>'<button class="music-record" data-track="'+id+'" aria-pressed="false"><img src="assets/music/'+id+'.png" alt="" loading="lazy" draggable="false"><strong>'+title+'</strong><small>'+note+'</small></button>').join('');
@@ -13,7 +13,7 @@
     document.documentElement.dataset.musicState=mode;document.documentElement.dataset.musicTrack=selected;
     for(const button of grid.children){const chosen=button.dataset.track===selected,playing=chosen&&mode==='playing';button.setAttribute('aria-pressed',String(chosen));button.classList.toggle('is-playing',playing);button.querySelector('small').textContent=(playing?'正在放 · ':chosen&&mode==='loading'?'唱针落下 · ':'')+records.find(r=>r[0]===button.dataset.track)[2];}
     const playing=mode==='playing'||mode==='loading';toggle.setAttribute('aria-label',playing?'暂停音乐':'播放音乐');toggle.querySelector('span').textContent=playing?'Ⅱ':'▷';toggle.querySelector('.music-toggle-label').textContent=playing?'停一会儿':started?'继续播放':'放张唱片';
-    opener.setAttribute('aria-label','留声机，挑一张唱片');opener.title=mode==='playing'?'正在播放《'+record()[1]+'》':'挑一张唱片';
+    opener.setAttribute('aria-label','留声机，挑一张唱片');opener.removeAttribute('title');
     status.textContent=mode==='playing'?'《'+record()[1]+'》 · 陪你慢慢翻书':mode==='loading'?'唱针轻轻落下……':mode==='error'?'这张唱片暂时没响，再点一次试试。':mode==='paused'?'唱针歇一会儿。':mode==='ready'?'轻触书店，让唱片陪你慢慢翻书。':'挑一张唱片，陪你慢慢翻书。';
   }
   function retire(audio){audio.pause();audio.removeAttribute('src');audio.load();audio.remove();voices.delete(audio);}
@@ -33,7 +33,13 @@
     // play() happens synchronously in the click gesture so iPhone Safari can unlock sound.
     if(resumeAt>0)audio.addEventListener('loadedmetadata',()=>{if(token===revision)try{audio.currentTime=resumeAt;}catch{}},{once:true});
     audio.addEventListener('playing',()=>{if(token!==revision)return;mode='playing';render();fade(audio,token);});
-    audio.addEventListener('pause',()=>{if(token===revision&&current===audio)pause();});
+    audio.addEventListener('pause',()=>{
+      if(token!==revision||current!==audio)return;
+      // WebKit can pause audible autoplay before rejecting play(). This is a
+      // policy wait, not the reader explicitly choosing to pause the record.
+      if(!activated){++revision;cancelAnimationFrame(frame);current=null;for(const voice of [...voices])retire(voice);mode='ready';render();}
+      else pause();
+    });
     audio.addEventListener('waiting',()=>{if(token===revision&&mode==='playing'){mode='loading';render();}});
     const failed=error=>{if(token!==revision)return;++revision;cancelAnimationFrame(frame);for(const voice of [...voices]){retire(voice);voice.remove();}current=null;mode=error?.name==='NotAllowedError'?'ready':'error';render();};
     audio.addEventListener('error',failed,{once:true});
@@ -45,8 +51,10 @@
   // Audible autoplay may be denied until a real touch/click or keyboard gesture.
   // A user pause or media error never opts back into automatic retries.
   function unlock(event){
-    if(!event.isTrusted||event.target.closest?.('#music-toggle, [data-track]'))return;
+    if(!event.isTrusted)return;
     if(event.type==='keydown'&&!['Enter',' '].includes(event.key))return;
+    activated=true;
+    if(event.target.closest?.('#music-toggle, [data-track]'))return;
     if(mode==='ready'||(mode==='loading'&&current?.paused))play();
   }
   document.addEventListener('click',unlock,true);

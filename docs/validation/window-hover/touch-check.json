@@ -1,0 +1,42 @@
+[
+  {
+    "engine": "chromium",
+    "viewport": {
+      "width": 320,
+      "height": 568
+    },
+    "noTitle": true,
+    "noTouchHoverAnimation": true,
+    "tapOpensExistingSheet": true
+  },
+  {
+    "engine": "chromium",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "noTitle": true,
+    "noTouchHoverAnimation": true,
+    "tapOpensExistingSheet": true
+  },
+  {
+    "engine": "webkit",
+    "viewport": {
+      "width": 320,
+      "height": 568
+    },
+    "noTitle": true,
+    "noTouchHoverAnimation": true,
+    "tapOpensExistingSheet": true
+  },
+  {
+    "engine": "webkit",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "noTitle": true,
+    "noTouchHoverAnimation": true,
+    "tapOpensExistingSheet": true
+  }
+]

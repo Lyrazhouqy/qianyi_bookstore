@@ -70,6 +70,17 @@
 .sid-letter-packet em { display:block; font-size:11px; font-weight:400; font-style:normal; letter-spacing:1px; transform:rotate(-3deg); }
 .sid-letter-packet i { position:absolute; right:11px; bottom:8px; font-size:15px; font-style:normal; color:#a68b5e; }
 .sid-letter-reader { background:#f4e8cb; width:100%; box-shadow:2px 8px 16px #24180b55; border:1px solid #bfab84; touch-action:pan-y; max-height:calc(var(--view-height) - 175px); overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+/* A quiet warm paper edge; keep native scrolling and a visible scroll position. */
+.sid-letter-reader { scrollbar-color:#b49b74aa transparent; }
+.sid-letter-reader::-webkit-scrollbar { width:6px; height:6px; }
+.sid-letter-reader::-webkit-scrollbar-track { background:transparent; margin:54px 0 12px; }
+.sid-letter-reader::-webkit-scrollbar-thumb { background:#b49b7499; border:1px solid transparent; background-clip:padding-box; border-radius:3px; min-height:32px; }
+.sid-letter-reader::-webkit-scrollbar-thumb:hover { background-color:#987b51bb; }
+.sid-letter-reader::-webkit-scrollbar-corner { background:transparent; }
+@supports selector(::-webkit-scrollbar) {
+  .sid-letter-reader { scrollbar-width:auto; scrollbar-color:auto; }
+}
+
 .sid-segment { position:relative; background:linear-gradient(180deg,#b6a17a14,transparent 22px,#fff1 80%,#ad936222),#f5e8c9; padding:21px 23px; font-size:15px; line-height:1.9; white-space:pre-wrap; overflow-wrap:anywhere; border-bottom:1px solid #bba780; }
 .sid-segment:after { content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:linear-gradient(#a18a6026,#fff5); pointer-events:none; }
 .sid-segment small { display:block; font-size:10px; letter-spacing:1px; color:#90774e; margin-bottom:8px; }

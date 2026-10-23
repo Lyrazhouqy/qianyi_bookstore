@@ -1,0 +1,14 @@
+[
+  {
+    "width": 320,
+    "angleAfterHold": 0.2706,
+    "release": "passed",
+    "map": "natural-earth-110m"
+  },
+  {
+    "width": 390,
+    "angleAfterHold": 0.26781,
+    "release": "passed",
+    "map": "natural-earth-110m"
+  }
+]

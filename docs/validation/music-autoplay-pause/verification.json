@@ -1,0 +1,14 @@
+{
+  "sourceHashes": {
+    "music.js": "f405b28788280f742897ea41208a7ba1984fdc56f52dbae9aad0aa6086ff6f5a",
+    "tests/music-default.spec.cjs": "f108e2082c0841450a026b456bce8081e0fefe89d122aed1a654d965b26cd6cd"
+  },
+  "tests": {
+    "startTime": "2026-10-23T09:32:15.722Z",
+    "duration": 163137.71899999998,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

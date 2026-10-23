@@ -4,12 +4,11 @@ const step = (page,value)=>expect(room(page)).toHaveAttribute('data-step',value)
 async function pick(page) {await page.locator('.spine[data-id="siddhartha"]').first().tap();await step(page,'held');}
 async function openCover(page) {await page.getByRole('button',{name:'翻开《悉达多》',exact:true}).tap();await step(page,'open');}
 async function take(page) {await page.getByRole('button',{name:'从夹页抽出接力信'}).tap();await step(page,'letter');}
-async function unfoldFirst(page) {await page.getByRole('button',{name:'展开折信',exact:true}).tap();await step(page,'letter');}
 async function all(page) {while(await page.locator('.sid-unfold').count()){await page.locator('.sid-unfold').tap();await step(page,'letter');}}
-async function put(page) {await page.getByRole('button',{name:'收起信'}).tap();await step(page,'open');}
+async function put(page) {await page.locator('[data-sid="put"]').tap();await step(page,'open');}
 async function back(page) {await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveAttribute('data-phase','idle');await expect(room(page)).toBeHidden();await expect(page.locator('.is-out')).toHaveCount(0);}
 const errors=new WeakMap();
-test.beforeEach(async({page})=>{const list=[];errors.set(page,list);page.on('pageerror',e=>list.push(e.message));await page.route('**/real-materials.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookRealMaterials=()=>({});'}));await page.goto('/?focus=siddhartha');await expect(page.locator('.spine')).toHaveCount(34);});
+test.beforeEach(async({page})=>{const list=[];errors.set(page,list);page.on('pageerror',e=>list.push(e.message));await page.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));await page.route('**/real-materials.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookRealMaterials=()=>({});'}));await page.goto('/?focus=siddhartha');await expect(page.locator('.spine')).toHaveCount(34);});
 test.afterEach(async({page})=>expect(errors.get(page)).toEqual([]));
 test('one tap extracts and opens the letter, then unfolds and returns',async({page})=>{
  await pick(page);await expect(page.locator('.sid-cover')).toHaveAttribute('aria-expanded','false');await expect(page.locator('.sid-letter')).toBeHidden();await expect(page.locator('.sid-cover-front')).toBeVisible();await expect(page.locator('.sid-cover-back')).toBeHidden();
@@ -28,25 +27,25 @@ test('cover follows drag immediately and supports drag in both directions',async
 });
 test('letter tracks extraction drag and returns to the same dock',async({page})=>{
  await pick(page);await openCover(page);const button=page.locator('.sid-letter-pick'),box=await button.boundingBox(),original=await page.locator('.sid-letter').boundingBox();
- await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2,box.y-150,{steps:12});await step(page,'letter-drag');await page.mouse.up();await step(page,'packet');
- await unfoldFirst(page);await all(page);await put(page);
+ await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2,box.y-150,{steps:12});await step(page,'letter-drag');await page.mouse.up();await step(page,'letter');
+ await all(page);await put(page);
  const returned=await page.locator('.sid-letter').boundingBox();for(const key of ['x','y','width','height'])expect(Math.abs(returned[key]-original[key])).toBeLessThan(1);
  await back(page);
 });
 test('write only after unfolding, preserve real text across reload and revisit',async({page})=>{
  await pick(page);await openCover(page);await take(page);await expect(page.locator('.sid-pen')).toHaveCount(0);await all(page);
- await page.getByRole('button',{name:'拿起笔续写'}).tap();await page.getByRole('textbox').fill('留给后来的人：<b>愿你安心</b>');await page.getByRole('button',{name:'留在信上',exact:true}).tap();await step(page,'letter');
+ await page.getByRole('button',{name:'拿起笔续写'}).tap();await page.getByRole('textbox').fill('留给后来的人：<b>愿你安心</b>');await page.locator('[data-sid="save"]').tap();await step(page,'letter');
  await expect(page.locator('.sid-segment').last()).toContainText('留给后来的人：<b>愿你安心</b>');await expect(page.locator('.sid-segment b')).toHaveCount(0);
  await back(page);await page.reload();await pick(page);await openCover(page);await take(page);await all(page);await expect(page.locator('.sid-segment').last()).toContainText('留给后来的人：<b>愿你安心</b>');await back(page);
 });
 test('return during motion, repeated input and viewport rotation remain usable',async({page})=>{
  await page.locator('.spine[data-id="siddhartha"]').first().tap();await page.keyboard.press('Escape');await expect(room(page)).toBeHidden();
  await pick(page);await openCover(page);await take(page);await page.locator('.sid-unfold').tap();await page.keyboard.press('Escape');await expect(room(page)).toBeHidden();
- await pick(page);await openCover(page);await page.setViewportSize({width:844,height:390});await take(page);await all(page);await page.getByRole('button',{name:'拿起笔续写'}).tap();await page.setViewportSize({width:390,height:360});await page.getByRole('textbox').fill('旋转和短视口之后仍能续写');await page.getByRole('button',{name:'留在信上',exact:true}).tap();await step(page,'letter');await expect(page.locator('.sid-segment').last()).toContainText('旋转和短视口之后仍能续写');await back(page);
+ await pick(page);await openCover(page);await page.setViewportSize({width:844,height:390});await take(page);await all(page);await page.getByRole('button',{name:'拿起笔续写'}).tap();await page.setViewportSize({width:390,height:360});await page.getByRole('textbox').fill('旋转和短视口之后仍能续写');await page.locator('[data-sid="save"]').tap();await step(page,'letter');await expect(page.locator('.sid-segment').last()).toContainText('旋转和短视口之后仍能续写');await back(page);
 });
 test('reduced motion, blocked storage, keyboard and bounds',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});await page.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Unavailable','QuotaExceededError');};});await page.reload();
  await pick(page);await page.keyboard.press('Enter');await step(page,'open');await take(page);await all(page);
- await page.getByRole('button',{name:'拿起笔续写'}).tap();await page.getByRole('textbox').fill('无法持久保存时仍可操作');await page.getByRole('button',{name:'留在信上',exact:true}).tap();await step(page,'letter');
+ await page.getByRole('button',{name:'拿起笔续写'}).tap();await page.getByRole('textbox').fill('无法持久保存时仍可操作');await page.locator('[data-sid="save"]').tap();await step(page,'letter');
  const rect=await room(page).boundingBox();expect(rect.x).toBe(0);expect(rect.width).toBeLessThanOrEqual(page.viewportSize().width);await page.keyboard.press('Escape');await expect(room(page)).toBeHidden();await expect(page.locator('#save-warning')).toBeVisible();
 });

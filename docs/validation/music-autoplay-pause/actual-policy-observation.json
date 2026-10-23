@@ -1,0 +1,14 @@
+[
+  {
+    "browser": "chromium",
+    "entry": "ready",
+    "afterGesture": "playing",
+    "mediaClockAdvanced": true
+  },
+  {
+    "browser": "webkit",
+    "entry": "ready",
+    "afterGesture": "playing",
+    "mediaClockAdvanced": true
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "browser": "chromium",
+    "width": 320,
+    "geometry": {
+      "cupX": 280.9695060483871,
+      "cupY": 1119.3092967758519
+    },
+    "animation": "passed",
+    "readingPause": "passed",
+    "visibilityEventSimulation": "passed",
+    "offscreen": "passed",
+    "reducedMotion": "passed",
+    "errors": []
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "geometry": {
+      "cupX": 280.9695060483871,
+      "cupY": 1119.3092967758519
+    },
+    "animation": "passed",
+    "readingPause": "passed",
+    "visibilityEventSimulation": "passed",
+    "offscreen": "passed",
+    "reducedMotion": "passed",
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "geometry": {
+      "cupX": 280.9695060483871,
+      "cupY": 1119.3092967758519
+    },
+    "animation": "passed",
+    "readingPause": "passed",
+    "visibilityEventSimulation": "passed",
+    "offscreen": "passed",
+    "reducedMotion": "passed",
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "geometry": {
+      "cupX": 280.9695060483871,
+      "cupY": 1119.3092967758519
+    },
+    "animation": "passed",
+    "readingPause": "passed",
+    "visibilityEventSimulation": "passed",
+    "offscreen": "passed",
+    "reducedMotion": "passed",
+    "errors": []
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "width": 320,
+    "nativeProtocolHoldAngle": 0.132,
+    "releaseAndDrag": "passed"
+  },
+  {
+    "width": 390,
+    "nativeProtocolHoldAngle": 0.15424,
+    "releaseAndDrag": "passed"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-23T09:01:42.373Z",
+  "scopedBefore": {
+    "windowButton": "6f5ce00a17195fceb2325c0d7110c6f1c3863da3418493c36c496c6ce7c0ea49",
+    "hoverCss": "be565ada9f7fa67356adc814147086bf7e29f1bb7e7891304e564d2a79213d12"
+  },
+  "scopedAfter": {
+    "windowButton": "6f5ce00a17195fceb2325c0d7110c6f1c3863da3418493c36c496c6ce7c0ea49",
+    "hoverCss": "be565ada9f7fa67356adc814147086bf7e29f1bb7e7891304e564d2a79213d12"
+  },
+  "scopedMatches": true,
+  "currentFiles": [
+    {
+      "file": "index.html",
+      "sha256": "cf75ff466d2e3dc28bf5635476ab2a17aaae3a307af9b69ec24fdc99911b11c1",
+      "httpMatches": true
+    },
+    {
+      "file": "room.css",
+      "sha256": "e62bda3755b3b9b71b7d561c45558b40289475ae684114d274d131a3ccf29f10",
+      "httpMatches": true
+    },
+    {
+      "file": "room.js",
+      "sha256": "53b4fe54e84904239dbb1ecbc6c86bd0d5e97fa1b4ac9bbceb9c60af4935f616",
+      "httpMatches": true
+    }
+  ]
+}

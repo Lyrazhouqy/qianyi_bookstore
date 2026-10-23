@@ -39,3 +39,12 @@ test('first explicit play and keyboard unlock do not create duplicate voices',as
  await page.reload();await expect(page.locator('html')).toHaveAttribute('data-music-state','ready');
  await page.locator('#open-music').focus();await page.keyboard.press('Enter');await audible(page);expect(await page.evaluate(()=>musicAttempts)).toBe(2);
 });
+test('autoplay pause before policy rejection still unlocks on the first touch',async({page})=>{
+ await page.addInitScript(()=>{
+  const original=HTMLMediaElement.prototype.play;let activated=false;
+  document.addEventListener('click',event=>{if(event.isTrusted)activated=true;},true);
+  HTMLMediaElement.prototype.play=function(){if(!activated){this.dispatchEvent(new Event('pause'));return Promise.reject(new DOMException('Autoplay paused','NotAllowedError'));}return original.call(this);};
+ });
+ await page.goto('/');await expect(page.locator('html')).toHaveAttribute('data-music-state','ready');await page.locator('#open-music').tap();await audible(page);
+ await page.getByRole('button',{name:'暂停音乐',exact:true}).tap();await page.keyboard.press('Escape');await page.locator('#open-music').tap();await expect(page.locator('html')).toHaveAttribute('data-music-state','paused');
+});

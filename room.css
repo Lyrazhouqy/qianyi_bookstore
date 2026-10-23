@@ -88,9 +88,23 @@ body { margin:0; background:#eee4cd url("assets/paper/letter-paper-texture.png")
 /* Continuous glazing sits behind the same paper-painted arch and crossbars. */
 .window-frame { position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; filter:drop-shadow(0 2px 1px #5c59331c); }
 
+/* A tiny latch tests the window once on hover; there is no text or idle loop. */
+.window-latch-lever { transform-origin:0 0; }
+.window-glass-cue { opacity:0; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+  body[data-phase="idle"] .game-camera:not(.is-dragging) .scene-window:hover:not(:active) .window-latch-lever { animation:window-latch-peek 1.25s ease-in-out both; }
+  body[data-phase="idle"] .game-camera:not(.is-dragging) .scene-window:hover:not(:active) .window-frame { transform-origin:3% 58%; animation:window-frame-peek 1.25s ease-in-out both; }
+  body[data-phase="idle"] .game-camera:not(.is-dragging) .scene-window:hover:not(:active) .window-view > g { transform-origin:50% 60%; animation:window-view-peek 1.25s ease-in-out both; }
+  body[data-phase="idle"] .game-camera:not(.is-dragging) .scene-window:hover:not(:active) .window-glass-cue { animation:window-light-peek 1.25s ease-in-out both; }
+}
+@keyframes window-latch-peek { 0%,100% { transform:rotate(0); } 16% { transform:rotate(-7deg); } 37% { transform:rotate(23deg); } 58% { transform:rotate(-4deg); } 76% { transform:rotate(5deg); } }
+@keyframes window-frame-peek { 0%,18%,100% { transform:none; } 43% { transform:perspective(500px) translateX(1px) rotateY(-1.8deg); } 73% { transform:perspective(500px) translateX(.3px) rotateY(-.4deg); } }
+@keyframes window-view-peek { 0%,18%,100% { transform:none; } 48% { transform:translateX(1px) scale(1.012); } }
+@keyframes window-light-peek { 0%,16%,100% { opacity:0; transform:translateX(0); } 47% { opacity:.16; transform:translateX(15px); } 78% { opacity:.04; transform:translateX(22px); } }
+
 /* Only the two cushion areas are composited; every other scene object keeps its source art. */
 .cushion-patch { position:absolute; top:calc(935/1672*100%); height:calc(155/1672*100%); pointer-events:none; background-image:url("assets/scene/sofa-cushions-v0612.png"); background-repeat:no-repeat; mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(transparent,#000 4%,#000 96%,transparent); mask-composite:intersect; }
-.cushion-left { left:calc(126/940*100%); width:calc(220/940*100%); background-size:calc(940/220*100%) calc(1673/155*100%); background-position:calc(126/720*100%) calc(935/1518*100%); }
+.cushion-left { background-image:url("assets/scene/sofa-cushion-plump-dots-20261023.png"); left:calc(126/940*100%); width:calc(220/940*100%); background-size:calc(940/220*100%) calc(1673/155*100%); background-position:calc(126/720*100%) calc(935/1518*100%); }
 .cushion-right { left:calc(390/940*100%); width:calc(170/940*100%); background-size:calc(940/170*100%) calc(1673/155*100%); background-position:calc(390/770*100%) calc(935/1518*100%); }
 
 

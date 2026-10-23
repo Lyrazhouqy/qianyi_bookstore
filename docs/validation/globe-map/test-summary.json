@@ -1,0 +1,18 @@
+{
+  "interaction": {
+    "startTime": "2026-10-23T07:38:55.658Z",
+    "duration": 19115.559,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "resource-failure": {
+    "startTime": "2026-10-23T07:40:41.243Z",
+    "duration": 5444.86,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

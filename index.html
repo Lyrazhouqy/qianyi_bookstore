@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.15" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
+<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.16" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
 <head>
   <meta charset="UTF-8">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/book-title-serif-v0113.woff2" crossorigin>
@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="siddhartha.css">
   <link rel="stylesheet" href="room.css">
+  <link rel="stylesheet" href="globe.css">
+  <link rel="stylesheet" href="cup-steam.css">
   <link rel="stylesheet" href="music.css">
   <link rel="stylesheet" href="paper-sound.css">
   <link rel="stylesheet" href="wall-note.css">
@@ -40,6 +42,8 @@
   <script src="room.js" defer></script>
   <script src="journal.js" defer></script>
   <script src="wall-note.js" defer></script>
+  <script src="globe.js" defer></script>
+  <script src="cup-steam.js" defer></script>
   <script src="music.js" defer></script>
   <script src="lamp.js" defer></script>
   <script src="bouquet.js" defer></script>
@@ -64,7 +68,7 @@
           <path class="lamp-off-shade" d="M45 675Q90 647 137 675L170 785Q89 813 8 785Z" fill="#8b7757"/>
           <g class="lamp-light"><ellipse cx="90" cy="780" rx="175" ry="160" fill="url(#floor-lamp-halo)"/><path d="M20 790H165L365 1250Q130 1320 -120 1250Z" fill="url(#floor-lamp-cone)"/><path d="M45 675Q90 647 137 675L170 785Q89 813 8 785Z" fill="#ffd06b" opacity=".5"/></g>
         </svg>
-        <button class="scene-window" id="change-window" aria-label="更换窗外风景" title="轻点窗户，换一幅风景">
+        <button class="scene-window" id="change-window" aria-label="更换窗外风景" aria-haspopup="dialog">
           <svg class="window-view" id="window-view" data-window-revision="quiet-v2" viewBox="0 0 280 438" preserveAspectRatio="none" aria-hidden="true" hidden>
             <defs><clipPath id="window-glass"><path d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z"/></clipPath></defs>
             <g clip-path="url(#window-glass)"><image id="window-picture" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice"/><image id="window-picture-next" x="0" y="0" width="280" height="438" preserveAspectRatio="xMidYMid slice" opacity="0"/>
@@ -107,13 +111,19 @@
             <defs>
               <pattern id="window-painted-wood" width="280" height="438" patternUnits="userSpaceOnUse"><rect width="280" height="438" fill="#8d9871"/><image href="assets/paper/letter-paper-texture.png" width="420" height="630" opacity=".14"/></pattern>
               <linearGradient id="window-glass-shade"><stop stop-color="#32452d" stop-opacity=".18"/><stop offset=".12" stop-color="#32452d" stop-opacity="0"/><stop offset=".92" stop-color="#fff7dc" stop-opacity=".02"/><stop offset="1" stop-color="#32452d" stop-opacity=".1"/></linearGradient>
+              <linearGradient id="window-hover-light"><stop stop-color="#fff4cc" stop-opacity="0"/><stop offset=".6" stop-color="#fff4cc"/><stop offset="1" stop-color="#fff4cc" stop-opacity="0"/></linearGradient>
             </defs>
             <path class="window-glass-shade" d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z" fill="url(#window-glass-shade)"/>
+            <path class="window-glass-cue" d="M35 373V145Q35 82 92 49L145 35Q85 87 85 145V373Z" fill="url(#window-hover-light)"/>
             <path class="window-outer-frame" fill="url(#window-painted-wood)" fill-rule="evenodd" d="M0 438V144C0 65 61 4 138 4C215 4 280 65 280 144V438ZM18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419Z"/>
             <path d="M18 419V144C18 78 71 24 138 24C205 24 262 78 262 144V419" fill="none" stroke="#5e714f" stroke-opacity=".32" stroke-width="2"/>
             <path class="window-mullions" d="M129 20H147V420H129ZM15 198H265V218H15Z" fill="url(#window-painted-wood)"/>
             <path d="M131 27V418M22 201H258" fill="none" stroke="#e4e5b9" stroke-opacity=".35" stroke-width="2"/>
             <path d="M-2 423H282V438H-2Z" fill="#849168"/><path d="M0 423H280" stroke="#bdc39a" stroke-width="3"/>
+            <g class="window-latch" transform="translate(270 294)">
+              <rect x="-4" y="-10" width="8" height="24" rx="4" fill="#aa9266"/><path d="M-1-5V8" stroke="#e4cf9b" stroke-width="1.5" stroke-linecap="round"/>
+              <g class="window-latch-lever"><path d="M0 0V9Q0 14-5 14H-16" fill="none" stroke="#705c3f" stroke-width="5" stroke-linecap="round"/><path d="M0-1V8Q0 12-5 12H-16" fill="none" stroke="#d2b77d" stroke-width="3.5" stroke-linecap="round"/><circle r="2.8" fill="#d9c293"/></g>
+            </g>
           </svg>
         </button>
         <div class="shelf-stage">

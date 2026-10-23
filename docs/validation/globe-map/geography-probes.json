@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Africa",
+    "longitude": 20,
+    "latitude": 0,
+    "land": true
+  },
+  {
+    "name": "Asia",
+    "longitude": 100,
+    "latitude": 45,
+    "land": true
+  },
+  {
+    "name": "Europe",
+    "longitude": 15,
+    "latitude": 50,
+    "land": true
+  },
+  {
+    "name": "North America",
+    "longitude": -100,
+    "latitude": 40,
+    "land": true
+  },
+  {
+    "name": "South America",
+    "longitude": -60,
+    "latitude": -10,
+    "land": true
+  },
+  {
+    "name": "Australia",
+    "longitude": 134,
+    "latitude": -25,
+    "land": true
+  },
+  {
+    "name": "Greenland",
+    "longitude": -42,
+    "latitude": 72,
+    "land": true
+  },
+  {
+    "name": "Madagascar",
+    "longitude": 47,
+    "latitude": -20,
+    "land": true
+  },
+  {
+    "name": "Japan",
+    "longitude": 138,
+    "latitude": 36,
+    "land": true
+  },
+  {
+    "name": "Antarctica",
+    "longitude": 0,
+    "latitude": -80,
+    "land": true
+  },
+  {
+    "name": "Atlantic",
+    "longitude": -30,
+    "latitude": 0,
+    "land": false
+  },
+  {
+    "name": "Pacific",
+    "longitude": -140,
+    "latitude": 0,
+    "land": false
+  },
+  {
+    "name": "Indian Ocean",
+    "longitude": 80,
+    "latitude": -30,
+    "land": false
+  }
+]
