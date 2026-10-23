@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.17",
+  "build": "paper-bookshop-game-v0.14.18",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -97,7 +97,7 @@
     "room-touch.js",
     "room-touch.css"
   ],
-  "status": "production-v0.14.17; mobile-framing-published",
+  "status": "development-v0.14.18-font-fit-and-room-touch",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -2052,5 +2052,10 @@
   "mobileFraming": {
     "revision": "full-width-phone-v01417",
     "evidence": "docs/validation/mobile-camera-v01417/REPORT.md"
+  },
+  "letterTypography": {
+    "revision": "paper-relative-v1",
+    "evidence": "docs/validation/letter-type/REPORT.md",
+    "behavior": "paper-relative body size, unified handwriting, 16px inputs, wrapped signatures and replies"
   }
 }

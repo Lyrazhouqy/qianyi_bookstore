@@ -94,3 +94,22 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   .sid-secret-editor textarea { min-height:60px; height:64px; }
   .sid-secret-editor footer { margin-top:4px; }
 }
+
+/* Size handwriting against the paper, not the whole phone or the original illustration. */
+:root { --paper-writing-font:"PaperYozai","Kaiti SC","STKaiti",serif; }
+.sid-letter-reader { container:letter-paper / inline-size; }
+.sid-letter-reader,.sid-secret-editor { font-family:var(--paper-writing-font); font-synthesis:none; }
+.sid-letter-reader .sid-segment { font-size:clamp(16px,calc(12px + 1.5cqi),18px); line-height:1.85; letter-spacing:0; }
+.siddhartha-room[data-reading-layout="paired"] .sid-segment { font-size:clamp(15px,calc(9px + 4cqi),17px); line-height:1.85; }
+.sid-letter-reader .sid-segment small { font-family:inherit; font-size:clamp(11px,calc(9px + 1cqi),13px); line-height:1.6; letter-spacing:0; overflow-wrap:anywhere; }
+.sid-note-signature { min-width:0; max-width:100%; font-size:clamp(11px,calc(9px + 1.2cqi),13px); line-height:1.65; overflow-wrap:anywhere; }
+.sid-note-signature span,.sid-note-signature time { min-width:0; max-width:100%; overflow-wrap:anywhere; }
+.sid-note-signature time { font-size:clamp(10px,calc(8px + 1.2cqi),12px); }
+.sid-write label { font-family:inherit; font-size:12px; line-height:1.6; overflow-wrap:anywhere; }
+.sid-write textarea,.sid-secret-editor textarea {
+  width:100%; min-width:0; max-width:100%;
+  font:400 16px/1.75 var(--paper-writing-font); font-synthesis:none;
+  letter-spacing:0; text-align:start; white-space:pre-wrap; overflow-wrap:anywhere;
+}
+.sid-write textarea::placeholder,.sid-secret-editor textarea::placeholder { font:inherit; letter-spacing:inherit; color:#827867; opacity:.8; }
+.sid-write-actions button { font-family:inherit; font-size:clamp(12px,calc(9px + 2cqi),14px); line-height:1.5; padding:8px 6px; }

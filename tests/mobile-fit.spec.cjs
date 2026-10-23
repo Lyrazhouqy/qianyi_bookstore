@@ -1,4 +1,4 @@
-const {test,expect}=require('@playwright/test');
+const {test,expect}=require('./helpers/quiet.cjs');
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 async function open(p){await p.locator('#open-book-index').click();await p.locator('[data-book="naval"]').click();await step(p,'held');await p.locator('.sid-cover').click();await step(p,'open');}
 async function enter(p){
@@ -19,7 +19,7 @@ test('paired reading fits the phone, keeps the passage visible and exposes one u
  await enter(page);await open(page);await bounds(page,'.sid-page');await bounds(page,'.sid-cover-back');await bounds(page,'.sid-create-pen');
  await page.locator('.sid-letter-pick').click();await step(page,'letter');await expect(page.locator('.sid-create-pen')).toBeHidden();
  const left=await bounds(page,'.sid-inside-copy'),right=await bounds(page,'.sid-letter-reader'),corner=await bounds(page,'.sid-page-next');expect(right.x).toBeGreaterThan(left.x+left.width+2);expect(right.y+right.height).toBeLessThanOrEqual(corner.y-8);
- await expect(page.locator('.sid-inside-copy')).toHaveAttribute('data-kind','quotation');expect(await page.locator('.sid-segment').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(16);
+ await expect(page.locator('.sid-inside-copy')).toHaveAttribute('data-kind','quotation');expect(await page.locator('.sid-segment').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(15);
  expect(await page.locator('.sid-letter-reader').evaluate(e=>e.scrollWidth<=e.clientWidth+1)).toBe(true);expect(corner.width).toBeGreaterThanOrEqual(44);expect(corner.height).toBeGreaterThanOrEqual(44);
  if(page.viewportSize().width>600&&page.viewportSize().height<600)expect(right.width).toBeGreaterThan(180);
  await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.screenshot({path:test.info().outputPath('paired-reading.png'),animations:'disabled'});

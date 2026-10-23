@@ -1,0 +1,18 @@
+{
+  "typeFinal": {
+    "startTime": "2026-10-23T15:54:36.857Z",
+    "duration": 50566.656,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "layoutRegression": {
+    "startTime": "2026-10-23T15:53:47.120Z",
+    "duration": 55215.717,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

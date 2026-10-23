@@ -1,0 +1,24 @@
+const {test,expect}=require('./helpers/quiet.cjs');
+const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
+const front='今天在窗边读了一会儿书。\n这张纸留给下一位不着急的人。\nAReallyLongUnbrokenBookstoreWordThatMustWrapInsideThePaper';
+const reply='谢谢你的留言。\n我也在这扇窗前停了一会儿。\n第二行、第三行，都应该跟纸上的文字一样清楚。';
+async function enter(p){await p.emulateMedia({reducedMotion:'reduce'});await p.addInitScript(({front})=>{if(localStorage.getItem('paperbook-revisit-notes-v1'))return;localStorage.setItem('paperbook-revisit-notes-v1',JSON.stringify({version:1,books:{night:[{id:'type-note',kind:'stack',author:'N',authorName:'一位昵称特别长的读书朋友🌟',front,back:'',stock:'cream',replies:[{id:'type-old-reply',author:'B',authorName:'另一位书友',text:'我读到这里，也想留下一句。',date:'2026-10-23'}]}]}}));},{front});await p.goto('/?playtest=revisit&reader=A');await p.evaluate(()=>document.fonts.ready);}
+async function open(p,id='night'){await p.locator('#open-book-index').click();await p.locator('[data-book="'+id+'"]').click();await step(p,'held');await p.locator('.sid-cover').click();await step(p,'open');await p.locator('.sid-letter-pick').click();await step(p,'letter');}
+async function paperFits(p){expect(await p.locator('.sid-letter-reader').evaluate(e=>e.scrollWidth<=e.clientWidth+1)).toBe(true);for(const e of await p.locator('.sid-segment,.sid-note-signature').all())expect(await e.evaluate(e=>e.scrollWidth<=e.clientWidth+1)).toBe(true);}
+test('narrow note and displayed replies share readable handwriting; long names and words wrap inside paper',async({page},info)=>{
+ await enter(page);await open(page);await expect(page.locator('.sid-segment').first()).toContainText(front);await paperFits(page);
+ const a=await page.locator('.sid-segment').first().evaluate(e=>({size:parseFloat(getComputedStyle(e).fontSize),font:getComputedStyle(e).fontFamily,line:parseFloat(getComputedStyle(e).lineHeight),width:e.clientWidth}));expect(a.size).toBeGreaterThanOrEqual(15);expect(a.size).toBeLessThanOrEqual(18);expect(a.font).toContain('PaperYozai');expect(a.line/a.size).toBeGreaterThanOrEqual(1.8);
+ await page.locator('.sid-unfold').click();await expect(page.locator('.sid-segment').last()).toContainText('我读到这里');expect(await page.locator('.sid-segment').last().evaluate(e=>getComputedStyle(e).fontSize)).toBe(a.size+'px');await paperFits(page);await page.screenshot({path:info.outputPath('note-replies.png')});
+});
+test('reply input stays 16px, saves exact line breaks and renders with the note font after reload',async({page},info)=>{
+ await enter(page);await open(page);await page.locator('.sid-unfold').click();await page.locator('[data-sid="write"]').click();await page.locator('#sid-reply').fill(reply);
+ const type=await page.locator('#sid-reply').evaluate(e=>({size:getComputedStyle(e).fontSize,font:getComputedStyle(e).fontFamily,line:getComputedStyle(e).lineHeight,width:e.clientWidth}));expect(type.size).toBe('16px');expect(type.font).toContain('PaperYozai');expect(type.line).toBe('28px');await page.screenshot({path:info.outputPath('reply-input.png')});await page.locator('[data-sid="save"]').click();await step(page,'letter');await expect(page.locator('.sid-segment').last()).toContainText(reply);await paperFits(page);
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('paperbook-revisit-notes-v1')).books.night[0].replies.at(-1).text);expect(saved).toBe(reply);
+ // The seed is one-time; reopening must use the saved paper and read progress.
+ await page.reload();await open(page);while(await page.locator('.sid-unfold').count())await page.locator('.sid-unfold').click();await expect(page.locator('.sid-segment').last()).toContainText(reply);
+});
+test('centered relay letter and writing use the same font; a short keyboard viewport keeps save reachable',async({page},info)=>{
+ await enter(page);await open(page,'siddhartha');const font=await page.locator('.sid-segment').first().evaluate(e=>getComputedStyle(e).fontFamily);expect(font).toContain('PaperYozai');
+ while(await page.locator('.sid-unfold').count())await page.locator('.sid-unfold').click();await page.locator('[data-sid="write"]').click();await page.locator('#sid-reply').fill('横屏和键盘弹出时，也能继续写。');expect(await page.locator('#sid-reply').evaluate(e=>getComputedStyle(e).fontFamily)).toBe(font);
+ await page.evaluate(()=>{Object.defineProperty(window,'visualViewport',{configurable:true,value:{height:320,offsetTop:0}});dispatchEvent(new Event('resize'));});await expect(page.locator('.siddhartha-room')).toHaveCSS('height','320px');await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));await page.locator('.sid-write').evaluate(e=>e.parentElement.scrollTop=e.parentElement.scrollHeight);await expect(page.locator('[data-sid="save"]')).toBeInViewport({ratio:.95});await expect(page.locator('#sid-reply')).toBeInViewport({ratio:.95});await paperFits(page);await page.screenshot({path:info.outputPath('keyboard.png')});
+});
