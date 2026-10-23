@@ -1,0 +1,13 @@
+{
+  "sourceVideo": "evidence/bookshop-v0147/native-390/7bdc20ee22974ce34a82b8c8ae69f7e3.webm",
+  "startSeconds": 7.8,
+  "durationSeconds": 3.5,
+  "crop": [
+    390,
+    520,
+    0,
+    90
+  ],
+  "fps": 18,
+  "note": "real isolated browser recording, not interpolated or authored motion"
+}

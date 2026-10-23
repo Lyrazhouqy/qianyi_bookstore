@@ -1,0 +1,36 @@
+[
+  {
+    "width": 320,
+    "engine": "chromium",
+    "input": "CDP native touch",
+    "source": "unmodified real materials; isolated browser storage",
+    "coverTouchDrag": true,
+    "pageCornerTouchDrag": true,
+    "openLetterNext": true,
+    "replyNextKeepsDraft": true,
+    "noteSwipe": true,
+    "cornerDraftSaved": true,
+    "cancelledTouchRestored": true,
+    "postcardLeftSwipeFlip": true,
+    "postcardRightSwipeReturn": true,
+    "errors": [],
+    "video": "evidence/bookshop-v0147/native-320/259faec8f85c7fcaaba773faf76cd1d9.webm"
+  },
+  {
+    "width": 390,
+    "engine": "chromium",
+    "input": "CDP native touch",
+    "source": "unmodified real materials; isolated browser storage",
+    "coverTouchDrag": true,
+    "pageCornerTouchDrag": true,
+    "openLetterNext": true,
+    "replyNextKeepsDraft": true,
+    "noteSwipe": true,
+    "cornerDraftSaved": true,
+    "cancelledTouchRestored": true,
+    "postcardLeftSwipeFlip": true,
+    "postcardRightSwipeReturn": true,
+    "errors": [],
+    "video": "evidence/bookshop-v0147/native-390/7bdc20ee22974ce34a82b8c8ae69f7e3.webm"
+  }
+]

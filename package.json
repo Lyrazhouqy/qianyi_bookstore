@@ -1,6 +1,6 @@
 {
   "name": "paper-bookshop-playtest",
-  "version": "0.14.6",
+  "version": "0.14.7",
   "private": true,
   "scripts": {
     "dev": "node scripts/serve.cjs",

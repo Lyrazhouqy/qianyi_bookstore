@@ -126,7 +126,7 @@ window.BookSecrets=(()=>{
     const penLayout=new ResizeObserver(scheduleLayout);penLayout.observe(stage);penLayout.observe(room.querySelector('.sid-position'));
 
     const editor=document.createElement('section');editor.className='sid-secret-editor';editor.hidden=true;editor.setAttribute('aria-label','在书中夹入一张纸');room.querySelector('.sid-stage').appendChild(editor);
-    let book,preset,current=null,form=null,saving=false,order=[],offered=null,prepared=false,readHere=new Set(),cornerDrag=null,ignorePageClick=0;
+    let book,preset,current=null,form=null,saving=false,order=[],offered=null,prepared=false,readHere=new Set(),cornerDrag=null,ignorePageClick=0,navigationMarkup=null;
     const list=()=>read().books[book[0]]||[];
     const asArtifact=item=>artifactFor(book[0],item,()=>{readHere.add(item.id);renderTabs();});
     function presetArtifact(){if(!preset)return null;return {...preset,onReveal:()=>{director?.discover(book[0],'preset');keepSelection(book[0],'preset');},initialParts:()=>preset.kind==='relay'?1+(reading.books[book[0]]?.presetParts||0):1,onRead:()=>{readHere.add('preset');director?.discover(book[0],'preset');preset.onRead?.();},onUnfold:count=>{readHere.add('preset');const record=reading.books[book[0]]||={items:{}};record.presetParts=Math.max(record.presetParts||0,count-1);try{localStorage.setItem(READS,JSON.stringify(reading));}catch{}if(count>=4||preset.kind==='envelope')director?.rest();preset.onUnfold?.(count);}};}
@@ -179,9 +179,9 @@ window.BookSecrets=(()=>{
       if(!book||cornerDrag)return;
       const items=visibleList(),index=order.indexOf(current);
       const next=order[(index+1)%order.length];
-      const navigation=order.length>1?'<button class="sid-paper-tab sid-page-next" data-paper-id="'+esc(next)+'" data-direction="1" aria-label="翻到下一页" title="轻点右下角翻下一页"><i aria-hidden="true"></i></button>':'';
+      const navigation=order.length>1?'<button class="sid-paper-tab sid-page-next" data-paper-id="'+esc(next)+'" data-direction="1" aria-label="翻到下一页" title="轻点右下角翻下一页"><i aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><defs><linearGradient id="sid-corner-face" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b49b70"/><stop offset=".37" stop-color="#fff6dc"/><stop offset="1" stop-color="#e7d5ac"/></linearGradient></defs><path class="sid-corner-under" d="M8 62 Q34 55 48 32 Q58 18 62 8 L62 62Z"/><path class="sid-corner-shadow" d="M6 62 Q24 53 40 36 Q55 19 62 6 Q53 44 62 62Z"/><path class="sid-corner-face" d="M8 62 Q28 47 40 35 Q54 20 62 8 Q56 39 62 62Z"/><path class="sid-corner-rim" d="M8 62 Q28 47 40 35 Q54 20 62 8"/><path class="sid-corner-fiber" d="M38 52 Q47 45 51 36"/></svg></i></button>':'';
       // Repositioning the book must not replace a focused corner between keydown and click.
-      if(traces.innerHTML!==navigation)traces.innerHTML=navigation;
+      if(navigationMarkup!==navigation){traces.innerHTML=navigation;navigationMarkup=navigation;}
       const active=items.find(x=>x.id===current);room.dataset.freshPaper=String(!!active&&unread(book[0],active)>0);
       room.dataset.paperOwner=active?.author===actor?'own':active?'other':current==='book-intro'?'intro':current===keepsake()?.id?'authored-playtest':'original';
       room.dataset.hasPageTurn=String(order.length>1);
