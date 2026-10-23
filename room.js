@@ -19,7 +19,7 @@
     const heading=sheet.querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});sheet.dispatchEvent(new Event('sheetopened'));
   }
   document.getElementById('open-music').addEventListener('click',event=>showSheet(musicSheet,event.currentTarget));
-  document.getElementById('change-bouquet').addEventListener('click',event=>{event.stopPropagation();showSheet(bouquetSheet,event.currentTarget);});
+  for(const id of ['change-bouquet','touch-bouquet'])document.getElementById(id).addEventListener('click',event=>{event.stopPropagation();showSheet(bouquetSheet,event.currentTarget);});
   document.querySelectorAll('[data-journal]').forEach(button=>button.addEventListener('click',()=>showSheet(journal,button)));
   document.getElementById('open-book-index').addEventListener('click',event=>showSheet(catalogue,event.currentTarget));
   for(const sheet of sheets){

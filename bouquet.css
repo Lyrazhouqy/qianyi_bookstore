@@ -1,7 +1,7 @@
 /* The original flowers flex above a fixed vase; every source shares room coordinates. */
 .bouquet-clean-plate { position:absolute; left:calc(650/940*100%); top:calc(1197/1672*100%); width:calc(170/940*100%); height:calc(111/1672*100%); pointer-events:none; background:url("assets/scene/bouquet-empty-v0622.png") no-repeat; background-size:calc(940/170*100%) calc(1673/111*100%); background-position:calc(650/770*100%) calc(1197/1562*100%); mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent),linear-gradient(transparent,#000 3%,#000 97%,transparent); mask-composite:intersect; }
 .bouquet-art { position:absolute; left:calc(655/940*100%); top:calc(1200/1672*100%); width:calc(160/940*100%); height:calc(112/1672*100%); overflow:visible; pointer-events:none; mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent),linear-gradient(transparent,#000 3%,#000 97%,transparent); mask-composite:intersect; }
-.bouquet-touch { left:calc(655/940*100%); top:calc(1200/1672*100%); width:calc(160/940*100%); height:calc(105/1672*100%); min-width:44px; min-height:44px; touch-action:pan-x pan-y; cursor:pointer; }
+.bouquet-touch { z-index:40; left:calc(655/940*100%); top:calc(1200/1672*100%); width:calc(160/940*100%); height:calc(105/1672*100%); min-width:44px; min-height:44px; touch-action:pan-x pan-y; cursor:pointer; }
 .bouquet-touch:focus-visible { outline:2px solid #7d916a; outline-offset:2px; border-radius:45% 45% 30% 30%; }
 
 /* Only the petals/leaves crossfade; the painted vase stays fixed beneath them. */

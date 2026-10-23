@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-23T08:55:43.006Z",
+  "drift": [
+    "room.js",
+    "index.html"
+  ],
+  "files": [
+    {
+      "file": "bouquet.js",
+      "testStartSha256": "24ec71448df0b68d6aa4e70dfd9830b746c94988160fd7fb5e7bd3941c854b47",
+      "currentSha256": "24ec71448df0b68d6aa4e70dfd9830b746c94988160fd7fb5e7bd3941c854b47",
+      "httpMatchesCurrent": true
+    },
+    {
+      "file": "bouquet.css",
+      "testStartSha256": "2a7c6f9907e4d72564a800d6b25e04950a04b0b7a507e085bb2ea929578d086e",
+      "currentSha256": "2a7c6f9907e4d72564a800d6b25e04950a04b0b7a507e085bb2ea929578d086e",
+      "httpMatchesCurrent": true
+    },
+    {
+      "file": "room.js",
+      "testStartSha256": "3147d42fe0d6d90b5c261f50e2e51e342af26798aa04f7a54aa0ba41341fa2d7",
+      "currentSha256": "53b4fe54e84904239dbb1ecbc6c86bd0d5e97fa1b4ac9bbceb9c60af4935f616",
+      "httpMatchesCurrent": true
+    },
+    {
+      "file": "index.html",
+      "testStartSha256": "61773cc26bbd1508505ca441d95d01e5352b786d129c90f22cde47834939f49c",
+      "currentSha256": "cf75ff466d2e3dc28bf5635476ab2a17aaae3a307af9b69ec24fdc99911b11c1",
+      "httpMatchesCurrent": true
+    }
+  ]
+}

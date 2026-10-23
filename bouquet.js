@@ -28,7 +28,7 @@
     art.classList.toggle('is-initializing',initial);
     for(const layer of art.querySelectorAll('.bouquet-layer'))layer.style.opacity=layer.dataset.bouquetLayer===id?'1':'0';
     current=desired=id;art.dataset.bouquet=id;
-    vase.setAttribute('aria-label','花瓶，挑一束花，当前：'+choices.find(c=>c.id===id).name);renderChoices();
+    const name=choices.find(c=>c.id===id).name;vase.setAttribute('aria-label','花瓶，挑一束花，当前：'+name);button.setAttribute('aria-label','花束，挑一束花，当前：'+name);renderChoices();
     const thumbnail=grid.querySelector('[data-bouquet-choice="'+id+'"] img');if(thumbnail&&thumbnail.complete&&!thumbnail.naturalWidth)thumbnail.src=thumbnail.getAttribute('src');
     if(initial)requestAnimationFrame(()=>requestAnimationFrame(()=>art.classList.remove('is-initializing')));
   }
@@ -64,8 +64,13 @@
   }
   function direction(event){const r=button.getBoundingClientRect();return event.clientX<r.x+r.width/2?1:-1;}
   button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&event.buttons===0)sway(direction(event));});
-  button.addEventListener('pointerdown',event=>{event.stopPropagation();if(event.isPrimary&&event.button===0)sway(direction(event));});
-  button.addEventListener('click',event=>{event.stopPropagation();if(event.detail===0)sway();});
+  let gesture=null,ignoreClickUntil=0;
+  button.addEventListener('pointerdown',event=>{if(event.isPrimary&&event.button===0){gesture={id:event.pointerId,x:event.clientX,y:event.clientY,moved:false};ignoreClickUntil=0;sway(direction(event));}},{passive:true});
+  button.addEventListener('pointermove',event=>{if(gesture?.id===event.pointerId&&Math.hypot(event.clientX-gesture.x,event.clientY-gesture.y)>6)gesture.moved=true;},{passive:true});
+  button.addEventListener('pointerup',()=>{if(gesture?.moved)ignoreClickUntil=performance.now()+350;gesture=null;},{passive:true});
+  button.addEventListener('pointercancel',()=>{gesture=null;ignoreClickUntil=performance.now()+350;},{passive:true});
+  // Guard before the shared sheet opener; scrolling must not become a selection.
+  button.addEventListener('click',event=>{if(event.detail>0&&(gesture?.moved||performance.now()<ignoreClickUntil)){event.preventDefault();event.stopImmediatePropagation();return;}if(event.detail===0)sway();},{capture:true});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)reset();});
   pref.addEventListener('change',()=>{if(pref.matches)reset();});
   new MutationObserver(()=>{if(document.body.dataset.phase!=='idle'){reset();cancelChange();}}).observe(document.body,{attributes:true,attributeFilter:['data-phase']});
