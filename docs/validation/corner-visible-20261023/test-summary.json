@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "stats": {
+    "startTime": "2026-10-23T06:36:36.503Z",
+    "duration": 66100.75300000001,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "raw": "evidence/corner-visible-20261023/results.json",
+  "scope": "only corner navigation and paper-turn regression; other dirty work not validated"
+}

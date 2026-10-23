@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-23T06:38:50.464Z",
+  "unchangedSinceTestsStarted": true,
+  "files": [
+    {
+      "file": "secrets.css",
+      "sha256": "b144c8a1abf2c1a801899c805d373f4578e03040bdbb801757d11922591d4c99",
+      "httpStatus": 200
+    },
+    {
+      "file": "secrets.js",
+      "sha256": "94ef2d25bedf3bec70cb87636de4bed64a865d309a62cb927d9d99676e4159e1",
+      "httpStatus": 200
+    },
+    {
+      "file": "siddhartha.js",
+      "sha256": "420fa4d764a4d7c9ff7771225196c9a8c0d3933090fbc718fa7bb7d99aed25d9",
+      "httpStatus": 200
+    },
+    {
+      "file": "siddhartha.css",
+      "sha256": "8eaaa473dc1e066194175b60331e1f19e9d30ec44621fadf3eaf799dbde22130",
+      "httpStatus": 200
+    }
+  ]
+}
