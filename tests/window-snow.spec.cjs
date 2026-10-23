@@ -31,9 +31,13 @@ test('night snow visibly moves inside the glass, stops off camera and while read
 
   // On a tall phone, bringing a lower book into view can leave part of the
   // window visible. Move the actual camera fully to its lower/right boundary.
+  const originalViewport=page.viewportSize();
+  // Overview fits the room on tall phones. Use a genuinely short camera to test leaving view.
+  await page.setViewportSize({...originalViewport,height:240});
   await page.locator('#room-viewport').evaluate(e=>e.scrollTo({left:e.scrollWidth,top:e.scrollHeight,behavior:'instant'}));
   await expect(page.locator('#change-window')).toHaveAttribute('data-snow-visible','false');
   expect((await flakeState(page)).play).toBe('paused');
+  await page.setViewportSize(originalViewport);
   await page.locator('#change-window').scrollIntoViewIfNeeded();
   await expect(page.locator('#change-window')).toHaveAttribute('data-snow-visible','true');
   expect((await flakeState(page)).play).toBe('running');

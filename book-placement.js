@@ -58,17 +58,19 @@ window.BookArrangement=(()=>{
   const step=w*186/890,height=w*400/890+step*(items.length-1),y=base-height;
   return `<div class="book-pile" data-pile="${id}" data-pile-base="${base}" style="left:${x/940*100}%;top:${y/1672*100}%;width:${w/940*100}%;height:${height/1672*100}%;--pile-crop-top:${id==='front-lower'?Math.max(0,1452-y):0}px;--pile-count:${items.length};--pile-step:${step}px;--pile-type-size:${w*98/890}px;--pile-book-height:${w*400/890}px">${items.map(([bookId,skin],i)=>`<button class="spine painted-book pile-book" data-id="${bookId}" aria-label="抽出《${esc(title(bookId))}》" style="--pile-index:${i};${horizontalStyle(skin,w)}--art-clip:none"><span class="spine-face"><span class="painted-title"><span class="painted-title-letters">${esc(({habits:'七个习惯'})[bookId]||title(bookId))}</span></span></span></button>`).join('')}</div>`;
  }
- // Thin spines share enlarged transparent hit areas. Resolve a pointer to the
- // nearest visible spine, so an upper book's larger area cannot steal a lower one.
+ // Phone-sized spines share enlarged transparent hit areas, both horizontally
+ // and within piles. Resolve the visible printed binding, not DOM stacking order.
  function hitAt(x,y){
-  for(const group of document.querySelectorAll('.book-pile')){
-   const choices=[...group.querySelectorAll('.pile-book')];
-   if(!choices.some(el=>{const r=el.getBoundingClientRect();return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;}))continue;
-   return choices.reduce((best,el)=>{const r=el.querySelector('.painted-title').getBoundingClientRect(),d=Math.abs(y-(r.top+r.height/2));return !best||d<best.d?{el,d}:best;},null)?.el;
-  }
-  return [...document.querySelectorAll('.spine:not(.pile-book)')].find(el=>{const r=el.getBoundingClientRect();return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;})||null;
+  return [...document.querySelectorAll('.spine:not(.is-out)')].filter(el=>{
+   const r=el.getBoundingClientRect();return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;
+  }).reduce((best,el)=>{
+   const r=(el.querySelector('.painted-title')||el.querySelector('.spine-face')).getBoundingClientRect();
+   const dx=Math.max(r.left-x,0,x-r.right),dy=Math.max(r.top-y,0,y-r.bottom);
+   const d=dx*dx+dy*dy,center=Math.hypot(x-r.left-r.width/2,y-r.top-r.height/2);
+   return !best||d<best.d||(d===best.d&&center<best.center)?{el,d,center}:best;
+  },null)?.el||null;
  }
- function targetFor(event){const button=event.target.closest('.spine');return !button?null:event.detail===0||!button.closest('.book-pile')?button:hitAt(event.clientX,event.clientY)||button;}
+ function targetFor(event){const button=event.target.closest('.spine');return !button?null:event.detail===0?button:hitAt(event.clientX,event.clientY)||button;}
  function renderWall(root){
   const row1=[['siddhartha',238,261,67,159],['questions',305,261,67,159],['tao',372,261,67,159],['naval',573,261,67,159],['fiscal',640,261,67,159]];
   const row2=[['courage',238,464,67,159],['bondage',305,464,67,159],['vegetarian',372,464,67,159]];

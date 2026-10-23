@@ -14,6 +14,14 @@ html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   padding-top:max(16px,var(--phone-safe-top));
   padding-bottom:max(20px,var(--phone-safe-bottom));
 }
+@media(max-width:600px) {
+  :root { --scene-bleed:8px; }
+  .room-canvas {
+    width:100%; min-width:calc(var(--scene-width) + 16px + var(--phone-safe-left) + var(--phone-safe-right));
+    padding: max(8px,var(--phone-safe-top)) calc(8px + var(--phone-safe-right)) max(12px,var(--phone-safe-bottom)) calc(8px + var(--phone-safe-left));
+    align-items:center;
+  }
+}
 /* Native dialogs must fit the visible viewport, including browser bars. */
 .shop-sheet[open] {
   position:fixed; top:calc(var(--view-top) + var(--phone-safe-top) + (var(--view-height) - var(--phone-safe-top) - var(--phone-safe-bottom))/2);

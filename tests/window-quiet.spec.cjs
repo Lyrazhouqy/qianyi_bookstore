@@ -16,9 +16,13 @@ test('each remaining scene has gentle movement, pauses offscreen and while readi
   expect(await page.locator(layer).evaluate(e=>e.parentElement.getAttribute('clip-path'))).toBe('url(#window-glass)');
   for(const [otherId,,otherSelector,otherLayer] of scenes)if(otherId!==id){expect((await motion(page,otherSelector)).play).toBe('paused');await expect(page.locator(otherLayer)).toHaveCSS('opacity','0');}
   await page.locator('#change-window').screenshot({path:test.info().outputPath(id+'-moving.png'),animations:'allow'});
+  const originalViewport=page.viewportSize();
+  // Overview fits the room on tall phones. Use a genuinely short camera to test leaving view.
+  await page.setViewportSize({...originalViewport,height:240});
   await page.locator('#room-viewport').evaluate(e=>e.scrollTo({left:e.scrollWidth,top:e.scrollHeight,behavior:'instant'}));
   await expect(page.locator('#change-window')).toHaveAttribute('data-snow-visible','false');const paused=await motion(page,selector);expect(paused.play).toBe('paused');
   await page.waitForTimeout(120);expect((await motion(page,selector)).transform).toBe(paused.transform);
+  await page.setViewportSize(originalViewport);
   await page.locator('#change-window').scrollIntoViewIfNeeded();await expect.poll(async()=>(await motion(page,selector)).play).toBe('running');
  }
  expect(await page.evaluate(()=>localStorage.getItem('paperbook-v3'))).toBe(progress);

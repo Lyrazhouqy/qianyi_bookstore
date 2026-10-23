@@ -160,7 +160,13 @@
     if(viewport.hasPointerCapture(id))viewport.releasePointerCapture(id);
   }
   function sizeScene(){
-    const width=Math.max(620,Math.min(viewport.clientWidth*1.12,viewport.clientHeight*940/1672));
+    // Fit the room's width first. A phone must not inherit a desktop-sized
+    // camera and start halfway across the bookcase. Vertical browsing remains native.
+    const narrow=viewport.clientWidth<=600;
+    const canvasStyle=getComputedStyle(world.parentElement);
+    const sideSpace=parseFloat(canvasStyle.paddingLeft)+parseFloat(canvasStyle.paddingRight);
+    const fittedWidth=Math.max(1,viewport.clientWidth-sideSpace);
+    const width=narrow?fittedWidth:Math.max(620,Math.min(viewport.clientWidth*1.12,viewport.clientHeight*940/1672));
     const centerX=(viewport.scrollLeft+lastWidth/2-world.offsetLeft)/sceneScale;
     const centerY=(viewport.scrollTop+lastHeight/2-world.offsetTop)/sceneScale;
     endDrag();
@@ -169,11 +175,14 @@
     document.documentElement.style.setProperty('--scene-scale',String(sceneScale));
     if(!ready){
       ready=true;
-      // Small phones start at the readable bookcase; the window and room edges remain pannable.
-      viewport.scrollLeft=world.offsetLeft+(viewport.clientWidth<=600?610:520)*sceneScale-viewport.clientWidth/2;
-      if(viewport.clientHeight<500)goToShelf(false);
+      viewport.scrollLeft=narrow?0:world.offsetLeft+520*sceneScale-viewport.clientWidth/2;
+      viewport.scrollTop=0;
+      if(!narrow&&viewport.clientHeight<500)goToShelf(false);
     } else if(document.body.dataset.phase!=='idle'){
       document.querySelector('.spine.is-out')?.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+    } else if(narrow){
+      viewport.scrollLeft=0;
+      viewport.scrollTop=world.offsetTop+centerY*sceneScale-viewport.clientHeight/2;
     } else {
       viewport.scrollLeft=world.offsetLeft+centerX*sceneScale-viewport.clientWidth/2;
       viewport.scrollTop=world.offsetTop+centerY*sceneScale-viewport.clientHeight/2;
@@ -194,7 +203,7 @@
   viewport.addEventListener('pointerup',endDrag);viewport.addEventListener('pointercancel',endDrag);
   window.addEventListener('blur',()=>endDrag());
   viewport.addEventListener('click',event=>{if(event.detail>0&&performance.now()-dragFinishedAt<250){event.preventDefault();event.stopPropagation();}},true);
-  new ResizeObserver(sizeScene).observe(viewport);sizeScene();
+  new ResizeObserver(()=>sizeScene()).observe(viewport);sizeScene();
   document.getElementById('goto-shelves').addEventListener('click',()=>goToShelf());
   new MutationObserver(updateJournal).observe(document.getElementById('status'),{childList:true});
   updateJournal();
