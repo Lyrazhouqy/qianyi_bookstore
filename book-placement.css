@@ -50,3 +50,6 @@
 
 .siddhartha-room[data-cover-art="true"]:not([data-reader-book="cat"]):not([data-reader-book="prince"]):not([data-reader-book="lychee"]) .sid-cover-title { display:block; position:absolute; top:15%; left:50%; transform:translateX(-50%); margin:0; color:#242b21; letter-spacing:.08em; }
 
+
+/* Cat's Letter has independent front art; never magnify the old scene crop. */
+.display-stage .display-book[data-id="cat"] .spine-face { background-image:var(--cover-art-image); }

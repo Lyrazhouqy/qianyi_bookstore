@@ -1,0 +1,42 @@
+{
+  "initial": {
+    "startTime": "2026-10-23T09:13:51.916Z",
+    "duration": 72505.735,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "expanded": {
+    "startTime": "2026-10-23T09:19:28.703Z",
+    "duration": 323692.123,
+    "expected": 34,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  },
+  "correctedExpanded": {
+    "startTime": "2026-10-23T09:26:35.120Z",
+    "duration": 225098.595,
+    "expected": 46,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "queueFinal": {
+    "startTime": "2026-10-23T09:31:23.864Z",
+    "duration": 18408.941000000003,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "frozenFinal": {
+    "startTime": "2026-10-23T09:32:04.854Z",
+    "duration": 147500.138,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

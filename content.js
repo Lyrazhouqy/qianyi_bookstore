@@ -1,9 +1,16 @@
-const legacyBooks=[['ship','忒修斯之船','航海故事与两位读者留下的调查笔记交织成一本神秘旧书。'],['prince','小王子','一位来自遥远星球的少年通过玫瑰与狐狸理解爱和责任。'],['stranger','局外人','默尔索用近乎冷静的目光面对荒诞、生活与社会期待。'],['siddhartha','悉达多','一个人经历修行和世俗生活，寻找属于自己的智慧。'],['garden','秘密花园','一座被锁住的花园渐渐焕发生机，几位孩子的生活也随之改变。'],['night','夜航西飞','关于非洲成长、旅行与飞行冒险的回忆录。'],['kafka','海边的卡夫卡','一段穿梭在现实与梦境之间的文学旅程。'],['letters','山茶文具店','代笔店里的人们通过文字表达难以说出口的心意。'],['other','海边的房间','虚构藏书：旅人在海边停留时的短篇日记。'],['rain','雨天来信','虚构藏书：一位邮差在雨季整理无人领取的信，也慢慢读懂了自己的心事。'],['forest','森林散步','虚构藏书：一位画家沿林间小径记录四季，在细小的变化里重新学会等待。'],['station','旧站台','虚构藏书：小镇末班车停运前，几位旅人在候车室交换各自想去的地方。'],['slow','慢慢生活','虚构藏书：一些关于做饭、散步和整理房间的短篇，记录把普通日子过好的尝试。'],['leaves','叶间拾光','虚构藏书：一位旅人把途中拾到的叶子夹进书里，每一页都留着一处停下来的理由。'],['clouds','晴空日记','虚构藏书：一本记录天空与散步的小日记，写下那些没有特别计划的晴朗日子。'],['cat','猫的来信','虚构藏书：住在旧书店附近的一只猫，用一封封小信记下街角的人与温柔的小事。']];
+const legacyBooks=[['ship','忒修斯之船','航海故事与两位读者留下的调查笔记交织成一本神秘旧书。'],['prince','小王子','一位来自遥远星球的少年通过玫瑰与狐狸理解爱和责任。'],['stranger','局外人','默尔索用近乎冷静的目光面对荒诞、生活与社会期待。'],['siddhartha','悉达多','一个人经历修行和世俗生活，寻找属于自己的智慧。'],['garden','秘密花园','一座被锁住的花园渐渐焕发生机，几位孩子的生活也随之改变。'],['night','夜航西飞','关于非洲成长、旅行与飞行冒险的回忆录。'],['kafka','海边的卡夫卡','一段穿梭在现实与梦境之间的文学旅程。'],['letters','山茶文具店','代笔店里的人们通过文字表达难以说出口的心意。'],['other','海边的房间','虚构藏书：旅人在海边停留时的短篇日记。'],['rain','雨天来信','虚构藏书：一位邮差在雨季整理无人领取的信，也慢慢读懂了自己的心事。'],['forest','森林散步','虚构藏书：一位画家沿林间小径记录四季，在细小的变化里重新学会等待。'],['station','旧站台','虚构藏书：小镇末班车停运前，几位旅人在候车室交换各自想去的地方。'],['slow','慢慢生活','虚构藏书：一些关于做饭、散步和整理房间的短篇，记录把普通日子过好的尝试。'],['leaves','叶间拾光','虚构藏书：一位旅人把途中拾到的叶子夹进书里，每一页都留着一处停下来的理由。'],['clouds','晴空日记','虚构藏书：一本记录天空与散步的小日记，写下那些没有特别计划的晴朗日子。'],['cat','猫的来信','本店有位不打卡的店员。\n上午上树巡视，下午在沙发值班，下雨天负责把窗边坐暖。\n有人问它工资多少。\n它翻了个身：小鱼干另算。']];
 const notes={stranger:'不表现悲伤，真的就等于不悲伤吗？',garden:'我小时候想拥有秘密花园，现在更想有人和我一起照料它。',night:'有些风景只适合在夜里想起。',kafka:'不是所有道路都有地图。',letters:'没写出来的那些话，也许更重要。',other:'临走之前，我把窗户开了一会儿。',rain:'雨停之后，我终于把那封写了很久的信寄了出去。原来等的不是晴天，是一点勇气。',forest:'今天沿着同一条小路走，才发现上次没留意的苔藓。慢一点，也许就不会错过。',station:'车票夹在这里。那年没能去的地方，后来我走路也到了。',slow:'这一页读完，我去给自己煮了一碗面。碗洗好时，窗外的天还亮着。',leaves:'这片叶子是在回家的路上拾到的。夹在这里，提醒自己也记得看看脚边的风景。',clouds:'今天没有赶路，坐在窗边看了一会儿云。什么也没做的一天，也可以被好好记住。',cat:'如果你又遇见窗边那只猫，请替我和它打声招呼。它大概还记得，去年那个总来读书的人。'};
 const letter=[['书友 A','我曾以为寻找答案，是为了有一天能够停下来。'],['书友 B','也许我们寻找的不是答案，而是值得继续追问的问题。'],['书友 C','我第二次读这本书，最喜欢的反而是那些没有回答的部分。']];
 
 // Authored demonstration object, separate from book-club messages and player saves.
 const authoredKeepsakes={prince:{id:'keepsake-prince-postcard-v0142',source:'user-supplied-image',kind:'postcard',label:'一张星空明信片',pickLabel:'取出小王子的星空明信片',title:'小王子的明信片',detail:'翻到背面看看，也可以收回书里',picture:{src:'assets/scene/prince-postcard-user-v0142.png',alt:'小王子和狐狸坐在草地上，望着星星与金色云朵'},parts:[['星空明信片','你望向星星时，\n我就在其中一颗上想你。'],['明信片背面','收件人：下一位读者。']]},night:{id:'keepsake-night-postcard-v014',source:'authored-playtest',kind:'postcard',label:'一角旧明信片',pickLabel:'抽出旧明信片',title:'一张没有寄出的明信片',detail:'可以翻到背面看看，也可以收回书里',parts:[['原创演示 · 旧明信片','留给远方。'],['原创演示 · 明信片背面','收件人：下一次出发的自己。\n\n原来，远方也可以先留在这里。']]}};
+
+// Original cat picture-book pages; kept separate from real reader notes and saves.
+authoredKeepsakes.cat=[
+  ['tree','树上的下午','今天爬得不高。刚好够把风吹来的消息，听个清楚。','三花小猫趴在书店外的树枝上，两只前爪垂着，看一片飘落的叶子'],
+  ['sofa','沙发借我半天','这张沙发只有一个小缺点：一躺下，就忘了原本要去哪里。','圆滚滚的三花小猫侧躺在橘色沙发上，挨着花朵靠枕，露出小肚皮'],
+  ['window','替你看一会儿雨','雨替街道洗了个澡。我替你，把窗边的位置留着。','三花小猫坐在绿色窗台上看雨，身旁放着一本书和一封小信']
+].map(([scene,title,caption,alt])=>({id:'cat-daily-'+scene+'-v01416',source:'authored-cat-picture-book',kind:'illustration',label:title,title,picture:{src:'assets/scene/cat-daily-'+scene+'-v01416.png',alt},caption,parts:[[title,caption]]}));
 
 // Authored game keepsakes in the four new fictional books are available on first visit.
 const firstVisitNotes = new Set(['rain','forest','station','slow','leaves','clouds','cat']);
@@ -12,7 +19,7 @@ const firstVisitNotes = new Set(['rain','forest','station','slow','leaves','clou
 const tableBooks=[
 
 
-  {id:'cat',x:596,y:1319,width:79,height:105,color:'#e6b852',clip:'polygon(3% 0,96% 0,100% 4%,100% 99%,1% 100%,0 5%)'}
+  {id:'cat',x:596,y:1319,width:79,height:105,color:'#e6b852',image:'assets/scene/cat-letter-cover-v01416.png',clip:'polygon(3% 0,96% 0,100% 4%,100% 99%,1% 100%,0 5%)'}
 ];
 
 // Current physical collection. Legacy identities stay intact for existing saves.

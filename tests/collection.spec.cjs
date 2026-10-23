@@ -33,11 +33,11 @@ test('real paper keeps the exported nickname, stable selection and old saved rep
  await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveAttribute('data-phase','idle');await page.locator('#open-book-index').click();await page.locator('[data-book="night"]').click();await step(page,'held');await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-reader-book','night');await page.locator('.sid-cover').click();await step(page,'open');await expect(page.locator('.sid-letter-packet em')).toHaveText('你的便笺与新回应');
  expect(await page.evaluate(()=>getSelection().toString())).toBe('');
 });
-test('cat retains original artwork, position and authored note',async({page})=>{
+test('cat retains its position and authored note after the picture pages',async({page})=>{
  await page.goto('/?playtest=revisit&reader=A');
- const art=await page.evaluate(()=>tableBooks);expect(art).toEqual([{id:'cat',x:596,y:1319,width:79,height:105,color:'#e6b852',clip:'polygon(3% 0,96% 0,100% 4%,100% 99%,1% 100%,0 5%)'}]);
+ const art=await page.evaluate(()=>tableBooks);expect(art).toEqual([{id:'cat',x:596,y:1319,width:79,height:105,color:'#e6b852',image:'assets/scene/cat-letter-cover-v01416.png',clip:'polygon(3% 0,96% 0,100% 4%,100% 99%,1% 100%,0 5%)'}]);
  expect(await page.evaluate(()=>notes.cat)).toBe('如果你又遇见窗边那只猫，请替我和它打声招呼。它大概还记得，去年那个总来读书的人。');
- await page.locator('.spine[data-id="cat"]').click();await step(page,'held');await page.locator('.sid-cover').click();await step(page,'open');await page.locator('.sid-letter-pick').click();await step(page,'letter');await expect(page.locator('.sid-segment')).toContainText('去年那个总来读书的人');
+ await page.locator('.spine[data-id="cat"]').click();await step(page,'held');await page.locator('.sid-cover').click();await step(page,'open');for(let i=0;i<3;i++){await page.getByRole('button',{name:'翻到下一页',exact:true}).click();await step(page,'open');} await page.locator('.sid-letter-pick').click();await step(page,'letter');await expect(page.locator('.sid-segment')).toContainText('去年那个总来读书的人');
 });
 
 test('tap a compact middle spine directly picks that book once and uses the shelf title font',async({page})=>{
@@ -56,7 +56,7 @@ test('direct spine picking still targets the right book after phone rotation',as
  await page.goto('/?v=0.11.2');await page.locator('[data-pile="front-left"]').scrollIntoViewIfNeeded();await page.setViewportSize({width:844,height:390});await directPick(page,'tokyo');await step(page,'held');await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-reader-book','tokyo');
 });
 
-test('a direct middle-spine tap during return queues the matching next book once',async({page})=>{
+test('a visible neighboring book tap during return queues the matching next book once',async({page})=>{
  await page.goto('/?v=0.11.2');await page.locator('[data-pile="front-left"]').scrollIntoViewIfNeeded();await directPick(page,'cat');await step(page,'held');await page.locator('.sid-cover').click();await step(page,'open');await page.keyboard.press('Escape');await page.waitForFunction(()=>document.querySelector('.siddhartha-room').dataset.step==='returning');
- const r=await page.locator('[data-id="japan"] .painted-title').boundingBox();expect(r.y+r.height/2).toBeLessThan(page.viewportSize().height);await page.mouse.click(r.x+r.width/2,r.y+r.height/2);await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-reader-book','japan');await step(page,'held');expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('paperbook-v3')).visits)).toBe(2);
+ const point=await page.waitForFunction(()=>{const e=document.querySelector('[data-id="lychee"] .painted-title'),r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return document.querySelector('.siddhartha-room').dataset.step==='returning'&&!document.elementFromPoint(x,y)?.closest('.sid-carrier,.sid-letter')?{x,y}:false;},{},{polling:'raf'});const {x,y}=await point.jsonValue();expect(y).toBeLessThan(page.viewportSize().height);await page.mouse.click(x,y);await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-reader-book','lychee');await step(page,'held');expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('paperbook-v3')).visits)).toBe(2);
 });

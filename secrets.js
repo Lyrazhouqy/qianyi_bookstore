@@ -166,14 +166,14 @@ window.BookSecrets=(()=>{
     const asArtifact=item=>artifactFor(book[0],item,()=>{readHere.add(item.id);renderTabs();});
     function presetArtifact(){if(!preset)return null;return {...preset,onReveal:()=>{director?.discover(book[0],'preset');keepSelection(book[0],'preset');},initialParts:()=>preset.kind==='relay'?1+(reading.books[book[0]]?.presetParts||0):1,onRead:()=>{readHere.add('preset');director?.discover(book[0],'preset');preset.onRead?.();},onUnfold:count=>{readHere.add('preset');const record=reading.books[book[0]]||={items:{}};record.presetParts=Math.max(record.presetParts||0,count-1);try{localStorage.setItem(READS,JSON.stringify(reading));}catch{}if(count>=4||preset.kind==='envelope')director?.rest();preset.onUnfold?.(count);}};}
     function visibleList(){return director?director.available(book[0],list(),actor):list();}
-    const keepsake=()=>authoredKeepsakes[book[0]];
-    function keepsakeArtifact(){
-      const item=keepsake();if(!item)return null;
+    const keepsakes=()=>[].concat(authoredKeepsakes[book[0]]||[]);
+    function keepsakeArtifact(item){
+      if(!item)return null;
       return {...item,localId:item.id,onReveal:()=>keepSelection(book[0],item.id),
         onRead:()=>{readHere.add(item.id);remember(book[0],{...item,replies:[]});},
         onFlip:face=>{remember(book[0],{...item,replies:[]},face==='back'?1:0);}};
     }
-    function artifactAt(id){return id==='preset'?presetArtifact():id===keepsake()?.id?keepsakeArtifact():asCurrentItem(id);}
+    function artifactAt(id){return id==='preset'?presetArtifact():keepsakes().some(item=>item.id===id)?keepsakeArtifact(keepsakes().find(item=>item.id===id)):asCurrentItem(id);}
     function asCurrentItem(id){const item=visibleList().find(x=>x.id===id);return item?asArtifact(item):null;}
     const replyKey=id=>'reply:'+book[0]+':'+id;
     function replyDraft(id){const value=drafts()[replyKey(id)]?.text;return typeof value==='string'?value.slice(0,3000):'';}
@@ -191,12 +191,13 @@ window.BookSecrets=(()=>{
         offered=allowDraw?director.draw(book[0],candidates,{lastId:reading.books[book[0]]?.last,readIds}):director.snapshot().visit?.draws[book[0]]||null;
       }
       const items=visibleList().slice().reverse().sort((a,b)=>unread(book[0],b)-unread(book[0],a));
-      order=[...items.map(x=>x.id),...(preset?['preset']:[]),...(keepsake()?[keepsake().id]:[])];
+      order=[...items.map(x=>x.id),...(preset?['preset']:[]),...keepsakes().map(item=>item.id)];
       if(items.length&&items.every(x=>x.author===actor)&&!order.includes('preset'))order.unshift('book-intro');
     }
     function chooseInitial(){
       const available=visibleList(),offeredItem=available.find(x=>x.id===offered),reply=available.find(x=>unread(book[0],x)===3),fresh=available.slice().reverse().find(x=>unread(book[0],x)>0),last=reading.books[book[0]]?.last;
-      current=reply?.id||offeredItem?.id||fresh?.id||(order.includes('book-intro')?'book-intro':offered==='preset'&&!director?.known(book[0],'preset')?'preset':order.includes(last)?last:available.find(x=>x.author===actor)?.id||order[0]||null);
+      const album=keepsakes().filter(item=>item.kind==='illustration');
+      current=reply?.id||offeredItem?.id||fresh?.id||(album.length?(album.find(item=>item.id===last)||album[0]).id:null)||(order.includes('book-intro')?'book-intro':offered==='preset'&&!director?.known(book[0],'preset')?'preset':order.includes(last)?last:available.find(x=>x.author===actor)?.id||order[0]||null);
     }
     function opening(){
       if(!director||prepared)return;
@@ -220,7 +221,7 @@ window.BookSecrets=(()=>{
       // Repositioning the book must not replace a focused corner between keydown and click.
       if(navigationMarkup!==navigation){traces.innerHTML=navigation;navigationMarkup=navigation;}
       const active=items.find(x=>x.id===current);room.dataset.freshPaper=String(!!active&&unread(book[0],active)>0);
-      room.dataset.paperOwner=active?.author===actor?'own':active?'other':current==='book-intro'?'intro':current===keepsake()?.id?'authored-playtest':'original';
+      room.dataset.paperOwner=active?.author===actor?'own':active?'other':current==='book-intro'?'intro':keepsakes().some(item=>item.id===current)?'authored-playtest':'original';
       room.dataset.hasPageTurn=String(order.length>1);
       // Set the physical dock before measuring it, including a newly buried first note.
       room.querySelector('.sid-dock').style.bottom=order.length>1?'78px':'';

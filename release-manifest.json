@@ -83,7 +83,11 @@
     "assets/scene/calico-belly-cels-v01413.png",
     "assets/scene/window-original-flat-v01415.png",
     "assets/scene/window-rain-flat-v01415.png",
-    "assets/scene/window-night-snow-flat-v01415.png"
+    "assets/scene/window-night-snow-flat-v01415.png",
+    "assets/scene/cat-letter-cover-v01416.png",
+    "assets/scene/cat-daily-tree-v01416.png",
+    "assets/scene/cat-daily-sofa-v01416.png",
+    "assets/scene/cat-daily-window-v01416.png"
   ],
   "status": "development-v0.14.15-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
@@ -837,5 +841,17 @@
     "evidence": "docs/validation/window-quiet/REPORT.md",
     "animation": "original: gentle leaf sway; rain: slow river ripples; nightSnow: 22 sparse drifting flakes. All clipped, paused offscreen/hidden/reading, static reduced motion.",
     "retired": "seaside, sunset, snow removed from UI/random pool/current asset whitelist; old photo data preserved when migrating a retired view"
+  },
+  "catPictureBook": {
+    "revision": "cat-daily-v1",
+    "assets": [
+      "assets/scene/cat-letter-cover-v01416.png",
+      "assets/scene/cat-daily-tree-v01416.png",
+      "assets/scene/cat-daily-sofa-v01416.png",
+      "assets/scene/cat-daily-window-v01416.png"
+    ],
+    "source": "built-in image_gen; supplied calico reference",
+    "behavior": "independent full front art; three bound illustration pages; old notes and saves retained",
+    "evidence": "docs/validation/cat-picture-book/REPORT.md"
   }
 }

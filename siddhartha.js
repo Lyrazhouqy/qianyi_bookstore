@@ -89,7 +89,7 @@ window.Siddhartha = (() => {
     const y1=Math.max(16,Math.min(bounds.height-sheetHeight-16,bookCenter-sheetHeight/2,reserveCorner?cornerTop-sheetHeight-12:Infinity));
     paper.style.top=(y0+(y1-y0)*extraction)+'px';
     paper.style.transform='rotate('+(-7*(1-extraction))+'deg)';
-    paper.hidden=!artifact || progress<.83;
+    paper.hidden=!artifact || artifact.kind==='illustration' || progress<.83;
     paper.inert=progress<.98 || busy && !['pulling-letter','putting-letter','unfolding'].includes(step);
   }
   function pose(value) {
@@ -125,20 +125,27 @@ window.Siddhartha = (() => {
   }
   function allParts() { if(artifact.getParts)return artifact.getParts();return artifact.kind==='relay' ? letter.concat(callbacks.replies().map((text,index)=>['你的续写 '+(index+1),text])) : artifact.parts; }
   function insideCopy(){
+    query('.sid-album-page')?.remove();
+    if(artifact?.kind==='illustration'){
+      const figure=document.createElement('figure');figure.className='sid-album-page';
+      const image=document.createElement('img');image.src=artifact.picture.src;image.alt=artifact.picture.alt;image.draggable=false;image.decoding='async';
+      const caption=document.createElement('figcaption');caption.textContent=artifact.title;
+      figure.append(image,caption);query('.sid-page').appendChild(figure);
+    }
     room.dataset.readingLayout=['stack','note','fold'].includes(artifact?.kind)?'paired':'centered';
     room.dataset.artifactPicture=String(!!artifact?.picture);
     const candidate=artifact?.quotation;
     const quoted=candidate?.verified===true&&candidate.bookTitle===book[1]&&typeof candidate.text==='string'&&candidate.text.trim()&&typeof candidate.source==='string'&&candidate.source.trim();
     const copy=query('.sid-inside-copy');copy.dataset.kind=quoted?'quotation':'synopsis';room.dataset.leftContent=copy.dataset.kind;copy.scrollTop=0;
-    query('.sid-book-aside').textContent=insideMood[0];
-    copy.querySelector('strong').textContent=quoted?'这段话的原文':insideMood[1];
-    query('.sid-synopsis').textContent=quoted?candidate.text:book[2];
+    query('.sid-book-aside').textContent=artifact?.kind==='illustration'?'猫的来信':insideMood[0];
+    copy.querySelector('strong').textContent=artifact?.kind==='illustration'?artifact.title:quoted?'这段话的原文':insideMood[1];
+    query('.sid-synopsis').textContent=artifact?.kind==='illustration'?artifact.caption:quoted?candidate.text:book[2];
     const source=query('.sid-quotation-source');source.hidden=!quoted;source.textContent=quoted?'—— '+candidate.source:'';
   }
   function chooseArtifact(next){
     artifact=next;cueSeen=false;insideCopy();room.dataset.stock=next?.stock||'cream';room.dataset.artifact=next?.kind||'none';room.dataset.artifactSource=next?.source||'';
     room.setAttribute('aria-label',book[1]+(next?'，书与'+next.label:'，书籍阅读'));
-    paper.querySelector('.sid-letter-packet em').textContent=next?.label||'';paper.querySelector('.sid-letter-packet i').textContent=next?.kind==='rose'?'🥀':next?.kind==='envelope'?'✉':'⌁';paper.querySelector('.sid-letter-pick').setAttribute('aria-label',next?.pickLabel||'取出夹页');query('.sid-discovery-hint').textContent=next?'……好像有人在这里留下了什么。':'也可以在这页夹一点什么。';placeLetter();
+    paper.querySelector('.sid-letter-packet em').textContent=next?.label||'';paper.querySelector('.sid-letter-packet i').textContent=next?.kind==='rose'?'🥀':next?.kind==='envelope'?'✉':'⌁';paper.querySelector('.sid-letter-pick').setAttribute('aria-label',next?.pickLabel||'取出夹页');query('.sid-discovery-hint').textContent=next?.kind==='illustration'?'':next?'……好像有人在这里留下了什么。':'也可以在这页夹一点什么。';placeLetter();
   }
   function startPageTurn(direction,drag=false,nextArtifact=null){
     if(busy||gesture||extraction>0||step!=='open')return false;
@@ -216,7 +223,7 @@ window.Siddhartha = (() => {
   }
   function buildLetter() { const all=allParts();visibleParts=Math.max(1,Math.min(all.length,artifact.initialParts?.()||1));reader.innerHTML=all.slice(0,visibleParts).map(segmentHTML).join('');writing=false;letterControls(); }
   async function takeLetter({unfoldOnArrival=false} = {}) {
-    if(!artifact || busy || progress<.98 || ['packet','letter'].includes(step))return;
+    if(!artifact || artifact.kind==='illustration' || busy || progress<.98 || ['packet','letter'].includes(step))return;
     busy=true;setStep('pulling-letter');paper.classList.add('sid-discovering');paper.dataset.fresh=String(artifact.fresh===true);const from=extraction;
     const ordinary=['note','stack'].includes(artifact.kind);
     await tween(ordinary?(unfoldOnArrival?190:250):(unfoldOnArrival?260:380),t=>{extraction=from+(1-from)*t;paper.style.setProperty('--sid-lift',String(Math.sin(t*Math.PI)*.8));placeLetter();},glide);paper.style.removeProperty('--sid-lift');
@@ -412,7 +419,7 @@ window.Siddhartha = (() => {
     if(returnPending)returnToShelf();
   }
   function nearPaper(event){
-    if(!artifact||progress<.98||extraction>0||secretDesk?.editing())return false;
+    if(!artifact||paper.hidden||artifact.kind==='illustration'||progress<.98||extraction>0||secretDesk?.editing())return false;
     const r=paper.getBoundingClientRect();return event.clientX>=r.left-10&&event.clientX<=r.right+10&&event.clientY>=r.top-10&&event.clientY<=r.bottom+10;
   }
   function bindDrag(element,kind,cornerZone=false) {
@@ -545,7 +552,7 @@ window.Siddhartha = (() => {
     query('.sid-page h2').textContent='《'+book[1]+'》';
     query('.sid-cover-title').textContent=book[1];
     insideCopy();
-    query('.sid-discovery-hint').textContent=artifact?'……好像有人在这里留下了什么。':'这次没有遇见新的阅读痕迹。';
+    query('.sid-discovery-hint').textContent=artifact?.kind==='illustration'?'':artifact?'……好像有人在这里留下了什么。':'这次没有遇见新的阅读痕迹。';
     query('.sid-letter-packet em').textContent=artifact?.label || '';
     query('.sid-letter-packet i').textContent=artifact?.kind==='rose'?'🥀':artifact?.kind==='envelope'?'✉':'⌁';
     room.style.setProperty('--reader-cover',getComputedStyle(button).getPropertyValue('--book-color'));
