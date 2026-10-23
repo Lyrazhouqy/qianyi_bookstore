@@ -178,7 +178,8 @@ window.BookSecrets=(()=>{
       tools.querySelector('.sid-paper-tabs').hidden=true;
       if(!book||cornerDrag)return;
       const items=visibleList(),index=order.indexOf(current);
-      const navigation=order.length>1?[-1,1].map(direction=>{const id=order[index+direction];return id?'<button class="sid-paper-tab sid-page-'+(direction<0?'prev':'next')+(direction<0&&order[index+1]?' is-upper':'')+'" data-paper-id="'+esc(id)+'" data-direction="'+direction+'" aria-label="翻到'+(direction<0?'上一页':'下一页')+'" title="轻触或捏住右侧纸角向内翻动"><i aria-hidden="true"></i></button>':'';}).join(''):'';
+      const next=order[(index+1)%order.length];
+      const navigation=order.length>1?'<button class="sid-paper-tab sid-page-next" data-paper-id="'+esc(next)+'" data-direction="1" aria-label="翻到下一页" title="轻点右下角翻下一页"><i aria-hidden="true"></i></button>':'';
       // Repositioning the book must not replace a focused corner between keydown and click.
       if(traces.innerHTML!==navigation)traces.innerHTML=navigation;
       const active=items.find(x=>x.id===current);room.dataset.freshPaper=String(!!active&&unread(book[0],active)>0);
@@ -193,7 +194,7 @@ window.BookSecrets=(()=>{
       host.layout();decorate();
     }
     async function selectPaper(id,direction){
-      if(room.dataset.step!=='open')return;
+      if(!['open','letter'].includes(room.dataset.step))return;
       if(!order.includes(id))return;
       await host.turnPage(artifactAt(id),1,()=>pageCommitted(id));
     }

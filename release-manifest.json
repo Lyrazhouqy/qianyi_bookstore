@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.5",
+  "build": "paper-bookshop-game-v0.14.6",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -69,7 +69,7 @@
     "assets/fonts/book-title-serif-OFL.txt",
     "assets/scene/prince-postcard-user-v0142.png"
   ],
-  "status": "development-v0.14.5-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.6-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -743,5 +743,12 @@
     "interaction": "lift and unfold; swipe right or touch raised paper corner to tuck back; swipe postcard left to turn; reply drafts kept",
     "evidence": "docs/validation/v0145/REPORT.md",
     "production": "unchanged v0.13.0"
+  },
+  "singleCorner": {
+    "version": "0.14.6",
+    "localUrl": "http://127.0.0.1:4173/?v=0.14.6&playtest=rhythm",
+    "behavior": "one lower-right next corner, wraps last to first; open paper is tucked and draft kept before turning; paper raised and corner kept clear",
+    "copy": "放回 / 收起便笺 / 收起信 / 收起草稿",
+    "evidence": "docs/validation/v0146/REPORT.md"
   }
 }

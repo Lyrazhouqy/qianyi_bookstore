@@ -12,7 +12,7 @@ async function setup(p,books,{draws={},known={},reading={books:{}}}={}){
 test('all40 other papers and own paper are separate reachable pages; writing beyond12 and24 preserves everything',async({page})=>{
  const papers=[note('mine','A'),...Array.from({length:40},(_,i)=>note('n'+i))];await setup(page,{naval:papers},{draws:{naval:'n39'},reading:{books:{naval:{items:{mine:{front:true,replies:0}},last:'mine'}}}});await open(page);
  const labels=[];for(let i=0;i<41;i++){await expect(page.locator('.sid-letter-packet em')).toHaveCount(1);labels.push(await page.locator('.sid-letter-packet em').textContent());if(i<40){await page.locator('.sid-page-next').click();await step(page,'open');}}
- expect(new Set(labels).size).toBe(41);expect(labels).toContain('你夹的便笺');expect(labels).toContain('书友n0的便笺');expect(labels).toContain('书友n39的便笺');await expect(page.locator('.sid-page-next')).toHaveCount(0);
+ expect(new Set(labels).size).toBe(41);expect(labels).toContain('你夹的便笺');expect(labels).toContain('书友n0的便笺');expect(labels).toContain('书友n39的便笺');await expect(page.locator('.sid-page-next')).toHaveCount(1);
  await page.locator('.sid-create-pen').click();await page.locator('#secret-front').fill('第四十二张新便笺');await page.locator('.sid-bury').click();await step(page,'open');const saved=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).books.naval,notesKey);expect(saved).toHaveLength(42);expect(saved.some(x=>x.id==='n0')).toBe(true);expect(saved.some(x=>x.id==='n39')).toBe(true);await page.reload();await open(page);expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).books.naval.length,notesKey)).toBe(42);
 });
 test('old exhausted quota and long inactivity cannot hide papers across books',async({page})=>{

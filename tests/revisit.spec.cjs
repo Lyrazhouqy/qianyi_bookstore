@@ -17,7 +17,7 @@ test('B turns to a separate page for their own old note; it never sits beside N�
  await enter(page,'B');await book(page);await expect(page.locator('.sid-letter-packet')).toHaveCount(1);await expect(page.locator('.sid-letter-packet em')).toHaveText('书友 N的便笺');await expect(page.getByRole('button',{name:'抽出你留下的便笺',exact:true})).toHaveCount(0);
  const next=page.locator('.sid-page-next');await expect.poll(()=>next.evaluate(el=>{const r=el.getBoundingClientRect();return r.width>=44&&r.height>=44&&el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);
  await next.click();await step(page,'open');await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-paper-owner','own');await expect(page.locator('.sid-letter-packet em')).toHaveText('你夹的便笺');await take(page);await expect(page.locator('.sid-segment')).toHaveCount(1);await expect(page.locator('.sid-segment')).toContainText('今年却开始喜欢回家的路');await expect(page.locator('.sid-unfold')).toHaveCount(0);await expect(page.getByRole('button',{name:'给自己补一句',exact:true})).toBeVisible();
- await page.locator('[data-sid="put"]').click();await step(page,'open');await page.locator('.sid-page-prev').click();await step(page,'open');await expect(page.locator('.sid-letter-packet em')).toHaveText('书友 N的便笺');
+ await page.locator('[data-sid="put"]').click();await step(page,'open');for(let i=0;i<4&&await page.locator('.sid-letter-packet em').textContent()!=='书友 N的便笺';i++){await page.locator('.sid-page-next').click();await step(page,'open');}await expect(page.locator('.sid-letter-packet em')).toHaveText('书友 N的便笺');
 });
 test('an actual A reply belongs to N, reaches N on revisit, and does not become B’s reply',async({page})=>{
  await enter(page,'A');await book(page);await take(page);await reply(page,'也许回家的路，就是今天的远方。');await expect(page.locator('.sid-segment').last()).toContainText('你的回应');await back(page);
@@ -38,7 +38,7 @@ test('opening the cover does not mark a note read; failed reply save keeps the w
 test('page corners reach every known sheet without a second paper preview and stay tappable after rotation',async({page})=>{
  await enter(page,'B');await book(page);await page.setViewportSize({width:667,height:320});await expect.poll(()=>page.locator('.sid-paper-traces').evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;})).toBe(true);
  const labels=new Set();for(let i=0;i<3;i++){labels.add(await page.locator('.sid-letter-packet em').first().textContent());if(await page.locator('.sid-page-next').count()){await page.locator('.sid-page-next').click();await step(page,'open');}}
- expect(labels.size).toBe(3);await page.locator('.sid-page-prev').click();await step(page,'open');await take(page);await expect(page.locator('.sid-stack-pen')).toBeVisible();await page.locator('.sid-stack-pen').click();await expect(page.locator('#sid-reply')).toBeVisible();
+ expect(labels.size).toBe(3);for(let i=0;i<4&&await page.locator('.siddhartha-room').getAttribute('data-artifact')!=='stack';i++){await page.locator('.sid-page-next').click();await step(page,'open');}await take(page);await expect(page.locator('.sid-stack-pen')).toBeVisible();await page.locator('.sid-stack-pen').click();await expect(page.locator('#sid-reply')).toBeVisible();
 });
 test('animated page turn conceals the next paper until the leaf settles and honors a queued return',async({page})=>{
  await page.emulateMedia({reducedMotion:'no-preference'});await enter(page,'B');await book(page);await page.locator('.sid-page-next').click();await step(page,'page-turn');

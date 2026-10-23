@@ -19,7 +19,7 @@ window.Siddhartha = (() => {
   };
   let room,stage,position,carrier,cover,dock,paper,reader,hint,returnButton;
   let source,callbacks,book,artifact,step='idle',busy=false,progress=0,extraction=0,sheetSpread=0,visibleParts=1,writing=false,draft='',ignoreClick=0,ignoreClickKind=null,gesture=null,returnPending=false,returnInProgress=false;
-  let secretDesk,openOnArrival=false,queuedBook=null,cueSeen=false,sheetGesture=null;
+  let secretDesk,openOnArrival=false,queuedBook=null,cueSeen=false,sheetGesture=null,pageAdvance=false;
   let heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};
   const running = new Set();
   const query = selector => room.querySelector(selector);
@@ -51,7 +51,8 @@ window.Siddhartha = (() => {
     if (!room || room.hidden) return;
     const target=dock.getBoundingClientRect(), bounds=stage.getBoundingClientRect();
     const paired=room.dataset.readingLayout==='paired',page=query('.sid-page').getBoundingClientRect();
-    const sheetSpace=Math.max(120,Math.min(bounds.height-48,room.getBoundingClientRect().height-64));reader.style.maxHeight=sheetSpace+'px';room.style.setProperty('--sid-sheet-space',sheetSpace+'px');
+    const cornerTop=page.bottom-bounds.top-76,reserveCorner=room.dataset.hasPageTurn==='true';
+    const sheetSpace=Math.max(120,Math.min(bounds.height-48,room.getBoundingClientRect().height-64,reserveCorner?cornerTop-32:Infinity));reader.style.maxHeight=sheetSpace+'px';room.style.setProperty('--sid-sheet-space',sheetSpace+'px');
     const width=paired?Math.max(100,page.width-16):Math.min(368,bounds.width-32);
     const x0=paired?page.left-bounds.left+(page.width-target.width)/2:target.left-bounds.left+4,y0=target.top-bounds.top;
     const x1=paired?page.left-bounds.left+8:(bounds.width-width)/2;
@@ -63,8 +64,8 @@ window.Siddhartha = (() => {
     // Keep the lifted sheet over the book, including while each fold changes
     // its height. Clamp only when a short viewport needs reading space.
     const sheetHeight=paper.classList.contains('is-reading')?reader.getBoundingClientRect().height:88*shownWidth/dockWidth;
-    const bookCenter=position.offsetTop;
-    const y1=Math.max(16,Math.min(bounds.height-sheetHeight-16,bookCenter-sheetHeight/2));
+    const bookCenter=position.offsetTop-18;
+    const y1=Math.max(16,Math.min(bounds.height-sheetHeight-16,bookCenter-sheetHeight/2,reserveCorner?cornerTop-sheetHeight-12:Infinity));
     paper.style.top=(y0+(y1-y0)*extraction)+'px';
     paper.style.transform='rotate('+(-7*(1-extraction))+'deg)';
     paper.hidden=!artifact || progress<.83;
@@ -137,7 +138,13 @@ window.Siddhartha = (() => {
     }};
   }
   async function turnPaperPage(next,direction,commit){
-    const turn=startPageTurn(direction);return turn?turn.finish(next,commit):false;
+    if(pageAdvance||busy||gesture||sheetGesture||returnInProgress)return false;
+    pageAdvance=true;
+    try{
+      if(extraction>0)await putLetter();
+      if(extraction>0||returnPending||returnInProgress||busy||step!=='open')return false;
+      const turn=startPageTurn(direction);return turn?await turn.finish(next,commit):false;
+    }finally{pageAdvance=false;}
   }
   function segmentHTML(part,index) {
     const picture=artifact.kind==='postcard'&&index===0?(artifact.picture?'<img class="sid-postcard-picture" src="'+escapeHTML(artifact.picture.src)+'" alt="'+escapeHTML(artifact.picture.alt)+'" draggable="false">':'<svg class="sid-postcard-picture" viewBox="0 0 320 150" aria-hidden="true"><rect width="320" height="150" fill="#a6b9ac"/><circle cx="245" cy="38" r="23" fill="#e9c477"/><path d="M0 116L85 39 183 126 245 81 320 128V150H0Z" fill="#718c7b"/><path d="M0 139Q96 93 181 135T320 133V150H0Z" fill="#d3bc8c"/><path d="M126 44l21 9 26-14 8 3-19 17 18 10-5 5-27-6-13 11-5-2 6-15-17-12z" fill="#f7edd4"/></svg>'):'';
@@ -148,11 +155,11 @@ window.Siddhartha = (() => {
   function letterControls() {
     query('.sid-unfold')?.remove();query('.sid-letter-actions')?.remove();query('.sid-write')?.remove();
     const all=allParts();
-    const back=query('.sid-paper-return');back.setAttribute('aria-label',writing?'收好草稿，翻回书页':'翻回书页');back.title=writing?'向右轻扫，收好草稿':'轻点纸角或向右轻扫';
-    query('.sid-sheet-hint').textContent=writing?'轻扫收好草稿':artifact.kind==='postcard'||artifact.kind==='fold'?'左扫翻面 · 右扫翻回':'向右轻扫翻回';
+    const back=query('.sid-paper-return'),objectName=artifact.kind==='postcard'?'明信片':['relay','fold'].includes(artifact.kind)?'信':'便笺';back.setAttribute('aria-label',writing?'收起草稿':'收起'+objectName);back.querySelector('span').textContent=writing?'收起草稿':'收起'+objectName;back.title=writing?'向右轻扫，收好草稿':'轻点纸角或向右轻扫';
+    query('.sid-sheet-hint').textContent=writing?'右扫收起草稿':artifact.kind==='postcard'||artifact.kind==='fold'?'左扫翻面 · 右扫收起':'右扫收起'+objectName;
     if(visibleParts<all.length && !['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-unfold">'+escapeHTML(artifact.unfoldLabel || '沿折痕展开下一段 ⌄')+'</button>');
-    if(['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-flip" data-sid="flip">'+(visibleParts===1?'翻到背面 ↻':'翻回正面 ↺')+'</button>');
-    if(writing) reader.insertAdjacentHTML('beforeend','<div class="sid-write"><label for="sid-reply"><span class="sid-writing-pen" aria-hidden="true">✎</span> '+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'在信的末尾续写')+'</label><textarea id="sid-reply" maxlength="'+(artifact.kind==='stack'?600:3000)+'" placeholder="'+escapeHTML(artifact.writePlaceholder||'写给留下这张纸的人……')+'">'+escapeHTML(draft)+'</textarea><div class="sid-write-actions"><button class="sid-put" data-sid="cancel">放下笔</button><button class="btn" data-sid="save" aria-label="'+(artifact.kind==='stack'?'夹在便笺下面':'留在信上')+'">'+(artifact.kind==='stack'?'夹好 ↙':'留在信上')+'</button></div><p class="sid-message" role="status"></p></div>');
+    if(['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-flip" data-sid="flip">'+(visibleParts===1?'翻到背面 ↻':'翻到正面 ↺')+'</button>');
+    if(writing) reader.insertAdjacentHTML('beforeend','<div class="sid-write"><label for="sid-reply"><span class="sid-writing-pen" aria-hidden="true">✎</span> '+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'在信的末尾续写')+'</label><textarea id="sid-reply" maxlength="'+(artifact.kind==='stack'?600:3000)+'" placeholder="'+escapeHTML(artifact.writePlaceholder||'写给留下这张纸的人……')+'">'+escapeHTML(draft)+'</textarea><div class="sid-write-actions"><button class="sid-put" data-sid="cancel">放下笔</button><button class="btn" data-sid="save" aria-label="放回">放回</button></div><p class="sid-message" role="status"></p></div>');
     reader.insertAdjacentHTML('beforeend','<div class="sid-letter-actions">'+((artifact.kind==='relay'||artifact.kind==='stack')&&visibleParts===all.length&&!writing?'<button class="sid-pen sid-stack-pen'+(artifact.invite?' is-inviting':'')+'" aria-label="'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔续写')+'" data-sid="write"><img src="assets/scene/fountain-pen-burgundy-v075.png" alt="" draggable="false"><span class="sid-pen-caption" aria-hidden="true">'+(artifact.kind==='stack'?escapeHTML(artifact.writeLabel||'回应这张便笺'):'拿起笔')+'</span></button>':'')+'</div>');
   }
   function buildLetter() { const all=allParts();visibleParts=Math.max(1,Math.min(all.length,artifact.initialParts?.()||1));reader.innerHTML=all.slice(0,visibleParts).map(segmentHTML).join('');writing=false;letterControls(); }
@@ -404,8 +411,8 @@ window.Siddhartha = (() => {
   function create() {
     room=document.createElement('div');room.className='siddhartha-room';room.hidden=true;
     room.setAttribute('role','dialog');room.setAttribute('aria-modal','true');room.setAttribute('aria-label','悉达多，书与一封接力信');
-    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small>此书留在这里</small><span class="sid-inside-copy"><strong>关于这本书</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div><button class="sid-paper-return" data-sid="put" aria-label="翻回书页"><i aria-hidden="true">↶</i><span aria-hidden="true">翻回</span></button><span class="sid-sheet-hint" aria-hidden="true">向右轻扫翻回</span></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
-    room.addEventListener('pointerdown',()=>{room.classList.remove('sid-keyboard');if(ignoreClickKind==='page'){ignoreClick=0;ignoreClickKind=null;}},true);
+    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small>此书留在这里</small><span class="sid-inside-copy"><strong>关于这本书</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div><button class="sid-paper-return" data-sid="put" aria-label="收起便笺"><i aria-hidden="true">↶</i><span aria-hidden="true">收起便笺</span></button><span class="sid-sheet-hint" aria-hidden="true">右扫收起便笺</span></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
+    room.addEventListener('pointerdown',()=>{room.classList.remove('sid-keyboard');if(['page','sheet'].includes(ignoreClickKind)){ignoreClick=0;ignoreClickKind=null;}},true);
     room.addEventListener('click',event=>{
       if(event.target.closest('.sid-paper-traces'))return;
       if(!returnInProgress&&performance.now()>=ignoreClick&&step==='open'&&nearPaper(event)&&!paper.contains(event.target)){event.stopPropagation();takeLetter({unfoldOnArrival:true});return;}
@@ -470,7 +477,7 @@ window.Siddhartha = (() => {
   }
   async function open(button,handlers) {
     if(!room)create();if(!room.hidden)return;
-    source=button;callbacks=handlers;book=handlers.book;artifact=handlers.artifact;openOnArrival=false;busy=true;progress=0;extraction=0;sheetSpread=0;draft='';returnPending=false;heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};gesture=null;sheetGesture=null;ignoreClick=0;ignoreClickKind=null;paper.style.translate='';paper.style.rotate='';
+    source=button;callbacks=handlers;book=handlers.book;artifact=handlers.artifact;openOnArrival=false;busy=true;progress=0;extraction=0;sheetSpread=0;draft='';returnPending=false;heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};gesture=null;sheetGesture=null;pageAdvance=false;ignoreClick=0;ignoreClickKind=null;paper.style.translate='';paper.style.rotate='';
     secretDesk.reset(book,artifact);
     artifact=secretDesk.initialArtifact();
     queuedBook=null;delete room.dataset.openQueued;room.dataset.readerBook=book[0];

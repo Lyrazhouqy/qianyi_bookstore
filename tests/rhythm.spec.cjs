@@ -10,7 +10,6 @@ async function pick(page,id){
  await page.locator('.sid-cover').tap();await step(page,'open');
 }
 async function seek(page,kind){
- for(let i=0;await page.locator('.sid-page-prev').count()&&i<100;i++){await page.locator('.sid-page-prev').tap();await step(page,'open');}
  for(let i=0;i<100;i++){
   if(await page.locator('.siddhartha-room').getAttribute('data-artifact')===kind)return;
   if(!await page.locator('.sid-page-next').count())break;
@@ -94,8 +93,7 @@ test('restored physical books preserve old identities, own/other papers, drafts 
   localStorage.setItem('paperbook-discovery-v1',JSON.stringify({version:1,known:{},baseline:{},changes:{},visit:{id:'old-full',seed:1,lastActive:1,draws:{night:null},found:3,explored:3,quiet:99,events:[]}}));
  });
  await enter(page);await pick(page,'night');const labels=[];
- while(await page.locator('.sid-page-prev').count()){await page.locator('.sid-page-prev').tap();await step(page,'open');}
- for(let i=0;i<100;i++){labels.push(await page.locator('.sid-letter-packet em').textContent());if(!await page.locator('.sid-page-next').count())break;await page.locator('.sid-page-next').tap();await step(page,'open');}
+ const first=await page.locator('.sid-page-number').textContent();for(let i=0;i<100;i++){labels.push(await page.locator('.sid-letter-packet em').textContent());await page.locator('.sid-page-next').tap();await step(page,'open');if(await page.locator('.sid-page-number').textContent()===first)break;}await seek(page,'postcard');
  expect(labels.filter(x=>x.includes('便笺')).length).toBeGreaterThanOrEqual(42);expect(labels).toContain('你夹的便笺');await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-artifact-source','authored-playtest');
  await page.locator('.sid-create-pen').tap();await expect(page.locator('#secret-front')).toHaveValue('原来的创作草稿');await page.locator('.sid-desk-close').tap();await step(page,'open');await back(page);
  const saved=await page.evaluate(()=>({notes:JSON.parse(localStorage.getItem('paperbook-secrets-v1')),visit:JSON.parse(localStorage.getItem('paperbook-discovery-v1'))}));expect(saved.notes.books.night).toHaveLength(42);expect(saved.visit.visit.id).toBe('old-full');expect(saved.visit.visit.quiet).toBe(99);
@@ -104,11 +102,10 @@ test('restored physical books preserve old identities, own/other papers, drafts 
 
 test('the lower pickup edge belongs to loose paper, not the transparent page-corner hit area',async({page})=>{
  await enter(page);await pick(page,'naval');
- while(await page.locator('.sid-page-prev').count()){await page.locator('.sid-page-prev').tap();await step(page,'open');}
  await page.locator('.sid-page-next').tap();await step(page,'open');
  const label=await page.locator('.sid-letter-packet em').textContent(),number=await page.locator('.sid-page-number').textContent();
  const r=await page.locator('.sid-letter-pick').boundingBox();await page.touchscreen.tap(r.x+r.width*.5,r.y+r.height-4);await step(page,'letter');
- await expect(page.locator('.sid-create-pen')).toBeHidden();await expect(page.locator('.sid-paper-traces')).toBeHidden();await page.locator('[data-sid="put"]').tap();await step(page,'open');await expect(page.locator('.sid-letter-packet em')).toHaveText(label);await expect(page.locator('.sid-page-number')).toHaveText(number);
+ await expect(page.locator('.sid-create-pen')).toBeHidden();await expect(page.locator('.sid-paper-traces')).toBeVisible();await page.locator('[data-sid="put"]').tap();await step(page,'open');await expect(page.locator('.sid-letter-packet em')).toHaveText(label);await expect(page.locator('.sid-page-number')).toHaveText(number);
 });
 
 test('ordinary note reading has lower motion cost than opening a relay fold',async({page})=>{

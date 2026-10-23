@@ -2,7 +2,6 @@ const {test,expect}=require('@playwright/test');
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 async function open(p){await p.locator('.spine[data-id="prince"]').click();await step(p,'held');await p.locator('.sid-cover').tap();await step(p,'open');}
 async function seek(p,kind){
- while(await p.locator('.sid-page-prev').count()){await p.locator('.sid-page-prev').tap();await step(p,'open');}
  for(let i=0;i<12;i++){
   if(await p.locator('.siddhartha-room').getAttribute('data-artifact')===kind)return;
   if(!await p.locator('.sid-page-next').count())break;

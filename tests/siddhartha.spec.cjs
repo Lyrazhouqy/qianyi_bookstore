@@ -6,7 +6,7 @@ async function openCover(page) {await page.getByRole('button',{name:'翻开《�
 async function take(page) {await page.getByRole('button',{name:'从夹页抽出接力信'}).tap();await step(page,'letter');}
 async function unfoldFirst(page) {await page.getByRole('button',{name:'展开折信',exact:true}).tap();await step(page,'letter');}
 async function all(page) {while(await page.locator('.sid-unfold').count()){await page.locator('.sid-unfold').tap();await step(page,'letter');}}
-async function put(page) {await page.getByRole('button',{name:'翻回书页'}).tap();await step(page,'open');}
+async function put(page) {await page.getByRole('button',{name:'收起信'}).tap();await step(page,'open');}
 async function back(page) {await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveAttribute('data-phase','idle');await expect(room(page)).toBeHidden();await expect(page.locator('.is-out')).toHaveCount(0);}
 const errors=new WeakMap();
 test.beforeEach(async({page})=>{const list=[];errors.set(page,list);page.on('pageerror',e=>list.push(e.message));await page.route('**/real-materials.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookRealMaterials=()=>({});'}));await page.goto('/?focus=siddhartha');await expect(page.locator('.spine')).toHaveCount(34);});

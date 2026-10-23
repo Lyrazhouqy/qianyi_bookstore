@@ -11,7 +11,7 @@ test('the left excerpt follows the selected paper and falls back after turning t
  await enter(page,{trusted:true});const copy=page.locator('.sid-inside-copy');await expect(copy).toHaveAttribute('data-kind','quotation');await expect(copy.locator('strong')).toHaveText('这段话的原文');await expect(copy.locator('.sid-synopsis')).toHaveText('【测试专用引文】这一段用于检查左页对应关系。');await expect(copy.locator('.sid-quotation-source')).toHaveText('—— 测试资料，第1段（非真实原著）');
  const x=await copy.boundingBox(),back=await page.locator('.sid-cover-back').boundingBox();expect(x.x).toBeGreaterThanOrEqual(back.x-1);expect(x.x+x.width).toBeLessThanOrEqual(back.x+back.width+1);
  await page.locator('.sid-page-next').click();await step(page,'open');await expect(copy).toHaveAttribute('data-kind','synopsis');await expect(copy.locator('strong')).toHaveText('关于这本书');await expect(copy.locator('.sid-quotation-source')).toBeHidden();await expect(copy.locator('.sid-synopsis')).toHaveText('有人一天读完，也有人想把它放在手边，反复重读。');
- await page.locator('.sid-page-prev').click();await step(page,'open');await expect(copy).toHaveAttribute('data-kind','quotation');
+ for(let i=0;i<4&&await copy.getAttribute('data-kind')!=='quotation';i++){await page.locator('.sid-page-next').click();await step(page,'open');}await expect(copy).toHaveAttribute('data-kind','quotation');
 });
 test('an unverified quotation or a different book never replaces the synopsis',async({page})=>{
  await enter(page,{trusted:false});await expect(page.locator('.sid-inside-copy')).toHaveAttribute('data-kind','synopsis');await expect(page.locator('.sid-synopsis')).not.toContainText('测试专用');
@@ -53,9 +53,6 @@ test('the real paired passage survives an old save and never follows a different
  await page.screenshot({path:test.info().outputPath('real-pair-left.png'),animations:'disabled'});
  // The reader sorts pages by unread state and reverses insertion order.
  // Walk the actual page corners rather than assuming the pool's array order.
- while(await page.locator('.sid-page-prev').count()){
-  await page.locator('.sid-page-prev').click();await step(page,'open');
- }
  let quotations=0;
  for(let i=0;i<notes.length;i++){
   const id=await page.evaluate(()=>JSON.parse(localStorage.getItem('paperbook-secret-reading-v1')).books.naval.last);
@@ -66,7 +63,7 @@ test('the real paired passage survives an old save and never follows a different
  }
  expect(quotations).toBe(1);
  while(await copy.getAttribute('data-kind')!=='quotation'){
-  await page.locator('.sid-page-prev').click();await step(page,'open');
+  await page.locator('.sid-page-next').click();await step(page,'open');
  }
  await page.locator('.sid-letter-pick').click();await step(page,'letter');
  await expect(page.locator('.sid-letter-reader')).toContainText(paired.front);
