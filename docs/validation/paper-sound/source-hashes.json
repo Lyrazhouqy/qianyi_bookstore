@@ -1,0 +1,58 @@
+{
+  "paper-sound.js": {
+    "before": "d2e5d26bccfcff9fc181eb6b8ce316efe0730e1f71e5c5a1996e466c0c59e10f",
+    "after": "d2e5d26bccfcff9fc181eb6b8ce316efe0730e1f71e5c5a1996e466c0c59e10f",
+    "http": "d2e5d26bccfcff9fc181eb6b8ce316efe0730e1f71e5c5a1996e466c0c59e10f",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "paper-sound.css": {
+    "before": "674553c1d44a4315fa81a06829bff2f9418997d4910d2808355bdcc2bb5f6bc9",
+    "after": "674553c1d44a4315fa81a06829bff2f9418997d4910d2808355bdcc2bb5f6bc9",
+    "http": "674553c1d44a4315fa81a06829bff2f9418997d4910d2808355bdcc2bb5f6bc9",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "siddhartha.js": {
+    "before": "ebd8794e2119db59eda67c11dd1c32fb360ce3dc01edb659b5a12972625abe7b",
+    "after": "ebd8794e2119db59eda67c11dd1c32fb360ce3dc01edb659b5a12972625abe7b",
+    "http": "ebd8794e2119db59eda67c11dd1c32fb360ce3dc01edb659b5a12972625abe7b",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "index.html": {
+    "before": "21d26bcaa07ee0a08312a60b1e2f1360fbd2e17a2236ffa619a662b812d6266b",
+    "after": "f8c7365b68c72ca702bba8334ae9f00ed644ff907cf9cb8bb0d793fe0231056c",
+    "http": "f8c7365b68c72ca702bba8334ae9f00ed644ff907cf9cb8bb0d793fe0231056c",
+    "unchanged": false,
+    "httpMatches": true
+  },
+  "music.js": {
+    "before": "19952d6f7919fd85b09d9534c600f1660efe3859804623ffa7e3ff842441fac3",
+    "after": "19952d6f7919fd85b09d9534c600f1660efe3859804623ffa7e3ff842441fac3",
+    "http": "19952d6f7919fd85b09d9534c600f1660efe3859804623ffa7e3ff842441fac3",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "mobile.css": {
+    "before": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+    "after": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+    "http": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "secrets.js": {
+    "before": "c7345c7b43b8ae8e7f761dfd24c2a58663dae20dbe41cf22d1097e6263f52307",
+    "after": "c7345c7b43b8ae8e7f761dfd24c2a58663dae20dbe41cf22d1097e6263f52307",
+    "http": "c7345c7b43b8ae8e7f761dfd24c2a58663dae20dbe41cf22d1097e6263f52307",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "release-manifest.json": {
+    "before": "ad0e71617e97e319425b25eba56bdf4e166da9f187362910cd9252c00514e5fe",
+    "after": "569267b762da7742e5be29be38a23be74b10192f3ab0d16ee932bc4209c0e53a",
+    "http": "569267b762da7742e5be29be38a23be74b10192f3ab0d16ee932bc4209c0e53a",
+    "unchanged": false,
+    "httpMatches": true
+  }
+}

@@ -1,5 +1,6 @@
 'use strict';
 window.Siddhartha = (() => {
+  const paperSound = kind => window.BookPaperSound?.play(kind);
   const clamp = value => Math.max(0, Math.min(1, value));
   const escapeHTML = value => String(value).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   // Square flat marks stay square on a full cover; side-view sprites are never stretched.
@@ -115,7 +116,7 @@ window.Siddhartha = (() => {
     if (busy) return;
     const releasedDrag=step==='cover-drag';
     busy=true;setStep(target?'opening':'closing');
-    const from=progress;
+    const from=progress;if(Math.abs(target-from)>.025)paperSound('cover');
     await tween(Math.max(240,(returnInProgress?320:target?520:420)*Math.abs(target-from)),t=>pose(from+(target-from)*t),releasedDrag||target?glide:smooth);
     busy=false;delete room.dataset.openQueued;pose(target);setStep(target?'open':'held');if(target)artifact?.onReveal?.();
     guidance(target?(artifact?(artifact.kind==='relay'?'书页间，露出一角折信':'书页间，藏着'+artifact.label):'翻过的书页，也记得来过的人'):'轻点封面，或向左拖开',target?(artifact?'轻点纸角直接展开，也可以向上抽出':'这次没有遇见新的阅读痕迹。'):'也可以随时放回原来的书位');
@@ -176,7 +177,7 @@ window.Siddhartha = (() => {
     }
     move(drag?.025:0);
     return {move,async finish(next,commit,cancel=false,{velocity=0,dragged=false}={}){
-      if(finished)return false;finished=true;setStep(cancel?'page-rebound':'page-turn');const from=progress;
+      if(finished)return false;finished=true;if(!cancel)paperSound('page');setStep(cancel?'page-rebound':'page-turn');const from=progress;
       try{
         const duration=cancel?Math.max(150,Math.min(230,from*320)):dragged?Math.max(150,Math.min(360,390*(1-from)/(1+Math.abs(velocity)*.5))):340;
         await tween(duration,t=>move(from+((cancel?0:1)-from)*t),cancel||dragged?glide:t=>t*t*(3-2*t));
@@ -229,7 +230,7 @@ window.Siddhartha = (() => {
   }
   async function openLetter() {
     if(busy || extraction!==1 || paper.classList.contains('is-reading'))return;
-    busy=true;setStep('unfolding');paper.classList.add('is-reading','sid-discovering');buildLetter();
+    busy=true;paperSound('unfold');setStep('unfolding');paper.classList.add('is-reading','sid-discovering');buildLetter();
     if(artifact.kind==='postcard'){
       await tween(280,t=>{reader.style.opacity=String(clamp(t*3));reader.style.transform='perspective(900px) rotateX('+(-14*(1-t))+'deg) translateY('+(8*(1-t))+'px)';placeLetter();},glide);reader.style.opacity='';reader.style.transform='';paper.classList.remove('sid-discovering');busy=false;setStep('letter');placeLetter();artifact.onRead?.();record('artifact_open',{kind:'postcard',face:'front'});guidance(artifact.title,artifact.detail);if(returnPending)returnToShelf();return;
     }
@@ -244,7 +245,7 @@ window.Siddhartha = (() => {
   }
   async function unfoldNext() {
     const all=allParts();if(busy || visibleParts>=all.length)return;
-    busy=true;setStep('unfolding');
+    busy=true;paperSound('unfold');setStep('unfolding');
     const beforeHeight=reader.getBoundingClientRect().height;
     query('.sid-unfold')?.remove();query('.sid-letter-actions')?.remove();
     const leaf=document.createElement('div');leaf.className='sid-leaf';leaf.innerHTML='<div class="sid-leaf-face">'+segmentHTML(all[visibleParts],visibleParts)+'</div>';reader.appendChild(leaf);
@@ -266,7 +267,7 @@ window.Siddhartha = (() => {
   }
   async function flipPaper({fromAngle=0}={}){
     if(busy||!['fold','postcard'].includes(artifact.kind))return;
-    busy=true;setStep('flipping');
+    busy=true;paperSound('paper');setStep('flipping');
     await tween(160,t=>{reader.style.transform='perspective(900px) rotateY('+(fromAngle+(90-fromAngle)*t)+'deg)';});
     visibleParts=visibleParts===1?2:1;reader.innerHTML=segmentHTML(allParts()[visibleParts-1],visibleParts-1);letterControls();placeLetter();
     await tween(180,t=>{reader.style.transform='perspective(900px) rotateY('+(-90*(1-t))+'deg)';});
@@ -282,7 +283,7 @@ window.Siddhartha = (() => {
   async function putLetter() {
     if(busy||extraction===0||!stashReply())return;
     const returnedParts=paper.classList.contains('is-reading')?visibleParts:0;
-    busy=true;setStep('putting-letter');writing=false;document.activeElement?.blur();
+    busy=true;paperSound('tuck');setStep('putting-letter');writing=false;document.activeElement?.blur();
     const from=reader.getBoundingClientRect(),target=dock.getBoundingClientRect(),sheetWidth=reader.offsetWidth,sheetHeight=reader.offsetHeight,tilt=parseFloat(paper.style.rotate)||0;
     paper.classList.remove('sid-sheet-dragging');
     const ghost=reader.cloneNode(true);ghost.classList.add('sid-returning-sheet');ghost.classList.remove('sid-folding');ghost.inert=true;ghost.setAttribute('aria-hidden','true');
@@ -346,7 +347,7 @@ window.Siddhartha = (() => {
     if(extraction>0){returnInProgress=false;return;}
     if(progress>0) await hinge(0);
     busy=true;setStep('returning');paper.hidden=true;
-    await flyBook(false);
+    await flyBook(false);paperSound('place');
     secretDesk?.returned?.();record('book_return');
     room.hidden=true;room.style.backgroundColor='';source.classList.remove('is-out','sid-return-target');$('shop').inert=false;document.documentElement.classList.remove('reader-open');busy=false;returnInProgress=false;setStep('idle');source.focus({preventScroll:true});const next=queuedBook;queuedBook=null;next?.classList.remove('sid-next-target');callbacks.close(next);
   }
@@ -559,7 +560,7 @@ window.Siddhartha = (() => {
     room.hidden=false;paper.classList.remove('is-reading');room.classList.remove('sid-room-reading');reader.innerHTML='';query('.sid-letter-pick').setAttribute('aria-label',artifact?.pickLabel || '从夹页抽出接力信');setStep('picking');
     $('shop').inert=true;document.documentElement.classList.add('reader-open');pose(0);
     button.classList.add('is-out');guidance('');
-    await flyBook(true);
+    paperSound('pickup');await flyBook(true);
     busy=false;pose(0);setStep('held');record('book_open');guidance('轻点或左右拖动翻书','合上后向下拖动收起，或轻点场景空白处');returnButton.textContent='收起手中的书';cover.focus({preventScroll:true});
     if(returnPending)returnToShelf();else if(openOnArrival)hinge(1);
   }

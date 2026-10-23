@@ -1,0 +1,1730 @@
+{
+  "initial": {
+    "stats": {
+      "startTime": "2026-10-23T08:45:20.793Z",
+      "duration": 25175.884,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 8,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "failed resume is retried by the next gesture; unavailable audio and storage never block reading",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "failed resume is retried by the next gesture; unavailable audio and storage never block reading",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "failed resume is retried by the next gesture; unavailable audio and storage never block reading",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "failed resume is retried by the next gesture; unavailable audio and storage never block reading",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  },
+  "second": {
+    "stats": {
+      "startTime": "2026-10-23T08:47:24.797Z",
+      "duration": 19986.085,
+      "expected": 24,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  },
+  "final": {
+    "stats": {
+      "startTime": "2026-10-23T08:48:49.506Z",
+      "duration": 245334.981,
+      "expected": 106,
+      "skipped": 0,
+      "unexpected": 6,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "timedOut"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "timedOut"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  },
+  "corner-fix": {
+    "stats": {
+      "startTime": "2026-10-23T08:51:25.211Z",
+      "duration": 12405.991999999998,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  },
+  "music-isolation": {
+    "stats": {
+      "startTime": "2026-10-23T08:52:27.848Z",
+      "duration": 10081.97,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "webkit-small",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  },
+  "verified": {
+    "stats": {
+      "startTime": "2026-10-23T08:54:05.523Z",
+      "duration": 365432.82,
+      "expected": 110,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "default attempt falls back to the first shop touch, remembers selection and respects pause",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "first explicit play and keyboard unlock do not create duplicate voices",
+        "file": "music-default.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "rapid record changes, pause and resume, reduced motion and keyboard stay consistent",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "unavailable audio is reported accurately and a later tap can retry without storage",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "failed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "slow pull keeps the free edge near the finger; a short held pull rebounds without changing paper",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "holding after the same short flick removes its momentum and leaves the paper in place",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "bringing a committed-distance page back before releasing cancels the turn",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a first discovery visibly lifts and unfolds; one paper corner tucks it back in a single short transition",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "right swipe returns the paper; short or vertical movements leave it readable without selecting text",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "reply corner and swipe preserve a draft, never publish it, and restore it on the next pickup",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a long note scrolls independently and its return corner stays accessible",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "postcard swipes follow the card, flip left, tuck right, and a cancelled hold restores the surface",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a descendant losing implicit pointer capture does not cancel the sheet handoff",
+        "file": "paper-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "real Web Audio renders paper; guarded book and note actions sound once, BGM keeps playing",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "independent paper mute persists, stops live voices, and fits the music sheet",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "failed resume is retried by the next gesture without a delayed action",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "missing Web Audio API is a silent fallback",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "storage denial preserves book controls and in-memory paper mute",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "background cancels sound, next trusted gesture resumes without replay; burst stays bounded",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "cancelled corner drag stays quiet; a completed drag makes one page sound",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "keyboard can mute the paper sound without pausing the record",
+        "file": "paper-sound.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "only the bottom-right corner remains; open paper tucks away and advances once, wrapping across every sheet",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "turning while replying keeps the draft without sending; the save button says 放回",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "rapid next taps on open paper do not skip sheets or duplicate a page turn",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "relay also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "postcard also leaves the book corner clear and can advance directly while open",
+        "file": "single-corner.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  },
+  "targeted-recheck": {
+    "stats": {
+      "startTime": "2026-10-23T09:01:00.886Z",
+      "duration": 29734.667,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-iPhone14",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "gramophone is reachable, real music switches across all seven records and continues through book reading",
+        "file": "music.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "a short deliberate flick completes one page without needing a long drag",
+        "file": "page-feel.spec.cjs",
+        "status": "passed"
+      }
+    ]
+  }
+}

@@ -2,6 +2,8 @@ const {test,expect}=require('@playwright/test');
 const step=(p,s)=>expect(p.locator('.siddhartha-room')).toHaveAttribute('data-step',s);
 async function setup(p,{motion=true,long=false}={}){
  await p.emulateMedia({reducedMotion:motion?'no-preference':'reduce'});
+ // Gesture assertions target the seeded feel-note, not a random authored story.
+ await p.route('**/stories.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookAuthoredStories={items:[],get:()=>null,seed:()=>({})};'}));
  await p.route('**/real-materials.js',r=>r.fulfill({contentType:'application/javascript',body:'window.BookRealMaterials=()=>({});'}));
  await p.addInitScript(long=>{if(localStorage.getItem('feel-fixture'))return;localStorage.setItem('feel-fixture','yes');localStorage.setItem('paperbook-secrets-v1',JSON.stringify({version:1,books:{naval:[{id:'feel-note',kind:'stack',author:'N',authorName:'测试书友',date:'2025-02-27',front:long?'【隔离测试】这是一张长便笺，用来检查上下阅读不会误触收回。'.repeat(34):'【隔离测试】今天在书店，遇见一张意外留下的纸。',stock:'cream',replies:[]}]}}));},long);
  await p.goto('/?v=0.14.5&playtest=rhythm');

@@ -1,0 +1,54 @@
+{
+  "trace": [
+    {
+      "step": "picking",
+      "state": "running",
+      "at": 439,
+      "duration": 0.24
+    },
+    {
+      "step": "opening",
+      "state": "running",
+      "at": 1238,
+      "duration": 0.3400208333333333
+    },
+    {
+      "step": "packet",
+      "state": "running",
+      "at": 2004,
+      "duration": 0.39
+    },
+    {
+      "step": "letter",
+      "state": "running",
+      "at": 2421,
+      "duration": 0.22
+    },
+    {
+      "step": "page-turn",
+      "state": "running",
+      "at": 2655,
+      "duration": 0.32
+    },
+    {
+      "step": "closing",
+      "state": "running",
+      "at": 3013,
+      "duration": 0.3400208333333333
+    },
+    {
+      "step": "returning",
+      "state": "running",
+      "at": 3844,
+      "duration": 0.16
+    }
+  ],
+  "music": [
+    {
+      "playing": true,
+      "time": 3.375085
+    }
+  ],
+  "phase": "idle",
+  "errors": []
+}

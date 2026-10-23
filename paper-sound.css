@@ -1,0 +1,5 @@
+.paper-sound-setting{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;border-top:1px solid #bcaa8c55;margin-top:8px;padding-top:8px;color:#73644c;font-size:13px}
+.paper-sound-setting small{display:block;color:#8b7c62;font-size:11px;line-height:1.6}
+.paper-sound-toggle{min-width:64px;min-height:44px;border:1px solid #a5957466;border-radius:22px;background:#f2ead5;color:#796b54;font:inherit;cursor:pointer}
+.paper-sound-toggle[aria-pressed="true"]{background:#738679;color:#fff9e9;border-color:transparent}
+.paper-sound-toggle:focus-visible{outline:2px solid #a57836;outline-offset:3px}

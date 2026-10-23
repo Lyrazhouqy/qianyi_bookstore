@@ -23,6 +23,8 @@
     "assets/scene/display-empty-v066.png",
     "music.css",
     "music.js",
+    "paper-sound.js",
+    "paper-sound.css",
     "assets/music/water-sound.mp3",
     "assets/music/water-sound.png",
     "assets/music/slow-coffee.mp3",
