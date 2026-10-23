@@ -25,7 +25,7 @@ test('only a completed read and actual shelf return permits one new draw; cover 
  await take(page);await back(page);expect((await snapshot(page)).visit.ready.naval).toBe(true);
  await page.reload();await open(page);let d=await snapshot(page);expect(d.visit.draws.naval).toBe('next');expect(d.visit.found).toBe(2);expect(d.known.naval).toEqual(expect.arrayContaining(['old','next']));
  await expect(page.locator('.sid-letter-packet em').first()).toHaveText('第二位的便笺');
- await page.locator('.sid-cover').click();await step(page,'held');await page.locator('.sid-cover').click();await step(page,'open');expect((await snapshot(page)).visit.draws.naval).toBe('next');
+ await page.locator('.sid-cover').click({position:{x:12,y:12}});await step(page,'held');await page.locator('.sid-cover').click();await step(page,'open');expect((await snapshot(page)).visit.draws.naval).toBe('next');
  await page.reload();await open(page);expect((await snapshot(page)).visit.draws.naval).toBe('next');await expect(page.locator('.sid-paper-traces button')).toHaveCount(2);
 });
 test('an unfinished exchange stays put until its remaining reply is read and the book returned',async({page})=>{

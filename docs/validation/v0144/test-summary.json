@@ -1,0 +1,52 @@
+{
+  "version": "0.14.4",
+  "date": "2026-10-23",
+  "engineTests": 12,
+  "phases": {
+    "initial-dates": {
+      "stats": {
+        "startTime": "2026-10-23T03:13:34.007Z",
+        "duration": 69615.95000000001,
+        "expected": 12,
+        "skipped": 0,
+        "unexpected": 12,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0144/dates-results.json"
+    },
+    "dates-recheck": {
+      "stats": {
+        "startTime": "2026-10-23T03:15:43.565Z",
+        "duration": 35339.612,
+        "expected": 24,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0144/dates-recheck-results.json"
+    },
+    "broad": {
+      "stats": {
+        "startTime": "2026-10-23T03:17:50.971Z",
+        "duration": 481219.669,
+        "expected": 148,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0144/final-results.json"
+    },
+    "final-selection": {
+      "stats": {
+        "startTime": "2026-10-23T03:26:32.273Z",
+        "duration": 142921.36200000002,
+        "expected": 44,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "raw": "evidence/bookshop-v0144/selection-final-results.json"
+    }
+  },
+  "scope": "Chromium/WebKit simulated touch at 320x568 and 390x844, not physical iPhone"
+}

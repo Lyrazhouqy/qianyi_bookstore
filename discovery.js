@@ -19,15 +19,23 @@
       state.baseline[bookId]=next;save();
     }
     function available(bookId,items,actor){return items.slice();}
-    function draw(bookId,candidates){
+    function draw(bookId,candidates,{readIds,lastId}={}){
       const v=visit(),retry=!!v.ready?.[bookId],cached=v.draws[bookId];
-      const eligible=candidates.filter(x=>!state.known[bookId]?.includes(x.id));
+      const read=new Set(readIds||state.known[bookId]||[]),eligible=candidates.filter(x=>!read.has(x.id));
       // Preserve a held/unread encounter across reopening and reload. Old saves
       // with a quota-blocked null offer may immediately surface existing paper.
       if(Object.hasOwn(v.draws,bookId)&&!retry&&(cached?candidates.some(x=>x.id===cached):!eligible.length)){save();return cached;}
       if(retry)delete v.ready[bookId];
-      v.explored++;const id=eligible.length?eligible[Math.floor(roll(v)*eligible.length)].id:null;
-      if(id){v.found++;v.lastFound=v.explored;}
+      // Unread papers first. Within that pool prefer a different author, then a
+      // different sheet. Once all are read, revisit them without sticking to one.
+      const previous=candidates.find(x=>x.id===lastId)||candidates.find(x=>x.id===cached);
+      let pool=eligible.length?eligible:candidates;
+      const otherAuthors=previous?pool.filter(x=>x.author&&previous.author&&x.author!==previous.author):[];
+      const otherDates=previous?pool.filter(x=>x.date&&previous.date&&x.date!==previous.date):[];
+      const otherSheets=previous?pool.filter(x=>x.id!==previous.id):[];
+      if(otherAuthors.length)pool=otherAuthors;else if(otherDates.length)pool=otherDates;else if(otherSheets.length)pool=otherSheets;
+      v.explored++;const id=pool.length?pool[Math.floor(roll(v)*pool.length)].id:null;
+      if(id&&!read.has(id)){v.found++;v.lastFound=v.explored;}
       v.draws[bookId]=id;v.events.push({at:now(),book:bookId,id,reason:id?'encounter':'empty',revisit:retry});save();return id;
     }
     function discover(bookId,id){visit();const ids=state.known[bookId]||=[];if(!ids.includes(id))ids.push(id);save();}

@@ -140,7 +140,9 @@ window.Siddhartha = (() => {
   }
   function segmentHTML(part,index) {
     const picture=artifact.kind==='postcard'&&index===0?(artifact.picture?'<img class="sid-postcard-picture" src="'+escapeHTML(artifact.picture.src)+'" alt="'+escapeHTML(artifact.picture.alt)+'" draggable="false">':'<svg class="sid-postcard-picture" viewBox="0 0 320 150" aria-hidden="true"><rect width="320" height="150" fill="#a6b9ac"/><circle cx="245" cy="38" r="23" fill="#e9c477"/><path d="M0 116L85 39 183 126 245 81 320 128V150H0Z" fill="#718c7b"/><path d="M0 139Q96 93 181 135T320 133V150H0Z" fill="#d3bc8c"/><path d="M126 44l21 9 26-14 8 3-19 17 18 10-5 5-27-6-13 11-5-2 6-15-17-12z" fill="#f7edd4"/></svg>'):'';
-    return '<div class="sid-segment" data-segment="'+index+'"><small>'+escapeHTML(part[0])+'</small>'+picture+(artifact.picture&&index===0?'<span class="sid-postcard-caption">'+escapeHTML(part[1])+'</span>':escapeHTML(part[1]))+'</div>';
+    const signature=part[2],date=signature?.date;
+    const signed=signature?'<footer class="sid-note-signature"><span>—— '+escapeHTML(signature.author)+'</span>'+(date?'<time datetime="'+escapeHTML(date)+'">'+escapeHTML(date.replace(/^(\d{4})-(\d{2})-(\d{2})$/,(_,y,m,d)=>y+'年'+Number(m)+'月'+Number(d)+'日'))+'</time>':'')+'</footer>':'';
+    return '<div class="sid-segment" data-segment="'+index+'"><small>'+escapeHTML(part[0])+'</small>'+picture+(artifact.picture&&index===0?'<span class="sid-postcard-caption">'+escapeHTML(part[1])+'</span>':escapeHTML(part[1]))+signed+'</div>';
   }
   function letterControls() {
     query('.sid-unfold')?.remove();query('.sid-letter-actions')?.remove();query('.sid-write')?.remove();
