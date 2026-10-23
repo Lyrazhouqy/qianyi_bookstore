@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-23T08:43:31.710Z",
+  "desktop": {
+    "startTime": "2026-10-23T08:39:41.695Z",
+    "duration": 12768.010999999999,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "mobile": {
+    "startTime": "2026-10-23T08:40:38.675Z",
+    "duration": 12725.938,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    "chromium-small",
+    "chromium-SE",
+    "chromium-iPhone14",
+    "chromium-ProMax",
+    "chromium-landscape",
+    "chromium-desktop",
+    "webkit-small",
+    "webkit-SE",
+    "webkit-iPhone14",
+    "webkit-ProMax",
+    "webkit-landscape",
+    "webkit-desktop",
+    "chromium-small",
+    "chromium-SE",
+    "chromium-iPhone14",
+    "chromium-ProMax",
+    "chromium-landscape",
+    "chromium-desktop",
+    "webkit-small",
+    "webkit-SE",
+    "webkit-iPhone14",
+    "webkit-ProMax",
+    "webkit-landscape",
+    "webkit-desktop"
+  ],
+  "files": [
+    "tests/lamp-hover.spec.cjs",
+    "tests/lamp.spec.cjs"
+  ]
+}

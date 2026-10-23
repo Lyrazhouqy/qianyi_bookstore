@@ -1,0 +1,17 @@
+[
+  {
+    "file": "lamp.js",
+    "sha256": "ab7b9603d2c02629eeb6dc62e031384e6da92a86a9b1a72b040dce8b7f22f3d8",
+    "bytes": 4897
+  },
+  {
+    "file": "lamp.css",
+    "sha256": "0984ba7a4fe9276addd7962a96bf21840a6a6dda2e54cd56c9a28f982be24c94",
+    "bytes": 1907
+  },
+  {
+    "file": "room.css",
+    "sha256": "87cf6422b1708592743cb8b19d53926410c62399dc1ac9b26c813085e48c1c0b",
+    "bytes": 20565
+  }
+]
