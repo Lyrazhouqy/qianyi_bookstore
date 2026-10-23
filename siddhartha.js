@@ -43,7 +43,7 @@ window.Siddhartha = (() => {
   let heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};
   const running = new Set();
   const query = selector => room.querySelector(selector);
-  function setStep(value) { step=value; room.dataset.step=value;cover?.setAttribute('aria-busy',String(!['held','open','letter','packet','idle'].includes(value)));if(value==='open')requestAnimationFrame(()=>{placeLetter();checkCue();}); }
+  function setStep(value) { step=value; room.dataset.step=value;cover?.setAttribute('aria-busy',String(!['held','open','letter','packet','idle'].includes(value)));if(value==='open'){secretDesk?.layout?.();requestAnimationFrame(()=>{placeLetter();checkCue();});} }
   const record=(type,detail={})=>window.BookRhythm.record(type,book?.[0],detail);
   function checkCue(){
     if(cueSeen||room.hidden||step!=='open'||artifact?.kind!=='postcard'||paper.hidden)return;
@@ -211,6 +211,7 @@ window.Siddhartha = (() => {
     if(['fold','postcard'].includes(artifact.kind)) reader.insertAdjacentHTML('beforeend','<button class="sid-flip" data-sid="flip">'+(visibleParts===1?'翻到背面 ↻':'翻到正面 ↺')+'</button>');
     if(writing) reader.insertAdjacentHTML('beforeend','<div class="sid-write"><label for="sid-reply"><span class="sid-writing-pen" aria-hidden="true">✎</span> '+escapeHTML(artifact.writeLabel||(artifact.kind==='stack'?'回应这张便笺':'在信的末尾续写'))+'</label><textarea id="sid-reply" maxlength="'+(artifact.replyLimit||(artifact.kind==='stack'?600:3000))+'" placeholder="'+escapeHTML(artifact.writePlaceholder||'写给留下这张纸的人……')+'">'+escapeHTML(draft)+'</textarea><div class="sid-write-actions"><button class="sid-put" data-sid="cancel">放下笔</button><button class="btn" data-sid="save" aria-label="放回">放回</button></div><p class="sid-message" role="status"></p></div>');
     reader.insertAdjacentHTML('beforeend','<div class="sid-letter-actions">'+((artifact.kind==='relay'||artifact.kind==='stack')&&visibleParts===all.length&&!writing?'<button class="sid-pen sid-stack-pen'+(artifact.invite?' is-inviting':'')+'" aria-label="'+escapeHTML(artifact.writeLabel||(artifact.kind==='stack'?'回应这张便笺':'拿起笔续写'))+'" data-sid="write"><img src="assets/scene/fountain-pen-burgundy-v075.png" alt="" draggable="false"><span class="sid-pen-caption" aria-hidden="true">'+escapeHTML(artifact.writeLabel||(artifact.kind==='stack'?'回应这张便笺':'拿起笔'))+'</span></button>':'')+'</div>');
+    secretDesk?.layout?.();
   }
   function buildLetter() { const all=allParts();visibleParts=Math.max(1,Math.min(all.length,artifact.initialParts?.()||1));reader.innerHTML=all.slice(0,visibleParts).map(segmentHTML).join('');writing=false;letterControls(); }
   async function takeLetter({unfoldOnArrival=false} = {}) {
@@ -521,9 +522,9 @@ window.Siddhartha = (() => {
         else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
       }
     });
-    window.addEventListener('resize',()=>{if(!room.hidden){settle();if(gesture){if(gesture.kind==='letter')extraction=0;const wasReturn=gesture.axis==='return';ignoreClick=performance.now()+500;ignoreClickKind=gesture.kind;gesture=null;if(wasReturn){moveHeld(0,0);stage.classList.remove('sid-in-flight');source.classList.remove('sid-return-target');}pose(progress>.5?1:0);setStep(progress>.5?'open':'held');}placeLetter();if(returnPending)returnToShelf();}});
+    window.addEventListener('resize',()=>{if(!room.hidden){settle();if(gesture){if(gesture.kind==='letter')extraction=0;const wasReturn=gesture.axis==='return';ignoreClick=performance.now()+500;ignoreClickKind=gesture.kind;gesture=null;if(wasReturn){moveHeld(0,0);stage.classList.remove('sid-in-flight');source.classList.remove('sid-return-target');}pose(progress>.5?1:0);setStep(progress>.5?'open':'held');}placeLetter();secretDesk?.layout?.();if(returnPending)returnToShelf();}});
     new ResizeObserver(()=>{if(!room.hidden && extraction>0)placeLetter();}).observe(reader);
-    window.visualViewport?.addEventListener('resize',()=>{if(!room.hidden)placeLetter();});
+    window.visualViewport?.addEventListener('resize',()=>{if(!room.hidden){placeLetter();secretDesk?.layout?.();}});
     document.addEventListener('visibilitychange',()=>{if(document.hidden)settle();});
   }
   async function open(button,handlers) {

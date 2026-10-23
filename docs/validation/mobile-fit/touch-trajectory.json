@@ -1,0 +1,190 @@
+[
+  {
+    "width": 320,
+    "height": 568,
+    "engine": "Chromium CDP native touch, keyboard text filled programmatically; virtual keyboard injected, no physical-device claim",
+    "errors": [],
+    "trail": [
+      {
+        "action": "native-pan-room-without-opening-book",
+        "at": 1792744290096
+      },
+      {
+        "action": "music-dialog-and-close",
+        "at": 1792744291100
+      },
+      {
+        "action": "paired-reading",
+        "left": {
+          "x": 27.043216705322266,
+          "y": 202.82843017578125,
+          "width": 115.6822624206543,
+          "height": 158.3431396484375
+        },
+        "right": {
+          "x": 167.609375,
+          "y": 32,
+          "width": 123.984375,
+          "height": 291.5
+        },
+        "at": 1792744293898
+      },
+      {
+        "action": "visual-only-keyboard-offset-simulation",
+        "height": 320,
+        "offsetTop": 36,
+        "at": 1792744294015
+      },
+      {
+        "action": "direct-next-preserves-draft",
+        "at": 1792744294914
+      },
+      {
+        "action": "touch-drag-page-and-return",
+        "at": 1792744296221
+      }
+    ],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/mobile-fit/touch-320/5b42cedb3125c9afd5cf5d2ff114af7e.webm"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "engine": "Chromium CDP native touch, keyboard text filled programmatically; virtual keyboard injected, no physical-device claim",
+    "errors": [],
+    "trail": [
+      {
+        "action": "native-pan-room-without-opening-book",
+        "at": 1792744296834
+      },
+      {
+        "action": "music-dialog-and-close",
+        "at": 1792744297847
+      },
+      {
+        "action": "paired-reading",
+        "left": {
+          "x": 26.339099884033203,
+          "y": 316.0259094238281,
+          "width": 151.2903709411621,
+          "height": 207.94821166992188
+        },
+        "right": {
+          "x": 202.515625,
+          "y": 167.828125,
+          "width": 159,
+          "height": 326.046875
+        },
+        "at": 1792744300669
+      },
+      {
+        "action": "visual-only-keyboard-offset-simulation",
+        "height": 320,
+        "offsetTop": 36,
+        "at": 1792744300807
+      },
+      {
+        "action": "direct-next-preserves-draft",
+        "at": 1792744301708
+      },
+      {
+        "action": "touch-drag-page-and-return",
+        "at": 1792744303054
+      }
+    ],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/mobile-fit/touch-390/f08608016ed63778c27951af2a10de8b.webm"
+  },
+  {
+    "width": 412,
+    "height": 915,
+    "engine": "Chromium CDP native touch, keyboard text filled programmatically; virtual keyboard injected, no physical-device claim",
+    "errors": [],
+    "trail": [
+      {
+        "action": "native-pan-room-without-opening-book",
+        "at": 1792744303624
+      },
+      {
+        "action": "music-dialog-and-close",
+        "at": 1792744304648
+      },
+      {
+        "action": "paired-reading",
+        "left": {
+          "x": 26.078750610351562,
+          "y": 361.2435607910156,
+          "width": 162.5205535888672,
+          "height": 188.51290893554688
+        },
+        "right": {
+          "x": 213.484375,
+          "y": 213.5,
+          "width": 170,
+          "height": 326.046875
+        },
+        "at": 1792744307496
+      },
+      {
+        "action": "visual-only-keyboard-offset-simulation",
+        "height": 320,
+        "offsetTop": 36,
+        "at": 1792744307669
+      },
+      {
+        "action": "direct-next-preserves-draft",
+        "at": 1792744308572
+      },
+      {
+        "action": "touch-drag-page-and-return",
+        "at": 1792744309916
+      }
+    ],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/mobile-fit/touch-412/db3806b50de8572e960dab9565917bc9.webm"
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "engine": "Chromium CDP native touch, keyboard text filled programmatically; virtual keyboard injected, no physical-device claim",
+    "errors": [],
+    "trail": [
+      {
+        "action": "native-pan-room-without-opening-book",
+        "at": 1792744311083
+      },
+      {
+        "action": "music-dialog-and-close",
+        "at": 1792744312080
+      },
+      {
+        "action": "paired-reading",
+        "left": {
+          "x": 183.96585083007812,
+          "y": 138.1376495361328,
+          "width": 216.4771728515625,
+          "height": 158.59019470214844
+        },
+        "right": {
+          "x": 429.3125,
+          "y": 32,
+          "width": 230.46875,
+          "height": 252
+        },
+        "at": 1792744314919
+      },
+      {
+        "action": "visual-only-keyboard-offset-simulation",
+        "height": 320,
+        "offsetTop": 36,
+        "at": 1792744315088
+      },
+      {
+        "action": "direct-next-preserves-draft",
+        "at": 1792744315993
+      },
+      {
+        "action": "touch-drag-page-and-return",
+        "at": 1792744317323
+      }
+    ],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/mobile-fit/touch-844/618d569959bd2d93ed079cb53aedb681.webm"
+  }
+]

@@ -137,7 +137,8 @@
     document.documentElement.style.setProperty('--scene-scale',String(sceneScale));
     if(!ready){
       ready=true;
-      viewport.scrollLeft=world.offsetLeft+520*sceneScale-viewport.clientWidth/2;
+      // Small phones start at the readable bookcase; the window and room edges remain pannable.
+      viewport.scrollLeft=world.offsetLeft+(viewport.clientWidth<=600?610:520)*sceneScale-viewport.clientWidth/2;
       if(viewport.clientHeight<500)goToShelf(false);
     } else if(document.body.dataset.phase!=='idle'){
       document.querySelector('.spine.is-out')?.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});

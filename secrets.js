@@ -149,7 +149,7 @@ window.BookSecrets=(()=>{
       const page=room.querySelector('.sid-page').getBoundingClientRect(),bounds=stage.getBoundingClientRect();
       const width=pen.offsetWidth,height=pen.offsetHeight;
       // Keep the pen above the center of the right-hand page, within the viewport.
-      pen.style.left=Math.max(10,Math.min(bounds.width-width-10,page.left-bounds.left+page.width/2-width/2))+'px';
+      pen.style.left=Math.max(0,Math.min(bounds.width-width,page.left-bounds.left+page.width/2-width/2))+'px';
       pen.style.top=Math.max(10,Math.min(bounds.height-height-10,page.top-bounds.top-height+22))+'px';
       pen.dataset.placement='above-right-page';
       if(book)renderTabs();
@@ -294,7 +294,7 @@ window.BookSecrets=(()=>{
       if(saving)return;
       if(event.target.closest('.sid-desk-close'))dismiss();else if(event.target.closest('.sid-bury'))bury();
     });
-    return {reset(next,original){book=next;preset=original;form=null;saving=false;prepared=false;readHere=new Set();editor.hidden=true;room.classList.remove('sid-composing');arrange();chooseInitial();renderTabs();},opening,returned,replyDraft,saveReplyDraft,initialArtifact(){return artifactAt(current);},editing:()=>!editor.hidden||saving,dismiss};
+    return {reset(next,original){book=next;preset=original;form=null;saving=false;prepared=false;readHere=new Set();editor.hidden=true;room.classList.remove('sid-composing');arrange();chooseInitial();renderTabs();},opening,returned,replyDraft,saveReplyDraft,initialArtifact(){return artifactAt(current);},layout:placePen,editing:()=>!editor.hidden||saving,dismiss};
   }
   function mountPlaytest(){
     if(director){const data=read();for(const [id] of books)director.sync(id,data.books[id]||[],actor);}

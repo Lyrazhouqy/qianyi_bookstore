@@ -1,0 +1,134 @@
+{
+  "recordedAt": "2026-10-23T08:34:54.815Z",
+  "scope": "10 viewport/reader files during final 198 tests and final CDP checks; other concurrent scene changes excluded; index version updated after tests without changing these files",
+  "files": {
+    "mobile.css": {
+      "sha256": "aaa95f3ee51deaba1458c47bc9abf6612e42ee73b8de4e3ad7565e2454d4b5e1",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "room.js": {
+      "sha256": "a2c4ef3b302533a64a95a9de370f400e52ce6efaab8b2c4eefbf07c5f37cf9d2",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "secrets.js": {
+      "sha256": "c7345c7b43b8ae8e7f761dfd24c2a58663dae20dbe41cf22d1097e6263f52307",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.js": {
+      "sha256": "50fc313250a5fc6c6842a2ac6685d514fca7a4d26fde82107b2361ffc2cb2c86",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.css": {
+      "sha256": "c378a54fa84d201baecb7dc65b23917995ef84f79f5268dfbe0457ed039320a5",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "secrets.css": {
+      "sha256": "3078f8a03751883dbf76965ce1bffd377196a0342002dcfe618aa0906592b10a",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "styles.css": {
+      "sha256": "5e8fc0bf928c3bdcd65e0976617c4a435cf47bc68f08065f062774dba007fa9c",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "app.js": {
+      "sha256": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "content.js": {
+      "sha256": "b5c90442df53f9de147bd30bd140677dca68c0eef6b5c1c2b770ed7c4c2b3338",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "stories.js": {
+      "sha256": "3d9d236c2037a566e14eadac911dd1c1fd14e926e552aaf00e98795d7ff0a54b",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    }
+  },
+  "tests": {
+    "first": {
+      "startTime": "2026-10-23T08:16:00.905Z",
+      "duration": 7740.072,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "matrix": {
+      "startTime": "2026-10-23T08:17:45.441Z",
+      "duration": 110865.889,
+      "expected": 68,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "compatibility": {
+      "startTime": "2026-10-23T08:17:46.366Z",
+      "duration": 131782.60199999998,
+      "expected": 86,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "fixes": {
+      "startTime": "2026-10-23T08:23:00.309Z",
+      "duration": 64993.835,
+      "expected": 48,
+      "skipped": 0,
+      "unexpected": 7,
+      "flaky": 0
+    },
+    "corner-fix": {
+      "startTime": "2026-10-23T08:26:28.450Z",
+      "duration": 2874.457,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final-matrix": {
+      "startTime": "2026-10-23T08:27:09.764Z",
+      "duration": 105464.195,
+      "expected": 72,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final-compatibility": {
+      "startTime": "2026-10-23T08:27:10.805Z",
+      "duration": 199043.162,
+      "expected": 126,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "inAppBrowser": {
+    "url": "http://127.0.0.1:4173/?v=0.14.14&playtest=rhythm",
+    "build": "paper-bookshop-game-v0.14.14",
+    "responsiveStyles": true,
+    "width": 668,
+    "height": 954,
+    "documentOverflow": 0,
+    "visitsBeforeAndAfter": 164,
+    "visibleDraftBeforeNavigation": false
+  }
+}

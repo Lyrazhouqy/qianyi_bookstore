@@ -4,7 +4,7 @@
   "project": "paper-bookshop-playtest",
   "previousDeployment": "dpl_EgtnxRQQd6PyDrK92HAPUXGopr82",
   "productionAlias": "paper-bookshop-playtest.vercel.app",
-  "build": "paper-bookshop-game-v0.14.13",
+  "build": "paper-bookshop-game-v0.14.14",
   "staticFiles": [
     "index.html",
     "styles.css",
@@ -54,6 +54,7 @@
     "stories.js",
     "secrets.js",
     "secrets.css",
+    "mobile.css",
     "assets/scene/fountain-pen-burgundy-v075.png",
     "discovery.js",
     "discovery-pool.js",
@@ -75,7 +76,7 @@
     "assets/scene/calico-ear-cels-v01413.png",
     "assets/scene/calico-belly-cels-v01413.png"
   ],
-  "status": "development-v0.14.13-on-feat/rhythm-v014; production-remains-v0.13.0",
+  "status": "development-v0.14.14-on-feat/rhythm-v014; production-remains-v0.13.0",
   "reader": "shared-tactile-v0.4.3",
   "shelf": {
     "capacity": 20,
@@ -803,5 +804,10 @@
     "version": "0.14.13",
     "behavior": "one random cel animation: low side-to-side tail swish/settle; listening ears/half-eye/blink; curl/side/back/stretch/settle; no pixel deformation or rigid spin",
     "evidence": "docs/validation/cat-actions/REPORT.md"
+  },
+  "mobileFit": {
+    "revision": "mobile-fit-v1",
+    "behavior": "safe-area and visual-viewport layout, portrait paired reading, wider landscape pages and reachable form actions",
+    "evidence": "docs/validation/mobile-fit/REPORT.md"
   }
 }
