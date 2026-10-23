@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-23T08:29:24.181Z",
+  "scope": "current mixed workspace reading JS plus unchanged real-materials and content; concurrent mobile-layout hooks in JS retained, excluded from this commit",
+  "files": {
+    "siddhartha.js": {
+      "sha256": "50fc313250a5fc6c6842a2ac6685d514fca7a4d26fde82107b2361ffc2cb2c86",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "real-materials.js": {
+      "sha256": "18ac013d92066315f1843b102da69429805d77fbc762a464b0efa8f5ad74e8e2",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "content.js": {
+      "sha256": "b5c90442df53f9de147bd30bd140677dca68c0eef6b5c1c2b770ed7c4c2b3338",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    }
+  },
+  "stats": {
+    "first": {
+      "startTime": "2026-10-23T08:23:57.916Z",
+      "duration": 29172.671000000002,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "final": {
+      "startTime": "2026-10-23T08:26:36.888Z",
+      "duration": 56949.492,
+      "expected": 32,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

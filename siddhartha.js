@@ -17,6 +17,22 @@ window.Siddhartha = (() => {
     temple:'<path d="m5 27 35-17 35 17v7H5Zm8 12h9v23h-9Zm22 0h10v23H35Zm23 0h9v23h-9ZM7 67h66v7H7Z"/>',
     sun:'<path d="M13 65a27 27 0 0 1 54 0Z"/><path d="M40 8v12M10 23l8 8M70 23l-8 8M3 48h11m63 0H66" fill="none" stroke="currentColor" stroke-width="5"/>'
   };
+  // Original shop asides: selected once per pickup, never used as book quotations.
+  const insideMoods=[
+    ['本书暂不出差','翻开前的小抄'],
+    ['读慢点，书不赶车','先偷看两行'],
+    ['此处不考阅读理解','这本书的开场白'],
+    ['翻两页，也算串门','读前热身两行字'],
+    ['请坐，书还没讲完','先替书说两句'],
+    ['书没腿，不会跑','书脊没讲完的事'],
+    ['先坐下，再出发','先认认这本书'],
+    ['这页没有截止日','开读前透个底']
+  ];
+  const lastInsideMoods=new Map();let insideMood=insideMoods[0];
+  function pickInsideMood(id){
+    const previous=lastInsideMoods.get(id),draw=Math.floor(Math.random()*(insideMoods.length-(previous===undefined?0:1)));
+    const index=previous!==undefined&&draw>=previous?draw+1:draw;lastInsideMoods.set(id,index);return insideMoods[index];
+  }
   let room,stage,position,carrier,cover,dock,paper,reader,hint,returnButton;
   let source,callbacks,book,artifact,step='idle',busy=false,progress=0,extraction=0,sheetSpread=0,visibleParts=1,writing=false,draft='',ignoreClick=0,ignoreClickKind=null,gesture=null,returnPending=false,returnInProgress=false;
   let secretDesk,openOnArrival=false,queuedBook=null,cueSeen=false,sheetGesture=null,pageAdvance=false;
@@ -109,7 +125,8 @@ window.Siddhartha = (() => {
     const candidate=artifact?.quotation;
     const quoted=candidate?.verified===true&&candidate.bookTitle===book[1]&&typeof candidate.text==='string'&&candidate.text.trim()&&typeof candidate.source==='string'&&candidate.source.trim();
     const copy=query('.sid-inside-copy');copy.dataset.kind=quoted?'quotation':'synopsis';room.dataset.leftContent=copy.dataset.kind;copy.scrollTop=0;
-    copy.querySelector('strong').textContent=quoted?'这段话的原文':'关于这本书';
+    query('.sid-book-aside').textContent=insideMood[0];
+    copy.querySelector('strong').textContent=quoted?'这段话的原文':insideMood[1];
     query('.sid-synopsis').textContent=quoted?candidate.text:book[2];
     const source=query('.sid-quotation-source');source.hidden=!quoted;source.textContent=quoted?'—— '+candidate.source:'';
   }
@@ -440,7 +457,7 @@ window.Siddhartha = (() => {
   function create() {
     room=document.createElement('div');room.className='siddhartha-room';room.hidden=true;
     room.setAttribute('role','dialog');room.setAttribute('aria-modal','true');room.setAttribute('aria-label','悉达多，书与一封接力信');
-    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small>此书留在这里</small><span class="sid-inside-copy"><strong>关于这本书</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div><button class="sid-paper-return" data-sid="put" aria-label="收起便笺"><i aria-hidden="true">↶</i><span aria-hidden="true">收起便笺</span></button><span class="sid-sheet-hint" aria-hidden="true">右扫收起便笺</span></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
+    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small class="sid-book-aside">本书暂不出差</small><span class="sid-inside-copy"><strong>翻开前的小抄</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div><button class="sid-paper-return" data-sid="put" aria-label="收起便笺"><i aria-hidden="true">↶</i><span aria-hidden="true">收起便笺</span></button><span class="sid-sheet-hint" aria-hidden="true">右扫收起便笺</span></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
     room.addEventListener('pointerdown',()=>{room.classList.remove('sid-keyboard');if(['page','sheet'].includes(ignoreClickKind)){ignoreClick=0;ignoreClickKind=null;}},true);
     room.addEventListener('click',event=>{
       if(event.target.closest('.sid-paper-traces'))return;
@@ -513,6 +530,7 @@ window.Siddhartha = (() => {
     artifact=secretDesk.initialArtifact();
     room.dataset.insertPeek=String(button.classList.contains('has-new-paper')&&!!artifact);
     room.dataset.insertEdge=button.matches('.pile-book,.painted-flat')?'foot':'head';
+    insideMood=pickInsideMood(book[0]);
     queuedBook=null;delete room.dataset.openQueued;room.dataset.readerBook=book[0];
     room.style.setProperty('--title-length',String(book[1].length));
     cueSeen=false;room.dataset.artifact=artifact?.kind || 'none';room.dataset.artifactSource=artifact?.source||'';room.dataset.stock=artifact?.stock||'cream';
