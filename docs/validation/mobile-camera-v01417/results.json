@@ -1,0 +1,1384 @@
+{
+  "sourceCommit": "d566557e68193f1061cd9b705a53aad05642b137",
+  "firstRun": {
+    "stats": {
+      "startTime": "2026-10-23T10:42:28.397Z",
+      "duration": 16055388.498,
+      "expected": 90,
+      "skipped": 0,
+      "unexpected": 8,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "chromium-small",
+        "title": "long hold drives globe and release stops; sphere and spindle stay anchored",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5223,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "drag cancels the hold; nearby book still opens and keyboard hold releases",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5645,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "reduced motion and offscreen release never leave a spinning globe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1544,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "unavailable map leaves the original globe intact without a dead touch target",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 874,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "one touch tap spins longer, repeat taps extend once, and then stays still",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 10973,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "tap spin cancels when leaving view and never resumes after returning",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2316,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "long hold drives globe and release stops; sphere and spindle stay anchored",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 12551,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "drag cancels the hold; nearby book still opens and keyboard hold releases",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 12757,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "reduced motion and offscreen release never leave a spinning globe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 8154,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "unavailable map leaves the original globe intact without a dead touch target",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 6512,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "one touch tap spins longer, repeat taps extend once, and then stays still",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 18147,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "tap spin cancels when leaving view and never resumes after returning",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 8303,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "long hold drives globe and release stops; sphere and spindle stay anchored",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7794,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "drag cancels the hold; nearby book still opens and keyboard hold releases",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 8583,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "reduced motion and offscreen release never leave a spinning globe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3569,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "unavailable map leaves the original globe intact without a dead touch target",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3031,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "one touch tap spins longer, repeat taps extend once, and then stays still",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 12322,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "tap spin cancels when leaving view and never resumes after returning",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2751,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "long hold drives globe and release stops; sphere and spindle stay anchored",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4886,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "drag cancels the hold; nearby book still opens and keyboard hold releases",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4695,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "reduced motion and offscreen release never leave a spinning globe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1638,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "unavailable map leaves the original globe intact without a dead touch target",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1158,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "one touch tap spins longer, repeat taps extend once, and then stays still",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 11208,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "tap spin cancels when leaving view and never resumes after returning",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2028,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1827,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 8222,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2434,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1532,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-SE",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3275,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-SE",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 30967,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-SE",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9748,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-SE",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 6222,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4368,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 28829,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 8767,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5258,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 4063568,
+            "errors": [
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+              "\u001b[31mTearing down \"context\" exceeded the test timeout of 60000ms.\u001b[39m",
+              "Error: browserContext.close: Target page, context or browser has been closed"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 4045685,
+            "errors": [
+              "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m",
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 6798517,
+            "errors": [
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+              "\u001b[31mTearing down \"context\" exceeded the test timeout of 60000ms.\u001b[39m",
+              "Error: browserContext.close: Target page, context or browser has been closed"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "duration": 116,
+            "errors": [
+              "TimeoutError: browserType.launch: Timeout 180000ms exceeded."
+            ]
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1788,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 10038,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2468,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2026,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-SE",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2336,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-SE",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9551,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-SE",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3165,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-SE",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1703,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1624,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 8877,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2391,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1952,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-ProMax",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2053,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-ProMax",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9823,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-ProMax",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3391,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-ProMax",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1583,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3123,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "paired reading fits the phone, keeps the passage visible and exposes one usable next corner",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2062,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "notch insets and a visual-only keyboard keep a reply and its save action visible; drafts survive rotation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3094,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5326,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 13332,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "paired reading fits the phone, keeps the passage visible and exposes one usable next corner",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5619,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "notch insets and a visual-only keyboard keep a reply and its save action visible; drafts survive rotation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4417,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5554,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-landscape",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 3316714,
+            "errors": [
+              "\u001b[31mTearing down \"context\" exceeded the test timeout of 60000ms.\u001b[39m"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "chromium-landscape",
+        "title": "paired reading fits the phone, keeps the passage visible and exposes one usable next corner",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 18609,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-landscape",
+        "title": "notch insets and a visual-only keyboard keep a reply and its save action visible; drafts survive rotation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3712,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-landscape",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 270442,
+            "errors": [
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3909,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "paired reading fits the phone, keeps the passage visible and exposes one usable next corner",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2727,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "notch insets and a visual-only keyboard keep a reply and its save action visible; drafts survive rotation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3450,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4479,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3858,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "paired reading fits the phone, keeps the passage visible and exposes one usable next corner",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2406,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "notch insets and a visual-only keyboard keep a reply and its save action visible; drafts survive rotation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3104,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3680,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-landscape",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3443,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-landscape",
+        "title": "paired reading fits the phone, keeps the passage visible and exposes one usable next corner",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2522,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-landscape",
+        "title": "notch insets and a visual-only keyboard keep a reply and its save action visible; drafts survive rotation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2442,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-landscape",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2915,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "each remaining scene has gentle movement, pauses offscreen and while reading, and stays inside the glass",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 23239,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "only three presets and upload remain; reduced motion is static and custom photos receive no ambient overlay",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9324,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-small",
+        "title": "retired scenery migrates without losing a saved photo or changing reading progress",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 13185,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "each remaining scene has gentle movement, pauses offscreen and while reading, and stays inside the glass",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 25234,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "only three presets and upload remain; reduced motion is static and custom photos receive no ambient overlay",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9957,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "retired scenery migrates without losing a saved photo or changing reading progress",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 25543,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "each remaining scene has gentle movement, pauses offscreen and while reading, and stays inside the glass",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 17038,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "only three presets and upload remain; reduced motion is static and custom photos receive no ambient overlay",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3766,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-small",
+        "title": "retired scenery migrates without losing a saved photo or changing reading progress",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3799,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "each remaining scene has gentle movement, pauses offscreen and while reading, and stays inside the glass",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 16145,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "only three presets and upload remain; reduced motion is static and custom photos receive no ambient overlay",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3507,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "retired scenery migrates without losing a saved photo or changing reading progress",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3818,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-desktop",
+        "title": "standing book eases outward, hit area stays fixed and leaving returns to rest",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 887946,
+            "errors": [
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "chromium-desktop",
+        "title": "each visible spine in wall and table piles pulls only itself and still opens the selected book",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 91311,
+            "errors": [
+              "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+              "Error: page.waitForTimeout: Test timeout of 60000ms exceeded.\n\n  11 |   const group=page.locator('.book-pile[data-pile=\"'+pile+'\"]'),books=group.locator('.pile-book');\n  12 |   for(const book of await books.all()){\n> 13 |    await group.scrollIntoViewIfNeeded();await page.mouse.move(0,0);await page.waitForTimeout(260);const face=book.locator('.spine-face'),before=await style(face);await pointAt(page,book.locator('.painted-title'));await expect(page.locator('.is-book-hover')).toHaveCount(1);await expect(book).toHaveClass(/is-book-hover/);await expect.poll(async()=>parseFloat((await style(face)).translate)).toBe(-6);expect((await style(face)).transform).toBe(before.transform);await page.mouse.move(0,0);await expect.poll(()=>style(face)).toEqual(before);\n     |                                                                               ^\n  14 |   }\n  15 |  }\n  16 |  const chosen=page.locator('.book-pile[data-pile=\"front-left\"] .pile-book').nth(1),id=await chosen.getAttribute('data-id');await pointAt(page,chosen.locator('.painted-title'));await expect(chosen).toHaveClass(/is-book-hover/);const r=await chosen.locator('.painted-title').boundingBox();await page.mouse.click(r.x+r.width/2,r.y+r.height/2);await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-reader-book',id);await expect(page.locator('.siddhartha-room')).toHaveAttribute('data-step','held');await expect(page.locator('.is-book-hover')).toHaveCount(0);\n    at /Users/zhouqingyi/repos/paper-bookshop-playtest/.preview/mobile-release-src/.preview/qa/book-hover.spec.cjs:13:79"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "chromium-desktop",
+        "title": "dragging and reduced motion clear the pull without changing the previous upright cover hover",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2332,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-desktop",
+        "title": "standing book eases outward, hit area stays fixed and leaving returns to rest",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2662,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-desktop",
+        "title": "each visible spine in wall and table piles pulls only itself and still opens the selected book",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 17644,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-desktop",
+        "title": "dragging and reduced motion clear the pull without changing the previous upright cover hover",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2088,
+            "errors": []
+          }
+        ]
+      }
+    ]
+  },
+  "failedCaseRecheck": {
+    "stats": {
+      "startTime": "2026-10-23T15:21:59.915Z",
+      "duration": 34101.936,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "chromium-ProMax",
+        "title": "first view fits the entire room width and shows both shelves without a horizontal pan",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 971,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "each of 34 visible bindings opens that book, including overlapping phone hit targets",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4510,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "rotation keeps the same reader open and returns to a full-width room",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1123,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-ProMax",
+        "title": "safe-area insets fit horizontally and a short screen scrolls to lower books without opening by accident",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 716,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-landscape",
+        "title": "cropping stays in the camera; scene objects and every dialog remain reachable",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1930,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-landscape",
+        "title": "new-note editor fits a short visual viewport without losing its text",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1559,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-desktop",
+        "title": "standing book eases outward, hit area stays fixed and leaving returns to rest",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1691,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-desktop",
+        "title": "each visible spine in wall and table piles pulls only itself and still opens the selected book",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 16071,
+            "errors": []
+          }
+        ]
+      }
+    ]
+  },
+  "snow": {
+    "stats": {
+      "startTime": "2026-10-23T15:10:48.232Z",
+      "duration": 15120.850999999999,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "chromium-iPhone14",
+        "title": "night snow visibly moves inside the glass, stops off camera and while reading, and resumes on return",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9088,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "chromium-iPhone14",
+        "title": "reduced motion keeps a still snowy view; visibility lifecycle pauses and resumes without changing saved scenery",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2295,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "night snow visibly moves inside the glass, stops off camera and while reading, and resumes on return",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 9163,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "project": "webkit-iPhone14",
+        "title": "reduced motion keeps a still snowy view; visibility lifecycle pauses and resumes without changing saved scenery",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2941,
+            "errors": []
+          }
+        ]
+      }
+    ]
+  },
+  "boundary": "Browser phone emulation, touch taps, programmatic scrolling, simulated insets/visual keyboard; not physical iPhone acceptance. Audio hardware output muted."
+}

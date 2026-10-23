@@ -1,0 +1,35 @@
+{
+  "url": "https://paper-bookshop-playtest.vercel.app/v0.14.17/",
+  "sourceCommit": "d566557",
+  "boundary": "Browser phone simulation; media playback blocked in QA; not physical phone",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "passed": false,
+      "error": "page.goto: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://paper-bookshop-playtest.vercel.app/v0.14.17/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "passed": false,
+      "error": "page.goto: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://paper-bookshop-playtest.vercel.app/v0.14.17/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "passed": false,
+      "error": "page.screenshot: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "passed": false,
+      "error": "page.screenshot: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n",
+      "errors": []
+    }
+  ]
+}
