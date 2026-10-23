@@ -19,14 +19,18 @@ window.Siddhartha = (() => {
   };
   // Original shop asides: selected once per pickup, never used as book quotations.
   const insideMoods=[
-    ['本书暂不出差','翻开前的小抄'],
-    ['读慢点，书不赶车','先偷看两行'],
-    ['此处不考阅读理解','这本书的开场白'],
-    ['翻两页，也算串门','读前热身两行字'],
-    ['请坐，书还没讲完','先替书说两句'],
-    ['书没腿，不会跑','书脊没讲完的事'],
-    ['先坐下，再出发','先认认这本书'],
-    ['这页没有截止日','开读前透个底']
+    ['这本书有点社恐','我替它开个场'],
+    ['封面只负责撑场','里头才开始唠嗑'],
+    ['本书已躺平多年','肚子里还有点墨水'],
+    ['书也在偷偷看你','互相认识一下'],
+    ['先别立读完的旗','瞄两眼也算串门'],
+    ['书刚睡醒，慢点翻','先听它清清嗓子'],
+    ['茶凉了，书还热','趁热认认这本书'],
+    ['书签还没下班','它先替书报个信'],
+    ['这页不算加班','正事可以等两行'],
+    ['本书不包治拖延','先合法走个神'],
+    ['翻慢点，它怕痒','先听书吹两句'],
+    ['都翻开了，坐会儿','它有两句要交代']
   ];
   const lastInsideMoods=new Map();let insideMood=insideMoods[0];
   function pickInsideMood(id){
@@ -457,7 +461,7 @@ window.Siddhartha = (() => {
   function create() {
     room=document.createElement('div');room.className='siddhartha-room';room.hidden=true;
     room.setAttribute('role','dialog');room.setAttribute('aria-modal','true');room.setAttribute('aria-label','悉达多，书与一封接力信');
-    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small class="sid-book-aside">本书暂不出差</small><span class="sid-inside-copy"><strong>翻开前的小抄</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div><button class="sid-paper-return" data-sid="put" aria-label="收起便笺"><i aria-hidden="true">↶</i><span aria-hidden="true">收起便笺</span></button><span class="sid-sheet-hint" aria-hidden="true">右扫收起便笺</span></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
+    room.innerHTML='<div class="sid-toolbar"><span>纸间 · 悉达多</span><button class="sid-return">收起手中的书</button></div><div class="sid-stage"><div class="sid-position"><div class="sid-carrier"><div class="sid-backboard"></div><div class="sid-page-stack"></div><div class="sid-binding" aria-hidden="true"><span></span></div><div class="sid-foreedge" aria-hidden="true"></div><div class="sid-headedge" aria-hidden="true"></div><div class="sid-footedge" aria-hidden="true"></div><div class="sid-page"><span class="sid-page-kicker">纸 间 藏 书</span><h2>《悉达多》</h2><div class="sid-dock"></div><span class="sid-page-number">· 夹页 ·</span></div><button class="sid-cover" aria-label="翻开《悉达多》" aria-expanded="false"><span class="sid-cover-front"><span class="sid-cover-edition">纸 间 藏 书</span><span class="sid-cover-title">悉达多</span><span class="sid-cover-leaf">❧</span><span class="sid-cover-mark" aria-hidden="true"></span></span><span class="sid-cover-back"><small class="sid-book-aside">这本书有点社恐</small><span class="sid-inside-copy"><strong>我替它开个场</strong><span class="sid-synopsis">一个人经历修行和世俗生活，寻找属于自己的智慧。</span><span class="sid-quotation-source" hidden></span><span class="sid-discovery-hint">……好像有人在这里留下了什么。</span></span><small>纸间书店</small></span></button></div></div><div class="sid-letter" hidden><button class="sid-letter-pick" aria-label="从夹页抽出接力信"><span class="sid-letter-packet"><em>留给下一位读者</em><i>⌁</i></span></button><div class="sid-letter-reader" hidden></div><button class="sid-paper-return" data-sid="put" aria-label="收起便笺"><i aria-hidden="true">↶</i><span aria-hidden="true">收起便笺</span></button><span class="sid-sheet-hint" aria-hidden="true">右扫收起便笺</span></div></div><div class="sid-hint" id="sid-guidance" role="status"></div>';
     room.addEventListener('pointerdown',()=>{room.classList.remove('sid-keyboard');if(['page','sheet'].includes(ignoreClickKind)){ignoreClick=0;ignoreClickKind=null;}},true);
     room.addEventListener('click',event=>{
       if(event.target.closest('.sid-paper-traces'))return;
