@@ -18,8 +18,8 @@
     function step(now){const t=now-start;if(t>=600){pose(0);frame=0;return;}const spring=Math.exp(-t/105)*Math.cos(t/75);pose(y*spring,x*spring);frame=requestAnimationFrame(step);}
     frame=requestAnimationFrame(step);
   }
-  function hint(event){
-    if((event?.pointerType&&event.pointerType!=='mouse')||!hover.matches||reduced()||drag||frame||document.hidden||document.body.dataset.phase!=='idle'||document.querySelector('dialog[open]'))return;
+  function hint(event,automatic=false){
+    if((!automatic&&((event?.pointerType&&event.pointerType!=='mouse')||!hover.matches))||reduced()||drag||frame||document.hidden||document.body.dataset.phase!=='idle'||document.querySelector('dialog[open]'))return;
     const length=102*world.getBoundingClientRect().width/940,start=performance.now();
     button.classList.add('is-hinting');
     function sway(now){
@@ -32,13 +32,14 @@
   }
   function stopHint(){if(button.classList.contains('is-hinting'))rebound();}
   function reset(){cancel();cancelAnimationFrame(frame);frame=0;button.classList.remove('is-hinting');pose(0);}
+  button.addEventListener('shop:cue',()=>hint(null,true));button.addEventListener('shop:cue-stop',stopHint);
   button.addEventListener('pointerenter',hint);button.addEventListener('pointerleave',stopHint);
   button.addEventListener('focus',()=>{if(button.matches(':focus-visible'))hint();});button.addEventListener('blur',stopHint);
   function cancel(){if(!drag)return;const id=drag.id;drag=null;suppressClickUntil=performance.now()+450;if(button.hasPointerCapture(id))button.releasePointerCapture(id);rebound();}
   button.addEventListener('pointerdown',event=>{
     event.stopPropagation();if(event.button!==0||!event.isPrimary||drag||document.body.dataset.phase!=='idle')return;
     cancelAnimationFrame(frame);frame=0;button.classList.remove('is-hinting');pose(0);drag={id:event.pointerId,x:event.clientX,y:event.clientY,distance:0,dy:0};
-    button.classList.add('is-pulling');button.setPointerCapture(event.pointerId);
+    button.classList.add('is-pulling');if(event.pointerType==='touch'&&!reduced())pose(3);button.setPointerCapture(event.pointerId);
   });
   button.addEventListener('pointermove',event=>{
     if(!drag||drag.id!==event.pointerId)return;event.stopPropagation();event.preventDefault();

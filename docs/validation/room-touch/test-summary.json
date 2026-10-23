@@ -1,0 +1,74 @@
+{
+  "initialInterrupted": {
+    "startTime": "2026-10-23T10:40:49.519Z",
+    "duration": 199493.24300000002,
+    "expected": 2,
+    "skipped": 12,
+    "unexpected": 6,
+    "flaky": 0
+  },
+  "correctedWithEnvironmentTimeouts": {
+    "startTime": "2026-10-23T10:45:24.997Z",
+    "duration": 15814778.346,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "nativeWithEnvironmentTimeouts": {
+    "startTime": "2026-10-23T10:46:10.780Z",
+    "duration": 7304480.373000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "chromiumFinal": {
+    "startTime": "2026-10-23T15:10:47.381Z",
+    "duration": 46960.244999999995,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "webkitFinal": {
+    "startTime": "2026-10-23T15:12:49.739Z",
+    "duration": 46582.728,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "lifecycleBroadStorageSnapshot": {
+    "startTime": "2026-10-23T15:24:49.692Z",
+    "duration": 24463.164,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "lifecycleFinal": {
+    "startTime": "2026-10-23T15:26:26.340Z",
+    "duration": 14519.752999999999,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "nativeScrollFinal": {
+    "startTime": "2026-10-23T15:28:37.225Z",
+    "duration": 6985.282,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "desktopFinal": {
+    "startTime": "2026-10-23T15:27:08.239Z",
+    "duration": 78836.05,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

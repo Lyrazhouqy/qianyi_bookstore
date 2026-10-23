@@ -1,0 +1,10 @@
+const {test,expect}=require('./helpers/quiet.cjs');
+test('a second finger or losing focus releases the physical paper without opening or changing saves',async({page})=>{
+ await page.goto('/?playtest=rhythm&touch=lifecycle');const paper=page.locator('.wall-note'),face=paper.locator('.wall-note-paper');await paper.scrollIntoViewIfNeeded();const r=await paper.boundingBox(),x=r.x+r.width/2,y=r.y+r.height/2;
+ const before=await page.evaluate(()=>JSON.stringify(Object.fromEntries(['paperbook-v3','paperbook-secrets-v1','paperbook-secret-drafts-v1','paperbook-secret-reading-v1','paperbook-lamp-v1'].map(k=>[k,localStorage.getItem(k)]))));
+ await paper.dispatchEvent('pointerdown',{pointerType:'touch',pointerId:51,isPrimary:true,button:0,clientX:x,clientY:y});await expect(paper).toHaveClass(/is-touch-press/);await expect(paper).toHaveClass(/is-swaying/);
+ await paper.dispatchEvent('pointerdown',{pointerType:'touch',pointerId:52,isPrimary:false,button:0,clientX:x+5,clientY:y});await expect(paper).not.toHaveClass(/is-touch-press|is-swaying/);await expect(face).toHaveAttribute('transform','rotate(0.0000 207 615)');
+ await paper.dispatchEvent('pointercancel',{pointerType:'touch',pointerId:51,isPrimary:true});await paper.dispatchEvent('pointercancel',{pointerType:'touch',pointerId:52,isPrimary:false});
+ await paper.dispatchEvent('pointerdown',{pointerType:'touch',pointerId:53,isPrimary:true,button:0,clientX:x,clientY:y});await page.evaluate(()=>dispatchEvent(new Event('blur')));await expect(paper).not.toHaveClass(/is-touch-press|is-swaying/);await expect(page.locator('.is-touch-cue')).toHaveCount(0);expect(await page.evaluate(()=>JSON.stringify(Object.fromEntries(['paperbook-v3','paperbook-secrets-v1','paperbook-secret-drafts-v1','paperbook-secret-reading-v1','paperbook-lamp-v1'].map(k=>[k,localStorage.getItem(k)]))))).toBe(before);
+ await page.evaluate(()=>dispatchEvent(new Event('focus')));await paper.tap();await expect(page.locator('#shop-journal')).toBeVisible();await expect(page.locator('.is-touch-press,.is-touch-cue')).toHaveCount(0);
+});

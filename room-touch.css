@@ -1,0 +1,27 @@
+/* The visible object moves; its touch target and native scrolling do not. */
+#shelves .spine.is-touch-press .spine-face,
+.display-stage .spine.is-touch-press .spine-face { transition:translate 85ms ease-out,filter 85ms ease-out; filter:brightness(1.045) drop-shadow(1px 4px 2px #42290e45); }
+#shelves .painted-standing.is-touch-press .spine-face { translate:0 -4px; }
+#shelves .book-pile .pile-book.is-touch-press .spine-face,
+.display-stage .book-pile .pile-book.is-touch-press .spine-face,
+.display-stage .painted-flat.is-touch-press .spine-face { translate:-5px calc(var(--scene-scale)*var(--binding-foot-pad,0px)); }
+.display-stage :is(.painted-cover,.display-book).is-touch-press .spine-face { translate:0 -3px; }
+.scene-window.is-touch-press .window-latch-lever { transform-box:fill-box; transform-origin:50% 50%; rotate:-9deg; transition:rotate 85ms ease-out; }
+.scene-window.is-touch-press .window-glass-cue { opacity:.16; }
+/* Tiny once-per-visit invitations on touch screens, never continuous loops. */
+#shelves .painted-standing.is-touch-cue .spine-face { animation:touch-book-peek 1.5s ease-in-out; }
+#shelves .book-pile .pile-book.is-touch-cue .spine-face,
+.display-stage .book-pile .pile-book.is-touch-cue .spine-face,
+.display-stage .painted-flat.is-touch-cue .spine-face { animation:touch-binding-peek 1.5s ease-in-out; }
+.display-stage :is(.painted-cover,.display-book).is-touch-cue .spine-face { animation:touch-book-peek 1.5s ease-in-out; }
+.scene-window.is-touch-cue .window-latch-lever { animation:window-latch-peek 1.25s ease-in-out both; }
+.scene-window.is-touch-cue .window-frame { transform-origin:3% 58%; animation:window-frame-peek 1.25s ease-in-out both; }
+.scene-window.is-touch-cue .window-glass-cue { animation:window-light-peek 1.25s ease-in-out both; }
+@keyframes touch-book-peek { 0%,100% { translate:0 0; } 25%,45% { translate:0 -3px; } 70% { translate:0 1px; } }
+@keyframes touch-binding-peek { 0%,100% { translate:0 calc(var(--scene-scale)*var(--binding-foot-pad,0px)); } 25%,45% { translate:-4px calc(var(--scene-scale)*var(--binding-foot-pad,0px)); } }
+@media(prefers-reduced-motion:reduce) {
+  .is-touch-cue * { animation:none!important; }
+  #shelves .spine.is-touch-press .spine-face,.display-stage .spine.is-touch-press .spine-face { transition:none; translate:0 0; }
+  #shelves .book-pile .pile-book.is-touch-press .spine-face,.display-stage .book-pile .pile-book.is-touch-press .spine-face,.display-stage .painted-flat.is-touch-press .spine-face { translate:0 calc(var(--scene-scale)*var(--binding-foot-pad,0px)); }
+  .scene-window.is-touch-press .window-latch-lever { rotate:none; transition:none; }
+}

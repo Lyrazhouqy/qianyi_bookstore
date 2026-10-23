@@ -93,7 +93,9 @@
     "assets/scene/cat-daily-sofa-v01416.png",
     "assets/scene/cat-daily-window-v01416.png",
     "cup-steam.css",
-    "cup-steam.js"
+    "cup-steam.js",
+    "room-touch.js",
+    "room-touch.css"
   ],
   "status": "production-v0.14.16; public-version-path-verified",
   "reader": "shared-tactile-v0.4.3",
@@ -1447,5 +1449,9 @@
       ],
       "publicAccessEvidence": "evidence/deployment-v0130/anonymous-access.json"
     }
-  ]
+  ],
+  "roomTouch": {
+    "revision": "touch-feedback-v1",
+    "evidence": "docs/validation/room-touch/REPORT.md"
+  }
 }

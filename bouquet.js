@@ -63,6 +63,8 @@
     art.dataset.motion='swaying';if(!frame){last=performance.now();frame=requestAnimationFrame(tick);}
   }
   function direction(event){const r=button.getBoundingClientRect();return event.clientX<r.x+r.width/2?1:-1;}
+  for(const target of [button,vase])target.addEventListener('shop:press-cancel',reset);
+  vase.addEventListener('pointerdown',event=>{if(event.pointerType==='touch'&&event.isPrimary)sway(direction(event));},{passive:true});
   button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'&&event.buttons===0)sway(direction(event));});
   let gesture=null,ignoreClickUntil=0;
   button.addEventListener('pointerdown',event=>{if(event.isPrimary&&event.button===0){gesture={id:event.pointerId,x:event.clientX,y:event.clientY,moved:false};ignoreClickUntil=0;sway(direction(event));}},{passive:true});

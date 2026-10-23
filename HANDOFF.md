@@ -992,3 +992,10 @@
 
 
 v0.14.16已实际发布：部署dpl_EyU3rCuXEfxT1B6M7BjoH4bk3SRn，源码eefa5df，GitHub main/开发分支均已推送。手机入口https://paper-bookshop-playtest.vercel.app/v0.14.16/，根同新版，/v0.13.0/保留。无认证95项线上资源hash匹配，Chromium/WebKit320/390四条静音隔离流程通过、页面错误为空；非物理手机验收。回退部署dpl_AzX2E39tmvzL2XRtBC2Aq7uAYkGk，报告docs/validation/release-v01416/REPORT.md。后续发布打包脚本会保留deploymentHistory里的历史版本，勿把源码版本参数当历史快照。
+
+
+## 2026-10-23 手机触摸反馈与首次发现提示
+
+- 按用户确认方案新增room-touch.js/css：立书/横书/封面按下轻抽，窗扣拨动，挂画轻摆；原灯绳按下轻坠、花瓶轻晃，松手立即原操作。超过9px/滚动/取消清反馈并挡尾随误触；不接管原生滚动或增加二次点击。主触屏只在当前可见且空闲时，书/窗户/灯绳/挂画每类本次页面最多轻动一次、错峰播放；阅读/弹窗/后台/多指/减少动态停止，无新增存档或游戏事件额度。
+- 手机相关分轮22项通过，Chromium原生触摸补强scrollTop验证2/2（已含在22项，不重复计数），桌面原有Hover14/14。多指/失焦为事件注入；最终9项相关源码前后/HTTP hash保持，完整初期失败、环境超时与测试边界见docs/validation/room-touch/REPORT.md。浏览器模拟，不是实体Safari/微信/帧率验收或整站统一冻结。
+- 保留并行手机相机d566557/v0.14.17与后续发布验证脚本修改，只提交本轮部分。入口http://127.0.0.1:4173/?playtest=rhythm&touch=feedback，刷新可体验；当前用户原标签未操作，未推送或部署。

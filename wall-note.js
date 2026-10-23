@@ -13,13 +13,14 @@
     if(now-started>1800||Math.abs(angle)<.015&&Math.abs(velocity)<.15){reset();return;}
     frame=requestAnimationFrame(tick);
   }
-  function enter(event){
-    if(event.pointerType!=='mouse'||!hover.matches||motion.matches||document.hidden||document.body.dataset.phase!=='idle'||document.querySelector('dialog[open]')||frame)return;
+  function enter(event,automatic=false){
+    if((!automatic&&(event.pointerType!=='mouse'||!hover.matches))||motion.matches||document.hidden||document.body.dataset.phase!=='idle'||document.querySelector('dialog[open]')||frame)return;
     over=true;velocity=19;last=started=performance.now();button.classList.add('is-swaying');frame=requestAnimationFrame(tick);
   }
   button.addEventListener('pointerenter',enter);
   button.addEventListener('pointerleave',()=>{over=false;});
-  button.addEventListener('pointerdown',reset);
+  button.addEventListener('pointerdown',event=>{reset();if(event.pointerType==='touch'&&event.isPrimary)enter(event,true);});
+  button.addEventListener('shop:cue',()=>enter(null,true));button.addEventListener('shop:cue-stop',reset);
   button.addEventListener('click',reset);
   window.addEventListener('blur',reset);window.addEventListener('resize',reset);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)reset();});

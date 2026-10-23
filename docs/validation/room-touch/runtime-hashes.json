@@ -1,0 +1,74 @@
+[
+  {
+    "file": "room-touch.js",
+    "before": "1b538a6d09312784019f88a74675839bbdfab855ce96392c16219a138e425814",
+    "after": "1b538a6d09312784019f88a74675839bbdfab855ce96392c16219a138e425814",
+    "http": "1b538a6d09312784019f88a74675839bbdfab855ce96392c16219a138e425814",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "room-touch.css",
+    "before": "36326495edb9d9ed4771b805943c55b3b2917da94b8d1cf04935bbc1d0590080",
+    "after": "36326495edb9d9ed4771b805943c55b3b2917da94b8d1cf04935bbc1d0590080",
+    "http": "36326495edb9d9ed4771b805943c55b3b2917da94b8d1cf04935bbc1d0590080",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "lamp.js",
+    "before": "825b6975d3051fb86776ba81de0e8a194bc05e0bbeaf23a749f0bab8d98778b0",
+    "after": "825b6975d3051fb86776ba81de0e8a194bc05e0bbeaf23a749f0bab8d98778b0",
+    "http": "825b6975d3051fb86776ba81de0e8a194bc05e0bbeaf23a749f0bab8d98778b0",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "wall-note.js",
+    "before": "7707dccb2d83a785956052fdcd0d3cf2fa8a683b77eb6d3f4b157b06e781f602",
+    "after": "7707dccb2d83a785956052fdcd0d3cf2fa8a683b77eb6d3f4b157b06e781f602",
+    "http": "7707dccb2d83a785956052fdcd0d3cf2fa8a683b77eb6d3f4b157b06e781f602",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "bouquet.js",
+    "before": "87839efb0a6cbaa63b742558541fe960944c2b4d2fda73c347e7844dc109225d",
+    "after": "87839efb0a6cbaa63b742558541fe960944c2b4d2fda73c347e7844dc109225d",
+    "http": "87839efb0a6cbaa63b742558541fe960944c2b4d2fda73c347e7844dc109225d",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "room.js",
+    "before": "274edc778421e72db2c9fb598966c7281f9e61aa28d1abd85cec49eeecf2048d",
+    "after": "274edc778421e72db2c9fb598966c7281f9e61aa28d1abd85cec49eeecf2048d",
+    "http": "274edc778421e72db2c9fb598966c7281f9e61aa28d1abd85cec49eeecf2048d",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "book-placement.js",
+    "before": "b512e960d3b1e9217784872bebe1979895455233f5371befececa062d64311e0",
+    "after": "b512e960d3b1e9217784872bebe1979895455233f5371befececa062d64311e0",
+    "http": "b512e960d3b1e9217784872bebe1979895455233f5371befececa062d64311e0",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "mobile.css",
+    "before": "22f1bcdd40497a37bcfaaba697e3fcb347a38974e25682959faf352a271d1706",
+    "after": "22f1bcdd40497a37bcfaaba697e3fcb347a38974e25682959faf352a271d1706",
+    "http": "22f1bcdd40497a37bcfaaba697e3fcb347a38974e25682959faf352a271d1706",
+    "stable": true,
+    "matchesHTTP": true
+  },
+  {
+    "file": "index.html",
+    "before": "a1b08b15b7d49a92b37ebd82e90d92745c277b8b5c8f20f7955adfc8485431b2",
+    "after": "a1b08b15b7d49a92b37ebd82e90d92745c277b8b5c8f20f7955adfc8485431b2",
+    "http": "a1b08b15b7d49a92b37ebd82e90d92745c277b8b5c8f20f7955adfc8485431b2",
+    "stable": true,
+    "matchesHTTP": true
+  }
+]
