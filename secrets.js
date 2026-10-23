@@ -32,12 +32,19 @@ window.BookSecrets=(()=>{
     try{localStorage.setItem(READS,JSON.stringify(reading));}catch{}
     director?.discover(bookId,item.id);decorate();
   }
+  // One paper silhouette is reused on the shelf and on the carried book.
+  function paperPeek(){
+    const peek=document.createElement('span');peek.className='book-paper-peek';peek.setAttribute('aria-hidden','true');
+    peek.innerHTML='<svg viewBox="0 0 40 28" focusable="false"><path class="peek-paper" d="M4 25 10 4Q21 1 33 3L36 25Z"/><path class="peek-fold" d="M10 4Q14 12 19 12L4 25Z"/><path class="peek-rim" d="M10 4Q21 1 33 3L36 25M10 4Q14 12 19 12"/></svg>';return peek;
+  }
   function decorate(){
     const data=read();
     for(const spine of document.querySelectorAll('.spine[data-id]')){
       const all=data.books[spine.dataset.id]||[];
       const visible=director?director.available(spine.dataset.id,all,actor):all;
       const fresh=visible.some(item=>director?unread(spine.dataset.id,item)===3||unread(spine.dataset.id,item)===1:unread(spine.dataset.id,item)>0)||!!director?.changed(spine.dataset.id);
+      const face=spine.querySelector('.spine-face');
+      if(face&&!face.querySelector('.book-paper-peek'))face.appendChild(paperPeek());
       spine.classList.toggle('has-new-paper',fresh);
       spine.setAttribute('aria-description',fresh?'书页边多露出了一点纸角':'');
     }
@@ -289,5 +296,5 @@ window.BookSecrets=(()=>{
     ticket.querySelector('.revisit-reset').addEventListener('click',()=>{for(const key of [KEY,...['A','B','N'].flatMap(id=>[prefix+'-reading-v1-'+id,prefix+'-drafts-v1-'+id,prefix+'-game-v1-'+id,...(discoveryDemo?['paperbook-discovery-visit-v1-'+id]:[])])])localStorage.removeItem(key);location.reload();});
   }
   document.addEventListener('pointerdown',()=>director?.touch(),{passive:true});
-  return {mount,demo,discoveryDemo,discoveryEnabled,actor,gameKey,mountPlaytest};
+  return {paperPeek,mount,demo,discoveryDemo,discoveryEnabled,actor,gameKey,mountPlaytest};
 })();

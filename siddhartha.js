@@ -73,6 +73,7 @@ window.Siddhartha = (() => {
   }
   function pose(value) {
     progress=clamp(value);
+    carrier.style.setProperty('--insert-peek-opacity',String(1-smooth(clamp(progress/.7))));
     // Recenter only as the cover actually crosses the spine. The hinge does not
     // drift sideways while the cover is still over the right-hand page.
     const angle=174*progress,leftExtent=Math.max(0,-Math.cos(angle*Math.PI/180));
@@ -506,8 +507,10 @@ window.Siddhartha = (() => {
   async function open(button,handlers) {
     if(!room)create();if(!room.hidden)return;
     source=button;callbacks=handlers;book=handlers.book;artifact=handlers.artifact;openOnArrival=false;busy=true;progress=0;extraction=0;sheetSpread=0;draft='';returnPending=false;heldDrag={x:0,y:0,scale:1,tilt:0,amount:0};gesture=null;sheetGesture=null;pageAdvance=false;ignoreClick=0;ignoreClickKind=null;paper.style.translate='';paper.style.rotate='';
+    if(!carrier.querySelector(':scope > .book-paper-peek'))carrier.appendChild(window.BookSecrets.paperPeek());
     secretDesk.reset(book,artifact);
     artifact=secretDesk.initialArtifact();
+    room.dataset.insertPeek=String(button.classList.contains('has-new-paper')&&!!artifact);
     queuedBook=null;delete room.dataset.openQueued;room.dataset.readerBook=book[0];
     room.style.setProperty('--title-length',String(book[1].length));
     cueSeen=false;room.dataset.artifact=artifact?.kind || 'none';room.dataset.artifactSource=artifact?.source||'';room.dataset.stock=artifact?.stock||'cream';

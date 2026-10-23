@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-23T07:50:01.849Z",
+  "scope": "7 reading/peek files only; concurrent cat, globe and shelf edits excluded",
+  "files": {
+    "secrets.js": {
+      "sha256": "47361f094ad125291fc608e8e2026b15a2924c706d304940dcfa77cd31fb925e",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "secrets.css": {
+      "sha256": "60d7799a3b04cae348449f4587ac526c150f35f02e00f1cb7add2ebbbfb478c7",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.js": {
+      "sha256": "4702ad35302521339d8986b8d89367fcda5d7357cfb99926291e6d9115fee8da",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "siddhartha.css": {
+      "sha256": "8eaaa473dc1e066194175b60331e1f19e9d30ec44621fadf3eaf799dbde22130",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "stories.js": {
+      "sha256": "3d9d236c2037a566e14eadac911dd1c1fd14e926e552aaf00e98795d7ff0a54b",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "discovery.js": {
+      "sha256": "598150f963d4243124bff508db782a41bde97b8263e17be7ee6ff8d8cb2d4712",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    },
+    "real-materials.js": {
+      "sha256": "18ac013d92066315f1843b102da69429805d77fbc762a464b0efa8f5ad74e8e2",
+      "matchesBefore": true,
+      "httpStatus": 200,
+      "httpMatches": true
+    }
+  },
+  "reports": {
+    "first": {
+      "startTime": "2026-10-23T07:42:13.813Z",
+      "duration": 21878.303,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "fix": {
+      "startTime": "2026-10-23T07:44:25.142Z",
+      "duration": 14033.04,
+      "expected": 6,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final": {
+      "startTime": "2026-10-23T07:46:14.749Z",
+      "duration": 132808.389,
+      "expected": 96,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

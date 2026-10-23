@@ -1,0 +1,122 @@
+[
+  {
+    "width": 320,
+    "engine": "Chromium",
+    "input": "CDP native touch for shelf, cover, paper and corner; keyboard Escape to return",
+    "source": "real and original story pools, only change notification seeded, isolated storage",
+    "errors": [],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/insert-peek/touch-320/202fd94516248c1e99643abaec094c60.webm",
+    "sampleCount": 83,
+    "allSamplesAttachedToCarrier": true,
+    "firstFrame": {
+      "step": "picking",
+      "parent": true,
+      "sourceHidden": true,
+      "rect": {
+        "x": 175.03321838378906,
+        "y": 186.9470977783203,
+        "width": 8.954971313476562,
+        "height": 12.837677001953125,
+        "top": 186.9470977783203,
+        "right": 183.98818969726562,
+        "bottom": 199.78477478027344,
+        "left": 175.03321838378906
+      },
+      "book": {
+        "x": 153.0970916748047,
+        "y": 192.34375,
+        "width": 35.43501281738281,
+        "height": 100.65625,
+        "top": 192.34375,
+        "right": 188.5321044921875,
+        "bottom": 293,
+        "left": 153.0970916748047
+      }
+    },
+    "lastFrame": {
+      "step": "held",
+      "parent": true,
+      "sourceHidden": true,
+      "rect": {
+        "x": 174.65428161621094,
+        "y": 131.31712341308594,
+        "width": 37.194549560546875,
+        "height": 32.82173156738281,
+        "top": 131.31712341308594,
+        "right": 211.8488311767578,
+        "bottom": 164.13885498046875,
+        "left": 174.65428161621094
+      },
+      "book": {
+        "x": 85.8354263305664,
+        "y": 144.61257934570312,
+        "width": 149.32904052734375,
+        "height": 256.0108947753906,
+        "top": 144.61257934570312,
+        "right": 235.16446685791016,
+        "bottom": 400.62347412109375,
+        "left": 85.8354263305664
+      }
+    }
+  },
+  {
+    "width": 390,
+    "engine": "Chromium",
+    "input": "CDP native touch for shelf, cover, paper and corner; keyboard Escape to return",
+    "source": "real and original story pools, only change notification seeded, isolated storage",
+    "errors": [],
+    "video": "/Users/zhouqingyi/repos/paper-bookshop-playtest/evidence/insert-peek/touch-390/910f497714512b1d15b1b9192578a588.webm",
+    "sampleCount": 86,
+    "allSamplesAttachedToCarrier": true,
+    "firstFrame": {
+      "step": "picking",
+      "parent": true,
+      "sourceHidden": true,
+      "rect": {
+        "x": 211.66305541992188,
+        "y": 187.60324096679688,
+        "width": 7.3865814208984375,
+        "height": 11.361572265625,
+        "top": 187.60324096679688,
+        "right": 219.0496368408203,
+        "bottom": 198.96481323242188,
+        "left": 211.66305541992188
+      },
+      "book": {
+        "x": 188.10446166992188,
+        "y": 192.37936401367188,
+        "width": 35.40293884277344,
+        "height": 100.58502197265625,
+        "top": 192.37936401367188,
+        "right": 223.5074005126953,
+        "bottom": 292.9643859863281,
+        "left": 188.10446166992188
+      }
+    },
+    "lastFrame": {
+      "step": "held",
+      "parent": true,
+      "sourceHidden": true,
+      "rect": {
+        "x": 221.1351318359375,
+        "y": 247.24114990234375,
+        "width": 37.19451904296875,
+        "height": 32.821746826171875,
+        "top": 247.24114990234375,
+        "right": 258.32965087890625,
+        "bottom": 280.0628967285156,
+        "left": 221.1351318359375
+      },
+      "book": {
+        "x": 105.20952606201172,
+        "y": 260.485107421875,
+        "width": 180.58084106445312,
+        "height": 289.23455810546875,
+        "top": 260.485107421875,
+        "right": 285.79036712646484,
+        "bottom": 549.7196655273438,
+        "left": 105.20952606201172
+      }
+    }
+  }
+]
