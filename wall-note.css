@@ -1,0 +1,5 @@
+/* The painted paper becomes a separate layer; the little clip stays on the wall. */
+.room-world .wall-note{left:calc(150/940*100%);top:calc(595/1672*100%);width:calc(110/940*100%);height:calc(145/1672*100%);min-width:44px;min-height:44px;transform:none;overflow:visible;isolation:isolate}
+.wall-note-art{display:block;width:100%;height:100%;overflow:visible;pointer-events:none}
+.wall-note-paper{filter:drop-shadow(0 1px 1px #785a1922)}
+.wall-note:focus-visible{outline-offset:-2px}

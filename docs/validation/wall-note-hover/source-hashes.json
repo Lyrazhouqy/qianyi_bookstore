@@ -1,0 +1,37 @@
+{
+  "wall-note.js": {
+    "before": "425eb7373050507057e6d2ead2f400dad9d7d4d1a818c3fba5c297b899671e1b",
+    "after": "425eb7373050507057e6d2ead2f400dad9d7d4d1a818c3fba5c297b899671e1b",
+    "http": "425eb7373050507057e6d2ead2f400dad9d7d4d1a818c3fba5c297b899671e1b",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "wall-note.css": {
+    "before": "53e636051f71caf667939e7cd4a6acf97ca88c71bd73c555acef74022829e95f",
+    "after": "53e636051f71caf667939e7cd4a6acf97ca88c71bd73c555acef74022829e95f",
+    "http": "53e636051f71caf667939e7cd4a6acf97ca88c71bd73c555acef74022829e95f",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "index.html": {
+    "before": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+    "after": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+    "http": "8b886e95e2a9d7bd508c738b743e1245099ebd1480717ed57373f7283353fc66",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "room.js": {
+    "before": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+    "after": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+    "http": "6dfeec7dfa88c8ffcaa965c6c54531f59501197fd829260186723421949ee786",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "assets/scene/room-layout-v0613.png": {
+    "before": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+    "after": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+    "http": "7ffa02570a08aae803e84691a3753c1c6db5bc35f2106cdbb7d28868b20c347f",
+    "unchanged": true,
+    "httpMatches": true
+  }
+}

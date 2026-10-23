@@ -1,0 +1,66 @@
+{
+  "desktop": {
+    "stats": {
+      "startTime": "2026-10-23T09:11:12.587Z",
+      "duration": 16767.597999999998,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-desktop",
+        "test": "mouse gives the hanging paper one gentle nudge about a stationary clip, then rests",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-desktop",
+        "test": "mouse hint resets on blur, resize or reduced motion; the original keyboard journal still opens",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-desktop",
+        "test": "mouse gives the hanging paper one gentle nudge about a stationary clip, then rests",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-desktop",
+        "test": "mouse hint resets on blur, resize or reduced motion; the original keyboard journal still opens",
+        "status": "passed"
+      }
+    ]
+  },
+  "mobile": {
+    "stats": {
+      "startTime": "2026-10-23T09:11:43.435Z",
+      "duration": 9728.304,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      }
+    ]
+  }
+}

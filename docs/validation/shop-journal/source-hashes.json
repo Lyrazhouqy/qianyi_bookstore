@@ -1,0 +1,44 @@
+{
+  "journal.js": {
+    "before": "bb28169e6012b3d1775ba57a49f079636b6859203d3d21a4c0531d9930c577ee",
+    "after": "bb28169e6012b3d1775ba57a49f079636b6859203d3d21a4c0531d9930c577ee",
+    "http": "bb28169e6012b3d1775ba57a49f079636b6859203d3d21a4c0531d9930c577ee",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "journal.css": {
+    "before": "012df45a1a573560ed4aab820dbfa69cd4ab2692de88d7d244d3f80fb68b1378",
+    "after": "012df45a1a573560ed4aab820dbfa69cd4ab2692de88d7d244d3f80fb68b1378",
+    "http": "012df45a1a573560ed4aab820dbfa69cd4ab2692de88d7d244d3f80fb68b1378",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "index.html": {
+    "before": "0c6a1477d8201ff604c41f81d6791854538adacec573d01519fb56bf11d4172c",
+    "after": "0c6a1477d8201ff604c41f81d6791854538adacec573d01519fb56bf11d4172c",
+    "http": "0c6a1477d8201ff604c41f81d6791854538adacec573d01519fb56bf11d4172c",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "room.js": {
+    "before": "4cf2a5810f432f56261acb9384978a0689b5e68e6a4c6841de7b6b253a342fe6",
+    "after": "4cf2a5810f432f56261acb9384978a0689b5e68e6a4c6841de7b6b253a342fe6",
+    "http": "4cf2a5810f432f56261acb9384978a0689b5e68e6a4c6841de7b6b253a342fe6",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "app.js": {
+    "before": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+    "after": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+    "http": "99a6d0e36e8d0f56505ec2f468fdc785bb224fcd5126ac2f2bffee8a7c01cef4",
+    "unchanged": true,
+    "httpMatches": true
+  },
+  "secrets.js": {
+    "before": "a484cf4dfcf9def3e57ec76f904416d0a3f86b01783db2d13d064be5b588da65",
+    "after": "a484cf4dfcf9def3e57ec76f904416d0a3f86b01783db2d13d064be5b588da65",
+    "http": "a484cf4dfcf9def3e57ec76f904416d0a3f86b01783db2d13d064be5b588da65",
+    "unchanged": true,
+    "httpMatches": true
+  }
+}

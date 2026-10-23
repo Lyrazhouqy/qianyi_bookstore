@@ -1,0 +1,270 @@
+{
+  "initial": {
+    "stats": {
+      "startTime": "2026-10-23T09:27:16.052Z",
+      "duration": 68576.82100000001,
+      "expected": 28,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "test": "grapheme typing grows incrementally, respects punctuation and tap-to-complete without moving layout",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "test": "unfinished opening stays through close and reload; finished pages do not replay typing",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "test": "handled books get a related diary first and legacy notes, drafts and clue flags remain intact",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "test": "reduced motion, keyboard and rapid navigation leave one current page and no delayed letters",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "test": "storage denial or a malformed journal save keeps all diary pages usable",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-small",
+        "test": "background suspends the typewriter and returns to the same page; manual scroll is not dragged down",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "grapheme typing grows incrementally, respects punctuation and tap-to-complete without moving layout",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "unfinished opening stays through close and reload; finished pages do not replay typing",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "handled books get a related diary first and legacy notes, drafts and clue flags remain intact",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "reduced motion, keyboard and rapid navigation leave one current page and no delayed letters",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "storage denial or a malformed journal save keeps all diary pages usable",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "background suspends the typewriter and returns to the same page; manual scroll is not dragged down",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "grapheme typing grows incrementally, respects punctuation and tap-to-complete without moving layout",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "unfinished opening stays through close and reload; finished pages do not replay typing",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "handled books get a related diary first and legacy notes, drafts and clue flags remain intact",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "reduced motion, keyboard and rapid navigation leave one current page and no delayed letters",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "storage denial or a malformed journal save keeps all diary pages usable",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "background suspends the typewriter and returns to the same page; manual scroll is not dragged down",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "grapheme typing grows incrementally, respects punctuation and tap-to-complete without moving layout",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "unfinished opening stays through close and reload; finished pages do not replay typing",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "handled books get a related diary first and legacy notes, drafts and clue flags remain intact",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "reduced motion, keyboard and rapid navigation leave one current page and no delayed letters",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "storage denial or a malformed journal save keeps all diary pages usable",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "background suspends the typewriter and returns to the same page; manual scroll is not dragged down",
+        "status": "passed"
+      }
+    ]
+  },
+  "layout": {
+    "stats": {
+      "startTime": "2026-10-23T09:29:25.584Z",
+      "duration": 51173.778,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-SE",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-ProMax",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-landscape",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-desktop",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-SE",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-ProMax",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-landscape",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-desktop",
+        "test": "ten original diary entries are reachable in four pages with full text and stable geometry",
+        "status": "passed"
+      }
+    ]
+  },
+  "hover-desktop": {
+    "stats": {
+      "startTime": "2026-10-23T09:31:00.092Z",
+      "duration": 18509.315000000002,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-desktop",
+        "test": "mouse gives the hanging paper one gentle nudge about a stationary clip, then rests",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-desktop",
+        "test": "mouse hint resets on blur, resize or reduced motion; the original keyboard journal still opens",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-desktop",
+        "test": "mouse gives the hanging paper one gentle nudge about a stationary clip, then rests",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-desktop",
+        "test": "mouse hint resets on blur, resize or reduced motion; the original keyboard journal still opens",
+        "status": "passed"
+      }
+    ]
+  },
+  "hover-mobile": {
+    "stats": {
+      "startTime": "2026-10-23T09:31:49.719Z",
+      "duration": 12589.896999999999,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "tests": [
+      {
+        "project": "chromium-small",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      },
+      {
+        "project": "chromium-iPhone14",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-small",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      },
+      {
+        "project": "webkit-iPhone14",
+        "test": "touchscreen keeps the paper still; tapping the picture still opens and closes the journal",
+        "status": "passed"
+      }
+    ]
+  }
+}

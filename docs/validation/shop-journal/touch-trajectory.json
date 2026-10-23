@@ -1,0 +1,55 @@
+{
+  "trail": [
+    {
+      "action": "touch open: partial writing",
+      "page": "第 1 页 / 4 页",
+      "entries": [
+        "closing",
+        "unfinished",
+        "habits"
+      ],
+      "typing": "true"
+    },
+    {
+      "action": "touch complete: three entries",
+      "page": "第 1 页 / 4 页",
+      "entries": [
+        "closing",
+        "unfinished",
+        "habits"
+      ],
+      "typing": "false"
+    },
+    {
+      "action": "touch older page",
+      "page": "第 2 页 / 4 页",
+      "entries": [
+        "weeks",
+        "lychee",
+        "prince"
+      ],
+      "typing": "true"
+    },
+    {
+      "action": "touch back: old text immediate",
+      "page": "第 1 页 / 4 页",
+      "entries": [
+        "closing",
+        "unfinished",
+        "habits"
+      ],
+      "typing": "false"
+    },
+    {
+      "action": "handled Tao Te Ching: related unread entry comes first",
+      "page": "第 1 页 / 4 页",
+      "entries": [
+        "tao",
+        "weeks",
+        "lychee"
+      ],
+      "typing": "true"
+    }
+  ],
+  "errors": []
+}

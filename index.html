@@ -19,11 +19,13 @@
   <link rel="stylesheet" href="room.css">
   <link rel="stylesheet" href="music.css">
   <link rel="stylesheet" href="paper-sound.css">
+  <link rel="stylesheet" href="wall-note.css">
   <link rel="stylesheet" href="lamp.css">
   <link rel="stylesheet" href="bouquet.css">
   <link rel="stylesheet" href="book-placement.css">
   <link rel="stylesheet" href="secrets.css">
   <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="journal.css">
   <script src="content.js" defer></script>
   <script src="rhythm.js" defer></script>
   <script src="book-placement.js" defer></script>
@@ -36,6 +38,8 @@
   <script src="siddhartha.js" defer></script>
   <script src="app.js" defer></script>
   <script src="room.js" defer></script>
+  <script src="journal.js" defer></script>
+  <script src="wall-note.js" defer></script>
   <script src="music.js" defer></script>
   <script src="lamp.js" defer></script>
   <script src="bouquet.js" defer></script>
@@ -107,7 +111,20 @@
           <button class="scene-object shelf-wood" id="goto-shelves" aria-label="查看书架"></button>
           <div class="shelves" id="shelves" aria-label="主书架上二十本可拿起的书"></div>
         </div>
-        <button class="scene-object wall-note" data-journal aria-label="书店手记" title="看看墙上的便笺"></button>
+        <button class="scene-object wall-note" data-journal aria-label="书店手记" aria-haspopup="dialog">
+          <svg class="wall-note-art" viewBox="150 595 110 145" aria-hidden="true" focusable="false">
+            <defs>
+              <image id="wall-note-source" href="assets/scene/room-layout-v0613.png" width="940" height="1673"/>
+              <clipPath id="wall-note-paper-shape"><path d="M172 617 Q172 615 175 615 L240 614 Q244 614 244 618 L244 721 Q244 724 241 725 L174 727 Q171 727 171 723Z"/></clipPath>
+              <clipPath id="wall-note-clip-shape"><path d="M199 601H214V625H199Z"/></clipPath>
+              <filter id="wall-note-soft-edge" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2"/></filter>
+              <mask id="wall-note-wall-mask" maskUnits="userSpaceOnUse" x="160" y="606" width="94" height="128"><rect x="164" y="610" width="86" height="120" rx="2" fill="white" filter="url(#wall-note-soft-edge)"/></mask>
+            </defs>
+            <g mask="url(#wall-note-wall-mask)"><svg x="160" y="606" width="94" height="128" viewBox="250 606 94 128"><use href="#wall-note-source"/></svg></g>
+            <g class="wall-note-paper" transform="rotate(0 207 615)"><g clip-path="url(#wall-note-paper-shape)"><use href="#wall-note-source"/></g></g>
+            <g clip-path="url(#wall-note-clip-shape)"><use href="#wall-note-source"/></g>
+          </svg>
+        </button>
         <svg class="lamp-cord-art" viewBox="0 0 940 1672" preserveAspectRatio="none" aria-hidden="true"><defs><path id="lamp-cord" d="M140 784Q140 820 140 886"/></defs><use href="#lamp-cord" class="lamp-cord-shadow"/><use href="#lamp-cord" class="lamp-cord-line"/></svg>
         <button class="scene-object lamp-pull" id="lamp-pull" aria-label="拉绳开灯" aria-pressed="false"><span class="lamp-knob" aria-hidden="true"><svg viewBox="0 0 22 36"><path d="M11 0V8" stroke="#9c8056" stroke-width="3"/><path d="M5 10Q11 6 17 10L19 26Q18 34 11 35Q4 34 3 26Z" fill="currentColor"/><path d="M7 12L6 25Q6 30 10 31" fill="none" stroke="#f2d39e" stroke-opacity=".6" stroke-width="2"/></svg></span></button>
         <button class="scene-object gramophone" id="open-music" aria-label="留声机，挑一张唱片" aria-haspopup="dialog"></button>
@@ -171,11 +188,17 @@
       <p class="sheet-note">选中的书，会从它原来的书位来到你面前。</p>
     </dialog>
     <dialog class="shop-sheet journal-sheet" id="shop-journal" aria-labelledby="shop-journal-title">
-      <div class="sheet-heading"><div><small>来 过 的 痕 迹</small><h2 id="shop-journal-title">书店手记</h2></div><button class="sheet-close" data-close-sheet aria-label="收起书店手记">×</button></div>
+      <div class="sheet-heading"><div><small>店 主 的 营 业 日 记</small><h2 id="shop-journal-title">书店手记</h2></div><button class="sheet-close" data-close-sheet aria-label="收起书店手记">×</button></div>
+      <p class="journal-intro">随手记一点，留给坐下来的人。</p>
+      <div class="journal-leaf" tabindex="0" role="region" aria-label="店主手记正文，轻点看完这页"></div>
+      <div class="journal-signature"><span>—— 店主</span><button type="button" data-journal-reveal>轻点，看完这页</button></div>
+      <nav class="journal-navigation" aria-label="翻阅店主手记"><button type="button" data-journal-older aria-label="往前翻一页手记">← 往前翻</button><span class="journal-page-count" role="status"></span><button type="button" data-journal-newer aria-label="回到较近的一页手记">近一页 →</button></nav>
+      <details class="journal-backmatter"><summary>来过的痕迹</summary>
       <p class="journal-copy" id="journal-summary">书店很安静。</p><p class="journal-visit" data-visit-label>书店很安静</p>
       <div class="journal-setting"><span>阅读节奏</span><div><button class="btn" id="natural" aria-pressed="true">自然节奏</button> <button class="btn" id="dense" aria-pressed="false">密集对照</button></div></div>
       <button class="quiet-button" id="restart">重新到访 ↻</button>
       <p class="sheet-note">自然节奏里，痕迹慢慢出现。密集对照会更早露出线索。<br>文字保存在本机，尚未接入多人或跨设备同步。</p>
+      </details>
     </dialog>
   </main>
   <div class="shade" id="shade" hidden>
