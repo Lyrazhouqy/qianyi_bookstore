@@ -989,3 +989,6 @@
 ## 2026-10-23 v0.14.16 整体发布
 
 用户现已授权将所有本地成果提交Git并部署现有Vercel项目。统一版本v0.14.16，白名单88项、根/新版/旧版共237文件引用；旧v0.13.0逐项由原提交恢复并校验。发布前最终125项通过，声音排查中断的最后三项以静音输出复核3/3，发现引擎单元通过；不称真实手机验收。打包脚本scripts/package-release.cjs，当前静态文件与冻结包一致；部署结果、回退与手机入口追加docs/validation/release-v01416/REPORT.md。
+
+
+v0.14.16已实际发布：部署dpl_EyU3rCuXEfxT1B6M7BjoH4bk3SRn，源码eefa5df，GitHub main/开发分支均已推送。手机入口https://paper-bookshop-playtest.vercel.app/v0.14.16/，根同新版，/v0.13.0/保留。无认证95项线上资源hash匹配，Chromium/WebKit320/390四条静音隔离流程通过、页面错误为空；非物理手机验收。回退部署dpl_AzX2E39tmvzL2XRtBC2Aq7uAYkGk，报告docs/validation/release-v01416/REPORT.md。后续发布打包脚本会保留deploymentHistory里的历史版本，勿把源码版本参数当历史快照。

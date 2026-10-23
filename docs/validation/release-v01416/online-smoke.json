@@ -1,0 +1,80 @@
+{
+  "version": "0.14.16",
+  "url": "https://paper-bookshop-playtest.vercel.app/v0.14.16/",
+  "at": "2026-10-23T10:20:12.423Z",
+  "boundary": "isolated phone browser emulation, not physical phone acceptance",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 320,
+      "passed": [
+        "public access",
+        "version",
+        "34 books",
+        "three scenery choices and blank upload",
+        "new diary titles and smaller text",
+        "cover and note",
+        "paired reading",
+        "next page",
+        "create local note",
+        "cat album"
+      ],
+      "audioOutput": "muted; no listening verdict",
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "passed": [
+        "public access",
+        "version",
+        "34 books",
+        "three scenery choices and blank upload",
+        "new diary titles and smaller text",
+        "cover and note",
+        "paired reading",
+        "next page",
+        "create local note",
+        "cat album"
+      ],
+      "audioOutput": "muted; no listening verdict",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "passed": [
+        "public access",
+        "version",
+        "34 books",
+        "three scenery choices and blank upload",
+        "new diary titles and smaller text",
+        "cover and note",
+        "paired reading",
+        "next page",
+        "create local note",
+        "cat album"
+      ],
+      "audioOutput": "muted; no listening verdict",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "passed": [
+        "public access",
+        "version",
+        "34 books",
+        "three scenery choices and blank upload",
+        "new diary titles and smaller text",
+        "cover and note",
+        "paired reading",
+        "next page",
+        "create local note",
+        "cat album"
+      ],
+      "audioOutput": "muted; no listening verdict",
+      "errors": []
+    }
+  ]
+}

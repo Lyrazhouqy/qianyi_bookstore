@@ -10,4 +10,11 @@
 
 ## 部署
 
-待实际部署成功后补充ID、来源提交、线上资源校验及回退入口。当前回退部署dpl_AzX2E39tmvzL2XRtBC2Aq7uAYkGk。
+- 已发布生产：<https://paper-bookshop-playtest.vercel.app/v0.14.16/>，根目录同版本；旧版<https://paper-bookshop-playtest.vercel.app/v0.13.0/>保持原内容。
+- Vercel部署 `dpl_EyU3rCuXEfxT1B6M7BjoH4bk3SRn`，项目 `prj_3ppzRCOoA2Uk9XXmoDeraGFmQkZY`，READY、正式域名绑定、无aliasError，原保护设置不变。唯一部署域名仍遵循项目原认证规则；手机使用上面的正式域名。
+- 游戏源码提交 `eefa5dffc555a086185082f6db0f702feaf77de3`，GitHub main与feat/rhythm-v014均已推送；发布元信息与验证脚本随后独立提交，静态游戏文件保持同一快照。
+- 无认证公开请求：新版/根/旧版入口200；88个新版资源、4个根目录代码及3个旧版代码共95项SHA256匹配，见[online-resources.json](online-resources.json)。其余旧版文件打包前由原Git提交逐项验证，不称全部旧版资源均做了网络下载检查。
+- 线上两引擎320/390共4条隔离浏览器流程通过：版本、34本书、三景+空白上传、新手记标题/16px正文、拿书/展信/左原文右便笺/下一页、留本机便笺、猫图册。页面错误为空，见[online-smoke.json](online-smoke.json)。scripts/verify-release.cjs使用静音输出，不影响真实音频时钟，不代表实体手机、真人试听或真实多人共创验收。
+- 回退部署 `dpl_AzX2E39tmvzL2XRtBC2Aq7uAYkGk`（v0.13.0）；当前部署与历史保存在release-manifest.json。回退时在同项目把这个已有部署重新提升到生产。
+
+![线上手机模拟预览](phone-online-preview.png)

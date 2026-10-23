@@ -21,7 +21,8 @@ function put(file,bytes,origin){
 }
 for(const file of current){const bytes=fs.readFileSync(path.join(root,file));put(file,bytes,'current');put('v'+version+'/'+file,bytes,'current-version');}
 const previous=manifest.deployment;
-if(previous&&previous.version!==version){
+const history=[previous,...(manifest.deploymentHistory||[])].filter((d,i,a)=>d&&d.version!==version&&a.findIndex(x=>x?.version===d.version)===i);
+for(const previous of history){
  for(const old of previous.files){
   if(!safe(old.file))throw Error('Unsafe historical path');
   const bytes=cp.execFileSync('git',['show',previous.sourceCommit+':'+old.file],{cwd:root,maxBuffer:30*1024*1024});
@@ -29,7 +30,7 @@ if(previous&&previous.version!==version){
   put('v'+previous.version+'/'+old.file,bytes,'previous-production');
  }
 }
-const config={version:2,cleanUrls:false,headers:[{source:'/',headers:[{key:'Cache-Control',value:'no-cache'}]},{source:'/index.html',headers:[{key:'Cache-Control',value:'no-cache'}]},{source:'/v'+version+'/(.*)',headers:[{key:'Cache-Control',value:'public, max-age=31536000, immutable'}]},...(previous&&previous.version!==version?[{source:'/v'+previous.version+'/(.*)',headers:[{key:'Cache-Control',value:'public, max-age=31536000, immutable'}]}]:[])]};
+const config={version:2,cleanUrls:false,headers:[{source:'/',headers:[{key:'Cache-Control',value:'no-cache'}]},{source:'/index.html',headers:[{key:'Cache-Control',value:'no-cache'}]},{source:'/v'+version+'/(.*)',headers:[{key:'Cache-Control',value:'public, max-age=31536000, immutable'}]},...history.map(previous=>({source:'/v'+previous.version+'/(.*)',headers:[{key:'Cache-Control',value:'public, max-age=31536000, immutable'}]}))]};
 put('vercel.json',Buffer.from(JSON.stringify(config,null,2)+'\n'),'deployment-config');
 fs.mkdirSync(evidence,{recursive:true});
 const result={version,build:manifest.build,projectId:manifest.projectId,teamId:manifest.teamId,folder:dest,previousDeployment:previous?.deploymentId,previousVersion:previous?.version,files:rows};
