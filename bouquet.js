@@ -3,9 +3,14 @@
   const button=document.getElementById('touch-bouquet'),art=document.getElementById('bouquet-art'),pref=matchMedia('(prefers-reduced-motion: reduce)');
   const parts=[...art.querySelectorAll('.bouquet-part')].map((el,i)=>({el,angle:0,velocity:0,stiffness:[70,108,83][i],damping:[6.8,7.4,6.3][i],impulse:[42,31,37][i]}));
   const vase=document.getElementById('change-bouquet'),message=document.getElementById('bouquet-message');
-  const choices=[{id:'original',name:'小白花'},{id:'tulips',name:'粉色郁金香'},{id:'daisies',name:'暖黄小雏菊'}];
+  const choices=[{id:'original',name:'小白花',detail:'清清淡淡'},{id:'tulips',name:'粉色郁金香',detail:'温柔一束'},{id:'daisies',name:'暖黄小雏菊',detail:'一点晴天'}];
+  const sheet=document.getElementById('bouquet-settings'),grid=document.getElementById('bouquet-choices');
+  grid.innerHTML=choices.map(c=>'<button class="music-record bouquet-choice" data-bouquet-choice="'+c.id+'" aria-label="'+c.name+'" aria-pressed="false">'+(c.id==='original'?'<span class="bouquet-thumbnail bouquet-thumbnail-original" aria-hidden="true"></span>':'<span class="bouquet-thumbnail"><img src="assets/scene/bouquet-'+c.id+'-v0624.png" alt="" draggable="false" loading="lazy"></span>')+'<strong>'+c.name+'</strong><small>'+c.detail+'</small></button>').join('');
   const key='paperbook-bouquet-v1',loaded=new Map();
   let current='original',desired=current,revision=0;
+  function renderChoices(){
+    for(const card of grid.children){const id=card.dataset.bouquetChoice,choice=choices.find(c=>c.id===id),pending=desired!==current&&id===desired;card.setAttribute('aria-pressed',String(id===current));card.classList.toggle('is-preparing',pending);card.querySelector('small').textContent=(pending?'准备中 · ':id===current?'正在摆 · ':'')+choice.detail;}
+  }
   function prepare(id){
     if(id==='original')return Promise.resolve();
     if(!loaded.has(id)){
@@ -23,23 +28,28 @@
     art.classList.toggle('is-initializing',initial);
     for(const layer of art.querySelectorAll('.bouquet-layer'))layer.style.opacity=layer.dataset.bouquetLayer===id?'1':'0';
     current=desired=id;art.dataset.bouquet=id;
-    vase.setAttribute('aria-label','换一束花，当前：'+choices.find(c=>c.id===id).name);
+    vase.setAttribute('aria-label','花瓶，挑一束花，当前：'+choices.find(c=>c.id===id).name);renderChoices();
+    const thumbnail=grid.querySelector('[data-bouquet-choice="'+id+'"] img');if(thumbnail&&thumbnail.complete&&!thumbnail.naturalWidth)thumbnail.src=thumbnail.getAttribute('src');
     if(initial)requestAnimationFrame(()=>requestAnimationFrame(()=>art.classList.remove('is-initializing')));
   }
-  async function change(){
-    if(document.body.dataset.phase!=='idle')return;
-    const id=choices[(choices.findIndex(c=>c.id===desired)+1)%choices.length].id,request=++revision;
-    desired=id;vase.setAttribute('aria-busy','true');message.textContent='';
+  async function change(id){
+    if(document.body.dataset.phase!=='idle'||!sheet.open||!choices.some(c=>c.id===id))return;
+    const request=++revision;desired=id;
+    if(id===current){vase.removeAttribute('aria-busy');renderChoices();message.textContent='正在摆着'+choices.find(c=>c.id===id).name+'。';return;}
+    vase.setAttribute('aria-busy','true');renderChoices();message.textContent='花束轻轻准备中……';
     try{
       await prepare(id);if(request!==revision)return;
       render(id);try{localStorage.setItem(key,id);}catch{}
-      message.textContent='换成了'+choices.find(c=>c.id===id).name;vase.title='换一束花';sway();
+      message.textContent='换成了'+choices.find(c=>c.id===id).name;vase.title='挑一束花';sway();
     }catch{
-      if(request===revision){desired=current;message.textContent='这束花暂时没准备好，轻点花瓶再试一次。';vase.title='轻点重试换花';}
+      if(request===revision){desired=current;renderChoices();message.textContent='这束花暂时没准备好，再点一次这束花试试。';}
     }finally{if(request===revision)vase.removeAttribute('aria-busy');}
   }
-  function cancelChange(){revision++;desired=current;vase.removeAttribute('aria-busy');}
-  vase.addEventListener('click',event=>{event.stopPropagation();change();});
+  function cancelChange(){revision++;desired=current;vase.removeAttribute('aria-busy');renderChoices();}
+  grid.addEventListener('click',event=>{const card=event.target.closest('[data-bouquet-choice]');if(card)change(card.dataset.bouquetChoice);});
+  sheet.addEventListener('sheetopened',()=>{renderChoices();message.textContent='挑一束花，陪你慢慢翻书。';});
+  sheet.addEventListener('close',cancelChange);
+  renderChoices();
   let frame=0,last=0;
   function reset(){cancelAnimationFrame(frame);frame=0;last=0;art.dataset.motion='rest';for(const p of parts){p.angle=0;p.velocity=0;p.el.setAttribute('transform','rotate(0 79 110)');}}
   function tick(now){

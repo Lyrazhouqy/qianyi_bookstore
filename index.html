@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.9" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
+<html lang="zh-CN" data-build="paper-bookshop-game-v0.14.10" data-reader="shared-tactile-v0.4.3" data-return="direct-drag-v0.6.7" data-paper="paired-reader-v0.14.0" data-binding="rigid-flat-v0.14.1">
 <head>
   <meta charset="UTF-8">
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/book-title-serif-v0113.woff2" crossorigin>
@@ -99,8 +99,7 @@
           <g id="bouquet-vase-rim" clip-path="url(#bouquet-mouth)"><use href="#bouquet-source"/></g>
         </svg>
         <button class="scene-object bouquet-touch" id="touch-bouquet" aria-label="轻碰花束"></button>
-        <button class="scene-object bouquet-vase" id="change-bouquet" aria-label="换一束花，当前：小白花" title="换一束花"></button>
-        <span class="sr-only" id="bouquet-message" role="status"></span>
+        <button class="scene-object bouquet-vase" id="change-bouquet" aria-label="花瓶，挑一束花，当前：小白花" title="挑一束花" aria-haspopup="dialog"></button>
         <div class="display-stage" id="coffee-books" role="group" aria-label="茶几上两本可拿起的书"></div>
         <div class="display-stage" id="display-books" role="group" aria-label="陈列架上十本可拿起的书"></div>
         <button class="scene-object drawer-handle" id="open-book-index" aria-label="查看陈列桌上的藏书" title="拉开抽屉看看藏书"><span class="spine-face archive-binding" aria-hidden="true"></span></button>
@@ -112,6 +111,11 @@
       <div class="sheet-heading music-heading"><div><small>留 声 机</small><h2 id="music-title">今天店里听什么</h2></div><button class="sheet-close" data-close-sheet aria-label="收起唱片纸页">×</button></div>
       <div class="music-grid" id="music-records"></div>
       <div class="music-bottom"><p id="music-status" role="status">挑一张唱片，陪你慢慢翻书。</p><button class="music-toggle" id="music-toggle" aria-label="播放音乐"><span aria-hidden="true">▷</span><span class="music-toggle-label">放张唱片</span></button></div>
+    </dialog>
+    <dialog class="shop-sheet music-sheet bouquet-sheet" id="bouquet-settings" aria-labelledby="bouquet-title">
+      <div class="sheet-heading music-heading"><div><small>花 瓶</small><h2 id="bouquet-title">今天放哪束花</h2></div><button class="sheet-close" data-close-sheet aria-label="收起花束纸页">×</button></div>
+      <div class="music-grid bouquet-choices" id="bouquet-choices"></div>
+      <div class="music-bottom"><p class="bouquet-status" id="bouquet-message" role="status">挑一束花，陪你慢慢翻书。</p></div>
     </dialog>
     <dialog class="shop-sheet window-sheet" id="window-settings" aria-labelledby="window-settings-title">
       <div class="sheet-heading window-heading"><div><small>窗 外 一 景</small><h2 id="window-settings-title">今天，望向哪里？</h2></div><button class="sheet-close" data-close-sheet aria-label="收起窗外风景">×</button></div>

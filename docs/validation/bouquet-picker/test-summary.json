@@ -1,0 +1,63 @@
+{
+  "version": "0.14.10",
+  "date": "2026-10-23",
+  "baseCommit": "e91fae3",
+  "phases": {
+    "initial-results.json": {
+      "raw": "evidence/bouquet-picker/initial-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:27:59.500Z",
+        "duration": 165940.199,
+        "expected": 2,
+        "skipped": 8,
+        "unexpected": 4,
+        "flaky": 0
+      }
+    },
+    "hit-fix-results.json": {
+      "raw": "evidence/bouquet-picker/hit-fix-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:32:05.094Z",
+        "duration": 6852.786,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 3,
+        "flaky": 0
+      }
+    },
+    "check-results.json": {
+      "raw": "evidence/bouquet-picker/check-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:34:06.039Z",
+        "duration": 4978.946,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "final-results.json": {
+      "raw": "evidence/bouquet-picker/final-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:35:10.963Z",
+        "duration": 178563.40600000002,
+        "expected": 36,
+        "skipped": 1,
+        "unexpected": 3,
+        "flaky": 0
+      }
+    },
+    "verified-results.json": {
+      "raw": "evidence/bouquet-picker/verified-results.json",
+      "stats": {
+        "startTime": "2026-10-23T06:38:09.636Z",
+        "duration": 64675.75,
+        "expected": 40,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "proofLimits": "Chromium/WebKit mobile viewport and simulated touch; no physical iPhone"
+}

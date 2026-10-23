@@ -2,8 +2,8 @@
 (() => {
   const viewport=document.getElementById('room-viewport');
   const catalogue=document.getElementById('book-index'),journal=document.getElementById('shop-journal'),windowSheet=document.getElementById('window-settings');
-  const musicSheet=document.getElementById('music-settings');
-  const sheets=[catalogue,journal,windowSheet,musicSheet];
+  const musicSheet=document.getElementById('music-settings'),bouquetSheet=document.getElementById('bouquet-settings');
+  const sheets=[catalogue,journal,windowSheet,musicSheet,bouquetSheet];
   const sheetOpeners=new WeakMap(),pickingBook=new WeakSet();
   const palette=['#7b9499','#b48460','#6e8587','#778967','#bdac78','#82969c','#d2af64','#7f8f71','#bd8d73','#91a7ae','#a6b17f','#c99c83','#e0c58a','#eee3c8','#6f969e','#e6b852'];
   const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,6 +19,7 @@
     const heading=sheet.querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true});sheet.dispatchEvent(new Event('sheetopened'));
   }
   document.getElementById('open-music').addEventListener('click',event=>showSheet(musicSheet,event.currentTarget));
+  document.getElementById('change-bouquet').addEventListener('click',event=>{event.stopPropagation();showSheet(bouquetSheet,event.currentTarget);});
   document.querySelectorAll('[data-journal]').forEach(button=>button.addEventListener('click',()=>showSheet(journal,button)));
   document.getElementById('open-book-index').addEventListener('click',event=>showSheet(catalogue,event.currentTarget));
   for(const sheet of sheets){
